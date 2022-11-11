@@ -1,0 +1,246 @@
+:root {
+  --main-background: #252422;
+  --gradient-border: linear-gradient(
+    to bottom,
+    #252422,
+    #393933,
+    #4d5047,
+    #5e685d,
+    #6f8276,
+    #6f8276,
+    #6f8276,
+    #6f8276,
+    #5e685d,
+    #4d5047,
+    #393933,
+    #252422
+  );
+  /* 
+  font-family: 'Bebas Neue', cursive;
+  font-family: 'Londrina Sketch', cursive;
+  font-family: 'Purple Purse', cursive;
+  font-family: 'Rubik', sans-serif;
+  font-family: 'Staatliches', cursive;
+  
+  #fffcf2-#ccc5b9-#403d39-#252422-#eb5e28
+  #403f4c #bea2c2 #84a59d
+  
+  */
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+body {
+  background-color: var(--main-background);
+}
+html {
+  font-size: 62.5%;
+  font-family: "Rubik", sans-serif;
+}
+.name {
+  margin: 4.8rem 2rem;
+  font-family: "Bebas Neue", cursive;
+  color: #eb5e28;
+  font-size: 12.2rem;
+  text-transform: uppercase;
+  cursor: default;
+  display: inline-block;
+  letter-spacing: 0.15rem;
+  text-align: left;
+  line-height: 0.8;
+  transition: color 0.8s linear, margin 0.4s linear, text-shadow 0.4s;
+}
+.name:hover {
+  text-shadow: 0.2rem 0rem 1.2rem #403f4c;
+}
+.name-wrapper {
+  margin: 0 0 10% 22%;
+  justify-content: center;
+  align-self: center;
+  display: flex;
+}
+.button {
+  padding: 0.8rem;
+  border-radius: 1rem;
+  transition: all 0.4s ease-in;
+  transform: scale(1);
+  background-color: #403d39;
+  font-size: 1.6rem;
+  display: inline-block;
+  text-decoration: none;
+  letter-spacing: 0.05rem;
+}
+.aside-link:link,
+.aside-link:visited {
+  color: #fffcf2;
+}
+.aside-link:active,
+.aside-link:hover {
+  background-color: #403f4c;
+  transform: scale(1.05);
+}
+.aside a:nth-child(1) {
+  background-color: #fffcf2;
+  color: #403d39;
+}
+
+.inline-link:link,
+.inline-link:visited {
+  color: #fffcf2;
+}
+.inline-link:active,
+.inline-link:hover {
+  background-color: #eb5e28;
+  transform: scale(1.02);
+}
+.green-me {
+  color: #84a59d;
+}
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  border-right: 2px solid #ccc5b9;
+  /* box-shadow: 1rem 0 2rem rgba(204, 197, 185, 0.3); */
+  box-shadow: 10px 0 20px #403f4c;
+}
+.center-page {
+  display: grid;
+  grid-template-columns: 18rem 80rem 1fr;
+}
+.section {
+  padding-left: 4rem;
+  align-self: center;
+  max-width: 85%;
+  display: flex;
+  flex-direction: column;
+  /* change these if scroll not working */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 74rem;
+  border-left-width: 0.4rem;
+  border-left-style: solid;
+  border-image: var(--gradient-border) 1 100%;
+}
+
+/* SCROLL BAR TEST */
+/* width */
+::-webkit-scrollbar {
+  width: 1.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fffcf2;
+  border-radius: 1rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #403f4c;
+  border-radius: 0.5rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #525162;
+}
+.summary {
+  max-width: 70ch;
+  min-width: 60ch;
+  margin-bottom: 2rem;
+  font-size: 2.4rem;
+  color: #fffcf2;
+}
+.prog-langs {
+  display: inline-block;
+  color: #bea2c2;
+}
+.heading {
+  font-size: 4.2rem;
+  color: #ccc5b9;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.work-grid,
+.education-grid,
+.skills-grid {
+  display: grid;
+  grid-template-columns: 70rem 35rem;
+  column-gap: 8rem;
+  line-height: 1.2;
+  margin-left: 8rem;
+}
+.projects-grid {
+  line-height: 1.2;
+  margin-left: 8rem;
+}
+.skills,
+.courses {
+  display: grid;
+  grid-template-columns: repeat(3, 20rem);
+  column-gap: 10rem;
+  line-height: 1.8;
+  margin-left: 8rem;
+  margin-bottom: 2rem;
+}
+.courses {
+  column-gap: 20rem;
+  grid-template-columns: repeat(2, 30rem);
+  max-width: 30ch;
+}
+.courses li {
+  margin-bottom: 2rem;
+}
+.tech-used {
+  display: inline-block;
+  color: #bea2c2;
+}
+
+.year-list,
+.list,
+.skills-list,
+.courses-list {
+  list-style: none;
+  font-size: 2rem;
+  color: #fffcf2;
+}
+.job,
+.education,
+.project-name {
+  margin-bottom: 2rem;
+  min-width: 100ch;
+}
+.what-i-did,
+.project-desc {
+  max-width: 50ch;
+  min-width: 40ch;
+  line-height: 1.1;
+  font-size: 2rem;
+  margin-left: 6rem;
+  margin-bottom: 2rem;
+  color: #fffcf2;
+}
+.year-duration {
+  margin-bottom: 5rem;
+}
+/* .inline-link-normal {
+  background-color: #84a59d;
+  text-decoration: none;
+  color: #fffcf2;
+} */
+dl {
+  margin-bottom: 2rem;
+}
+.redir {
+  text-align: center;
+  font-size: 25px;
+  font-family: sans-serif;
+}
