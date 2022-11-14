@@ -41,10 +41,10 @@ html {
   font-family: "Rubik", sans-serif;
 }
 .name {
-  margin: 4.8rem 2rem;
+  margin: 0 0 0 50%;
   font-family: "Bebas Neue", cursive;
   color: #eb5e28;
-  font-size: 12.2rem;
+  font-size: 10.2rem;
   text-transform: uppercase;
   cursor: default;
   display: inline-block;
@@ -57,10 +57,11 @@ html {
   text-shadow: 0.2rem 0rem 1.2rem #403f4c;
 }
 .name-wrapper {
-  margin: 0 0 10% 22%;
+  margin: 0 0 0 0;
   justify-content: center;
   align-self: center;
   display: flex;
+  width: 100%;
 }
 .button {
   padding: 0.8rem;
@@ -112,7 +113,7 @@ html {
 }
 .center-page {
   display: grid;
-  grid-template-columns: 18rem 52rem 150rem;
+  grid-template-columns: 16rem 17.5vw 70vw;
 }
 .section {
   padding-left: 4rem;
