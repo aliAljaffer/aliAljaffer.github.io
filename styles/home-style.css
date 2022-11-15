@@ -44,7 +44,7 @@ html {
   margin: 0 0 0 50%;
   font-family: "Bebas Neue", cursive;
   color: #eb5e28;
-  font-size: 10.2rem;
+  font-size: 9.2rem;
   text-transform: uppercase;
   cursor: default;
   display: inline-block;
@@ -57,11 +57,11 @@ html {
   text-shadow: 0.2rem 0rem 1.2rem #403f4c;
 }
 .name-wrapper {
-  margin: 0 0 0 0;
+  margin: 0 0 0 10%;
   justify-content: center;
   align-self: center;
   display: flex;
-  width: 100%;
+  max-width: 15vw;
 }
 .button {
   padding: 0.8rem;
@@ -113,19 +113,77 @@ html {
 }
 .center-page {
   display: grid;
-  grid-template-columns: 16rem 17.5vw 70vw;
+  grid-template-columns: 16rem 17.5vw 60vw;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+@media (max-width: 1500px) {
+  .center-page {
+    margin: 0 auto;
+    grid-template-rows: 10rem 20rem 1fr;
+    grid-template-columns: auto;
+    row-gap: 2rem;
+    display: grid;
+    max-height: fit-content;
+  }
+
+  .name {
+    margin: 0;
+    font-family: "Bebas Neue", cursive;
+    color: #eb5e28;
+    font-size: 8.2rem;
+    text-transform: uppercase;
+    cursor: default;
+    display: inline-block;
+    letter-spacing: 0.15rem;
+    text-align: center;
+    line-height: 0.8;
+    transition: color 0.8s linear, margin 0.4s linear, text-shadow 0.4s;
+  }
+  .name:hover {
+    text-shadow: 0.2rem 0rem 1.2rem #403f4c;
+  }
+  .name-wrapper {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    /* max-width: 15vw; */
+    grid-row: 2 / 3;
+  }
+  .section {
+    max-width: 30rem;
+    grid-row: 3 / 4;
+    border-left-width: 0 !important;
+    box-shadow: none !important;
+    max-height: 5000px;
+    overflow-y: unset !important;
+    overflow-x: unset !important;
+  }
+  .aside {
+    align-items: flex-start;
+    flex-direction: row;
+    padding-top: 10px;
+    max-width: 100vw;
+    max-height: 2rem;
+    grid-row: 1 / 2;
+    gap: 1rem;
+    border: none;
+    box-shadow: none;
+    transform: scale(0.8);
+  }
 }
 .section {
+  transform: scale(0.88);
   padding-left: 4rem;
   align-self: center;
-  justify-self: end;
-  max-width: 85%;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   /* change these if scroll not working */
   overflow-y: scroll;
   overflow-x: hidden;
-  max-height: 74rem;
+  max-height: 60rem;
   border-left-width: 0.4rem;
   border-left-style: solid;
   border-image: var(--gradient-border) 1 100%;
@@ -155,7 +213,6 @@ html {
 }
 .summary {
   max-width: 70ch;
-  min-width: 60ch;
   margin-bottom: 2rem;
   font-size: 2.4rem;
   color: #fffcf2;
@@ -175,10 +232,11 @@ html {
 .education-grid,
 .skills-grid {
   display: grid;
-  grid-template-columns: 70rem 35rem;
-  column-gap: 8rem;
+  grid-template-columns: 55rem 20rem;
+  column-gap: 2rem;
   line-height: 1.2;
   margin-left: 8rem;
+  max-width: fit-content;
 }
 .projects-grid {
   line-height: 1.2;
@@ -188,13 +246,13 @@ html {
 .courses {
   display: grid;
   grid-template-columns: repeat(3, 20rem);
-  column-gap: 10rem;
+  column-gap: 5rem;
   line-height: 1.8;
   margin-left: 8rem;
   margin-bottom: 2rem;
 }
 .courses {
-  column-gap: 20rem;
+  column-gap: 10rem;
   grid-template-columns: repeat(2, 30rem);
   max-width: 30ch;
 }
@@ -218,12 +276,12 @@ html {
 .education,
 .project-name {
   margin-bottom: 2rem;
-  min-width: 100ch;
+  /* min-width: 70ch; */
 }
 .what-i-did,
 .project-desc {
   max-width: 50ch;
-  min-width: 40ch;
+  /* min-width: 40ch; */
   line-height: 1.1;
   font-size: 2rem;
   margin-left: 6rem;
