@@ -122,8 +122,7 @@ html {
     overflow-x: scroll !important;
   }
 }
-@media (max-width: 1000px) and (orientation: portrait),
-  (max-width: 1400px) and (not (screen)) {
+@media (orientation: portrait) {
   .center-page {
     margin: 0 auto;
     grid-template-rows: 10rem 20rem 1fr;
