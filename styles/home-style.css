@@ -122,7 +122,7 @@ html {
     overflow-x: scroll !important;
   }
 }
-@media (max-width: 1400px) {
+@media (max-width: 1700px) {
   .center-page {
     margin: 0 auto;
     grid-template-rows: 3 rem 20rem 1fr;

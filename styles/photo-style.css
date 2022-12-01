@@ -212,7 +212,7 @@ html {
   text-transform: uppercase;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1700px) {
   .center-page {
     margin: 0 auto;
     grid-template-rows: 10rem 1fr !important;
@@ -220,6 +220,17 @@ html {
     row-gap: 2rem;
     display: grid;
     max-height: fit-content;
+  }
+  .side-buttons > .button {
+    padding: 0.8rem 2rem;
+    border-radius: 1rem;
+    transition: all 0.4s ease-in;
+    transform: scale(1);
+    background-color: #403d39;
+    font-size: 2.8rem;
+    display: inline-block;
+    text-decoration: none;
+    letter-spacing: 0.1rem;
   }
   .two-verticals,
   .three-verticals,
@@ -263,9 +274,18 @@ html {
     max-width: 100vw;
     max-height: 4rem;
     grid-row: 1 / span 1;
-    gap: 1rem;
+    gap: 4rem;
     border: none;
     box-shadow: none;
     transform: scale(0.8);
+  }
+  .aside-link:link,
+  .aside-link:visited {
+    color: #fffcf2;
+  }
+  .aside-link:active,
+  .aside-link:hover {
+    background-color: #403f4c;
+    transform: scale(1.05);
   }
 }
