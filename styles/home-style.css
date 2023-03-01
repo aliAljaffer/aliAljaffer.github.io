@@ -136,7 +136,9 @@ html {
   .skills-grid {
     margin-left: 4rem !important;
   }
-  .skills,
+  .skills {
+    margin-left: 6rem !important;
+  }
   .courses {
     margin-left: 4rem !important;
   }
@@ -232,6 +234,8 @@ html {
   font-size: 2.4rem;
   color: #fffcf2;
 }
+
+#WIP,
 .prog-langs {
   display: inline-block;
   color: #bea2c2;
@@ -253,10 +257,15 @@ html {
   margin-left: 8rem;
   max-width: fit-content;
 }
-.projects-grid {
+.projects-grid,
+.contests-grid {
   line-height: 1.2;
   margin-left: 8rem;
 }
+.skills {
+  grid-template-columns: repeat(3, 35rem) !important;
+}
+
 .skills,
 .courses {
   display: grid;
@@ -278,7 +287,7 @@ html {
   display: inline-block;
   color: #bea2c2;
 }
-
+.contest-list,
 .year-list,
 .list,
 .skills-list,
@@ -289,12 +298,14 @@ html {
 }
 .job,
 .education,
-.project-name {
+.project-name,
+.contest-name {
   margin-bottom: 2rem;
   /* min-width: 70ch; */
 }
 .what-i-did,
-.project-desc {
+.project-desc,
+.contest-desc {
   max-width: 50ch;
   /* min-width: 40ch; */
   line-height: 1.1;
