@@ -170,7 +170,7 @@ html {
     justify-self: center;
     padding-left: 0 !important;
     max-width: 30rem;
-    max-height: 200rem !important;
+    max-height: 300rem !important;
     grid-row: 3 / 4;
     border-left-width: 0 !important;
     box-shadow: none !important;
@@ -200,7 +200,7 @@ html {
   /* change these if scroll not working */
   overflow-y: scroll;
   overflow-x: hidden;
-  max-height: 60rem;
+  max-height: 100rem;
   border-left-width: 0.4rem;
   border-left-style: solid;
   border-image: var(--gradient-border) 1 100%;
