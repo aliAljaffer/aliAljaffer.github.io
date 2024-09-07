@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import projects from "../lib/projects.json";
 import Project from "./Project";
 function Projects() {
@@ -8,7 +8,6 @@ function Projects() {
   const finishedProjects = projects.filter((project) => project.isFinished);
   const showProjects = showFinished ? finishedProjects : inProgressProjects;
 
-  console.log(showProjects.length);
   const handleProjects = () => {
     setShowFinished((old) => !old);
   };
@@ -37,14 +36,17 @@ function Projects() {
       <div
         ref={ref}
         onWheel={handleScroll}
-        className="lg:scrollbar-thin lg:scrollbar-thumb-stone-400 lg:scrollbar-track-stone-600 mt-auto flex h-[95%] w-full items-center gap-12 overflow-x-scroll scroll-smooth lg:flex-row"
+        className="mt-auto flex h-[95%] w-full items-center gap-12 overflow-x-scroll scroll-smooth lg:flex-row lg:scrollbar-thin lg:scrollbar-track-stone-600 lg:scrollbar-thumb-stone-400"
       >
-        {showProjects.map((project) => (
-          <Project
-            project={project}
-            tech={project.tech}
-            key={project.projectId}
-          />
+        {showProjects.map((project, i) => (
+          <Fragment key={project.projectId}>
+            <Project
+              idx={i}
+              numProjects={showProjects.length}
+              project={project}
+              tech={project.tech}
+            />
+          </Fragment>
         ))}
       </div>
     </div>

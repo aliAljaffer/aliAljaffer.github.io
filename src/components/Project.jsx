@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Project({ project, tech, showFull = false }) {
+function Project({ project, tech, idx, numProjects }) {
   const [showSummary, setShowSummary] = useState(false);
   const {
     projectName,
@@ -23,7 +23,10 @@ function Project({ project, tech, showFull = false }) {
   );
 
   return (
-    <div className="grid h-[65%] w-full shrink-0 grid-cols-1 grid-rows-[fit_fit_fit_fit] gap-4 overflow-visible rounded-2xl px-4 py-3 transition-all duration-300 hover:bg-stone-600 sm:px-3 md:w-[40%] md:gap-8 lg:w-[33%] xl:h-[85%] xl:w-[25%]">
+    <div className="relative grid h-[65%] w-full shrink-0 grid-cols-1 grid-rows-[fit_fit_fit_fit] gap-4 overflow-visible rounded-2xl px-4 py-3 transition-all duration-300 hover:bg-stone-600 sm:px-3 md:w-[40%] md:gap-8 lg:w-[33%] xl:h-[85%] xl:w-[25%]">
+      <span className="absolute -top-0.5 right-0 text-xs">
+        ({idx + 1} / {numProjects}) {idx + 1 < numProjects ? <>&rarr;</> : ""}
+      </span>
       <p className="w-full text-xl font-bold capitalize tracking-wide sm:tracking-wide">
         {projectName}
       </p>
@@ -83,19 +86,19 @@ function Project({ project, tech, showFull = false }) {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                     <g
                       id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     ></g>
                     <g id="SVGRepo_iconCarrier">
                       {" "}
                       <path
                         d="M14 12C14 14.7614 11.7614 17 9 17H7C4.23858 17 2 14.7614 2 12C2 9.23858 4.23858 7 7 7H7.5M10 12C10 9.23858 12.2386 7 15 7H17C19.7614 7 22 9.23858 22 12C22 14.7614 19.7614 17 17 17H16.5"
                         className="stroke-stone-600"
-                        stroke-width="2"
-                        stroke-linecap="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
                       ></path>{" "}
                     </g>
                   </svg>
