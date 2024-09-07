@@ -2,13 +2,13 @@ import NavButton from "./NavButton";
 import useUrl from "../hooks/useUrl";
 function Directions({ width }) {
   const url = useUrl();
-  const paths = ["/home", "/projects", "/contact"];
+  const paths = ["/", "/projects", "/contact"];
   const notFound = !paths.includes(url);
   return (
     <div
       className={`${width} flex items-center ${notFound ? "justify-center" : "justify-between"} gap-4 px-1`}
     >
-      {url === "/home" ? (
+      {url === "/" ? (
         <>
           <NavButton variation="small" to="/contact">
             Contact
@@ -19,7 +19,7 @@ function Directions({ width }) {
         </>
       ) : url === "/contact" ? (
         <>
-          <NavButton variation="small" to="/home">
+          <NavButton variation="small" to="/">
             Home
           </NavButton>
           <NavButton variation="small" to="/projects">
@@ -31,12 +31,12 @@ function Directions({ width }) {
           <NavButton variation="small" to="/contact">
             Contact
           </NavButton>
-          <NavButton variation="small" to="/home">
+          <NavButton variation="small" to="/">
             Home
           </NavButton>
         </>
       ) : (
-        <NavButton variation="small" to="/home">
+        <NavButton variation="small" to="/">
           Home
         </NavButton>
       )}

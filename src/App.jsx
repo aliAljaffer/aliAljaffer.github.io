@@ -2,7 +2,7 @@ import "./index.css";
 import About from "./components/About";
 import Box from "./components/Box";
 import Directions from "./components/Directions";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageNotFound from "./components/PageNotFound";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
@@ -25,8 +25,7 @@ function App() {
           }
         >
           <Routes>
-            <Route index element={<Navigate to={"/home"} />} />
-            <Route path="/home" element={<About w={width} h={height} />} />
+            <Route index path="/" element={<About w={width} h={height} />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="*" element={<PageNotFound />} />

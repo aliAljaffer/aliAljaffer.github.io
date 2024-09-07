@@ -23,9 +23,16 @@
     "projectId": 3,
     "projectName": "🍕 fast react pizza",
     "projectType": "Full-Stack development, Responsive Design, Database Management, UI/UX",
-    "tech": ["react", "vite", "redux toolkit", "tailwind", "react router"],
+    "tech": [
+      "react",
+      "vite",
+      "redux toolkit",
+      "tailwind",
+      "react router",
+      "vercel"
+    ],
     "githubRepoURL": "https://github.com/aliAljaffer/fr-pizza",
-    "hostedSiteURL": "",
+    "hostedSiteURL": "https://fast-r-pizza.vercel.app",
     "isFinished": true,
     "reasonNotFinished": "",
     "description": "A mock-website for a small Pizza shop. The business rules did not require user authentication, so login/registration was not implemented. Each order is registered and assigned a persistant unique ID."

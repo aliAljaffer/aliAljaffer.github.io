@@ -72,10 +72,10 @@ function Project({ project, tech, idx, numProjects }) {
             )}
             {hostedSiteURL && (
               <a
-                href={githubRepoURL}
+                href={hostedSiteURL}
                 target="_blank"
                 rel="noreferrer"
-                alt={`${projectName} github repository`}
+                alt={`${projectName} hosted website`}
                 className="flex w-fit cursor-pointer items-center justify-center gap-2 rounded-lg bg-stone-300 px-4 py-1.5 text-sm text-stone-600 shadow-md shadow-stone-800 transition-all duration-300 hover:-translate-y-0.5 hover:bg-stone-50 hover:font-extrabold"
               >
                 <span>
