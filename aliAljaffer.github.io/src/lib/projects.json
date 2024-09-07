@@ -1,0 +1,96 @@
+[
+  {
+    "projectId": 1,
+    "projectName": "🎵 spotiVersus",
+    "projectType": "Full-Stack development,Entertainment, Music, Data Model Design, Database Schema Design, REST APIs, Data Retrieval",
+    "tech": [
+      "react",
+      "vite",
+      "tailwind",
+      "react router",
+      "typescript",
+      "supabase",
+      "vercel",
+      "postgreSQL"
+    ],
+    "githubRepoURL": "https://github.com/aliAljaffer/spotiVersus",
+    "hostedSiteURL": "https://spoti-versus.vercel.app/",
+    "isFinished": true,
+    "reasonNotFinished": "Fully working state. I have more features planned, so can't really say it's finished.",
+    "description": "spotiVersus is a mini-game of guessing which of the two artists displayed has a higher number of monthly listeners on Spotify. At the start, a number of artists is pulled from a database."
+  },
+  {
+    "projectId": 3,
+    "projectName": "🍕 fast react pizza",
+    "projectType": "Full-Stack development, Responsive Design, Database Management, UI/UX",
+    "tech": ["react", "vite", "redux toolkit", "tailwind", "react router"],
+    "githubRepoURL": "https://github.com/aliAljaffer/fr-pizza",
+    "hostedSiteURL": "",
+    "isFinished": true,
+    "reasonNotFinished": "",
+    "description": "A mock-website for a small Pizza shop. The business rules did not require user authentication, so login/registration was not implemented. Each order is registered and assigned a persistant unique ID."
+  },
+  {
+    "projectId": 2,
+    "projectName": "🗂️ MOSS for Pilot",
+    "projectType": "Process Automation, File Organization, Integration with Other Tools, Open-Closed Design, File Parsing",
+    "tech": ["Python", "ZipFile", "OS", "shutil"],
+    "githubRepoURL": "https://github.com/aliAljaffer/MOSS-for-Pilot-LMS",
+    "hostedSiteURL": "https://github.com/aliAljaffer/CSE-Discord-Bot",
+    "isFinished": true,
+    "reasonNotFinished": "",
+    "description": "Mass-checking of student submitted code downloaded through Pilot Learning Management System (LMS) for purposes of cheating deterrence. A python script that expects a zip file downloaded from an LMS, which then unzips it and creates a folder named after the student's last name with their most-recently submitted files. This script was later adapted by the CS Dev team at Wright State University and refactored to be used as a /command in the CS Discord server."
+  },
+
+  {
+    "projectId": 4,
+    "projectName": "🧮 WithinLimits",
+    "projectType": "Entertainment, Games, Bounded-Limits Ruleset, Input Handling, Game Logic Design",
+    "tech": ["Java", "JavaSwing GUI", "Model-View-Controller Design Pattern"],
+    "githubRepoURL": "https://github.com/aliAljaffer/projects/tree/main/WithinLimits",
+    "hostedSiteURL": "",
+    "isFinished": true,
+    "reasonNotFinished": "Will refactor into Flutter code to deploy for iOS and Android.",
+    "description": "Math game where the player must keep the running total inbetween two bounds. A random number is shown, and the player has to choose between three operations to perform on the random number and the running total number, ensuring that the operation would not result in a total outside of the set bounds."
+  },
+  {
+    "projectId": 5,
+    "projectName": "⚽️ Soccer Predictor",
+    "projectType": "Educational, Machine Learning, Data Analysis, Feature Extraction, Data Preprocessing, Random Forest, Data Resampling, Feature Derivation",
+    "tech": ["Python, Matplotlib, keras, numpy, pandas, Jupyter Notebooks"],
+    "githubRepoURL": "https://github.com/aliAljaffer/soccer-match-predictor",
+    "hostedSiteURL": "",
+    "isFinished": true,
+    "reasonNotFinished": "",
+    "description": "Soccer match predictions using machine learning techniques, including data preprocessing and cleanup, feature extraction and derivation, and model optimization."
+  },
+  {
+    "projectId": 6,
+    "projectName": "🧩 Data Structures",
+    "projectType": "Educational, Memory Management and Memory Leak Analysis, Hashing (jsHash), Object-Oriented Programming, Recursion, Complexity Analysis, Unit Testing",
+    "tech": ["C++, Catch2"],
+    "githubRepoURL": "https://github.com/aliAljaffer/DSA",
+    "hostedSiteURL": "https://alialjaffer.github.io/DSA/",
+    "isFinished": true,
+    "reasonNotFinished": "",
+    "description": "Data structures implementations in C++ with focus on performance and low memory usage. Implementing: Doubly-Linked List (Sequence), Balanced Binary Tree (AVL Tree), Tries (Auto-Completion Trie), HashDatabase."
+  },
+  {
+    "projectId": 7,
+    "projectName": "🏡 Qiddiyah Cabins",
+    "projectType": "Full-Stack Development, CRUD Operations, Data Visualization, Asset Management System, Authentication",
+    "tech": [
+      "react",
+      "react query",
+      "supabase",
+      "postgreSQL",
+      "styled-components",
+      "auth0"
+    ],
+    "githubRepoURL": "",
+    "hostedSiteURL": "",
+    "isFinished": false,
+    "reasonNotFinished": "Work in progress.",
+    "description": "Qiddiyah Cabins - Find Your Desert Sanctuary. An internal dashboard designed for the management of a cabin-renting firm. The dashboard allows for authenticated staff members to perform CRUD operations on a postgreSQL database for the firm's cabins. More features planned such as statistics for income, guest retention, average number of stays, etc."
+  }
+]

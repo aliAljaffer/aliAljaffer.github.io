@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .test {
+    border-radius: 51px;
+    background: #e0e0e0;
+    box-shadow:
+      -21px 21px 57px #c1c1c1,
+      21px -21px 57px hsl(0, 0%, 100%);
+  }
+}
 /*
 :root {
   --c1: #0d1b2a;
