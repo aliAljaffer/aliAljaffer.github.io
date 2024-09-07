@@ -4,5 +4,10 @@ import eslint from "vite-plugin-eslint";
 // https://vitejs.dev/config/
 
 export default defineConfig({
+  root: "./",
+  build: {
+    outDir: "./docs",
+    emptyOutDir: true,
+  },
   plugins: [react(), eslint()],
 });
