@@ -5,16 +5,16 @@ function About({ className, w, h }) {
   const freeTime =
     "In my free time, I build mechanical keyboards, do photography and astrophotography, both digital and analog, and I love to cook! ";
   return (
-    <>
-      <p className="col-span-2 row-span-2 h-fit w-full text-wrap px-4 py-1.5 text-sm sm:text-xl lg:text-2xl">
+    <div className="flex h-full w-full grow flex-col justify-around">
+      <p className="col-span-2 row-span-2 h-fit w-full text-wrap px-4 py-1.5 text-sm sm:text-xl xl:text-2xl">
         Ali Aljaffer
         <br />
         Software Engineer, Web Developer
       </p>
-      <p className="col-span-2 row-span-2 w-full text-wrap px-4 py-1.5 indent-4 text-sm sm:text-xl lg:text-2xl">
+      <p className="col-span-2 row-span-2 w-full text-wrap px-4 py-1.5 indent-4 text-sm sm:text-xl xl:text-2xl">
         {message}
       </p>
-      <p className="col-span-2 row-span-2 w-full text-wrap px-4 py-1.5 indent-4 text-sm sm:text-xl lg:text-2xl">
+      <p className="col-span-2 row-span-2 w-full text-wrap px-4 py-1.5 indent-4 text-sm sm:text-xl xl:text-2xl">
         {freeTime}
       </p>
       <TechStack
@@ -22,7 +22,7 @@ function About({ className, w, h }) {
         className="flex w-[100%] flex-row flex-wrap items-start justify-around gap-1 px-4 lg:justify-between lg:gap-1"
         length={8}
       />
-    </>
+    </div>
   );
 }
 

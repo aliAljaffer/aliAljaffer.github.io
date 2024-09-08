@@ -21,7 +21,7 @@ function App() {
             height +
             " " +
             width +
-            " flex flex-col items-center justify-around overflow-auto bg-stone-700 py-2.5 sm:gap-1 sm:p-4 lg:justify-around lg:gap-4"
+            " flex flex-col items-center overflow-auto bg-stone-700 py-2.5 sm:justify-between sm:gap-1 sm:p-4 lg:gap-4"
           }
         >
           <Routes>

@@ -63,7 +63,7 @@
   {
     "projectId": 5,
     "projectName": "⚽️ Soccer Predictor",
-    "projectType": "Educational, Machine Learning, Data Analysis, Feature Extraction, Data Preprocessing, Random Forest, Data Resampling, Feature Derivation",
+    "projectType": "Web Scraping, Machine Learning, Data Analysis, Feature Extraction, Data Preprocessing, Random Forest, Data Resampling, Feature Derivation",
     "tech": ["Python, Matplotlib, keras, numpy, pandas, Jupyter Notebooks"],
     "githubRepoURL": "https://github.com/aliAljaffer/soccer-match-predictor",
     "hostedSiteURL": "",
@@ -99,5 +99,38 @@
     "isFinished": false,
     "reasonNotFinished": "Work in progress.",
     "description": "Qiddiyah Cabins - Find Your Desert Sanctuary. An internal dashboard designed for the management of a cabin-renting firm. The dashboard allows for authenticated staff members to perform CRUD operations on a postgreSQL database for the firm's cabins. More features planned such as statistics for income, guest retention, average number of stays, etc."
+  },
+  {
+    "projectId": 8,
+    "projectName": "🦦 GOTTH Stack",
+    "projectType": "Web Development, Full-Stack development, Google",
+    "tech": ["Golang", "Templ", "HTMX", "✅Tailwind"],
+    "githubRepoURL": "",
+    "hostedSiteURL": "",
+    "isFinished": false,
+    "reasonNotFinished": "Work in progress.",
+    "description": "Learning the GOTTH stack - Golang, Templ, Tailwind, HTMX for both Backend and Frontend development."
+  },
+  {
+    "projectId": 9,
+    "projectName": "🅰️ Angularjs",
+    "projectType": "Web Development, JS Framework, Google",
+    "tech": ["Angular", "ng"],
+    "githubRepoURL": "",
+    "hostedSiteURL": "",
+    "isFinished": false,
+    "reasonNotFinished": "Work in progress.",
+    "description": "Learning Angular v18 for enterprise work."
+  },
+  {
+    "projectId": 10,
+    "projectName": "💎 Ruby on Rails",
+    "projectType": "Web Development, Enterprise",
+    "tech": ["✅Ruby", "Rails"],
+    "githubRepoURL": "",
+    "hostedSiteURL": "",
+    "isFinished": false,
+    "reasonNotFinished": "Work in progress.",
+    "description": "Learning Rails for Ruby for enterprise work. Low priority atm."
   }
 ]

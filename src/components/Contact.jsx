@@ -1,8 +1,8 @@
 function Contact() {
-  const textSize = "text-sm sm:text-lg";
+  const textSize = "text-md sm:text-xl";
 
   return (
-    <div className="grid grid-cols-1 grid-rows-3 place-content-center items-center justify-center gap-5 sm:grid-cols-2 sm:grid-rows-2">
+    <div className="m-auto grid w-fit grid-cols-1 grid-rows-3 items-center justify-center gap-5 place-self-center sm:grid-cols-2 sm:grid-rows-2 lg:h-[10%] lg:w-[50%]">
       <p
         className={`flex items-center justify-start gap-2 sm:justify-self-center ${textSize}`}
       >
@@ -44,8 +44,8 @@ function Contact() {
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
             y="0px"
-            width="30"
-            height="30"
+            width="24"
+            height="24"
             viewBox="0 0 30 30"
             className="fill-stone-200"
           >

@@ -1,5 +1,5 @@
 const globalClass =
-  "w-[25%] h-fit rounded-md grayscale transition-all duration-300 hover:grayscale-0 sm:w-[25%] lg:w-[15%]";
+  "w-[25%] h-fit rounded-md grayscale transition-all duration-300 hover:grayscale-0 sm:w-[15%] lg:w-[15%]";
 
 export const javascript = (
   <a

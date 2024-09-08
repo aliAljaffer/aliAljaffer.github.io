@@ -4,9 +4,7 @@ import Project from "./Project";
 function Projects() {
   const [showFinished, setShowFinished] = useState(true);
   const ref = useRef(null);
-  const inProgressProjects = projects
-    .filter((project) => !project.isFinished)
-    .slice(0, 3);
+  const inProgressProjects = projects.filter((project) => !project.isFinished);
   const finishedProjects = projects.filter((project) => project.isFinished);
   const showProjects = showFinished ? finishedProjects : inProgressProjects;
 
@@ -37,7 +35,7 @@ function Projects() {
       <div
         ref={ref}
         onWheel={handleScroll}
-        className="flex h-[100%] w-full grow items-center gap-12 overflow-x-scroll scroll-smooth sm:h-[80%] sm:items-start lg:flex-row lg:scrollbar-thin lg:scrollbar-track-stone-600 lg:scrollbar-thumb-stone-400"
+        className="mt-auto flex h-[90%] w-full items-center gap-12 overflow-x-scroll scroll-smooth sm:h-[90%] sm:items-start lg:flex-row lg:scrollbar-thin lg:scrollbar-track-stone-600 lg:scrollbar-thumb-stone-400"
       >
         {showProjects.map((project, i) => (
           <Fragment key={project.projectId}>

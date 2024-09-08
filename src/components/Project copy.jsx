@@ -23,7 +23,7 @@ function Project({ project, tech, idx, numProjects }) {
   );
 
   return (
-    <div className="relative mt-10 grid h-[65%] w-full shrink-0 grid-cols-1 grid-rows-[fit_fit_fit_fit] gap-2 overflow-visible rounded-2xl px-4 py-3 transition-all duration-300 hover:bg-stone-600 sm:px-3 md:w-[40%] md:gap-8 lg:w-[33%] xl:h-[85%] xl:w-[25%]">
+    <div className="relative mt-10 grid h-[65%] w-full shrink-0 grid-cols-1 grid-rows-[fit_fit_fit_fit] gap-4 overflow-visible rounded-2xl px-4 py-3 transition-all duration-300 hover:bg-stone-600 sm:px-3 md:w-[40%] md:gap-8 lg:w-[33%] xl:h-[85%] xl:w-[25%]">
       <span className="absolute -top-0.5 right-0 text-xs">
         ({idx + 1} / {numProjects}) {idx + 1 < numProjects ? <>&rarr;</> : ""}
       </span>
