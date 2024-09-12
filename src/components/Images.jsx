@@ -3,7 +3,7 @@ import Image from "./Image";
 import images from "../lib/images.json";
 function Images() {
   const [currIdx, setCurrId] = useState(0);
-  const { path, imageId, alt, location } = images.at(currIdx);
+  const { path, alt, location } = images.at(currIdx);
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
       <Image

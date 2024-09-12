@@ -6,6 +6,12 @@ export default {
     extend: {
       fontFamily: { sans: "Ubuntu Mono" },
       height: { screen: "100dvh" },
+      minHeight: {
+        screen: "100dvh",
+      },
+      maxHeight: {
+        screen: "100dvh",
+      },
       colors: {
         c1: "#0d1b2a",
         c2: "#1b263b",

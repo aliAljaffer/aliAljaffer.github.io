@@ -1,6 +1,7 @@
 const globalClass =
-  "w-[25%] h-fit rounded-md grayscale transition-all duration-300 hover:grayscale-0 sm:w-[15%] lg:w-[15%]";
-
+  "w-[10%] rounded-md grayscale transition-all duration-300 hover:grayscale-0 sm:w-[15%] lg:w-[15%]";
+const width = "100%";
+const height = "100%";
 export const javascript = (
   <a
     href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
@@ -13,8 +14,8 @@ export const javascript = (
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
-      width="100"
-      height="100"
+      width={width}
+      height={height}
       viewBox="0 0 48 48"
     >
       <title>{"Javascript"}</title>
@@ -38,9 +39,9 @@ export const react = (
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
-      width="100"
-      height="100"
       viewBox="0 0 100 100"
+      width={width}
+      height={height}
     >
       <title>{"React"}</title>
       <circle cx="50" cy="50" r="7" fill="#39c1d7"></circle>
@@ -69,10 +70,10 @@ export const supabase = (
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
       x="0px"
       y="0px"
-      width="100"
-      height="100"
       viewBox="0 0 48 48"
     >
       <title>{"Supabase"}</title>
@@ -97,8 +98,8 @@ export const typescript = (
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
-      width="100"
-      height="100"
+      width={width}
+      height={height}
       viewBox="0 0 48 48"
     >
       <title>{"Typescript"}</title>
@@ -124,10 +125,10 @@ export const flutter = (
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
       x="0px"
       y="0px"
-      width="100"
-      height="100"
       viewBox="0 0 48 48"
     >
       <title>{"Flutter"}</title>
@@ -156,13 +157,11 @@ export const tailwind = (
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
       x="0px"
       y="0px"
-      width="100"
-      height="100"
       viewBox="0 0 48 48"
-      // className={`${imgs_size} rounded-md grayscale transition-all duration-300 hover:grayscale-0`}
-      // alt={`Technology I use ${null}`}
     >
       <title>{"Tailwind"}</title>
       <path
@@ -182,10 +181,10 @@ export const redux = (
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
       x="0px"
       y="0px"
-      width="100"
-      height="100"
       viewBox="0 0 48 48"
     >
       <title>{"Redux"}</title>

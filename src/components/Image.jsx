@@ -1,5 +1,5 @@
 import Spinner from "./Spinner";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 function Image({
   path = "/src/assets/images/riyadh-1.JPG",
   alt = "",
@@ -23,8 +23,8 @@ function Image({
       />
       <div className="mt-auto flex w-full justify-between">
         <div className="flex flex-col items-start gap-1">
-          <span className="px-5 uppercase tracking-widest">{city}</span>
-          <span className="px-5 tracking-wide">{country}</span>
+          <span className="px-5 tracking-widest">{city}</span>
+          <span className="px-5 uppercase tracking-wide">{country}</span>
         </div>
         <span className="text-xs">
           ({idx + 1} / {numImages})
