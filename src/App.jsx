@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageNotFound from "./components/PageNotFound";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import Images from "./components/Images";
 
 function App() {
   const width = " w-[85dvw] sm:w-[85dvw] lg:w-[80dvw] lg:max-w-[1024px]";
@@ -26,6 +27,7 @@ function App() {
         >
           <Routes>
             <Route index path="/" element={<About w={width} h={height} />} />
+            <Route path="/photography" element={<Images />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="*" element={<PageNotFound />} />

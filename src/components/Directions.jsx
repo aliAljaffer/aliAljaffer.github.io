@@ -2,7 +2,7 @@ import NavButton from "./NavButton";
 import useUrl from "../hooks/useUrl";
 function Directions({ width }) {
   const url = useUrl();
-  const paths = ["/", "/projects", "/contact"];
+  const paths = ["/", "/projects", "/contact", "/photography"];
   const notFound = !paths.includes(url);
   return (
     <div
@@ -13,6 +13,9 @@ function Directions({ width }) {
           <NavButton variation="small" to="/contact">
             Contact
           </NavButton>
+          <NavButton variation="small" to="/photography">
+            Photography
+          </NavButton>
           <NavButton variation="small" to="/projects">
             Projects
           </NavButton>
@@ -21,6 +24,9 @@ function Directions({ width }) {
         <>
           <NavButton variation="small" to="/">
             Home
+          </NavButton>
+          <NavButton variation="small" to="/photography">
+            Photography
           </NavButton>
           <NavButton variation="small" to="/projects">
             Projects
@@ -31,8 +37,23 @@ function Directions({ width }) {
           <NavButton variation="small" to="/contact">
             Contact
           </NavButton>
+          <NavButton variation="small" to="/photography">
+            Photography
+          </NavButton>
           <NavButton variation="small" to="/">
             Home
+          </NavButton>
+        </>
+      ) : url === "/photography" ? (
+        <>
+          <NavButton variation="small" to="/contact">
+            Contact
+          </NavButton>
+          <NavButton variation="small" to="/">
+            Home
+          </NavButton>
+          <NavButton variation="small" to="/projects">
+            Projects
           </NavButton>
         </>
       ) : (
