@@ -7,8 +7,6 @@ function Project({ project, tech, idx, numProjects }) {
     projectType,
     githubRepoURL,
     hostedSiteURL,
-    isFinished,
-    reasonNotFinished,
     description,
   } = project;
 
