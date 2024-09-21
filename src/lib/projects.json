@@ -149,7 +149,7 @@
       "RSC"
     ],
     "githubRepoURL": "https://github.com/aliAljaffer/tuwaiq-tracker",
-    "hostedSiteURL": "https://www.tuwaiqtracker.com/",
+    "hostedSiteURL": "https://tuwaiqtracker.com/",
     "isFinished": true,
     "reasonNotFinished": "",
     "description": "Tuwaiq Tracker is a service that tracks courses published on Tuwaiq Academy, offering features such as sorting and filtering them. Bootcamps, programs, challenges, meetings, newly-added courses, and starting-soon courses are marked for easier identification by the user with a legend to assist, as well. The website relies on a MongoDB collection for settings and courses. An API GET endpoint is setup to check Tuwaiq Academy for new courses."
