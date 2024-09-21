@@ -136,9 +136,10 @@
   {
     "projectId": 0,
     "projectName": "💻 TuwaiqTracker",
-    "projectType": "Full-Stack development, Responsive Mobile First Design, Data Model Design, Database Schema Design, CRON Jobs, Web Scraping, Cloudflare Hosting, NoSQL Databases",
+    "projectType": "Full-Stack development, Responsive Mobile First Design, Data Model Design, Database Schema Design, CRON Jobs, Web Scraping, Cloudflare Hosting, NoSQL Databases, SEO Optimization, Async/Await",
     "tech": [
       "react",
+      "Nodejs",
       "Next.js",
       "Typescript",
       "vercel",
