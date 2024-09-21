@@ -6,8 +6,10 @@ function Projects() {
   const ref = useRef(null);
   const inProgressProjects = projects
     .filter((project) => !project.isFinished)
-    .slice(0, 3);
-  const finishedProjects = projects.filter((project) => project.isFinished);
+    .sort((a, b) => a.projectId - b.projectId);
+  const finishedProjects = projects
+    .filter((project) => project.isFinished)
+    .sort((a, b) => a.projectId - b.projectId);
   const showProjects = showFinished ? finishedProjects : inProgressProjects;
 
   const handleProjects = () => {
@@ -22,7 +24,7 @@ function Projects() {
   };
 
   return (
-    <div className="text-md flex h-[90dvh] w-full flex-col items-start justify-start gap-4 overflow-auto text-wrap p-4 sm:text-xl lg:text-2xl">
+    <div className="text-md ] flex h-[90dvh] w-full flex-col items-start justify-start gap-4 overflow-auto text-wrap p-4 sm:text-xl lg:text-2xl">
       <div className="flex w-full flex-row items-center justify-center">
         <p className="text-md tracking-tight">
           {showFinished ? "Past projects:" : "Currently working on:"}
@@ -37,7 +39,7 @@ function Projects() {
       <div
         ref={ref}
         onWheel={handleScroll}
-        className="flex h-[100%] w-full grow items-center gap-12 overflow-x-scroll scroll-smooth sm:h-[80%] sm:items-start lg:flex-row lg:scrollbar-thin lg:scrollbar-track-stone-600 lg:scrollbar-thumb-stone-400"
+        className="flex h-[100%] max-h-[40rem] w-full grow items-center gap-12 overflow-x-scroll scroll-smooth sm:h-[80%] sm:items-start lg:flex-row lg:items-center lg:scrollbar-thin lg:scrollbar-track-stone-600 lg:scrollbar-thumb-stone-400"
       >
         {showProjects.map((project, i) => (
           <Fragment key={project.projectId}>
