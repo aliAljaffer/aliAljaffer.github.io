@@ -1,6 +1,6 @@
 [
   {
-    "projectId": 1,
+    "projectId": 3,
     "projectName": "🎵 spotiVersus",
     "projectType": "Full-Stack development,Entertainment, Music, Data Model Design, Database Schema Design, REST APIs, Data Retrieval",
     "tech": [
@@ -20,7 +20,7 @@
     "description": "spotiVersus is a mini-game of guessing which of the two artists displayed has a higher number of monthly listeners on Spotify. At the start, a number of artists is pulled from a database."
   },
   {
-    "projectId": 3,
+    "projectId": 4,
     "projectName": "🍕 fast react pizza",
     "projectType": "Full-Stack development, Responsive Design, Database Management, UI/UX",
     "tech": [
@@ -50,7 +50,7 @@
   },
 
   {
-    "projectId": 4,
+    "projectId": 11,
     "projectName": "🧮 WithinLimits",
     "projectType": "Entertainment, Games, Bounded-Limits Ruleset, Input Handling, Game Logic Design",
     "tech": ["Java", "JavaSwing GUI", "Model-View-Controller Design Pattern"],
@@ -153,5 +153,26 @@
     "isFinished": true,
     "reasonNotFinished": "",
     "description": "Tuwaiq Tracker is a service that tracks courses published on Tuwaiq Academy, offering features such as sorting and filtering them. Bootcamps, programs, challenges, meetings, newly-added courses, and starting-soon courses are marked for easier identification by the user with a legend to assist, as well. The website relies on a MongoDB collection for settings and courses. An API GET endpoint is setup to check Tuwaiq Academy for new courses."
+  },
+  {
+    "projectId": 1,
+    "projectName": "🐱 Catus Locatus",
+    "projectType": "Full-Stack development, Responsive Mobile First Design, Hobby project",
+    "tech": [
+      "react",
+      "Typescript",
+      "Zustand",
+      "Tanstack Query",
+      "vercel",
+      "shadcn UI",
+      "radix UI",
+      "Supabase",
+      "React-Leaflet"
+    ],
+    "githubRepoURL": "https://github.com/aliAljaffer/catus-locatus",
+    "hostedSiteURL": "https://catus-locatus.vercel.app/",
+    "isFinished": true,
+    "reasonNotFinished": "",
+    "description": "Catus Locatus is a lost pet finding app. Announce a pet you lost by showing others where it was lost. Other people can contact you if they find your pet! All pets are drawn on top of a Leaflet map, with dog/cat emojis for easier searching. The website only accepts coordinates of your current location, to reduce the number of false reports."
   }
 ]
