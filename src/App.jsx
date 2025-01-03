@@ -3,7 +3,7 @@ import "./index.css";
 import About from "./components/About";
 import Box from "./components/Box";
 import Directions from "./components/Directions";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Spinner from "./components/Spinner";
 // import PageNotFound from "./components/PageNotFound";
 // import Projects from "./components/Projects";
@@ -57,7 +57,7 @@ function App() {
                 </Suspense>
               }
             />
-            <Route path="*" element={<PageNotFound />} />
+            <Route path="*" element={<Navigate to={"/"} replace />} />
           </Routes>
         </Box>
         <Directions width={width} />
