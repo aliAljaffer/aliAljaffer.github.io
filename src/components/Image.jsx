@@ -19,7 +19,7 @@ function Image({
         onLoad={() => setIsLoading(false)}
         src={path}
         alt={alt}
-        className={`mt-auto h-fit w-fit px-5 py-1 ${isLoading ? "hidden" : ""} sm:max-h-[90%] sm:max-w-[90%]`}
+        className={`mt-auto h-fit w-fit object-cover px-5 py-1 ${isLoading ? "hidden" : ""} sm:max-h-[90%] sm:max-w-[90%]`}
       />
       <div className="mt-auto flex w-full justify-between">
         <div className="flex flex-col items-start gap-1">

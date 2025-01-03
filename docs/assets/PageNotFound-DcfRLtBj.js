@@ -1,0 +1,1 @@
+import{j as e}from"./index-BEAslAXW.js";function s(){return e.jsxs("div",{className:"mb-auto mt-auto flex flex-col items-center gap-4 p-4 text-4xl",children:[e.jsx("h1",{className:"text-center",children:"404"}),e.jsx("p",{className:"text-center",children:"Page not found!"})]})}export{s as default};
