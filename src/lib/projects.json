@@ -174,5 +174,24 @@
     "isFinished": true,
     "reasonNotFinished": "",
     "description": "Catus Locatus is a lost pet finding app. Announce a pet you lost by showing others where it was lost. Other people can contact you if they find your pet! All pets are drawn on top of a Leaflet map, with dog/cat emojis for easier searching. The website only accepts coordinates of your current location, to reduce the number of false reports."
+  },
+  {
+    "projectId": 12,
+    "projectName": "💪 Body & Power Gym",
+    "projectType": "Full-Stack development, Responsive Mobile First Design, Volunteer work, containerization, Cloud Deployment",
+    "tech": [
+      "Next.js",
+      "Typescript",
+      "shadcn UI",
+      "tailwind",
+      "Strapi CMS",
+      "AWS",
+      "Docker"
+    ],
+    "githubRepoURL": "",
+    "hostedSiteURL": "",
+    "isFinished": false,
+    "reasonNotFinished": "Still discussing business logic with client",
+    "description": "Body & Power Gym is approaching its 10-year anniversary as a local business in Qatif. As a member of the gym, I noticed that they lacked a website and volunteered to build them one. I setup a meeting with the client (gym owner) to discuss expectations and gather requirements. I'm handling the website design, development, maintenance, and all photography/videography displayed on the website. The website's content is fully managed by Strapi CMS."
   }
 ]
