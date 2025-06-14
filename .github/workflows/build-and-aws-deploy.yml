@@ -1,0 +1,53 @@
+name: Build and Deploy to S3 Bucket
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  builder:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+  remove_old:
+    needs: builder
+    runs-on: ubuntu-latest
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v4
+        name: Configure S3
+        with:
+          role-to-assume: ${{secrets.AWS_ROLE_ARN}}
+          role-session-name: dirdelete
+          aws-region: ${{secrets.AWS_REGION}}
+      - name: Remove old files
+        run: |
+          aws s3 rm --recursive s3://${{ secrets.AWS_S3_BUCKET}}/webapp/*
+  upload:
+    needs: remove_old
+    runs-on: ubuntu-latest
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v4
+        name: Configure S3
+        with:
+          role-to-assume: ${{secrets.AWS_ROLE_ARN}}
+          role-session-name: dirdelete
+          aws-region: ${{secrets.AWS_REGION}}
+      - name: Upload new
+        run: |
+          aws s3 cp ./docs/* s3://${{ secrets.AWS_S3_BUCKET}}/webapp/
