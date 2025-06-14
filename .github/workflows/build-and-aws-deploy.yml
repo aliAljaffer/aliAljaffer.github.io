@@ -48,4 +48,4 @@ jobs:
           aws-region: ${{secrets.AWS_REGION}}
       - name: Upload new
         run: |
-          aws s3 cp ./docs/* s3://${{ secrets.AWS_S3_BUCKET}}/webapp/
+          aws s3 cp --recursive ./docs s3://${{ secrets.AWS_S3_BUCKET}}/webapp/
