@@ -33,7 +33,7 @@ jobs:
         name: Configure S3
         with:
           role-to-assume: ${{secrets.AWS_ROLE_ARN}}
-          role-session-name: dirdelete
+          role-session-name: remove_old
           aws-region: ${{secrets.AWS_REGION}}
       - name: Remove old files
         run: |
@@ -46,7 +46,7 @@ jobs:
         name: Configure S3
         with:
           role-to-assume: ${{secrets.AWS_ROLE_ARN}}
-          role-session-name: dirdelete
+          role-session-name: upload_built_files
           aws-region: ${{secrets.AWS_REGION}}
       - name: Upload new
         run: |
