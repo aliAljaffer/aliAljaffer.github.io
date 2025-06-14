@@ -25,6 +25,11 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm run build
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: docs
   remove_old:
     needs: builder
     runs-on: ubuntu-latest
@@ -41,6 +46,10 @@ jobs:
     needs: [remove_old, builder]
     runs-on: ubuntu-latest
     steps:
+      - name: Download processed build
+        uses: actions/download-artifact@v4
+        with:
+          name: build
       - uses: aws-actions/configure-aws-credentials@v4
         name: Configure S3
         with:
