@@ -83,24 +83,6 @@
     "description": "Data structures implementations in C++ with focus on performance and low memory usage. Implementing: Doubly-Linked List (Sequence), Balanced Binary Tree (AVL Tree), Tries (Auto-Completion Trie), HashDatabase."
   },
   {
-    "projectId": 7,
-    "projectName": "🏡 Qiddiyah Cabins",
-    "projectType": "Full-Stack Development, CRUD Operations, Data Visualization, Asset Management System, Authentication",
-    "tech": [
-      "react",
-      "react query",
-      "supabase",
-      "postgreSQL",
-      "styled-components",
-      "auth0"
-    ],
-    "githubRepoURL": "",
-    "hostedSiteURL": "",
-    "isFinished": false,
-    "reasonNotFinished": "Work in progress.",
-    "description": "Qiddiyah Cabins - Find Your Desert Sanctuary. An internal dashboard designed for the management of a cabin-renting firm. The dashboard allows for authenticated staff members to perform CRUD operations on a postgreSQL database for the firm's cabins. More features planned such as statistics for income, guest retention, average number of stays, etc."
-  },
-  {
     "projectId": 8,
     "projectName": "🦦 GOTTH Stack",
     "projectType": "Web Development, Full-Stack development, Google",
@@ -123,7 +105,7 @@
     "description": "Learning Angular v18 for enterprise work."
   },
   {
-    "projectId": 10,
+    "projectId": 12,
     "projectName": "💎 Ruby on Rails",
     "projectType": "Web Development, Enterprise",
     "tech": ["✅Ruby", "Rails"],
@@ -176,7 +158,7 @@
     "description": "Catus Locatus is a lost pet finding app. Announce a pet you lost by showing others where it was lost. Other people can contact you if they find your pet! All pets are drawn on top of a Leaflet map, with dog/cat emojis for easier searching. The website only accepts coordinates of your current location, to reduce the number of false reports."
   },
   {
-    "projectId": 12,
+    "projectId": 10,
     "projectName": "💪 Body & Power Gym",
     "projectType": "Full-Stack development, Responsive Mobile First Design, Volunteer work, containerization, Cloud Deployment",
     "tech": [
