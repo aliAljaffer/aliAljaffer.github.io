@@ -38,7 +38,7 @@ jobs:
         run: |
           aws s3 rm --recursive s3://${{ secrets.AWS_S3_BUCKET}}/webapp/*
   upload:
-    needs: remove_old
+    needs: [remove_old, builder]
     runs-on: ubuntu-latest
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
