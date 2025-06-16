@@ -1,73 +1,73 @@
 [
   {
     "imageId": 1,
-    "path": "https://alialjaffer-portfolio-images.s3.eu-north-1.amazonaws.com/atlantic-1.JPG",
+    "path": "atlantic-1.JPG",
     "location": "The Atlantic, Canada",
     "alt": "Clouds above the Atlantic."
   },
   {
     "imageId": 2,
-    "path": "https://alialjaffer-portfolio-images.s3.eu-north-1.amazonaws.com/charlotte-1.jpg",
+    "path": "charlotte-1.jpg",
     "location": "Charlotte, USA",
     "alt": "A skyscraper crane with the US flag."
   },
   {
     "imageId": 3,
-    "path": "https://alialjaffer-portfolio-images.s3.eu-north-1.amazonaws.com/charlotte-2.jpg",
+    "path": "charlotte-2.jpg",
     "location": "Charlotte, USA",
     "alt": "A construction elevator."
   },
   {
     "imageId": 4,
-    "path": "https://alialjaffer-portfolio-images.s3.eu-north-1.amazonaws.com/charlotte-3.jpg",
+    "path": "charlotte-3.jpg",
     "location": "Polaris, Ursa Minor",
     "alt": "The North Star in the night sky."
   },
   {
     "imageId": 5,
-    "path": "https://alialjaffer-portfolio-images.s3.eu-north-1.amazonaws.com/dammam-1.JPG",
+    "path": "dammam-1.JPG",
     "location": "Dammam, Saudi Arabia",
     "alt": "A cat laying on the floor."
   },
   {
     "imageId": 6,
-    "path": "https://alialjaffer-portfolio-images.s3.eu-north-1.amazonaws.com/dayton-1.JPG",
+    "path": "dayton-1.JPG",
     "location": "Dayton, USA",
     "alt": "A side-view of an apartment building."
   },
   {
     "imageId": 7,
-    "path": "https://alialjaffer-portfolio-images.s3.eu-north-1.amazonaws.com/dayton-2.JPG",
+    "path": "dayton-2.JPG",
     "location": "Dayton, USA",
     "alt": "An abandoned parking lot payment booth."
   },
   {
     "imageId": 8,
-    "path": "https://alialjaffer-portfolio-images.s3.eu-north-1.amazonaws.com/dayton-3.JPG",
+    "path": "dayton-3.JPG",
     "location": "Dayton, USA",
     "alt": "An old apartment building in Downtown Dayton."
   },
   {
     "imageId": 9,
-    "path": "https://alialjaffer-portfolio-images.s3.eu-north-1.amazonaws.com/dayton-4.JPG",
+    "path": "dayton-4.JPG",
     "location": "Dayton, USA",
     "alt": "A Firestation entrance in Dayton."
   },
   {
     "imageId": 10,
-    "path": "https://alialjaffer-portfolio-images.s3.eu-north-1.amazonaws.com/dayton-5.JPG",
+    "path": "dayton-5.JPG",
     "location": "Dayton, USA",
     "alt": "The backdoor of the White Lotus cafe in Dayton."
   },
   {
     "imageId": 11,
-    "path": "https://alialjaffer-portfolio-images.s3.eu-north-1.amazonaws.com/riyadh-1.JPG",
+    "path": "riyadh-1.JPG",
     "location": "Riyadh, Saudi Arabia",
     "alt": "An airplane view above the desert north of Riyadh"
   },
   {
     "imageId": 12,
-    "path": "https://alialjaffer-portfolio-images.s3.eu-north-1.amazonaws.com/riyadh-2.JPG",
+    "path": "riyadh-2.JPG",
     "location": "Riyadh, Saudi Arabia",
     "alt": "The view of KAFD from inside a hotel in Riyadh."
   }

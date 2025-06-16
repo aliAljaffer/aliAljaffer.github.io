@@ -1,9 +1,10 @@
 import Spinner from "./Spinner";
 import { useState } from "react";
 function Image({
-  path = "/src/assets/images/riyadh-1.JPG",
+  path = "",
+  thumbnail = "",
   alt = "",
-  location = "Riyadh, Saudi Arabia",
+  location = "",
   onNext,
   onPrev,
   idx,
@@ -15,12 +16,20 @@ function Image({
   return (
     <>
       {isLoading ? <Spinner /> : null}
-      <img
-        onLoad={() => setIsLoading(false)}
-        src={path}
-        alt={alt}
+      <a
+        href={path}
+        alt={`Higher quality version of ${alt}`}
         className={`mt-auto h-fit w-fit px-5 py-1 ${isLoading ? "hidden" : ""} sm:max-h-[90%] sm:max-w-[90%]`}
-      />
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img
+          onLoad={() => setIsLoading(false)}
+          src={thumbnail}
+          alt={alt}
+          className="h-full w-full"
+        />
+      </a>
       <div className="mt-auto flex w-full justify-between">
         <div className="flex flex-col items-start gap-1">
           <span className="px-5 tracking-widest">{city}</span>
