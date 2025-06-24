@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-terminal-bg: #1a1a1a;
+  --color-terminal-text: #d4c5b0;
+  --color-terminal-accent: #c9a876;
+  --color-terminal-link: #7a9b76;
+  --color-terminal-strong: #b8860b;
+  --color-terminal-comment: #8a8a8a;
+  --color-terminal-border: #2a2a2a;
+  --color-terminal-highlight: #4682b4;
+}
+
+* {
+  font-family: "Roboto Mono", monospace;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+.markdown-content {
+  @apply leading-relaxed text-sm sm:text-base lg:text-lg xl:text-xl;
+  color: var(--color-terminal-text);
+}
+
+.markdown-content h1 {
+  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mt-8 mb-4 pb-2 border-b;
+  color: var(--color-terminal-accent);
+  border-color: var(--color-terminal-border);
+}
+
+.markdown-content h1:first-child {
+  @apply mt-0;
+}
+
+.markdown-content h2 {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mt-6 mb-4;
+  color: var(--color-terminal-accent);
+}
+
+.markdown-content h3 {
+  @apply text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mt-5 mb-2;
+  color: var(--color-terminal-accent);
+}
+
+.markdown-content h4 {
+  @apply text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold mt-4 mb-2;
+  color: var(--color-terminal-strong);
+}
+
+.markdown-content p {
+  @apply mb-4;
+  color: var(--color-terminal-text);
+}
+
+.markdown-content span {
+  @apply mb-4;
+  color: var(--color-terminal-text);
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  @apply mb-4 mt-2 pl-6;
+}
+
+.markdown-content li {
+  @apply mb-1;
+  color: var(--color-terminal-text);
+}
+
+.markdown-content li ul li {
+  @apply m-0;
+  color: var(--color-terminal-text);
+}
+
+.markdown-content ul li {
+  @apply list-disc;
+}
+
+.markdown-content ol li {
+  @apply list-decimal;
+}
+
+.markdown-content code {
+  @apply px-1 py-0.5 rounded text-xs sm:text-sm lg:text-base;
+  background-color: var(--color-terminal-border);
+  color: var(--color-terminal-strong);
+}
+
+.markdown-content pre {
+  @apply p-4 rounded-md overflow-x-auto my-4 border;
+  background-color: var(--color-terminal-border);
+  color: var(--color-terminal-text);
+  border-color: var(--color-terminal-comment);
+}
+
+.markdown-content pre code {
+  @apply p-0 rounded-none;
+  background-color: transparent;
+  color: inherit;
+  font-size: inherit;
+}
+
+.markdown-content a {
+  @apply underline;
+  color: var(--color-terminal-link);
+}
+
+.markdown-content a:hover {
+  @apply no-underline;
+}
+
+.markdown-content strong {
+  @apply font-bold;
+  color: var(--color-terminal-strong);
+}
+
+.markdown-content em {
+  @apply italic;
+  color: var(--color-terminal-accent);
+}
+
+.markdown-content blockquote {
+  @apply border-l-4 pl-4 my-4 italic text-sm sm:text-base lg:text-lg;
+  border-color: var(--color-terminal-accent);
+  color: var(--color-terminal-comment);
+}
+
+.markdown-content hr {
+  @apply border-none border-t my-8;
+  border-color: var(--color-terminal-border);
+}
+
+ol > li > div,
+ul > li > div,
+figure > div > div {
+  @apply !mb-0;
+}
+
+.markdown-content div {
+  @apply mb-3;
+}
+
+.markdown-content table {
+  @apply w-full border-collapse my-4;
+}
+
+.markdown-content th,
+.markdown-content td {
+  @apply border p-2 text-left;
+  border-color: var(--color-terminal-border);
+}
+
+.markdown-content th {
+  @apply font-bold;
+  background-color: var(--color-terminal-border);
+  color: var(--color-terminal-accent);
+}
+
+.markdown-content td {
+  color: var(--color-terminal-text);
+}
+
+.bounce-dot {
+  animation: bounce-dots 1.4s ease-in-out infinite both;
+}
+
+.bounce-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+.bounce-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce-dots {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
