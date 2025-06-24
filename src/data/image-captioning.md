@@ -8,7 +8,7 @@ Serverless Alt-Text Generation for better accessibility on the web using AI, bui
 
 Here is a quick video demo: [https://youtu.be/\_dbX_a1pUL4](https://youtu.be/_dbX_a1pUL4)
 
-Try it out! [textify.alialjaffer.com](textify.alialjaffer.com)
+Try it out! [https://textify.alialjaffer.com](https://textify.alialjaffer.com)
 
 GitHub repository: [aliAljaffer/alt-text-generator](https://github.com/aliAljaffer/alt-text-generator)
 
