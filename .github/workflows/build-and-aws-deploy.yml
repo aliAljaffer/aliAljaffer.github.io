@@ -60,5 +60,4 @@ jobs:
       - name: Upload new
         run: |
           ls -lah
-          aws s3 cp --recursive assets s3://${{ secrets.AWS_S3_BUCKET}}/assets
-          aws s3 cp index.html s3://${{ secrets.AWS_S3_BUCKET}}/
+          aws s3 cp --recursive . s3://${{ secrets.AWS_S3_BUCKET}}/
