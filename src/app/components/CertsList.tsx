@@ -15,10 +15,13 @@ export default function CertsList({ certs, className = "" }: CertsListProps) {
       {certs.map((cert, index) => (
         <li
           key={index}
-          className={`mb-1  ${cert.wip ? "text-terminal-text before:content-['-_Studying_for:_'] before:text-terminal-highlight" : "before:content-['-_']"}`}
+          className={`mb-1  ${cert.wip ? "text-terminal-text before:content-['-_Studying_for:_'] before:text-terminal-strong before:font-bold" : "before:content-['-_']"}`}
         >
-          {cert.wip ? cert.provider + " " : ""}
           {cert.certification}
+          <span className="text-xs font-bold text-terminal-highlight select-none">
+            {" "}
+            [ {cert.provider} ]
+          </span>
         </li>
       ))}
     </ul>

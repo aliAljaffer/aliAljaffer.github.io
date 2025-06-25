@@ -38,6 +38,10 @@ const certsData: Certification[] = [
   },
   { certification: "AZ-900 Azure Fundamentals", provider: "Microsoft" },
   {
+    certification: "SC-900 Security, Compliance, and Identity Fundamentals",
+    provider: "Microsoft",
+  },
+  {
     certification: "System Administrator",
     provider: "Red Hat",
     wip: true,
@@ -92,11 +96,9 @@ export default function Home() {
               demos, screenshots, and architecture diagrams.
             </p>
 
-            {true && (
-              <Section title="Certifications">
-                <CertsList certs={certsData} />
-              </Section>
-            )}
+            <Section title="Certifications">
+              <CertsList certs={certsData} />
+            </Section>
           </Section>
 
           {/* Contact Section */}
@@ -108,16 +110,15 @@ export default function Home() {
             <ProjectList projects={projectsData} />
           </Section>
           {/* Status/Notes Section */}
-          {true && (
-            <section className="xl:w-full mb-4">
-              <div className="ml-6 mt-4 mb-4 md:ml-6">
-                <StatusComment>
-                  Currently seeking opportunities in System Administration,
-                  Cloud Engineering and DevOps roles
-                </StatusComment>
-              </div>
-            </section>
-          )}
+
+          <section className="xl:w-full mb-4">
+            <div className="ml-6 mt-4 mb-4 md:ml-6 text-sm lg:text-base">
+              <StatusComment>
+                Currently seeking opportunities in System Administration, Cloud
+                Engineering and DevOps roles
+              </StatusComment>
+            </div>
+          </section>
         </div>
       </div>
     </Layout>

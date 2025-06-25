@@ -33,11 +33,15 @@ And thanks to this process, development and deployment are automated and taken c
 
 Next, I created two Lambda functions. One function receives an image file `image/*` from the frontend, and uploads it to `textify-img/uploads`, then passes the object key to the second Lambda, which sends the image for processing using SageMaker AI. The model used for captioning is [Salesforce/blip-image-captioning-large](https://huggingface.co/Salesforce/blip-image-captioning-large) running on an `ml.m5.xlarge` instance.
 
-To handle uploads, I setup an API Gateway with a `/upload` POST route. This is what triggers the first Lambda to receive the user image.
+To handle uploads, I setup an API Gateway with a `/upload` **POST** route. This is what triggers the first Lambda to receive the user image.
 
-CloudFront was used as a CDN, with `textify-website` as an origin.
+CloudFront was used as a CDN, with `textify-website` S3 bucket as the origin. Finally, I added DNS A and AAAA records to the subdomain `textify.alialjaffer.com` as ALIAS to the CloudFront distribution.
 
-To keep the upload feature from being abused, I setup authentication using Cognito as a JWT authorizer, and used `oidc-client-ts` for session management and authorization flow on the frontend.
+### Security
+
+To keep the image upload feature from being abused, I setup authentication using Cognito as a JWT authorizer, and used `oidc-client-ts` for session management and authorization flow on the frontend. Moreover, **CORS** was enabled and setup for the API Gateway routes.
+
+Size limitations that are enforced both on the frontend and the lambda backend should prevent malicious actors from uploading massive, distruptive files into the object storage.
 
 ## Architectural Design
 
