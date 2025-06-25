@@ -42,8 +42,7 @@ jobs:
           aws-region: ${{secrets.AWS_REGION}}
       - name: Remove old files
         run: |
-          aws s3 rm --recursive s3://${{ secrets.AWS_S3_BUCKET}}/assets
-          aws s3 rm s3://${{ secrets.AWS_S3_BUCKET}}/index.html
+          aws s3 rm s3://${{ secrets.AWS_S3_BUCKET}}/ --recursive --exclude "images/*" --exclude "documents/*"
   upload:
     needs: [remove_old, builder]
     runs-on: ubuntu-latest
