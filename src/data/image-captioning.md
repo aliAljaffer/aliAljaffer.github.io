@@ -10,6 +10,8 @@ Here is a quick video demo: [https://youtu.be/\_dbX_a1pUL4](https://youtu.be/_db
 
 Try it out! [https://textify.alialjaffer.com](https://textify.alialjaffer.com)
 
+**Disclaimer**: Cold start of the Machine Learning model could lead to some extra waiting time while the image processes...
+
 GitHub repository: [aliAljaffer/alt-text-generator](https://github.com/aliAljaffer/alt-text-generator)
 
 ## The Problem
@@ -85,6 +87,8 @@ response = lambda_client.invoke(
 - **StreamingBody decoding**: Confused me for a little at the start. Handled in Lambda by decoding and parsing the payload from SageMaker
 
 - **CORS and Auth coordination**: Ensured consistent headers and token handling between CloudFront -> API Gateway -> Lambda
+
+- **Cold Starts**: Due to the ML model being hosted on a serverless endpoint, cold starts can take up some time. Nothing can be done about this, however, except provisioning a dedicated instance, but then it wouldn't be serverless... 😜
 
 ## Conclusion
 
