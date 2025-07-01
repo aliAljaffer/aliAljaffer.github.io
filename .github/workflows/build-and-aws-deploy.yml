@@ -60,3 +60,14 @@ jobs:
         run: |
           ls -lah
           aws s3 cp --recursive . s3://${{ secrets.AWS_S3_BUCKET}}/
+  invalidate_cache:
+    needs: [upload, remove_old, builder]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v4
+        name: Configure S3
+        with:
+          role-to-assume: ${{secrets.AWS_ROLE_ARN}}
+          aws-region: ${{secrets.AWS_REGION}}
+      - name: invalidation
+        run: aws cloudfront create-invalidation --distribution-id ${{secrets.DISTRIBUTION_ID}} --paths "${{secrets.INVALIDATION_PATH}}"
