@@ -110,7 +110,7 @@ const caseStudies: CaseStudies = {
         url: "",
       },
     ],
-    show: true,
+    show: false,
   },
 };
 
