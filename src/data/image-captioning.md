@@ -4,6 +4,8 @@
 
 Serverless Alt-Text Generation for better accessibility on the web using AI, built mostly on Amazon Web Services. Started as a proof-of-concept and ended up just working on building it :). Frontend is built on **React**, Backend is entirely serverless and secured using AWS Cognito. The resulting caption is returned to the user through a fully decoupled, secure, and scalable architecture.
 
+Video showcase and architecture discussion: [https://youtu.be/oZR8Nvrwt4Q](https://youtu.be/oZR8Nvrwt4Q)
+
 ## Demo
 
 Here is a quick video demo: [https://youtu.be/\_dbX_a1pUL4](https://youtu.be/_dbX_a1pUL4)

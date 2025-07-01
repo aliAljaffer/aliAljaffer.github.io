@@ -73,12 +73,28 @@ const caseStudies: CaseStudies = {
       "Volunteer-built website for a local gym using Next.js, Docker, and Strapi CMS for fully managed and responsive content delivery.",
     images: [
       {
-        caption: "",
+        caption: "A summary of what leads to a scale down or up - in writing",
+        "alt-text":
+          "A summary of what leads to a scale down or up - in writing",
+        url: "https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/body-power-gym/scaling-summary.png",
+      },
+      {
+        caption: "Photos from the gym - Legs workout section",
         "alt-text": "",
-        url: "",
+        url: "https://bodypowergym.s3.me-south-1.amazonaws.com/lowq_half_size_01215_1223fe5826.jpg",
+      },
+      {
+        caption: "Photos from the gym - Near the Entrance",
+        "alt-text": "",
+        url: "https://bodypowergym.s3.me-south-1.amazonaws.com/lowq_half_size_01218_ab4c9d67ee.jpg",
+      },
+      {
+        caption: 'Photos from the gym - 1st Floor - "The Studio"',
+        "alt-text": "",
+        url: "https://bodypowergym.s3.me-south-1.amazonaws.com/lowq_half_size_01198_b849ea6b83.jpg",
       },
     ],
-    show: false,
+    show: true,
   },
   "soccer-predictor": {
     name: "Soccer Predictor",

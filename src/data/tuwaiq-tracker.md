@@ -4,6 +4,8 @@
 
 Built as an alternative, but not a replacement, to [Tuwaiq Academy](https://tuwaiq.edu.sa/), **Tuwaiq Tracker** aims to provide a different approach in the UI/UX of navigating the catalog of courses offered by the academy. Overall, my aim was to simplify the UI, extracting only the essential information from each course, and displaying them to the user in a tidy, classical manner. This eliminates loading times and greatly improves site performance.
 
+[Arabic] Video showcase and architecture discussion: [https://youtu.be/0zNaL\_-hTWE](https://youtu.be/0zNaL_-hTWE)
+
 ## Demo
 
 The website has been live since September, 2024.
