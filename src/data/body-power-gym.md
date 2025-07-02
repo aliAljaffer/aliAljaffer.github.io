@@ -119,6 +119,7 @@ The source code for the website and the backend is on two separate repositories 
 - **The Network**: Mapping out the network, setting up security groups, and keeping track of which service A can access service B was a lot! Thankfully, it all ended up working, but I did struggle. Shoutout to `StackOverflow` and the AWS subreddit.
 
 - **Container size optimization**: My final container backend size was 2.64GB which was huge, in container terms. I managed to lower it down to 1.4GB by leveraging multi-stage builds and using optimized base images for the apps I'm using. I realize even 1.4GB is large, I just couldn't lower it even more without removing essential parts of the app. Still, that's a **46%** reduction in size!
+  - UPDATE 2/7/2025: I finally figured out what was causing the image bloat and got it down to 47MB! It was the `output` method on my `NextConfig` that was including _all_ the libraries, even the unused ones. I cleaned up the `package.json` and ran `depcheck` to make sure all the included packages are actually in-use.
 
 ## Conclusion
 
