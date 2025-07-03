@@ -8,7 +8,7 @@ The project is a frontend (Next.js) and a CMS backend (Strapi) hosted entirely o
 
 ## Demo
 
-Link to demo soon! Currently editing the video
+Link to demo and architecture overview: [https://www.youtube.com/watch?v=Iisu17KC55k](https://www.youtube.com/watch?v=Iisu17KC55k)
 
 ## The Problem
 
