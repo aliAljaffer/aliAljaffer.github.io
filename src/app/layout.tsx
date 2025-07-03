@@ -2,7 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import { Roboto_Mono } from "next/font/google";
-import { GoogleAnalytics } from "nextjs-google-analytics";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "aliAljaffer",
@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 const Roboto = Roboto_Mono({
   subsets: ["latin"],
 });
-
 export default function RootLayout({
   children,
 }: {
@@ -26,7 +25,18 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>{children}</body>
-      <GoogleAnalytics trackPageViews gaMeasurementId="G-CWKB4GRTEB" />
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id='G-CWKB4GRTEB'`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-CWKB4GRTEB');
+          `}
+      </Script>
     </html>
   );
 }
