@@ -127,6 +127,8 @@ _As of June 23, 2025_
 
 - **6.8** Average position over the past 3 months on Google Search
 
+- [A snapshot of CloudFlare statistics for the dates 24 May to 23 June showing 1.65k unique visitors, 41.17k total requests, 2.13% cached, 1GB total data served, 26MB data cached](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/tuwaiq-academy/data.png)
+
 ## Challenges
 
 - **Data manipulation**: Parsing data from Tuwaiq Academy's API and deciding which data is actually meaningful and needed for my implementation.
