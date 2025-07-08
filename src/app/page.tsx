@@ -25,6 +25,11 @@ const contactData = [
     showAs: "linkedin/aliAljaffer",
   },
   {
+    label: "X",
+    value: "https://x.com/alialjaffer",
+    showAs: "x/aliAljaffer",
+  },
+  {
     label: "Credly",
     value: "https://www.credly.com/users/ali-aljaffer",
     showAs: "credly/ali-aljaffer",
@@ -40,11 +45,6 @@ const certsData: Certification[] = [
   {
     certification: "SC-900 Security, Compliance, and Identity Fundamentals",
     provider: "Microsoft",
-  },
-  {
-    certification: "System Administrator",
-    provider: "Red Hat",
-    wip: true,
   },
   {
     certification: "Solutions Architect - Associate",
@@ -89,11 +89,11 @@ export default function Home() {
               so I&apos;m mostly working on projects that utilize AWS services.
             </p>
             <p className="ml-6 mt-4 mb-4 max-w-[560px] md:max-w-fit leading-5 md:ml-6">
-              I built web development projects and I&apos;m in the process of
-              migrating them to AWS, so I&apos;m sharing my experience and case
-              studies for each project as way of documenting the process for my
-              future self. Check out the projects section for case studies,
-              demos, screenshots, and architecture diagrams.
+              I built full-stack projects and I&apos;m in the process of
+              containerizing and migrating them to AWS, so I&apos;m sharing my
+              experience and case studies for each project as way of documenting
+              the process for my future self. Check out the projects section for
+              case studies, demos, screenshots, and architecture diagrams.
             </p>
 
             <Section title="Certifications">
