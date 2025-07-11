@@ -40,15 +40,26 @@ const certsData: Certification[] = [
   {
     certification: "Certified Cloud Practitioner",
     provider: "AWS",
+    date: "Jan 2025",
+    order: 1,
   },
-  { certification: "AZ-900 Azure Fundamentals", provider: "Microsoft" },
+  {
+    certification: "AZ-900 Azure Fundamentals",
+    provider: "Microsoft",
+    date: "Jun 2025",
+    order: 2,
+  },
   {
     certification: "SC-900 Security, Compliance, and Identity Fundamentals",
     provider: "Microsoft",
+    date: "Jun 2025",
+    order: 3,
   },
   {
     certification: "Solutions Architect - Associate",
     provider: "AWS",
+    date: "",
+    order: 4,
     wip: true,
   },
 ];
@@ -79,7 +90,7 @@ export default function Home() {
               </strong>
             </p>
             <p className="ml-6 mt-4 mb-4 max-w-[560px] md:max-w-fit leading-5 md:ml-6">
-              Aspiring Cloud Engineer & DevOps with a passion for automation,
+              Cloud Engineer & DevOps with a passion for automation,
               infrastructure as code, and building scalable systems. Currently
               preparing for{" "}
               <strong className="font-normal text-terminal-strong">
