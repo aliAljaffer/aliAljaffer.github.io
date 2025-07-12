@@ -4,7 +4,7 @@ export interface ProjectImage {
   url: string;
 }
 
-export interface Project {
+export interface CaseStudy {
   name: string;
   caseStudyId: string;
   repo: string;
@@ -14,7 +14,6 @@ export interface Project {
   show: boolean;
 }
 export type CaseStudyImage = ProjectImage;
-export type CaseStudy = Project;
 
 export interface CaseStudies {
   [key: string]: CaseStudy;

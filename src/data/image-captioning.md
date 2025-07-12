@@ -1,3 +1,25 @@
+---
+image-captioning:
+  name: Image Captioning with AWS and HuggingFace
+  caseStudyId: image-captioning
+  description:
+    A serverless image captioning app using AWS services and a HuggingFace
+    model on SageMaker.
+  repo: ""
+  url: https://textify.alialjaffer.com/
+  images:
+    - caption: "Step 1: Selecting an image to upload"
+      alt-text: ""
+      url: https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/image-captioning/photo.png
+    - caption: "Step 2: Uploading the image and waiting for processing"
+      alt-text: ""
+      url: https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/image-captioning/loading.png
+    - caption: "Step 3: Result is shown"
+      alt-text: ""
+      url: https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/image-captioning/result.png
+  show: true
+---
+
 # Textify.img
 
 ## Overview

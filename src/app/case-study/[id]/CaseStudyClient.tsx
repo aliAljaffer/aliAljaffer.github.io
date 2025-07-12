@@ -2,13 +2,13 @@
 import Layout from "@/app/components/Layout";
 import BackLink from "@/app/components/BackLink";
 import TerminalImage from "@/app/components/TerminalImage";
-import { Project } from "@/app/types";
 import { useEffect } from "react";
 import Markdown from "react-markdown";
 import NotFound from "@/app/not-found";
+import { CaseStudy } from "@/app/types";
 
 interface CaseStudyProps {
-  caseStudy: Project & { content: string };
+  caseStudy: CaseStudy & { content: string };
 }
 
 export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {

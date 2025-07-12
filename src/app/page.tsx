@@ -1,12 +1,10 @@
-"use client";
 import Layout from "@/app/components/Layout";
 import Section from "@/app/components/Section";
 import ContactList from "@/app/components/ContactList";
 import CertsList, { Certification } from "@/app/components/CertsList";
 import ProjectList from "@/app/components/ProjectList";
 import StatusComment from "@/app/components/StatusComment";
-import { Project } from "./types";
-import { getVisibleCaseStudies } from "@/data/case-studies";
+import { getVisibleCaseStudies } from "@/lib/case-studies";
 
 const contactData = [
   {
@@ -64,18 +62,10 @@ const certsData: Certification[] = [
   },
 ];
 
-const projectsData = getVisibleCaseStudies().map((item) => {
-  return {
-    name: item.name,
-    description: item.description,
-    url: item.url,
-    caseStudyId: item.caseStudyId,
-    repo: item.repo,
-    show: item.show,
-  } as Project;
-});
+const projectsData = getVisibleCaseStudies();
 
 export default function Home() {
+  if (!projectsData) return <p>Error occurred with projects data.</p>;
   return (
     <Layout className="text-base sm:text-lg px-6 py-5 md:px-8 md:py-8">
       {/* Large screen: centered container with max width */}

@@ -1,6 +1,6 @@
 // src/app/case-study/[id]/page.tsx
 
-import { getCaseStudy, getAllCaseStudyIds } from "@/data/case-studies";
+import { getCaseStudy, getAllCaseStudyIds } from "@/lib/case-studies";
 import { getMarkdownContent } from "@/lib/markdown-loader";
 import CaseStudyClient from "./CaseStudyClient";
 import NotFound from "@/app/not-found";

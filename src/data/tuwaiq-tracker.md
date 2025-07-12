@@ -1,3 +1,22 @@
+---
+tuwaiq-tracker:
+  name: Tuwaiq Tracker
+  caseStudyId: tuwaiq-tracker
+  repo: https://github.com/aliAljaffer/tuwaiq-tracker
+  url: https://tuwaiqtracker.com/
+  description:
+    Responsive full-stack tracker that scrapes, stores, and displays course
+    offerings from Tuwaiq Academy using Next.js and MongoDB.
+  images:
+    - caption: Wide-screen view of the website, on an iPad screen
+      alt-text: ""
+      url: https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/tuwaiq-academy/FinalDraft-Wide.png
+    - caption: Mobile view of the website
+      alt-text: ""
+      url: https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/tuwaiq-academy/FinalDraft-Mobile.png
+  show: true
+---
+
 # Tuwaiq Tracker
 
 ## Overview
