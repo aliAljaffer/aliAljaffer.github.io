@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Project } from "../types";
-
+import { CaseStudy } from "../types";
+type Project = CaseStudy;
 interface ProjectListProps {
   projects: Project[];
   className?: string;
