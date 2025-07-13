@@ -110,6 +110,8 @@ Lastly, once all was well and hooked-up, I deployed the website to Vercel, the c
 
 ![System Design behind the TuwaiqTracker website](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/tuwaiq-academy/SystemDesign-PlanAv2.png)
 
+**UPDATE JUL 10, 2025**: As of today, I replaced the CRON job with AWS EventBridge rule, which triggers a Lambda function every 6 hours to perform a course-update check. On failure of the check, I receive Email alerts thanks to AWS SNS. I believe this is a better approach and enhances the monitoring aspects for the website. I will keep the system design diagram as-is, because it's still a valid approach. Just wanted to mention that it's not the approach that the website currently runs on for transparency. 😁
+
 ## Key Outcomes
 
 ### Highly Performant Website
