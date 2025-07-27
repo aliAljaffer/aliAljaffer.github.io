@@ -56,8 +56,22 @@ const certsData: Certification[] = [
   {
     certification: "Solutions Architect - Associate",
     provider: "AWS",
-    date: "",
+    date: "July 2025",
     order: 4,
+    wip: false,
+  },
+  {
+    certification: "Terraform Associate",
+    provider: "Hashicorp",
+    date: "",
+    order: 5,
+    wip: true,
+  },
+  {
+    certification: "Certified Kubernetes Application Developer",
+    provider: "Linux Foundation",
+    date: "",
+    order: 6,
     wip: true,
   },
 ];
@@ -81,13 +95,9 @@ export default function Home() {
             </p>
             <p className="ml-6 mt-4 mb-4 max-w-[560px] md:max-w-fit leading-5 md:ml-6">
               Cloud Engineer & DevOps with a passion for automation,
-              infrastructure as code, and building scalable systems. Currently
-              preparing for{" "}
-              <strong className="font-normal text-terminal-strong">
-                AWS Solutions Architect Certification
-              </strong>
-              {", "}
-              so I&apos;m mostly working on projects that utilize AWS services.
+              infrastructure as code, and building scalable systems. I&apos;m
+              mostly working on projects that utilize AWS services, but will be
+              expanding to Google Cloud Platform pretty soon!
             </p>
             <p className="ml-6 mt-4 mb-4 max-w-[560px] md:max-w-fit leading-5 md:ml-6">
               I built full-stack projects and I&apos;m in the process of
