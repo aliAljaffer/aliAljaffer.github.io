@@ -12,9 +12,7 @@ aws-budget-discord-notifs:
   show: true
 ---
 
-# Title
-
-AWS Budget Notifications for Discord Channels
+# AWS Budget Notifications for Discord Channels
 
 ## Overview
 
