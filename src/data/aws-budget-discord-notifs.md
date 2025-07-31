@@ -44,7 +44,7 @@ And one last non-secret config variable in `/terraform.auto.tfvars`:
 
 Published on Public Registry: [aliAljaffer/budgets-discord-notifs](https://registry.terraform.io/modules/aliAljaffer/budgets-discord-notifs/aws/latest)
 
-Working on a YouTube video!
+Video demo: [https://youtu.be/Qp13gmzzybI](https://youtu.be/Qp13gmzzybI)
 
 ## The Problem
 
