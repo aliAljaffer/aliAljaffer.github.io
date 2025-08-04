@@ -63,7 +63,7 @@ const certsData: Certification[] = [
   {
     certification: "Terraform Associate",
     provider: "Hashicorp",
-    date: "",
+    date: "Aug 2025",
     order: 5,
     wip: false,
   },
