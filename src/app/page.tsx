@@ -74,6 +74,13 @@ const certsData: Certification[] = [
     order: 6,
     wip: true,
   },
+  {
+    certification: "Certified Kubernetes Application Developer",
+    provider: "Linux Foundation",
+    date: "",
+    order: 7,
+    wip: true,
+  },
 ];
 
 const projectsData = getVisibleCaseStudies();
