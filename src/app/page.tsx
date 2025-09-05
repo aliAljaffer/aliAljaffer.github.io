@@ -28,6 +28,11 @@ const contactData = [
     showAs: "x/aliAljaffer",
   },
   {
+    label: "YouTube",
+    value: "https://www.youtube.com/@aliAljaffer",
+    showAs: "youtube/aliAljaffer",
+  },
+  {
     label: "Credly",
     value: "https://www.credly.com/users/ali-aljaffer",
     showAs: "credly/ali-aljaffer",
