@@ -113,7 +113,7 @@ export default function Home() {
               the process for my future self. Check out the projects section for
               case studies, demos, screenshots, and architecture diagrams.
             </p>
-
+            {/* Certs section within the notes */}
             <Section title="Certifications">
               <CertsList certs={certsData} />
             </Section>
