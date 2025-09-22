@@ -102,7 +102,7 @@ export default function Home() {
             <p className="ml-6 mt-4 mb-4 max-w-[560px] md:ml-6">
               Hi, I&apos;m{" "}
               <strong className="font-normal text-terminal-strong">
-                Ali Aljaffer 🙋🏽‍♂️
+                Ali Aljaffer 🙋🏽‍♂️😊
               </strong>
             </p>
             <p className="ml-6 mt-4 mb-4 max-w-[560px] md:max-w-fit leading-5 md:ml-6">
