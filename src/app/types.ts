@@ -12,6 +12,7 @@ export interface CaseStudy {
   description: string;
   images: ProjectImage[];
   show: boolean;
+  date: string;
 }
 export type CaseStudyImage = ProjectImage;
 

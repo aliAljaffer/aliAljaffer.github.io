@@ -9,9 +9,12 @@ azure-3t-app:
       alt-text: ""
       url: https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/azure-3t-app/sd2.png
   show: true
+  date: "2025-09-20"
 ---
 
 # Azure Three-tier E-commerce App
+
+Publish date: `2025-09-20`
 
 ## Overview
 

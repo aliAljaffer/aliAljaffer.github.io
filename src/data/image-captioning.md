@@ -18,9 +18,12 @@ image-captioning:
       alt-text: ""
       url: https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/image-captioning/result.png
   show: true
+  date: "2025-06-25"
 ---
 
 # Textify.img
+
+Publish date: `2025-06-25`
 
 ## Overview
 

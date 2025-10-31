@@ -21,9 +21,12 @@ body-power-gym:
       alt-text: ""
       url: https://bodypowergym.s3.me-south-1.amazonaws.com/lowq_half_size_01198_b849ea6b83.jpg
   show: true
+  date: "2025-07-01"
 ---
 
 # Body & Power Gym
+
+Publish date: `2025-07-01`
 
 ## Overview
 

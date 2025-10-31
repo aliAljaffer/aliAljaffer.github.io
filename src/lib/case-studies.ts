@@ -7,7 +7,9 @@ import matter from "gray-matter";
 export function getVisibleCaseStudies(): CaseStudy[] | null {
   const allStudies = getAllCaseStudies();
   if (!allStudies) return null;
-  return allStudies.filter((study) => study.show);
+  return allStudies
+    .filter((study) => study.show)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export function getCaseStudy(id: string): CaseStudy | null {

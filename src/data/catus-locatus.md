@@ -12,9 +12,12 @@ catus-locatus:
       alt-text: ""
       url: ""
   show: true
+  date: "2025-10-30"
 ---
 
 # Catus Locatus
+
+Publish date: `2025-07-01`
 
 ## Work In Progress
 

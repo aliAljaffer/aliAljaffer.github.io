@@ -10,13 +10,16 @@ teamwork-and-collaboration:
       alt-text: ""
       url: ""
   show: true
+  date: "2025-10-13"
 ---
 
 # Teamwork And Collaboration
 
-Following my team's successful launch of our Project 2 -[End-to-end Fully Automated Three-tier Application hosted on Azure](https://github.com/aliAljaffer/e2e-automated-deployment-azure-app), the instructor was impressed with our collaboration as a team. As the **team's leader** for the project, I was asked by Mr. Saurabh Dhingra, our lead instructor, to prepare a session on the practices we used to achieve such level of collaboration.
+Publish date: `2025-10-13`
 
 ## Overview
+
+Following my team's successful launch of our Project 2 -[End-to-end Fully Automated Three-tier Application hosted on Azure](https://github.com/aliAljaffer/e2e-automated-deployment-azure-app), the instructor was impressed with our collaboration as a team. As the **team's leader** for the project, I was asked by Mr. Saurabh Dhingra, our lead instructor, to prepare a session on the practices we used to achieve such level of collaboration.
 
 ![The header of the drawing board used](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/teamwork-and-collaboration/header.png)
 

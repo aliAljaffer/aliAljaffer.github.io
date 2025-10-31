@@ -130,6 +130,7 @@ export default function Home() {
           </Section>
           {/* Projects Section */}
           <Section title="Projects" className="md:w-max lg:pl-4">
+            <em className="pl-6">~ Newest to oldest ~</em>
             <ProjectList projects={projectsData} />
           </Section>
           {/* Status/Notes Section */}

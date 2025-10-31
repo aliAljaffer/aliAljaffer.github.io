@@ -19,9 +19,12 @@ author-clock:
       alt-text: "Inside of the box showing raspberry pi, 7-inch screen, and speakers"
       url: https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/author-clock/IMG_5245.jpg
   show: true
+  date: "2025-09-05"
 ---
 
 # Author Clock
+
+Publish date: `2025-09-05`
 
 ## Overview
 
