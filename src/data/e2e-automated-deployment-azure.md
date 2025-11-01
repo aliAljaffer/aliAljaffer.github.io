@@ -6,12 +6,9 @@ e2e-automated-deployment-azure:
   repo: "https://github.com/aliAljaffer/e2e-automated-deployment-azure-app"
   url: ""
   images:
-    - caption: "Image 1"
+    - caption: ""
       alt-text: ""
-      url: https://example.com/1.jpg
-    - caption: "Image 2"
-      alt-text: ""
-      url: https://example.com/2.jpg
+      url: ""
   show: true
   date: "2025-10-08"
   type: "project"
