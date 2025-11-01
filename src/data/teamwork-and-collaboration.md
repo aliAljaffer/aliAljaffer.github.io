@@ -11,6 +11,7 @@ teamwork-and-collaboration:
       url: ""
   show: true
   date: "2025-10-13"
+  type: "blog"
 ---
 
 # Teamwork And Collaboration

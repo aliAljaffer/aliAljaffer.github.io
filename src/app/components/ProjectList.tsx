@@ -15,9 +15,19 @@ export default function ProjectList({
   projects,
   className = "",
 }: ProjectListProps) {
+  const callToAction = {
+    project: {
+      subdirectory: "case-study",
+      cta: "case study",
+    },
+    blog: {
+      subdirectory: "case-study",
+      cta: "read more!",
+    },
+  };
   return (
     <div
-      className={`ml-6 mt-4 mb-4 space-y-4 max-w-[560px] md:ml-6 ${className}`}
+      className={`ml-6 mt-4 mb-4 space-y-4 max-w-[560px]  md:ml-6 ${className}`}
     >
       {projects.map((project, index) => {
         return (
@@ -27,10 +37,12 @@ export default function ProjectList({
             </strong>
             : {project.description} (
             <Link
-              href={`/case-study/${project.caseStudyId}`}
+              href={`/${callToAction[project.type].subdirectory}/${
+                project.caseStudyId
+              }`}
               className="text-terminal-link underline hover:no-underline"
             >
-              case study
+              {callToAction[project.type].cta}
             </Link>
             )
           </p>

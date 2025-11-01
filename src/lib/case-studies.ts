@@ -4,11 +4,13 @@ import path from "path";
 import fs from "fs";
 import matter from "gray-matter";
 
-export function getVisibleCaseStudies(): CaseStudy[] | null {
+export function getVisibleCaseStudies(
+  caseType: "project" | "blog" = "project"
+): CaseStudy[] | null {
   const allStudies = getAllCaseStudies();
   if (!allStudies) return null;
   return allStudies
-    .filter((study) => study.show)
+    .filter((study) => study.show && study.type === caseType)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
@@ -47,7 +49,7 @@ export function getAllCaseStudyIds(): string[] {
   const files = fs.readdirSync(dirPath);
 
   return files
-    .filter((file) => file.endsWith(".md"))
+    .filter((file) => file.endsWith(".md") && !file.startsWith("template"))
     .map((file) => path.basename(file, ".md"));
 }
 

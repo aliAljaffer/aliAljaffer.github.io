@@ -16,6 +16,7 @@ tuwaiq-tracker:
       url: https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/tuwaiq-academy/FinalDraft-Mobile.png
   show: true
   date: "2024-09-20"
+  type: "project"
 ---
 
 # Tuwaiq Tracker

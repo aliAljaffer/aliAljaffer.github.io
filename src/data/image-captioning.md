@@ -19,6 +19,7 @@ image-captioning:
       url: https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/image-captioning/result.png
   show: true
   date: "2025-06-25"
+  type: "project"
 ---
 
 # Textify.img

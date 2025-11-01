@@ -11,6 +11,7 @@ aws-budget-discord-notifs:
       url: https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/aws-budget-discord-notifs/non-sensetive-vars.png
   show: true
   date: "2025-07-31"
+  type: "project"
 ---
 
 # AWS Budget Notifications for Discord Channels

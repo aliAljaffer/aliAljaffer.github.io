@@ -22,6 +22,7 @@ catus-locatus:
       url: "https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/catus-locatus/rescale.jpeg"
   show: true
   date: "2025-10-30"
+  type: "project"
 ---
 
 # Catus Locatus

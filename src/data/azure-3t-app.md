@@ -10,6 +10,7 @@ azure-3t-app:
       url: https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/azure-3t-app/sd2.png
   show: true
   date: "2025-09-20"
+  type: "project"
 ---
 
 # Azure Three-tier E-commerce App

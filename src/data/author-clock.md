@@ -20,6 +20,7 @@ author-clock:
       url: https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/author-clock/IMG_5245.jpg
   show: true
   date: "2025-09-05"
+  type: "blog"
 ---
 
 # Author Clock

@@ -88,7 +88,8 @@ const certsData: Certification[] = [
   },
 ];
 
-const projectsData = getVisibleCaseStudies();
+const projectsData = getVisibleCaseStudies("project");
+const blogPosts = getVisibleCaseStudies("blog");
 
 export default function Home() {
   if (!projectsData) return <p>Error occurred with projects data.</p>;
@@ -96,7 +97,7 @@ export default function Home() {
     <Layout className="text-base sm:text-lg px-6 py-5 md:px-8 md:py-8">
       {/* Large screen: centered container with max width */}
       <div className=" lg:flex lg:items-center lg:justify-center lg:min-h-[calc(100vh-4rem)] ">
-        <div className="md:flex md:flex-wrap md:w-full lg:max-w-[60rem] md:mx-auto max-h-[fit-content]">
+        <div className="md:flex md:flex-wrap md:w-full lg:max-w-[64rem] md:mx-auto max-h-[fit-content]">
           {/* About Section */}
           <Section title="About" className="w-full lg:pl-4">
             <p className="ml-6 mt-4 mb-4 max-w-[560px] md:ml-6">
@@ -124,13 +125,19 @@ export default function Home() {
             </Section>
           </Section>
 
-          {/* Contact Section */}
-          <Section title="Contact" className="w-auto min-w-1/3 lg:pl-4 ">
-            <ContactList contacts={contactData} />
-          </Section>
+          <div className="flex flex-col gap-2 justify-start items-start w-full md:w-1/2">
+            {/* Contact Section */}
+            <Section title="Contact" className="lg:pl-4 ">
+              <ContactList contacts={contactData} />
+            </Section>
+            {/* reusing projects for blog posts */}
+            <Section title="Blog Posts" className="lg:pl-4">
+              <em className="pl-6">~ Newest to oldest ~</em>
+              <ProjectList projects={blogPosts!} />
+            </Section>
+          </div>
           {/* Projects Section */}
-          <Section title="Projects" className="md:w-max lg:pl-4">
-            <em className="pl-6">~ Newest to oldest ~</em>
+          <Section title="Projects" className="w-full md:w-1/2 lg:pl-4">
             <ProjectList projects={projectsData} />
           </Section>
           {/* Status/Notes Section */}

@@ -13,6 +13,8 @@ template:
       alt-text: ""
       url: https://example.com/2.jpg
   show: true
+  date: "YYYY-MM-DD"
+  type: "project"
 ---
 
 # Title
