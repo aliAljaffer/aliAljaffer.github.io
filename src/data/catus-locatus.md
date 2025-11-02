@@ -29,19 +29,19 @@ catus-locatus:
 
 Publish date: `2025-07-01`
 
-## Work In Progress
+## (2025-10-30) Major Update: Deploying to Kubernetes
+
+I was sponsored by [Saudi Digital Academy (SDA)](https://sda.edu.sa/) to attend a 3-month [DevOps & Cloud Computing Bootcamp](https://sda.edu.sa/ar/bootcamp/299) conducted by IronHack [(IronHack's version of the bootcamp)](https://www.ironhack.com/de-en/devops-cloud-computing/remote). In it, I improved my skills in Bash scripting, Linux, GitOps, Azure, Ansible, Terraform, Kubernetes, and more. As part of the final project, we were given the task of deploying a three-tier application onto a Kubernetes Cluster (Azure Kubernetes Service). The application code was provided to us, but I chose to deploy this app instead.
+
+You can find the source code of the Kubernetes-deployed version here: [aliAljaffer/catus-locatus-k8s](https://github.com/aliAljaffer/catus-locatus-k8s)
+
+## Legacy Version (PRE-DEVOPS BOOTCAMP)
 
 I'm working on redeploying this project using a different database and hosting provider! It's currently using Supabase for DB and is hosted on Vercel.
 
 You can check out the current version here: [Catus Locatus](https://cl.alialjaffer.com/)
 
 Github repositroy: [aliAljaffer/catus-locatus](https://github.com/aliAljaffer/catus-locatus)
-
-## (2025-10-30) Major Update: Deploying to Kubernetes
-
-I was sponsored by [Saudi Digital Academy (SDA)](https://sda.edu.sa/) to attend a 3-month [DevOps & Cloud Computing Bootcamp](https://sda.edu.sa/ar/bootcamp/299) conducted by IronHack [(IronHack's version of the bootcamp)](https://www.ironhack.com/de-en/devops-cloud-computing/remote). In it, I improved my skills in Bash scripting, Linux, GitOps, Azure, Ansible, Terraform, Kubernetes, and more. As part of the final project, we were given the task of deploying a three-tier application onto a Kubernetes Cluster (Azure Kubernetes Service). The application code was provided to us, but I chose to deploy this app instead.
-
-You can find the source code of the Kubernetes-deployed version here: [aliAljaffer/catus-locatus-k8s](https://github.com/aliAljaffer/catus-locatus-k8s)
 
 ## Demo
 
