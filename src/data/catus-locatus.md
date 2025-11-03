@@ -8,9 +8,6 @@ catus-locatus:
     Location-based pet recovery web app using React and Leaflet maps to
     report and view lost pets.
   images:
-    - caption: "Frontend look!"
-      alt-text: "Frontend look!"
-      url: "https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/catus-locatus/frontend.png"
     - caption: "Loadtesting results (some caching involved, probably)"
       alt-text: "Loadtesting results (some caching involved, probably)"
       url: "https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/catus-locatus/hey.png"
@@ -31,6 +28,8 @@ Publish date: `2025-07-01`
 
 ## (2025-10-30) Major Update: Deploying to Kubernetes
 
+![Frontend look](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/catus-locatus/frontend.png)
+
 I was sponsored by [Saudi Digital Academy (SDA)](https://sda.edu.sa/) to attend a 3-month [DevOps & Cloud Computing Bootcamp](https://sda.edu.sa/ar/bootcamp/299) conducted by IronHack [(IronHack's version of the bootcamp)](https://www.ironhack.com/de-en/devops-cloud-computing/remote). In it, I improved my skills in Bash scripting, Linux, GitOps, Azure, Ansible, Terraform, Kubernetes, and more. As part of the final project, we were given the task of deploying a three-tier application onto a Kubernetes Cluster (Azure Kubernetes Service). The application code was provided to us, but I chose to deploy this app instead.
 
 You can find the source code of the Kubernetes-deployed version here: [aliAljaffer/catus-locatus-k8s](https://github.com/aliAljaffer/catus-locatus-k8s)
@@ -49,7 +48,7 @@ Soon! Recorded, just need to upload.
 
 Our team's presentation: Soon™
 
-Our team's PowerPoint slides: [Project3-template.pptx](https://alialjaffer-website.s3.me-south-1.amazonaws.com/documents/Project3-template.pptx)
+Our team's PowerPoint slides: [Catus Locatus](https://docs.google.com/presentation/d/1N6RGWAzjBpTYclePsYVBMJfygFwnfltTUEq1qeAUH_4/edit?usp=sharing)
 
 ## Overview
 
