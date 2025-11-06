@@ -46,7 +46,7 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
           </Markdown>
         </div>
 
-        {caseStudy.images.some(
+        {caseStudy.images?.some(
           (project_image) => project_image.url.length > 1
         ) && (
           <div className="markdown-content">
