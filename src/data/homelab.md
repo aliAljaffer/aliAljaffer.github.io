@@ -33,12 +33,30 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 
 - [Pi-hole](https://pi-hole.net/)
 - [Nvidia Runtime Class](https://developer.nvidia.com/container-runtime) for MLOps workloads, still needs testing
+- Prometheus + Grafana
 
 ## Charts
 
 - [MetalLB](https://metallb.io/)
 
 ## Photo updates
+
+### New node!
+
+![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/updated.png)
+
+- New node specs:
+  - `OS`: Fedora Workstation 43
+  - `CPU`: AMD 7800x3D
+  - `Memory`: 32GB
+  - `GPU`: RTX 4070 Ti Super
+  - Tainted with `gpu=nvidia` to run exclusively for ML workloads
+- Prometheus + Grafana Monitoring stack with External IP using MetalLB for Grafana
+- Pi-hole now runs its service as `NodePort`
+
+### Grafana Control Plane Monitoring
+
+![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/grafana.png)
 
 ### Pi-Hole
 
@@ -61,6 +79,8 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 ## Storage Update +
 
 ## Updates
+
+`2025-11-07`: (`nodes`) Added new Node running Fedora, 32GB RAM, AMD 7800x3D, and RTX 4070 Ti Super for ML workloads (tainted)
 
 `2025-11-06`: (`pihole`) Pi-Hole is running and blocking! :)
 
