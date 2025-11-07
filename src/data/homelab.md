@@ -26,8 +26,16 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 ## Nodes
 
 - Control Plane: Macbook Pro, Mid-2012
+  - OS: Ubuntu 24.04
   - RAM: 2GB
-  - Storage: 500GB HDD
+  - Storage: ~500GB HDD~ 240GB SSD
+  - CPU: Some Intel i5 2.5Ghz
+- GPU Node: Custom-Built PC
+  - OS: Fedora Workstation 43
+  - RAM: 32GB
+  - Storage: 3x 2TB NVMe
+  - CPU: AMD Ryzen 7 7800x3D
+  - GPU: RTX 4070 Ti Super
 
 ## Running Deployments
 
