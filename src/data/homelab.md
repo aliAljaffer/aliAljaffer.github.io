@@ -27,8 +27,8 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 
 - Control Plane: Macbook Pro, Mid-2012
   - OS: Ubuntu 24.04
-  - RAM: 2GB
-  - Storage: ~500GB HDD~ 240GB SSD
+  - RAM: ~~2GB~~ 16GB DDR3
+  - Storage: ~~500GB HDD~~ 240GB SSD
   - CPU: Some Intel i5 2.5Ghz
 - GPU Node: Custom-Built PC
   - OS: Fedora Workstation 43
@@ -41,13 +41,18 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 
 - [Pi-hole](https://pi-hole.net/)
 - [Nvidia Runtime Class](https://developer.nvidia.com/container-runtime) for MLOps workloads, still needs testing
+- MetalLB
 - Prometheus + Grafana
 
-## Charts
+## Helm Charts Used
 
 - [MetalLB](https://metallb.io/)
 
 ## Photo updates
+
+### UPDATE Nov. 8, 2025: RAM upgrade!
+
+![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/after-ram-upgrade.png)
 
 ### New node!
 
@@ -84,9 +89,9 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 
 ![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/l.jpeg)
 
-## Storage Update +
-
 ## Updates
+
+`2025-11-08`: (`ram`) Ram arrived, works wonderfully!
 
 `2025-11-07`: (`nodes`) Added new Node running Fedora, 32GB RAM, AMD 7800x3D, and RTX 4070 Ti Super for ML workloads (tainted)
 
