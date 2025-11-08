@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   builder:
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set
     strategy:
       matrix:
         node-version: [20.x]
@@ -33,7 +33,7 @@ jobs:
           path: ${{env.BUILD_DIR_NAME}}
   remove_old:
     needs: builder
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
         name: Configure S3
@@ -45,7 +45,7 @@ jobs:
           aws s3 rm s3://${{ secrets.AWS_S3_BUCKET}}/ --recursive --exclude "images/*" --exclude "documents/*"
   upload:
     needs: [remove_old, builder]
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set
     steps:
       - name: Download processed build
         uses: actions/download-artifact@v4
@@ -62,7 +62,7 @@ jobs:
           aws s3 cp --recursive . s3://${{ secrets.AWS_S3_BUCKET}}/
   invalidate_cache:
     needs: [upload, remove_old, builder]
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
         name: Configure S3
