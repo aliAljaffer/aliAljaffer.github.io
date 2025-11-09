@@ -27,8 +27,8 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 
 - Control Plane: Macbook Pro, Mid-2012
   - OS: Ubuntu 24.04
-  - RAM: ~~2GB~~ 16GB DDR3
-  - Storage: ~~500GB HDD~~ 240GB SSD
+  - RAM: <s>2GB</s> 16GB DDR3
+  - Storage: <s>500GB</s> HDD 240GB SSD
   - CPU: Some Intel i5 2.5Ghz
 - GPU Node: Custom-Built PC
   - OS: Fedora Workstation 43
@@ -41,8 +41,9 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 
 - [Pi-hole](https://pi-hole.net/)
 - [Nvidia Runtime Class](https://developer.nvidia.com/container-runtime) for MLOps workloads, still needs testing
-- MetalLB
-- Prometheus + Grafana
+- MetalLB: To give LoadBalancer services a Private IP address on my network
+- Prometheus + Grafana: Metrics and monitoring dashboards for the cluster: [Grafana Control Plane Monitoring](#grafana-control-plane-monitoring)
+- Git Runners with Action Runner Controller (ARC): Now I can access private IPs on my network thanks to self-hosting the runners! [Self-hosted GitHub Action Runners!](#self-hosted-github-action-runners)
 
 ## Helm Charts Used
 
@@ -50,11 +51,21 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 
 ## Photo updates
 
-### UPDATE Nov. 8, 2025: RAM upgrade!
+### UPDATES Nov. 8, 2025
+
+#### Self-hosted GitHub Action Runners!
+
+![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/runner.png)
+
+Ran my first workflow to build and deploy THIS website on a Kubernetes pod! :)
+
+#### RAM upgrade! 2GB -> 16GB
 
 ![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/after-ram-upgrade.png)
 
-### New node!
+### UPDATES Nov. 6, 2025
+
+#### New node!
 
 ![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/updated.png)
 
@@ -67,29 +78,31 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 - Prometheus + Grafana Monitoring stack with External IP using MetalLB for Grafana
 - Pi-hole now runs its service as `NodePort`
 
-### Grafana Control Plane Monitoring
+#### Grafana Control Plane Monitoring
 
 ![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/grafana.png)
 
-### Pi-Hole
+### UPDATES Nov. 5, 2025
+
+#### Pi-Hole
 
 ![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/pihole.png)
 
-### Upgrades
+#### Upgrades
 
-#### Before SSD upgrade
+##### Before SSD upgrade
 
 ![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/pre.jpeg)
 
-#### After: SSD upgraded, thermal paste changed
+##### After: SSD upgraded, thermal paste changed
 
 ![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/post.jpeg)
 
-### Cluster is ready! 😊
+#### Cluster is ready! 😊
 
 ![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/l.jpeg)
 
-## Updates
+## Text Updates
 
 `2025-11-08`: (`ram`) Ram arrived, works wonderfully!
 
