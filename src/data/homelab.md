@@ -27,8 +27,8 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 
 - Control Plane: Macbook Pro, Mid-2012
   - OS: Ubuntu 24.04
-  - RAM: <s>2GB</s> 16GB DDR3
-  - Storage: <s>500GB</s> HDD 240GB SSD
+  - RAM: 2GB ~Upgraded~> 16GB DDR3
+  - Storage: 500GB HDD ~Upgraded~> 240GB SSD
   - CPU: Some Intel i5 2.5Ghz
 - GPU Node: Custom-Built PC
   - OS: Fedora Workstation 43
@@ -41,9 +41,9 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 
 - [Pi-hole](https://pi-hole.net/)
 - [Nvidia Runtime Class](https://developer.nvidia.com/container-runtime) for MLOps workloads, still needs testing
-- MetalLB: To give LoadBalancer services a Private IP address on my network
-- Prometheus + Grafana: Metrics and monitoring dashboards for the cluster: [Grafana Control Plane Monitoring](#grafana-control-plane-monitoring)
-- Git Runners with Action Runner Controller (ARC): Now I can access private IPs on my network thanks to self-hosting the runners! [Self-hosted GitHub Action Runners!](#self-hosted-github-action-runners)
+- [MetalLB](https://metallb.io/): To give LoadBalancer services a Private IP address on my network
+- [Prometheus](https://prometheus.io/) + [Grafana](https://grafana.com/): Metrics and monitoring dashboards for the cluster
+- Git Runners with [Action Runner Controller (ARC)](https://github.com/actions/actions-runner-controller): Now I can access private IPs on my network thanks to self-hosting the runners!
 
 ## Helm Charts Used
 
