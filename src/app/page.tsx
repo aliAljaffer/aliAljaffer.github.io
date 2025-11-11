@@ -8,6 +8,12 @@ import { getVisibleCaseStudies } from "@/lib/case-studies";
 
 const contactData = [
   {
+    label: "Resume/CV",
+    value:
+      "https://drive.google.com/drive/folders/142h8rouRRSqn0YVdVYfejfgD7Vo6MXT0",
+    showAs: "Up-to-date Resume",
+  },
+  {
     label: "Email",
     value: "mailto:ali.h.aljaffer@gmail.com?subject=Collaboration",
     showAs: "ali.h.aljaffer@gmail.com",
