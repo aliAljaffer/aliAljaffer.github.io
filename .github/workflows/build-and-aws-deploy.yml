@@ -24,6 +24,18 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+
+      - name: Cache Next.js build
+        uses: actions/cache@v4
+        with:
+          path: |
+            .next/cache
+            node_modules/.cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx', '**.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+            ${{ runner.os }}-nextjs-
+
       - run: npm ci
       - run: npm run build
       - name: Upload build
@@ -31,43 +43,30 @@ jobs:
         with:
           name: build_files
           path: ${{env.BUILD_DIR_NAME}}
-  remove_old:
+  deploy:
     needs: builder
     runs-on: arc-runner-set-personal-website
     steps:
-      - uses: aws-actions/configure-aws-credentials@v4
-        name: Configure S3
-        with:
-          role-to-assume: ${{secrets.AWS_ROLE_ARN}}
-          aws-region: ${{secrets.AWS_REGION}}
-      - name: Remove old files
-        run: |
-          aws s3 rm s3://${{ secrets.AWS_S3_BUCKET}}/ --recursive --exclude "images/*" --exclude "documents/*"
-  upload:
-    needs: [remove_old, builder]
-    runs-on: arc-runner-set-personal-website
-    steps:
-      - name: Download processed build
+      - name: Download build
         uses: actions/download-artifact@v4
         with:
           name: build_files
+          path: ./dist
+
       - uses: aws-actions/configure-aws-credentials@v4
-        name: Configure S3
         with:
           role-to-assume: ${{secrets.AWS_ROLE_ARN}}
           aws-region: ${{secrets.AWS_REGION}}
-      - name: Upload new
+
+      - name: Sync to S3
         run: |
-          ls -lah
-          aws s3 cp --recursive . s3://${{ secrets.AWS_S3_BUCKET}}/
-  invalidate_cache:
-    needs: [upload, remove_old, builder]
-    runs-on: arc-runner-set-personal-website
-    steps:
-      - uses: aws-actions/configure-aws-credentials@v4
-        name: Configure S3
-        with:
-          role-to-assume: ${{secrets.AWS_ROLE_ARN}}
-          aws-region: ${{secrets.AWS_REGION}}
-      - name: invalidation
-        run: aws cloudfront create-invalidation --distribution-id ${{secrets.DISTRIBUTION_ID}} --paths "${{secrets.INVALIDATION_PATH}}"
+          aws s3 sync ./dist s3://${{ secrets.AWS_S3_BUCKET}}/ \
+            --delete \
+            --exclude "images/*" \
+            --exclude "documents/*"
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{secrets.DISTRIBUTION_ID}} \
+            --paths "${{secrets.INVALIDATION_PATH}}"
