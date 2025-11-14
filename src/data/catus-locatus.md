@@ -46,9 +46,9 @@ Github repositroy: [aliAljaffer/catus-locatus](https://github.com/aliAljaffer/ca
 
 Soon! Recorded, just need to upload.
 
-Our team's presentation: Soon™
-
 Our team's PowerPoint slides: [Catus Locatus](https://docs.google.com/presentation/d/1N6RGWAzjBpTYclePsYVBMJfygFwnfltTUEq1qeAUH_4/edit?usp=sharing)
+
+Homelab Cluster version: [team4.tuwaiqtracker.com/](https://team4.tuwaiqtracker.com/)
 
 ## Overview
 
