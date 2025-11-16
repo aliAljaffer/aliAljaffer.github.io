@@ -44,6 +44,7 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 - [MetalLB](https://metallb.io/): To give LoadBalancer services a Private IP address on my network
 - [Prometheus](https://prometheus.io/) + [Grafana](https://grafana.com/): Metrics and monitoring dashboards for the cluster
 - Git Runners with [Action Runner Controller (ARC)](https://github.com/actions/actions-runner-controller): Now I can access private IPs on my network thanks to self-hosting the runners!
+- [Catus Locatus](https://team4.tuwaiqtracker.com/) App
 
 ## Helm Charts Used
 
