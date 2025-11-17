@@ -45,12 +45,23 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 - [Prometheus](https://prometheus.io/) + [Grafana](https://grafana.com/): Metrics and monitoring dashboards for the cluster
 - Git Runners with [Action Runner Controller (ARC)](https://github.com/actions/actions-runner-controller): Now I can access private IPs on my network thanks to self-hosting the runners!
 - [Catus Locatus](https://team4.tuwaiqtracker.com/) App
+- [ArgoCD](https://argo-cd.readthedocs.io/en/stable/getting_started/)
 
 ## Helm Charts Used
 
 - [MetalLB](https://metallb.io/)
 
 ## Photo updates
+
+### UPDATES Nov. 17, 2025
+
+#### A new toy in town: ArgoCD
+
+![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/argocd.png)
+
+![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/argocd2.png)
+
+We're up and functional! Really enjoyed getting to know this tool and I can immediately feel the benefits of it.
 
 ### UPDATES Nov. 8, 2025
 
