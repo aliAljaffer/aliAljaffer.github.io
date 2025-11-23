@@ -34,21 +34,15 @@ I was sponsored by [Saudi Digital Academy (SDA)](https://sda.edu.sa/) to attend 
 
 You can find the source code of the Kubernetes-deployed version here: [aliAljaffer/catus-locatus-k8s](https://github.com/aliAljaffer/catus-locatus-k8s)
 
-## Legacy Version (PRE-DEVOPS BOOTCAMP)
-
-I'm working on redeploying this project using a different database and hosting provider! It's currently using Supabase for DB and is hosted on Vercel.
-
-You can check out the current version here: [Catus Locatus](https://cl.alialjaffer.com/)
-
-Github repositroy: [aliAljaffer/catus-locatus](https://github.com/aliAljaffer/catus-locatus)
-
 ## Demo
 
 Soon! Recorded, just need to upload.
 
 Our team's PowerPoint slides: [Catus Locatus](https://docs.google.com/presentation/d/1N6RGWAzjBpTYclePsYVBMJfygFwnfltTUEq1qeAUH_4/edit?usp=sharing)
 
-Homelab Cluster version: [team4.tuwaiqtracker.com/](https://team4.tuwaiqtracker.com/)
+## Current Version!
+
+Homelab Cluster version: [team4.tuwaiqtracker.com/](https://team4.tuwaiqtracker.com/) hosted on [my homelab](https://alialjaffer.com/case-study/homelab/)
 
 ## Overview
 
