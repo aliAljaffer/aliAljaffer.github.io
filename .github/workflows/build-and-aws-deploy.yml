@@ -15,7 +15,7 @@ jobs:
     runs-on: arc-runner-set-personal-website
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [20.19.5]
 
     steps:
       - uses: actions/checkout@v4
