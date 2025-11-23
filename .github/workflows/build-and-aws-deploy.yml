@@ -13,17 +13,9 @@ permissions:
 jobs:
   builder:
     runs-on: arc-runner-set-personal-website
-    strategy:
-      matrix:
-        node-version: [20.19.5]
 
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
 
       - name: Cache Next.js build
         uses: actions/cache@v4
