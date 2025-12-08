@@ -38,11 +38,11 @@ const contactData = [
     value: "https://www.youtube.com/@aliAljaffer",
     showAs: "youtube/aliAljaffer",
   },
-  {
-    label: "Credly",
-    value: "https://www.credly.com/users/ali-aljaffer",
-    showAs: "credly/ali-aljaffer",
-  },
+  // {
+  //   label: "Credly",
+  //   value: "https://www.credly.com/users/ali-aljaffer",
+  //   showAs: "credly/ali-aljaffer",
+  // },
 ];
 
 const certsData: Certification[] = [
@@ -79,14 +79,14 @@ const certsData: Certification[] = [
     wip: false,
   },
   {
-    certification: "Solutions Architect - Professional",
-    provider: "AWS",
+    certification: "Certified Kubernetes Application Developer",
+    provider: "Linux Foundation",
     date: "",
     order: 6,
     wip: true,
   },
   {
-    certification: "Certified Kubernetes Application Developer",
+    certification: "Certified Kubernetes Administrator",
     provider: "Linux Foundation",
     date: "",
     order: 7,
