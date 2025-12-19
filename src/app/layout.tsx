@@ -2,7 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import { Roboto_Mono } from "next/font/google";
-import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   title: "aliAljaffer",
@@ -25,18 +25,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>{children}</body>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id='G-CWKB4GRTEB'`}
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-CWKB4GRTEB');
-          `}
-      </Script>
+      <GoogleAnalytics gaId="G-CWKB4GRTEB" />
     </html>
   );
 }

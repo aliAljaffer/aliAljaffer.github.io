@@ -10,13 +10,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "^16.1.0",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.1",
     "json-server": "^1.0.0-beta.3",
     "mdast-util-to-hast": "^13.2.1",
     "next": "15.6.0-canary.59",
-    "nextjs-google-analytics": "^2.3.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
