@@ -29,7 +29,7 @@ jobs:
             ${{ runner.os }}-nextjs-
 
       - run: npm ci
-      - run: npm run build
+      - run: npm run build -- --webpack
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
