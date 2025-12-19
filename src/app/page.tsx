@@ -88,9 +88,9 @@ const certsData: Certification[] = [
   {
     certification: "Certified Kubernetes Administrator",
     provider: "Linux Foundation",
-    date: "",
+    date: "Dec 2025",
     order: 7,
-    wip: true,
+    wip: false,
   },
 ];
 
