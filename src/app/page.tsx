@@ -92,6 +92,13 @@ const certsData: Certification[] = [
     order: 7,
     wip: false,
   },
+  {
+    certification: "DASA DevOps Fundamentals",
+    provider: "DevOps Agile Skills Association",
+    date: "Jan 2026",
+    order: 8,
+    wip: false,
+  },
 ];
 
 const projectsData = getVisibleCaseStudies("project");

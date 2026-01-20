@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   builder:
-    runs-on: arc-runner-set-personal-website
+    runs-on: ubuntu
 
     steps:
       - uses: actions/checkout@v4
@@ -37,7 +37,7 @@ jobs:
           path: ${{env.BUILD_DIR_NAME}}
   deploy:
     needs: builder
-    runs-on: arc-runner-set-personal-website
+    runs-on: ubuntu
     steps:
       - name: Download build
         uses: actions/download-artifact@v4
