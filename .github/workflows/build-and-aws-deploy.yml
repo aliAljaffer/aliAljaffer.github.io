@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   builder:
-    runs-on: arc-runner-set-personal-website
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +29,7 @@ jobs:
             ${{ runner.os }}-nextjs-
 
       - run: npm ci
-      - run: npm run build
+      - run: npm run build -- --webpack
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
@@ -37,7 +37,7 @@ jobs:
           path: ${{env.BUILD_DIR_NAME}}
   deploy:
     needs: builder
-    runs-on: arc-runner-set-personal-website
+    runs-on: ubuntu-latest
     steps:
       - name: Download build
         uses: actions/download-artifact@v4

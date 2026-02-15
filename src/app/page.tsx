@@ -3,7 +3,7 @@ import Section from "@/app/components/Section";
 import ContactList from "@/app/components/ContactList";
 import CertsList, { Certification } from "@/app/components/CertsList";
 import ProjectList from "@/app/components/ProjectList";
-import StatusComment from "@/app/components/StatusComment";
+// import StatusComment from "@/app/components/StatusComment";
 import { getVisibleCaseStudies } from "@/lib/case-studies";
 
 const contactData = [
@@ -38,11 +38,11 @@ const contactData = [
     value: "https://www.youtube.com/@aliAljaffer",
     showAs: "youtube/aliAljaffer",
   },
-  {
-    label: "Credly",
-    value: "https://www.credly.com/users/ali-aljaffer",
-    showAs: "credly/ali-aljaffer",
-  },
+  // {
+  //   label: "Credly",
+  //   value: "https://www.credly.com/users/ali-aljaffer",
+  //   showAs: "credly/ali-aljaffer",
+  // },
 ];
 
 const certsData: Certification[] = [
@@ -79,18 +79,25 @@ const certsData: Certification[] = [
     wip: false,
   },
   {
-    certification: "Solutions Architect - Professional",
-    provider: "AWS",
-    date: "",
-    order: 6,
-    wip: true,
-  },
-  {
     certification: "Certified Kubernetes Application Developer",
     provider: "Linux Foundation",
-    date: "",
+    date: "Dec 2025",
+    order: 6,
+    wip: false,
+  },
+  {
+    certification: "Certified Kubernetes Administrator",
+    provider: "Linux Foundation",
+    date: "Dec 2025",
     order: 7,
-    wip: true,
+    wip: false,
+  },
+  {
+    certification: "DASA DevOps Fundamentals",
+    provider: "DevOps Agile Skills Association",
+    date: "Jan 2026",
+    order: 8,
+    wip: false,
   },
 ];
 
@@ -113,17 +120,19 @@ export default function Home() {
               </strong>
             </p>
             <p className="ml-6 mt-4 mb-4 max-w-[560px] md:max-w-fit leading-5 md:ml-6">
-              Cloud Engineer & DevOps with a passion for automation,
-              infrastructure as code, and building scalable systems. I&apos;m
-              mostly working on projects that utilize AWS services, but will be
-              expanding to Google Cloud Platform pretty soon!
+              Cloud & DevOps Engineer with a passion for automation,
+              infrastructure as code, and building scalable, reliable systems. I
+              love system architecture diagrams. I&apos;m super into Kubernetes
+              and its ecosystem. I also love math. 🙃 1+1=2
             </p>
             <p className="ml-6 mt-4 mb-4 max-w-[560px] md:max-w-fit leading-5 md:ml-6">
-              I built full-stack projects and I&apos;m in the process of
-              containerizing and migrating them to AWS, so I&apos;m sharing my
-              experience and case studies for each project as way of documenting
-              the process for my future self. Check out the projects section for
-              case studies, demos, screenshots, and architecture diagrams.
+              I started out building web development projects and I found myself
+              enjoying the deployment process more than the development one.
+              I&apos;m sharing my experience and case studies for each project
+              as way of documenting the process for my future self, and to help
+              inspire others that are on this path! Check out the projects
+              section for case studies, demos, screenshots, and architecture
+              diagrams.
             </p>
             {/* Certs section within the notes */}
             <Section title="Certifications">
@@ -148,14 +157,14 @@ export default function Home() {
           </Section>
           {/* Status/Notes Section */}
 
-          <section className="xl:w-full mb-4">
+          {/* <section className="xl:w-full mb-4">
             <div className="ml-6 mt-4 mb-4 md:ml-6 text-sm lg:text-base">
               <StatusComment>
                 Currently seeking opportunities in System Administration, Cloud
                 Engineering and DevOps roles
               </StatusComment>
             </div>
-          </section>
+          </section> */}
         </div>
       </div>
     </Layout>
