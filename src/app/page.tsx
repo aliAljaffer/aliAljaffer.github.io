@@ -99,6 +99,13 @@ const certsData: Certification[] = [
     order: 8,
     wip: false,
   },
+  {
+    certification: "Certified Kubernetes Security Specialist",
+    provider: "Linux Foundation",
+    date: "Feb 2026",
+    order: 9,
+    wip: false,
+  },
 ];
 
 const projectsData = getVisibleCaseStudies("project");
