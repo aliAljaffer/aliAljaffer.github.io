@@ -20,7 +20,7 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
   if (!caseStudy) return NotFound({ message: "Case Study not found" });
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto p-8 relative">
+      <div className="max-w-4xl xl:max-w-304 mx-auto p-8 relative">
         <BackLink
           href="/"
           className="sticky top-0 left-0 bg-terminal-bg w-full pb-5 pt-4 border-b-terminal-comment rounded-sm border-1 border-t-0 border-l-0 border-r-0"
@@ -47,7 +47,7 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
         </div>
 
         {caseStudy.images?.some(
-          (project_image) => project_image.url.length > 1
+          (project_image) => project_image.url.length > 1,
         ) && (
           <div className="markdown-content">
             <h2>Screenshots</h2>
@@ -61,7 +61,7 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
                   width={600}
                   height={400}
                 />
-              ) : null
+              ) : null,
             )}
           </div>
         )}

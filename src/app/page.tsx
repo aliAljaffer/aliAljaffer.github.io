@@ -46,26 +46,26 @@ const contactData = [
 ];
 
 const certsData: Certification[] = [
+  // {
+  //   certification: "Certified Cloud Practitioner",
+  //   provider: "AWS",
+  //   date: "Jan 2025",
+  //   order: 1,
+  // },
+  // {
+  //   certification: "AZ-900 Azure Fundamentals",
+  //   provider: "Microsoft",
+  //   date: "Jun 2025",
+  //   order: 2,
+  // },
+  // {
+  //   certification: "SC-900 Security, Compliance, and Identity Fundamentals",
+  //   provider: "Microsoft",
+  //   date: "Jun 2025",
+  //   order: 3,
+  // },
   {
-    certification: "Certified Cloud Practitioner",
-    provider: "AWS",
-    date: "Jan 2025",
-    order: 1,
-  },
-  {
-    certification: "AZ-900 Azure Fundamentals",
-    provider: "Microsoft",
-    date: "Jun 2025",
-    order: 2,
-  },
-  {
-    certification: "SC-900 Security, Compliance, and Identity Fundamentals",
-    provider: "Microsoft",
-    date: "Jun 2025",
-    order: 3,
-  },
-  {
-    certification: "Solutions Architect - Associate",
+    certification: "AWS Solutions Architect - Associate",
     provider: "AWS",
     date: "July 2025",
     order: 4,
@@ -92,13 +92,13 @@ const certsData: Certification[] = [
     order: 7,
     wip: false,
   },
-  {
-    certification: "DASA DevOps Fundamentals",
-    provider: "DevOps Agile Skills Association",
-    date: "Jan 2026",
-    order: 8,
-    wip: false,
-  },
+  // {
+  //   certification: "DASA DevOps Fundamentals",
+  //   provider: "DevOps Agile Skills Association",
+  //   date: "Jan 2026",
+  //   order: 8,
+  //   wip: false,
+  // },
   {
     certification: "Certified Kubernetes Security Specialist",
     provider: "Linux Foundation",
@@ -117,7 +117,7 @@ export default function Home() {
     <Layout className="text-base sm:text-lg px-6 py-5 md:px-8 md:py-8">
       {/* Large screen: centered container with max width */}
       <div className=" lg:flex lg:items-center lg:justify-center lg:min-h-[calc(100vh-4rem)] ">
-        <div className="md:flex md:flex-wrap md:w-full lg:max-w-[64rem] md:mx-auto max-h-[fit-content]">
+        <div className="md:flex md:flex-wrap md:w-full lg:max-w-304 md:mx-auto max-h-fit">
           {/* About Section */}
           <Section title="About" className="w-full lg:pl-4">
             <p className="ml-6 mt-4 mb-4 max-w-[560px] md:ml-6">
@@ -142,12 +142,12 @@ export default function Home() {
               diagrams.
             </p>
             {/* Certs section within the notes */}
-            <Section title="Certifications">
-              <CertsList certs={certsData} />
-            </Section>
           </Section>
 
           <div className="flex flex-col gap-2 justify-start items-start w-full md:w-1/2">
+            <Section title="Certifications">
+              <CertsList certs={certsData} />
+            </Section>
             {/* Contact Section */}
             <Section title="Contact" className="lg:pl-4 ">
               <ContactList contacts={contactData} />

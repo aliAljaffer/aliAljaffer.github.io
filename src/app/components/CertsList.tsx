@@ -25,11 +25,11 @@ export default function CertsList({ certs, className = "" }: CertsListProps) {
                 : "before:content-['-_']"
             }`}
           >
-            {cert.certification} {cert.date.length > 0 && `(${cert.date})`}
-            <span className="text-xs font-bold text-terminal-highlight select-none">
+            {cert.certification} {cert.date.length < 0 && `(${cert.date})`}
+            {/* <span className="text-xs font-bold text-terminal-highlight select-none">
               {" "}
               [ {cert.provider} ]
-            </span>
+            </span> */}
           </li>
         ))}
     </ul>
