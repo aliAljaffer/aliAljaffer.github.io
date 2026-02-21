@@ -145,6 +145,10 @@ export default function Home() {
           </Section>
 
           <div className="flex flex-col gap-2 justify-start items-start w-full md:w-1/2">
+            <Section title="Blog Posts" className="lg:pl-4">
+              <em className="pl-6">~ Newest to oldest ~</em>
+              <ProjectList projects={blogPosts!} />
+            </Section>
             <Section title="Certifications">
               <CertsList certs={certsData} />
             </Section>
@@ -153,10 +157,6 @@ export default function Home() {
               <ContactList contacts={contactData} />
             </Section>
             {/* reusing projects for blog posts */}
-            <Section title="Blog Posts" className="lg:pl-4">
-              <em className="pl-6">~ Newest to oldest ~</em>
-              <ProjectList projects={blogPosts!} />
-            </Section>
           </div>
           {/* Projects Section */}
           <Section title="Projects" className="w-full md:w-1/2 lg:pl-4">
