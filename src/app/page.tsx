@@ -11,11 +11,11 @@ const contactData = [
     label: "Resume/CV",
     value:
       "https://alialjaffer-website.s3.me-south-1.amazonaws.com/documents/ali_aljaffer_cv.pdf",
-    showAs: "Always up-to-date Resume",
+    showAs: "Resume",
   },
   {
     label: "Email",
-    value: "mailto:ali.h.aljaffer@gmail.com?subject=Collaboration",
+    value: "ali.h.aljaffer@gmail.com",
     showAs: "ali.h.aljaffer@gmail.com",
   },
   {
@@ -149,12 +149,12 @@ export default function Home() {
               <em className="pl-6">~ Newest to oldest ~</em>
               <ProjectList projects={blogPosts!} />
             </Section>
-            <Section title="Certifications">
-              <CertsList certs={certsData} />
-            </Section>
             {/* Contact Section */}
             <Section title="Contact" className="lg:pl-4 ">
               <ContactList contacts={contactData} />
+            </Section>
+            <Section title="Certifications">
+              <CertsList certs={certsData} />
             </Section>
             {/* reusing projects for blog posts */}
           </div>
