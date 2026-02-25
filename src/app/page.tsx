@@ -119,48 +119,45 @@ export default function Home() {
       <div className=" lg:flex lg:items-center lg:justify-center lg:min-h-[calc(100vh-4rem)] ">
         <div className="md:flex md:flex-wrap md:w-full lg:max-w-304 md:mx-auto max-h-fit">
           {/* About Section */}
-          <Section title="About" className="w-full lg:pl-4">
-            <p className="ml-6 mt-4 mb-4 max-w-[560px] md:ml-6">
-              Hi, I&apos;m{" "}
-              <strong className="font-normal text-terminal-strong">
-                Ali Aljaffer 🙋🏽‍♂️😊
-              </strong>
-            </p>
-            <p className="ml-6 mt-4 mb-4 max-w-[560px] md:max-w-fit leading-5 md:ml-6">
-              Cloud & DevOps Engineer with a passion for automation,
-              infrastructure as code, and building scalable, reliable systems. I
-              love system architecture diagrams. I&apos;m super into Kubernetes
-              and its ecosystem. I also love math. 🙃 1+1=2
-            </p>
-            <p className="ml-6 mt-4 mb-4 max-w-[560px] md:max-w-fit leading-5 md:ml-6">
-              I started out building web development projects and I found myself
-              enjoying the deployment process more than the development one.
-              I&apos;m sharing my experience and case studies for each project
-              as way of documenting the process for my future self, and to help
-              inspire others that are on this path! Check out the projects
-              section for case studies, demos, screenshots, and architecture
-              diagrams.
-            </p>
-            {/* Certs section within the notes */}
-          </Section>
 
           <div className="flex flex-col gap-2 justify-start items-start w-full md:w-1/2">
+            <Section title="About" className="w-full lg:pl-4">
+              <p className="ml-6 mt-4 mb-4 max-w-[560px] md:max-w-fit leading-5 md:ml-6">
+                Hi, I&apos;m{" "}
+                <strong className="font-normal text-terminal-strong">
+                  Ali Aljaffer 🙋🏽‍♂️😊&nbsp;
+                </strong>
+                a DevOps Engineer who is passionate about automation,
+                infrastructure as code, and building scalable, reliable systems.
+                I come from a web development background and absolutely love
+                drawing system architecture diagrams. I&apos;m sharing my
+                experience and case studies for each project as a way of
+                documenting the process for my future self, and to help inspire
+                others that are on this journey! <br />
+                <br />
+                Check out the{" "}
+                <strong className="font-normal text-terminal-strong">
+                  projects
+                </strong>{" "}
+                section for case studies, demos, screenshots, and architecture
+                diagrams.
+              </p>
+              {/* Certs section within the notes */}
+              <Section title="Contact" className="lg:pl-4 ">
+                <ContactList contacts={contactData} />
+              </Section>
+            </Section>
             <Section title="Blog Posts" className="lg:pl-4">
               <em className="pl-6">~ Newest to oldest ~</em>
               <ProjectList projects={blogPosts!} />
             </Section>
-            {/* Contact Section */}
-            <Section title="Contact" className="lg:pl-4 ">
-              <ContactList contacts={contactData} />
-            </Section>
-            <Section title="Certifications">
-              <CertsList certs={certsData} />
-            </Section>
-            {/* reusing projects for blog posts */}
           </div>
           {/* Projects Section */}
           <Section title="Projects" className="w-full md:w-1/2 lg:pl-4">
             <ProjectList projects={projectsData} />
+            <Section title="Certifications">
+              <CertsList certs={certsData} />
+            </Section>
           </Section>
           {/* Status/Notes Section */}
 
