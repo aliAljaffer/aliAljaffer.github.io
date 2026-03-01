@@ -25,7 +25,9 @@ This is my first project on Azure! I'm an AWS advocator and after trying Azure, 
 
 ## Demo
 
-Youtube: [Azure three-tier web app deployment using Terraform](https://youtu.be/y5rP0JmYzTQ)
+Youtube:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/y5rP0JmYzTQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Visit my other repository: [terraform-3t-app-with-cicd](https://github.com/aliAljaffer/terraform-3t-app-with-cicd) to see how I integrated a CI/CD pipeline that deploys the resources using Terraform and handles building and pushing the Docker images to Dockerhub, which are in turn used in the Terraform configuration for App Service.
 

@@ -28,7 +28,9 @@ A session where I present GitHub concepts that aide and enhance teamwork between
 
 Drawing board: [https://excalidraw.com/#json=87RhUUHNGDEtb5iRn8GeI,4T_86pgpUCxRsayJBC762g](https://excalidraw.com/#json=87RhUUHNGDEtb5iRn8GeI,4T_86pgpUCxRsayJBC762g)
 
-YouTube video (55:23) [https://www.youtube.com/watch?v=vS0gLCvDSVc](https://www.youtube.com/watch?v=vS0gLCvDSVc)
+YouTube video (55:23)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vS0gLCvDSVc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Few Insights
 

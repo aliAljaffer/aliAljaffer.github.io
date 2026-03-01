@@ -37,7 +37,9 @@ The project is a frontend (Next.js) and a CMS backend (Strapi) hosted entirely o
 
 ## Demo
 
-Link to demo and architecture overview: [https://www.youtube.com/watch?v=Iisu17KC55k](https://www.youtube.com/watch?v=Iisu17KC55k)
+Link to demo and architecture overview:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Iisu17KC55k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## The Problem
 

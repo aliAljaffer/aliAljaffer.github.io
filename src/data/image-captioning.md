@@ -30,11 +30,13 @@ Publish date: `2025-06-25`
 
 Serverless Alt-Text Generation for better accessibility on the web using AI, built mostly on Amazon Web Services. Started as a proof-of-concept and ended up just working on building it. 😊 Frontend is built on **React**, Backend is entirely serverless and secured using AWS Cognito. The resulting caption is returned to the user through a fully decoupled, secure, and scalable architecture.
 
-Video showcase and architecture discussion: [https://youtu.be/oZR8Nvrwt4Q](https://youtu.be/oZR8Nvrwt4Q)
+Video showcase and architecture discussion:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oZR8Nvrwt4Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Demo
 
-Here is a quick video demo: [https://youtu.be/\_dbX_a1pUL4](https://youtu.be/_dbX_a1pUL4)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_dbX_a1pUL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Try it out! [https://textify.alialjaffer.com](https://textify.alialjaffer.com)
 
@@ -80,7 +82,6 @@ Size limitations that are enforced both on the frontend and the lambda backend s
 ## Key Outcomes
 
 - **Scalable System**: With the use of a serverless backbone, this solution mostly scales really well. Lambda automatically scales based on demand, API Gateway has burst rates, and if limits are hit, AWS Support can provide a higher limit.
-
   - API Gateway supports burst rates and throttling.
 
   - Lambda scales with concurrent requests.

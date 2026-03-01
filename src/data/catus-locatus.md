@@ -123,7 +123,7 @@ Again, nothing too fancy. We'll use the domain's Hosted Zone, and to manage the 
 
 Here's the Terraform code for the policy attached to the user:
 
-```
+```hcl
 resource "aws_iam_policy" "external_dns" {
   name        = "external-dns-policy"
   description = "Allow external-dns on K8s to manage Route 53 records"

@@ -21,6 +21,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
+    "rehype-prism-plus": "^2.0.2",
+    "rehype-raw": "^7.0.0",
     "remark": "^15.0.1",
     "remark-parse": "^11.0.0",
     "server-only": "^0.0.1"

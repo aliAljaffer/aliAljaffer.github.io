@@ -26,10 +26,21 @@ This is an improvement from the first project, [Azure Three-tier E-commerce App]
 
 No demo, but I did create videos to help other teams implement a similar solution. It's a pretty lengthy one.
 
-- [devops week5 day5 PART 1: EXTRA assignment - building infrastructure with Terraform using modules](https://youtu.be/RI0ltdZAduY)
-- [devops week5 day5 PART 2: EXTRA assignment - building infrastructure with Terraform using modules](https://youtu.be/lrWJ69lk2Rg)
-- [devops week5 day5 PART 3: EXTRA assignment - building infrastructure with Terraform using modules](https://youtu.be/dcckcMC6nko)
-- [devops week5 day5 PART 4: EXTRA assignment - building infrastructure with Terraform using modules](https://youtu.be/BuIeE5QwKoY)
+### devops week5 day5 PART 1: EXTRA assignment - building infrastructure with Terraform using modules
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RI0ltdZAduY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### devops week5 day5 PART 2: EXTRA assignment - building infrastructure with Terraform using modules
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lrWJ69lk2Rg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### devops week5 day5 PART 3: EXTRA assignment - building infrastructure with Terraform using modules
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dcckcMC6nko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### devops week5 day5 PART 4: EXTRA assignment - building infrastructure with Terraform using modules
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BuIeE5QwKoY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## The Problem
 
@@ -89,7 +100,7 @@ Both images are tagged with commit hashes for version tracking and pushed to Doc
 
 The infrastructure follows a modular Terraform structure with 10 distinct modules:
 
-```
+```bash
 terraform-all/
 ├── azure/
 │   ├── appgw/          # Application Gateway with WAF

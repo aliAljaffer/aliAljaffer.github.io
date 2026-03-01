@@ -4,6 +4,8 @@ import BackLink from "@/app/components/BackLink";
 import TerminalImage from "@/app/components/TerminalImage";
 import { useEffect } from "react";
 import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import rehypePrism from "rehype-prism-plus";
 import NotFound from "@/app/not-found";
 import { CaseStudy } from "@/app/types";
 
@@ -30,6 +32,7 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
 
         <div className="markdown-content prose prose-invert">
           <Markdown
+            rehypePlugins={[rehypeRaw, rehypePrism]}
             components={{
               img: TerminalImage,
               p: "div",
