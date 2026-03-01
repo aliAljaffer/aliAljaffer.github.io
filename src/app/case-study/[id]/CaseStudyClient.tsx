@@ -25,7 +25,7 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
       <div className="max-w-4xl xl:max-w-304 mx-auto p-8 relative">
         <BackLink
           href="/"
-          className="sticky top-0 left-0 bg-terminal-bg w-full pb-5 pt-4 border-b-terminal-comment rounded-sm border-1 border-t-0 border-l-0 border-r-0"
+          className="sticky top-0 left-0 bg-terminal-bg w-full pb-5 pt-4 z-50 border-b-terminal-comment rounded-sm border-1 border-t-0 border-l-0 border-r-0"
         >
           ← Back to Portfolio
         </BackLink>

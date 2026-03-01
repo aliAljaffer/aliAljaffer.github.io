@@ -123,20 +123,28 @@ spec:
   maxReplicaCount: 20
   pollingInterval: 15
   cooldownPeriod: 30
+  triggers:
   # ...
 ```
 
 A `ScaledObject` targets our consumer deployment (`scaleTargetRef.name: job-consumer`). We'll scale the number of consumers based on the number of jobs currently in the jobs table. We can see that our scaler has a `minReplicaCount: 1` and `maxReplicaCount: 20`, meaning we'll scale up to 20 pods, if needed. We'll run the query every 15 seconds (`pollingInterval: 15`), and after a scaling action, whether up or down, we'll wait 30 seconds before scaling again (`cooldownPeriod: 30`).
 
 ```yaml
-triggers:
-  - type: postgresql
-    metadata:
-      query: "SELECT COUNT(*) FROM jobs"
-      targetQueryValue: "5"
-      activationQueryValue: "2"
-    authenticationRef:
-      name: keda-trigger-auth-postgresql
+piVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: job-consumer-scaler
+  namespace: job-processing
+spec:
+  # ...
+  triggers:
+    - type: postgresql
+      metadata:
+        query: "SELECT COUNT(*) FROM jobs"
+        targetQueryValue: "5"
+        activationQueryValue: "2"
+      authenticationRef:
+        name: keda-trigger-auth-postgresql
 ```
 
 Next, we look at the Trigger section. Our trigger runs a query that counts the number of jobs, and for every 5 jobs, we perform one scaling action. However, if we're going from 0 -> `N` OR going down from `N` -> 0, the `activationQueryValue` is considered. See more: [Activating and Scaling thresholds](https://keda.sh/docs/2.19/concepts/scaling-deployments/#activating-and-scaling-thresholds)
