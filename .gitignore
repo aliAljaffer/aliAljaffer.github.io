@@ -40,5 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+k8s/**
 
-Dockerfile
+/*.md
