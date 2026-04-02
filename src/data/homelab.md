@@ -3,11 +3,11 @@ homelab:
   name: K3s Cluster Homelab
   caseStudyId: homelab
   description: Documenting my homelabbing journey! :)
-  repo: ""
+  repo: "https://github.com/aliAljaffer/homelab"
   url: ""
   images:
   show: true
-  date: "2025-11-05"
+  date: "2026-03-11"
   type: "blog"
 ---
 
@@ -46,12 +46,29 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 - Git Runners with [Action Runner Controller (ARC)](https://github.com/actions/actions-runner-controller): Now I can access private IPs on my network thanks to self-hosting the runners!
 - [Catus Locatus](https://team4.tuwaiqtracker.com/) App
 - [ArgoCD](https://argo-cd.readthedocs.io/en/stable/getting_started/)
+- [Velero](https://github.com/vmware-tanzu/velero/releases/tag/v1.18.0): Cluster backups to AWS S3
+- [ExternalDNS](https://kubernetes-sigs.github.io/external-dns/latest/): Manages my AWS Route53 DNS by adding subdomains I specify in my Ingress objects.
+- [Cert-Manager](https://cert-manager.io/docs/): Manages my SSL certificates for mTLS communication in the cluster
 
-## Helm Charts Used
+## YAML Manifests
 
-- [MetalLB](https://metallb.io/)
+Manifests I use can be found in here: https://github.com/aliAljaffer/homelab
 
 ## Photo updates
+
+### UPDATES Mar. 10, 2026
+
+#### Cert Manager + ExternalDNS in Action
+
+![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/certmanager.png)
+
+All my ingresses:
+
+- Get a Private IP (Thanks to **MetalLB**)
+- Are assigned a DNS record on my domain (Thanks to **ExternalDNS**)
+- Get SSL certificates and communicate over HTTPS (Thanks to **cert-manager**)
+
+Accessing my applications becomes easier!
 
 ### UPDATES Nov. 17, 2025
 
@@ -115,6 +132,8 @@ Ran my first workflow to build and deploy THIS website on a Kubernetes pod! :)
 ![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/l.jpeg)
 
 ## Text Updates
+
+`2026-03-10`: (`dns`) I installed ExternalDNS and Cert Manager - now my apps are managed under my domain with TLS :)
 
 `2025-11-08`: (`ram`) Ram arrived, works wonderfully!
 
