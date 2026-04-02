@@ -10,7 +10,7 @@ const contactData = [
   {
     label: "Resume/CV",
     value:
-      "https://alialjaffer-website.s3.me-south-1.amazonaws.com/documents/ali_aljaffer_cv.pdf",
+      "https://alialjaffer-website-backup.s3.eu-north-1.amazonaws.com/documents/ali_aljaffer_cv.pdf",
     showAs: "Resume",
   },
   {
