@@ -1,14 +1,13 @@
 name: Build and Deploy to S3 Bucket
 on:
-  workflow_dispatch:
-  # push:
-  #   branches: ["main"]
-  #   paths-ignore:
-  #     - public/
-  #     - docs/
-  #     - .github/workflows/
-  # pull_request:
-  #   branches: ["main"]
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - public/
+      - docs/
+      - .github/workflows/
+  pull_request:
+    branches: ["main"]
 env:
   BUILD_DIR_NAME: dist
 permissions:

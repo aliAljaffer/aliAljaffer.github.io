@@ -1,13 +1,13 @@
 name: Build and Deploy to GCP Cloud Storage
 on:
-  push:
-    branches: ["main"]
-    paths-ignore:
-      - public/
-      - docs/
-      - .github/workflows/
-  pull_request:
-    branches: ["main"]
+  # push:
+  #   branches: ["main"]
+  #   paths-ignore:
+  #     - public/
+  #     - docs/
+  #     - .github/workflows/
+  # pull_request:
+  #   branches: ["main"]
   workflow_dispatch:
 env:
   BUILD_DIR_NAME: dist
