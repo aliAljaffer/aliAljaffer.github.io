@@ -1,0 +1,64 @@
+name: Build and Deploy to GCP Cloud Storage
+on:
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - public/
+      - docs/
+      - .github/workflows/
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+env:
+  BUILD_DIR_NAME: dist
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  builder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Cache Next.js build
+        uses: actions/cache@v5
+        with:
+          path: |
+            .next/cache
+            node_modules/.cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx', '**.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+            ${{ runner.os }}-nextjs-
+
+      - run: npm ci
+      - run: npm run build -- --webpack
+      - name: Upload build
+        uses: actions/upload-artifact@v7
+        with:
+          name: build_files
+          path: ${{env.BUILD_DIR_NAME}}
+  deploy:
+    needs: builder
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build
+        uses: actions/download-artifact@v8
+        with:
+          name: build_files
+          path: ./dist
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Sync to Cloud Storage
+        run: |
+          gsutil -m rsync -r -d \
+            -x "images/.*|documents/.*" \
+            ./dist gs://${{ secrets.GCP_BUCKET_NAME }}/
