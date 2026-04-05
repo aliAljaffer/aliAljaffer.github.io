@@ -29,7 +29,7 @@ A practical project I designed to introduce developers to a great solution that 
 
 Github Repository: [keda-project-youtube](https://github.com/aliAljaffer/keda-project-youtube/)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/U5NHGrqzWRg?si=qHiHKvuLt4kNKsTV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe className="aspect-16/9"  src="https://www.youtube.com/embed/U5NHGrqzWRg?si=qHiHKvuLt4kNKsTV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## The Problem
 

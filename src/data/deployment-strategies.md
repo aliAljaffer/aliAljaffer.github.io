@@ -21,7 +21,7 @@ Diving into the most popular deployment strategies for deploying new versions or
 
 YouTube video:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/yYxxVzjvcms" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe className="aspect-16/9"  src="https://www.youtube.com/embed/yYxxVzjvcms" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Excalidraw: [Excalidraw](https://excalidraw.com/#json=IFSo0h9d64vxWMyOo_ztN,ENr1Mtx_44kgoXKHc5befw)
 

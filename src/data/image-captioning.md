@@ -32,11 +32,11 @@ Serverless Alt-Text Generation for better accessibility on the web using AI, bui
 
 Video showcase and architecture discussion:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oZR8Nvrwt4Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe className="aspect-16/9"  src="https://www.youtube.com/embed/oZR8Nvrwt4Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_dbX_a1pUL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe className="aspect-16/9"  src="https://www.youtube.com/embed/_dbX_a1pUL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Try it out! [https://textify.alialjaffer.com](https://textify.alialjaffer.com)
 

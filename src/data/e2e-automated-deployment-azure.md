@@ -28,19 +28,19 @@ No demo, but I did create videos to help other teams implement a similar solutio
 
 ### devops week5 day5 PART 1: EXTRA assignment - building infrastructure with Terraform using modules
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RI0ltdZAduY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe className="aspect-16/9"  src="https://www.youtube.com/embed/RI0ltdZAduY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### devops week5 day5 PART 2: EXTRA assignment - building infrastructure with Terraform using modules
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lrWJ69lk2Rg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe className="aspect-16/9"  src="https://www.youtube.com/embed/lrWJ69lk2Rg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### devops week5 day5 PART 3: EXTRA assignment - building infrastructure with Terraform using modules
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dcckcMC6nko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe className="aspect-16/9"  src="https://www.youtube.com/embed/dcckcMC6nko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### devops week5 day5 PART 4: EXTRA assignment - building infrastructure with Terraform using modules
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BuIeE5QwKoY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe className="aspect-16/9"  src="https://www.youtube.com/embed/BuIeE5QwKoY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## The Problem
 

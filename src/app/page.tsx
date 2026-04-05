@@ -130,17 +130,7 @@ export default function Home() {
                 a DevOps Engineer who is passionate about automation,
                 infrastructure as code, and building scalable, reliable systems.
                 I come from a web development background and absolutely love
-                drawing system architecture diagrams. I&apos;m sharing my
-                experience and case studies for each project as a way of
-                documenting the process for my future self, and to help inspire
-                others that are on this journey! <br />
-                <br />
-                Check out the{" "}
-                <strong className="font-normal text-terminal-strong">
-                  projects
-                </strong>{" "}
-                section for case studies, demos, screenshots, and architecture
-                diagrams.
+                drawing system architecture diagrams.
               </p>
               {/* Certs section within the notes */}
               <Section title="Contact" className="lg:pl-4 ">
@@ -148,7 +138,7 @@ export default function Home() {
               </Section>
             </Section>
             <Section title="Blog Posts" className="lg:pl-4">
-              <em className="pl-6">~ Newest to oldest ~</em>
+              {/* <em className="pl-6">~ Newest to oldest ~</em> */}
               <ProjectList projects={blogPosts!} />
             </Section>
           </div>
