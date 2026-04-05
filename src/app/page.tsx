@@ -131,6 +131,12 @@ export default function Home() {
                 infrastructure as code, and building scalable, reliable systems.
                 I come from a web development background and absolutely love
                 drawing system architecture diagrams.
+                <br />
+                <br />
+                <strong className="font-normal text-terminal-strong ">
+                  ❗️ Some images in blog and project posts are unavailable due
+                  to AWS Bahrain region outage.
+                </strong>
               </p>
               {/* Certs section within the notes */}
               <Section title="Contact" className="lg:pl-4 ">
