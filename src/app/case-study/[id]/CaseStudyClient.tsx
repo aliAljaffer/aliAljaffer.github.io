@@ -2,14 +2,16 @@
 import Layout from "@/app/components/Layout";
 import BackLink from "@/app/components/BackLink";
 import TerminalImage from "@/app/components/TerminalImage";
-import { ImgHTMLAttributes, useEffect } from "react";
+import { useEffect } from "react";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypePrism from "rehype-prism-plus";
 import NotFound from "@/app/not-found";
 import { CaseStudy } from "@/app/types";
-import { inDeadRegion } from "@/app/page";
-
+const DEAD_REGION = "me-south-1";
+export const inDeadRegion = (imageSrc: string) => {
+  return imageSrc.includes(DEAD_REGION);
+};
 interface CaseStudyProps {
   caseStudy: CaseStudy & { content: string };
 }
@@ -55,8 +57,7 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
         </div>
 
         {caseStudy.images?.some(
-          (project_image) =>
-            !inDeadRegion(project_image.url) && project_image.url.length > 1,
+          (project_image) => project_image.url.length > 1,
         ) && (
           <div className="markdown-content">
             <h2>Screenshots</h2>
