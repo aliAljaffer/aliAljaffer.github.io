@@ -5,7 +5,10 @@ import CertsList, { Certification } from "@/app/components/CertsList";
 import ProjectList from "@/app/components/ProjectList";
 // import StatusComment from "@/app/components/StatusComment";
 import { getVisibleCaseStudies } from "@/lib/case-studies";
-
+const DEAD_REGION = "me-south-1";
+export const inDeadRegion = (imageSrc: string) => {
+  return imageSrc.includes(DEAD_REGION);
+};
 const contactData = [
   {
     label: "Resume/CV",

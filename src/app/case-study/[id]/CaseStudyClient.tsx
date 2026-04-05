@@ -2,12 +2,13 @@
 import Layout from "@/app/components/Layout";
 import BackLink from "@/app/components/BackLink";
 import TerminalImage from "@/app/components/TerminalImage";
-import { useEffect } from "react";
+import { ImgHTMLAttributes, useEffect } from "react";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypePrism from "rehype-prism-plus";
 import NotFound from "@/app/not-found";
 import { CaseStudy } from "@/app/types";
+import { inDeadRegion } from "@/app/page";
 
 interface CaseStudyProps {
   caseStudy: CaseStudy & { content: string };
@@ -34,7 +35,11 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
           <Markdown
             rehypePlugins={[rehypeRaw, rehypePrism]}
             components={{
-              img: TerminalImage,
+              img: (props) => {
+                return inDeadRegion(props.src?.toString() + "")
+                  ? null
+                  : TerminalImage(props);
+              },
               p: "div",
               a: (props) => {
                 return (
@@ -50,7 +55,8 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
         </div>
 
         {caseStudy.images?.some(
-          (project_image) => project_image.url.length > 1,
+          (project_image) =>
+            !inDeadRegion(project_image.url) && project_image.url.length > 1,
         ) && (
           <div className="markdown-content">
             <h2>Screenshots</h2>
