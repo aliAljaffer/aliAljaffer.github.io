@@ -130,7 +130,7 @@ jobs:
             --image ${IMAGE_TAG} \
             --platform managed \
             --cpu 1 \
-            --memory 128Mi
+            --memory 128Mi \
             --region ${REGION} \
             --allow-unauthenticated \
             --project ${GCP_PROJECT}
