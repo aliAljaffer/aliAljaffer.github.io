@@ -89,7 +89,7 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: build_files
-          path: ./dist
+          path: dist
 
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
