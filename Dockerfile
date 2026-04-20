@@ -12,7 +12,6 @@ RUN npm ci
 # Copy source code
 COPY . .
 
-ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
 # Build the application
