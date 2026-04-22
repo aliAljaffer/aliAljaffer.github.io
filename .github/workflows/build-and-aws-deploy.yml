@@ -47,7 +47,7 @@ jobs:
 
       - name: Create honeypot .env <evil emoji>
         run: |
-          cat > ${{ env.BUILD_DIR_NAME }}/.env << 'EOF'
+          cat > ${{ env.BUILD_DIR_NAME }}/env.txt << 'EOF'
           # Database Configuration
           DB_HOST=prod-primary.cluster-xyz123.us-east-1.rds.amazonaws.com
           DB_USER=admin_user
@@ -111,7 +111,7 @@ jobs:
             
       - name: Sync Honeypot too
         run: |
-          aws s3 cp ./${{env.BUILD_DIR_NAME}}/.env s3://${{ secrets.AWS_S3_BUCKET}}/.env \
+          aws s3 cp ./${{env.BUILD_DIR_NAME}}/env.txt s3://${{ secrets.AWS_S3_BUCKET}}/env.txt \
             --content-type "text/plain" \
             --metadata-directive REPLACE
 
