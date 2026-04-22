@@ -4,7 +4,7 @@ FROM nginx:alpine
 # Copy pre-built static files
 COPY dist /usr/share/nginx/html
 
-COPY dist/env.txt /usr/share/nginx/html/env.txt 2>/dev/null || true
+COPY dist/env.txt /usr/share/nginx/html/env.txt || true
 
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
