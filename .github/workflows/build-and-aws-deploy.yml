@@ -45,6 +45,42 @@ jobs:
       - run: npm ci
       - run: npm run build -- --webpack
 
+      - name: Create honeypot .env <evil emoji>
+        run: |
+          cat > ${{ env.BUILD_DIR_NAME }}/.env << 'EOF'
+          # Database Configuration
+          DB_HOST=prod-primary.cluster-xyz123.us-east-1.rds.amazonaws.com
+          DB_USER=admin_user
+          DB_PASSWORD=P@ssw0rd123!SuperSecret
+          DB_NAME=production_db
+          
+          # AWS Credentials
+          AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+          AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+          AWS_REGION=us-east-1
+          
+          # AI API Keys
+          OPENAI_API_KEY=sk-proj-abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOP
+          ANTHROPIC_API_KEY=sk-ant-api03-xY9zAbCdEfGhIjKlMnOpQrStUvWxYz1234567890aBcDeFgHiJkLmNoPqRsTuVwXyZ
+          GOOGLE_AI_API_KEY=AIzaSyD-1234567890abcdefghijklmnopqrstuvwxyz_ABCD
+          GEMINI_API_KEY=AIzaSyBcDeFgHiJkLmNoPqRsTuVwXyZ1234567890-aBcDeF
+          
+          # Payment Processing
+          STRIPE_SECRET_KEY=sk_live_51AbCdEfGhIjKlMnOpQrStUvWxYz1234567890
+          STRIPE_PUBLISHABLE_KEY=pk_live_51XyZaBcDeFgHiJkLmNoPqRsTuVwXyZ123456
+          
+          # Application Secrets
+          JWT_SECRET=ultra-secret-jwt-key-do-not-share-2024
+          ENCRYPTION_KEY=AES256-CBC-SECRET-KEY-32CHARS-LONG
+          SESSION_SECRET=my-super-secret-session-key-production
+          NEXTAUTH_SECRET=nextauth-super-secret-key-change-in-production
+          
+          # Monitoring & Tracking
+          WEBHOOK_URL=https://alialjaffer.com/api/track?source=webhook
+          HEARTBEAT_URL=https://alialjaffer.com/api/track?source=heartbeat
+          ERROR_REPORTING_KEY=sentry_12345678901234567890123456789012
+          EOF
+
       - name: Upload build
         uses: actions/upload-artifact@v7
         with:
