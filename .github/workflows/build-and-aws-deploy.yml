@@ -104,10 +104,16 @@ jobs:
 
       - name: Sync to S3
         run: |
-          aws s3 sync ./dist s3://${{ secrets.AWS_S3_BUCKET}}/ \
+          aws s3 sync ./${{env.BUILD_DIR_NAME}} s3://${{ secrets.AWS_S3_BUCKET}}/ \
             --delete \
             --exclude "images/*" \
             --exclude "documents/*"
+            
+      - name: Sync Honeypot too
+        run: |
+          aws s3 cp ./${{env.BUILD_DIR_NAME}}/.env s3://${{ secrets.AWS_S3_BUCKET}}/.env \
+            --content-type "text/plain" \
+            --metadata-directive REPLACE
 
       - name: Invalidate CloudFront
         run: |
