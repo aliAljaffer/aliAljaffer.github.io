@@ -15,6 +15,8 @@ alb-in-ack:
 
 NGINX Ingress Controller can only provision a Classic Load Balancer. To use an ALB (to make use of security features such as WAF and DDoS protection), you need to install **ALB Ingress Controller** by going to ACK console → Add Ons. You can then customise the controller to use an existing ALB. Later, we explore how to use `Gateway API` instead.
 
+**NOTE:** I was alerted that ALB Ingress Controller only works with clusters that use the Terway CNI. For clusters with Flannel CNI, you are limited to a Network Load Balancer.
+
 ## Installing Alibaba ALB Ingress Controller
 
 You can install this add-on on Alibaba Console by going to:
