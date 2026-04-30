@@ -23,7 +23,7 @@ author-clock:
   type: "blog"
 ---
 
-# Author Clock
+# Author Clock/Entertainment System
 
 Publish date: `2025-09-05`
 
