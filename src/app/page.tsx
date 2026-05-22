@@ -9,8 +9,7 @@ import { getVisibleCaseStudies } from "@/lib/case-studies";
 const contactData = [
   {
     label: "Resume/CV",
-    value:
-      "https://storage.googleapis.com/alialjaffer-portfolio/documents/ali_aljaffer_cv.pdf",
+    value: "https://resume.alialjaffer.com",
     showAs: "Resume",
   },
   {
