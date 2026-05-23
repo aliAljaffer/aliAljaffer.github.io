@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 interface ContactItem {
   label: string;
   value: string;
@@ -20,13 +18,13 @@ export default function ContactList({
       {contacts.map((contact, index) => (
         <li key={index} className="before:content-['-_'] mb-2">
           {/* {contact.label}:{" "} */}
-          <Link
+          <a
             className="text-terminal-link underline  hover:no-underline hover:text-shadow-terminal-link"
             href={contact.value}
             target="_blank"
           >
             {contact.showAs}
-          </Link>
+          </a>
         </li>
       ))}
     </ul>

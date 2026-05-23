@@ -10,13 +10,13 @@ const contactData = [
   {
     label: "Resume/CV",
     value: "https://resume.alialjaffer.com",
-    showAs: "Resume",
+    showAs: "resume",
   },
-  {
-    label: "Email",
-    value: "ali.h.aljaffer@gmail.com",
-    showAs: "ali.h.aljaffer@gmail.com",
-  },
+  // {
+  //   label: "Email",
+  //   value: "ali.h.aljaffer@gmail.com",
+  //   showAs: "ali.h.aljaffer@gmail.com",
+  // },
   {
     label: "GitHub",
     value: "https://github.com/alialjaffer",
