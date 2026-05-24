@@ -106,7 +106,7 @@ const certsData: Certification[] = [
     wip: false,
   },
   {
-    certification: "Professional Cloud Architect",
+    certification: "GCP Professional Cloud Architect",
     provider: "Google Cloud Platform",
     date: "May 2026",
     order: 10,
