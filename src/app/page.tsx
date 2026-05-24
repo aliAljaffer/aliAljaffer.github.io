@@ -105,6 +105,13 @@ const certsData: Certification[] = [
     order: 9,
     wip: false,
   },
+  {
+    certification: "Professional Cloud Architect",
+    provider: "Google Cloud Platform",
+    date: "May 2026",
+    order: 10,
+    wip: false,
+  },
 ];
 
 const projectsData = getVisibleCaseStudies("project");
