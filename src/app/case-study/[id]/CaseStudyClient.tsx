@@ -2,8 +2,9 @@
 import Layout from "@/app/components/Layout";
 import BackLink from "@/app/components/BackLink";
 import TerminalImage from "@/app/components/TerminalImage";
+import ExcalidrawViewer from "@/app/components/ExcalidrawViewer";
 import { useEffect } from "react";
-import Markdown from "react-markdown";
+import Markdown, { type Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypePrism from "rehype-prism-plus";
 import NotFound from "@/app/not-found";
@@ -36,21 +37,26 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
         <div className="markdown-content prose prose-invert">
           <Markdown
             rehypePlugins={[rehypeRaw, rehypePrism]}
-            components={{
-              img: (props) => {
-                return inDeadRegion(props.src?.toString() + "")
-                  ? null
-                  : TerminalImage(props);
-              },
-              p: "div",
-              a: (props) => {
-                return (
-                  <a {...props} target="_blank">
-                    {props.children}
-                  </a>
-                );
-              },
-            }}
+            components={
+              {
+                img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
+                  return inDeadRegion(props.src?.toString() + "")
+                    ? null
+                    : TerminalImage(props);
+                },
+                p: "div",
+                a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+                  return (
+                    <a {...props} target="_blank">
+                      {props.children}
+                    </a>
+                  );
+                },
+                excalidraw: (props: { src?: string; height?: string }) => (
+                  <ExcalidrawViewer src={props.src} height={props.height} />
+                ),
+              } as Components
+            }
           >
             {caseStudy.content}
           </Markdown>
