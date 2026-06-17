@@ -17,6 +17,10 @@ certification-roadmap:
 
 Due to the ABUNDANCE of certifications, it sometimes gets too confusing knowing where to start in the cloud world. I make that decision -a bit- easier for you.
 
+## Video
+
+<iframe className="aspect-16/9"  src="https://www.youtube.com/embed/PBMwOnIjkng" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Excalidraw
 
 Browse away!
