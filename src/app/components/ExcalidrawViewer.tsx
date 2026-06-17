@@ -19,12 +19,36 @@ type SceneData = {
   files?: Record<string, unknown>;
 };
 
+type ExcalidrawAPI = {
+  getAppState: () => { width: number; scrollX: number; zoom: { value: number } };
+  updateScene: (scene: { appState: Record<string, unknown> }) => void;
+};
+
 export default function ExcalidrawViewer({
   src,
   height = 500,
 }: ExcalidrawViewerProps) {
   const [data, setData] = useState<SceneData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [api, setApi] = useState<ExcalidrawAPI | null>(null);
+
+  useEffect(() => {
+    if (!api || !data) return;
+    let cancelled = false;
+    const id = window.setTimeout(() => {
+      if (cancelled) return;
+      const s = api.getAppState();
+      api.updateScene({
+        appState: {
+          scrollX: s.scrollX + (s.width * 3) / s.zoom.value,
+        },
+      });
+    }, 0);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(id);
+    };
+  }, [api, data]);
 
   useEffect(() => {
     if (!src) {
@@ -63,12 +87,14 @@ export default function ExcalidrawViewer({
     >
       {data && (
         <Excalidraw
+          excalidrawAPI={(a) => setApi(a as unknown as ExcalidrawAPI)}
           initialData={{
             elements: (data.elements ?? []) as never,
             appState: {
               ...(data.appState ?? {}),
               viewModeEnabled: true,
               zenModeEnabled: true,
+              zoom: { value: 0.2 },
             } as never,
             files: (data.files ?? {}) as never,
             scrollToContent: true,

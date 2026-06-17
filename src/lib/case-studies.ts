@@ -5,7 +5,7 @@ import fs from "fs";
 import matter from "gray-matter";
 
 export function getVisibleCaseStudies(
-  caseType: "project" | "blog" = "project"
+  caseType: "project" | "blog" = "project",
 ): CaseStudy[] | null {
   const allStudies = getAllCaseStudies();
   if (!allStudies) return null;
@@ -33,7 +33,7 @@ export function getAllCaseStudies(): CaseStudy[] | null {
       // the project type
       if (data[caseStudyId]?.show != false && !isCaseStudy(data[caseStudyId])) {
         throw new Error(
-          "FrontMatter shape does not match a CaseStudy shape for file" + file
+          "FrontMatter shape does not match a CaseStudy shape for file" + file,
         );
       }
       return {
@@ -63,12 +63,13 @@ function isCaseStudy(data: unknown): data is CaseStudy {
     typeof obj.description === "string" &&
     typeof obj.show === "boolean" &&
     obj.images
-    ? Array.isArray(obj.images) &&
+    ? (Array.isArray(obj.images) &&
         obj.images.every(
           (img: ProjectImage) =>
             typeof img.caption === "string" &&
             typeof img["alt-text"] === "string" &&
-            typeof img.url === "string"
-        )
+            typeof img.url === "string",
+        )) ||
+        (Array.isArray(obj.images) && obj.images.length == 0)
     : true;
 }
