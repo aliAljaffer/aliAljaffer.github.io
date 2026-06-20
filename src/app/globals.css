@@ -31,6 +31,10 @@
   box-sizing: border-box;
 }
 
+a, button, [role="button"] {
+  cursor: pointer;
+}
+
 body {
   margin: 0;
   padding: 0;

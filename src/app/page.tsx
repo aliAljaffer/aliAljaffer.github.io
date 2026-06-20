@@ -132,16 +132,13 @@ export default function Home() {
       </a>
 
       {/* Fixed theme toggle — top-right, safe-area aware */}
-      <div
-        className="fixed top-0 right-0 z-50 bg-neutral-950 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950 px-4"
+      <ThemeToggle
+        className="fixed top-0 right-0 z-50 bg-neutral-950 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950 pb-3 px-4"
         style={{
           paddingTop: "max(0.75rem, env(safe-area-inset-top))",
           paddingRight: "max(1rem, env(safe-area-inset-right))",
-          paddingBottom: "0.75rem",
         }}
-      >
-        <ThemeToggle />
-      </div>
+      />
 
       {/* Body — 2-col grid: About/Certs row 1, Blog/Projects row 2
           Mobile order: About → Certs → Blog → Projects             */}

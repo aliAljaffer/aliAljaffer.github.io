@@ -29,7 +29,7 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
     <Layout>
       {/* Nav bar — matches editorial toggle style */}
       <div className="sticky top-0 left-0 bg-neutral-950 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950 w-full px-6 py-4 z-50 flex justify-between items-center">
-        <BackLink href="/">← Portfolio</BackLink>
+        <BackLink href="/">← Home</BackLink>
         <ThemeToggle />
       </div>
 
