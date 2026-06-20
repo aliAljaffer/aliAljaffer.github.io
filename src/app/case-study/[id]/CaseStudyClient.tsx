@@ -3,6 +3,7 @@ import Layout from "@/app/components/Layout";
 import BackLink from "@/app/components/BackLink";
 import TerminalImage from "@/app/components/TerminalImage";
 import ExcalidrawViewer from "@/app/components/ExcalidrawViewer";
+import ThemeToggle from "@/app/components/ThemeToggle";
 import { useEffect } from "react";
 import Markdown, { type Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -26,14 +27,13 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
   if (!caseStudy) return NotFound({ message: "Case Study not found" });
   return (
     <Layout>
-      <div className="max-w-4xl xl:max-w-304 mx-auto p-8 relative">
-        <BackLink
-          href="/"
-          className="sticky top-0 left-0 bg-terminal-bg w-full pb-5 pt-4 z-50 border-b-terminal-comment rounded-sm border-1 border-t-0 border-l-0 border-r-0"
-        >
-          ← Back to Portfolio
-        </BackLink>
+      {/* Nav bar — matches editorial toggle style */}
+      <div className="sticky top-0 left-0 bg-neutral-950 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950 w-full px-6 py-4 z-50 flex justify-between items-center">
+        <BackLink href="/">← Portfolio</BackLink>
+        <ThemeToggle />
+      </div>
 
+      <div className="max-w-3xl mx-auto px-6 py-10">
         <div className="markdown-content prose prose-invert">
           <Markdown
             rehypePlugins={[rehypeRaw, rehypePrism]}

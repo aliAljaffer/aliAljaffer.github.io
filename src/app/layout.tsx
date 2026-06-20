@@ -2,6 +2,9 @@ import type React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 import { Roboto_Mono } from "next/font/google";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
@@ -24,7 +27,15 @@ export default function RootLayout({
       className={Roboto.className}
       suppressHydrationWarning
     >
-      <body className="bg-terminal-bg">{children}</body>
+      <head>
+        {/* Prevent flash of wrong theme before React hydrates */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme:dark)').matches;if(s==='dark'||(s===null&&p))document.documentElement.classList.add('dark')}catch(e){}})()`,
+          }}
+        />
+      </head>
+      <body className="bg-neutral-50 dark:bg-neutral-900">{children}</body>
       <GoogleAnalytics gaId="G-CWKB4GRTEB" />
     </html>
   );

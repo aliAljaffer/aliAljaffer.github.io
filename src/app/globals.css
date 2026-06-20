@@ -1,15 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  --color-terminal-bg: #1a1a1a;
-  --color-terminal-text: #d4c5b0;
-  --color-terminal-accent: #c9a876;
-  --color-terminal-link: #7a9b76;
-  --color-terminal-strong: #b8860b;
-  --color-terminal-comment: #8a8a8a;
-  --color-terminal-border: #2a2a2a;
-  --color-terminal-highlight: #4682b4;
+  --color-terminal-bg: #ffffff;
+  --color-terminal-text: #111111;
+  --color-terminal-accent: #000000;
+  --color-terminal-link: #000000;
+  --color-terminal-strong: #000000;
+  --color-terminal-comment: #6b7280;
+  --color-terminal-border: #e5e7eb;
+  --color-terminal-highlight: #1d4ed8;
+}
+
+/* Dark mode overrides for terminal CSS variables (used by case study pages) */
+.dark {
+  --color-terminal-bg: #171717;
+  --color-terminal-text: #f5f5f5;
+  --color-terminal-accent: #f5f5f5;
+  --color-terminal-link: #f5f5f5;
+  --color-terminal-strong: #f5f5f5;
+  --color-terminal-comment: #a3a3a3;
+  --color-terminal-border: #262626;
+  --color-terminal-highlight: #60a5fa;
 }
 
 * {
@@ -20,6 +34,11 @@
 body {
   margin: 0;
   padding: 0;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 .markdown-content {
   @apply leading-relaxed text-sm sm:text-base lg:text-lg xl:text-xl;
@@ -84,97 +103,140 @@ body {
   @apply list-decimal;
 }
 
+/* ── Inline code ─────────────────────────────────────────── */
 .markdown-content code {
-  @apply px-1 py-0.5 rounded text-xs sm:text-sm lg:text-base;
-  background-color: var(--color-terminal-border);
-  color: var(--color-terminal-strong);
+  @apply px-1 py-0.5 text-xs sm:text-sm;
+  background-color: rgba(175, 184, 193, 0.2);
+  color: #cf222e;
+  border-radius: 0;
 }
 
+.dark .markdown-content code {
+  background-color: rgba(110, 118, 129, 0.4);
+  color: #ff7b72;
+}
+
+/* ── Code block ──────────────────────────────────────────── */
 .markdown-content pre {
-  @apply p-4 rounded-md overflow-x-auto my-4 border;
-  background-color: var(--color-terminal-border);
-  color: var(--color-terminal-text);
-  border-color: var(--color-terminal-comment);
+  @apply overflow-x-auto my-6 text-sm;
+  position: relative;
+  padding: 1rem;
+  background-color: #f6f8fa;
+  color: #24292f;
+  border: 1px solid #d0d7de;
+  border-radius: 0;
+}
+
+.dark .markdown-content pre {
+  background-color: #0d1117;
+  color: #e6edf3;
+  border-color: #30363d;
+}
+
+/* Language label */
+.markdown-content pre[data-language] {
+  padding-top: 2.25rem;
+}
+
+.markdown-content pre[data-language]::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6e7781;
+  border-bottom: 1px solid #d0d7de;
+  border-left: 1px solid #d0d7de;
+}
+
+.dark .markdown-content pre[data-language]::before {
+  color: #8b949e;
+  border-color: #30363d;
 }
 
 .markdown-content pre code {
-  @apply p-0 rounded-none;
+  @apply p-0;
   background-color: transparent;
   color: inherit;
   font-size: inherit;
+  border-radius: 0;
 }
 
-/* Syntax Highlighting - Earth & Ocean Palette */
-/* Comments */
+/* Ensure dark-mode inline-code background never bleeds into code blocks */
+.dark .markdown-content pre code {
+  background-color: transparent;
+}
+
+/* Reset all spans and code-line elements inside code blocks */
+.markdown-content pre .code-line,
+.markdown-content pre span {
+  background-color: transparent;
+}
+
+/* ── Syntax highlighting — GitHub Light ──────────────────── */
 .markdown-content pre code .token.comment,
 .markdown-content pre code .token.prolog,
 .markdown-content pre code .token.doctype,
 .markdown-content pre code .token.cdata {
-  color: #7f7f7f;
+  color: #6e7781;
   font-style: italic;
 }
 
-/* Punctuation */
 .markdown-content pre code .token.punctuation {
-  color: #a0a0a0;
-  opacity: 0.7;
+  color: #24292f;
+  opacity: 1;
 }
 
-/* Keywords (if, else, function, return, etc.) */
 .markdown-content pre code .token.keyword,
-.markdown-content pre code .token.atrule,
-.markdown-content pre code .token.attr-value {
-  color: #9d8ab8;
+.markdown-content pre code .token.atrule {
+  color: #cf222e;
   font-weight: 600;
 }
 
-/* Strings */
+.markdown-content pre code .token.attr-value,
 .markdown-content pre code .token.string,
 .markdown-content pre code .token.char,
 .markdown-content pre code .token.builtin,
 .markdown-content pre code .token.inserted {
-  color: #6fbf9f;
+  color: #0a3069;
 }
 
-/* Functions and Classes */
 .markdown-content pre code .token.function,
 .markdown-content pre code .token.class-name {
-  color: #d47c5f;
-  font-weight: 500;
+  color: #8250df;
 }
 
-/* Numbers */
 .markdown-content pre code .token.number,
 .markdown-content pre code .token.boolean,
 .markdown-content pre code .token.constant {
-  color: #5eb3b3;
+  color: #0550ae;
 }
 
-/* Operators */
 .markdown-content pre code .token.operator,
 .markdown-content pre code .token.entity,
 .markdown-content pre code .token.url {
-  color: #c9956b;
+  color: #cf222e;
 }
 
-/* Properties and Attributes */
 .markdown-content pre code .token.property,
 .markdown-content pre code .token.tag,
 .markdown-content pre code .token.selector,
 .markdown-content pre code .token.attr-name,
 .markdown-content pre code .token.symbol {
-  color: #8e9fb8;
+  color: #116329;
 }
 
-/* Special cases */
 .markdown-content pre code .token.regex,
 .markdown-content pre code .token.important,
 .markdown-content pre code .token.variable {
-  color: #c9956b;
+  color: #953800;
 }
 
 .markdown-content pre code .token.deleted {
-  color: #d47c5f;
+  color: #82071e;
 }
 
 .markdown-content pre code .token.important,
@@ -184,6 +246,69 @@ body {
 
 .markdown-content pre code .token.italic {
   font-style: italic;
+}
+
+/* ── Syntax highlighting — GitHub Dark ───────────────────── */
+.dark .markdown-content pre code .token.comment,
+.dark .markdown-content pre code .token.prolog,
+.dark .markdown-content pre code .token.doctype,
+.dark .markdown-content pre code .token.cdata {
+  color: #8b949e;
+  font-style: italic;
+}
+
+.dark .markdown-content pre code .token.punctuation {
+  color: #e6edf3;
+  opacity: 1;
+}
+
+.dark .markdown-content pre code .token.keyword,
+.dark .markdown-content pre code .token.atrule {
+  color: #ff7b72;
+  font-weight: 600;
+}
+
+.dark .markdown-content pre code .token.attr-value,
+.dark .markdown-content pre code .token.string,
+.dark .markdown-content pre code .token.char,
+.dark .markdown-content pre code .token.builtin,
+.dark .markdown-content pre code .token.inserted {
+  color: #a5d6ff;
+}
+
+.dark .markdown-content pre code .token.function,
+.dark .markdown-content pre code .token.class-name {
+  color: #d2a8ff;
+}
+
+.dark .markdown-content pre code .token.number,
+.dark .markdown-content pre code .token.boolean,
+.dark .markdown-content pre code .token.constant {
+  color: #79c0ff;
+}
+
+.dark .markdown-content pre code .token.operator,
+.dark .markdown-content pre code .token.entity,
+.dark .markdown-content pre code .token.url {
+  color: #ff7b72;
+}
+
+.dark .markdown-content pre code .token.property,
+.dark .markdown-content pre code .token.tag,
+.dark .markdown-content pre code .token.selector,
+.dark .markdown-content pre code .token.attr-name,
+.dark .markdown-content pre code .token.symbol {
+  color: #7ee787;
+}
+
+.dark .markdown-content pre code .token.regex,
+.dark .markdown-content pre code .token.important,
+.dark .markdown-content pre code .token.variable {
+  color: #ffa657;
+}
+
+.dark .markdown-content pre code .token.deleted {
+  color: #ffa198;
 }
 
 .markdown-content a {
@@ -244,6 +369,44 @@ figure > div > div {
 
 .markdown-content td {
   color: var(--color-terminal-text);
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.scrollbar-visible {
+  scrollbar-width: thin;
+  scrollbar-color: #a3a3a3 #e5e5e5;
+}
+
+.scrollbar-visible::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-visible::-webkit-scrollbar-track {
+  background: #e5e5e5;
+}
+
+.scrollbar-visible::-webkit-scrollbar-thumb {
+  background-color: #a3a3a3;
+}
+
+.dark .scrollbar-visible {
+  scrollbar-color: #525252 #262626;
+}
+
+.dark .scrollbar-visible::-webkit-scrollbar-track {
+  background: #262626;
+}
+
+.dark .scrollbar-visible::-webkit-scrollbar-thumb {
+  background-color: #525252;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .bounce-dot {
