@@ -1,178 +1,238 @@
-import Layout from "@/app/components/Layout";
-import Section from "@/app/components/Section";
-import ContactList from "@/app/components/ContactList";
-import CertsList, { Certification } from "@/app/components/CertsList";
-import ProjectList from "@/app/components/ProjectList";
-// import StatusComment from "@/app/components/StatusComment";
+import type { ComponentType, ReactNode } from "react";
+import Link from "next/link";
+import ThemeToggle from "@/app/components/ThemeToggle";
 import { getVisibleCaseStudies } from "@/lib/case-studies";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faFileLines } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAws,
+  faGithub,
+  faLinkedin,
+  faXTwitter,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+import { SiGooglecloud, SiTerraform, SiKubernetes } from "react-icons/si";
+import ScrollableList from "@/app/components/ScrollableList";
 
-const contactData = [
+type CertIcon = ComponentType<{ className?: string }>;
+
+const contactData: {
+  label: string;
+  handle: string;
+  value: string;
+  icon: IconDefinition;
+}[] = [
   {
-    label: "Resume/CV",
+    label: "Resume",
+    handle: "resume.alialjaffer.com",
     value: "https://resume.alialjaffer.com",
-    showAs: "resume",
+    icon: faFileLines,
   },
-  // {
-  //   label: "Email",
-  //   value: "ali.h.aljaffer@gmail.com",
-  //   showAs: "ali.h.aljaffer@gmail.com",
-  // },
   {
     label: "GitHub",
+    handle: "github/aliAljaffer",
     value: "https://github.com/alialjaffer",
-    showAs: "github/aliAljaffer",
+    icon: faGithub,
   },
   {
     label: "LinkedIn",
+    handle: "linkedin/aliAljaffer",
     value: "https://linkedin.com/in/alialjaffer",
-    showAs: "linkedin/aliAljaffer",
+    icon: faLinkedin,
   },
   {
     label: "X",
+    handle: "x/aliAljaffer",
     value: "https://x.com/alialjaffer",
-    showAs: "x/aliAljaffer",
+    icon: faXTwitter,
   },
   {
     label: "YouTube",
+    handle: "youtube/aliAljaffer",
     value: "https://www.youtube.com/@aliAljaffer",
-    showAs: "youtube/aliAljaffer",
+    icon: faYoutube,
   },
-  // {
-  //   label: "Credly",
-  //   value: "https://www.credly.com/users/ali-aljaffer",
-  //   showAs: "credly/ali-aljaffer",
-  // },
 ];
 
-const certsData: Certification[] = [
-  // {
-  //   certification: "Certified Cloud Practitioner",
-  //   provider: "AWS",
-  //   date: "Jan 2025",
-  //   order: 1,
-  // },
-  // {
-  //   certification: "AZ-900 Azure Fundamentals",
-  //   provider: "Microsoft",
-  //   date: "Jun 2025",
-  //   order: 2,
-  // },
-  // {
-  //   certification: "SC-900 Security, Compliance, and Identity Fundamentals",
-  //   provider: "Microsoft",
-  //   date: "Jun 2025",
-  //   order: 3,
-  // },
+const faAwsIcon: CertIcon = ({ className }) => (
+  <FontAwesomeIcon icon={faAws} className={className} />
+);
+
+const certsData: {
+  name: string;
+  date: string;
+  order: number;
+  url: string;
+  Icon?: CertIcon;
+}[] = [
   {
-    certification: "AWS Solutions Architect - Associate",
-    provider: "AWS",
-    date: "July 2025",
-    order: 4,
-    wip: false,
-  },
-  {
-    certification: "Terraform Associate",
-    provider: "Hashicorp",
-    date: "Aug 2025",
-    order: 5,
-    wip: false,
-  },
-  {
-    certification: "Certified Kubernetes Application Developer",
-    provider: "Linux Foundation",
-    date: "Dec 2025",
-    order: 6,
-    wip: false,
-  },
-  {
-    certification: "Certified Kubernetes Administrator",
-    provider: "Linux Foundation",
-    date: "Dec 2025",
-    order: 7,
-    wip: false,
-  },
-  // {
-  //   certification: "DASA DevOps Fundamentals",
-  //   provider: "DevOps Agile Skills Association",
-  //   date: "Jan 2026",
-  //   order: 8,
-  //   wip: false,
-  // },
-  {
-    certification: "Certified Kubernetes Security Specialist",
-    provider: "Linux Foundation",
-    date: "Feb 2026",
-    order: 9,
-    wip: false,
-  },
-  {
-    certification: "GCP Professional Cloud Architect",
-    provider: "Google Cloud Platform",
+    name: "GCP Professional Cloud Architect",
     date: "May 2026",
     order: 10,
-    wip: false,
+    url: "https://www.credly.com/badges/f576ddd7-17b9-4a15-aa0e-86dca295cc37/public_url",
+    Icon: SiGooglecloud as CertIcon,
+  },
+  {
+    name: "Certified Kubernetes Security Specialist",
+    date: "Feb 2026",
+    order: 9,
+    url: "https://www.credly.com/badges/6d3a6109-76a3-4873-9305-5679d128f6ba/public_url",
+    Icon: SiKubernetes as CertIcon,
+  },
+  {
+    name: "Certified Kubernetes Administrator",
+    date: "Dec 2025",
+    order: 7,
+    url: "https://www.credly.com/badges/460fb1fe-342c-45e0-8b17-c6225e43ec7a/public_url",
+    Icon: SiKubernetes as CertIcon,
+  },
+  {
+    name: "Certified Kubernetes Application Developer",
+    date: "Dec 2025",
+    order: 6,
+    url: "https://www.credly.com/badges/574c7848-77e6-4c25-a1b6-d7d4f70a130c/public_url",
+    Icon: SiKubernetes as CertIcon,
+  },
+  {
+    name: "Terraform Associate",
+    date: "Aug 2025",
+    order: 5,
+    url: "https://www.credly.com/badges/2abf40d1-88d1-4d75-a79e-73d1c7ec94d9/public_url",
+    Icon: SiTerraform as CertIcon,
+  },
+  {
+    name: "AWS Solutions Architect – Associate",
+    date: "Jul 2025",
+    order: 4,
+    url: "https://www.credly.com/badges/90df08a0-de5d-4eab-9ed3-013e17556f71/public_url",
+    Icon: faAwsIcon,
   },
 ];
 
-const projectsData = getVisibleCaseStudies("project");
-const blogPosts = getVisibleCaseStudies("blog");
+function SectionLabel({ children }: { children: ReactNode }) {
+  return (
+    <h2 className="text-[10px] uppercase tracking-[0.2em] font-bold border-b border-neutral-950 dark:border-neutral-100 pb-2 mb-3">
+      {children}
+    </h2>
+  );
+}
 
 export default function Home() {
-  if (!projectsData) return <p>Error occurred with projects data.</p>;
+  const projects = getVisibleCaseStudies("project") ?? [];
+  const blogPosts = getVisibleCaseStudies("blog") ?? [];
   return (
-    <Layout className="text-base sm:text-lg px-6 py-5 md:px-8 md:py-8">
-      {/* Large screen: centered container with max width */}
-      <div className=" lg:flex lg:items-center lg:justify-center lg:min-h-[calc(100vh-4rem)] ">
-        <div className="md:flex md:flex-wrap md:w-full lg:max-w-304 md:mx-auto max-h-fit">
-          {/* About Section */}
+    <div className="bg-neutral-50 dark:bg-neutral-900 text-neutral-950 dark:text-neutral-50 font-mono">
+      {/* Skip to main content */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-neutral-950 focus:text-neutral-50 dark:focus:bg-neutral-50 dark:focus:text-neutral-950 focus:px-4 focus:py-2 focus:text-sm focus:font-bold"
+      >
+        Skip to main content
+      </a>
 
-          <div className="flex flex-col gap-2 justify-start items-start w-full md:w-1/2">
-            <Section title="About" className="w-full lg:pl-4">
-              <p className="ml-6 mt-4 mb-4 max-w-[560px] md:max-w-fit leading-5 md:ml-6">
-                Hi, I&apos;m{" "}
-                <strong className="font-normal text-terminal-strong">
-                  Ali Aljaffer 🙋🏽‍♂️😊&nbsp;
-                </strong>
-                a DevOps Engineer who is passionate about automation,
-                infrastructure as code, and building scalable, reliable systems.
-                I come from a web development background and absolutely love
-                drawing system architecture diagrams.
-                <br />
-                <br />
-                <strong className="font-normal text-terminal-strong ">
-                  ❗️ Some images in blog and project posts are unavailable due
-                  to AWS Bahrain region outage.
-                </strong>
-              </p>
-              {/* Certs section within the notes */}
-              <Section title="Contact" className="lg:pl-4 ">
-                <ContactList contacts={contactData} />
-              </Section>
-            </Section>
-            <Section title="Blog Posts" className="lg:pl-4">
-              {/* <em className="pl-6">~ Newest to oldest ~</em> */}
-              <ProjectList projects={blogPosts!} />
-            </Section>
-          </div>
-          {/* Projects Section */}
-          <Section title="Projects" className="w-full md:w-1/2 lg:pl-4">
-            <ProjectList projects={projectsData} />
-            <Section title="Certifications">
-              <CertsList certs={certsData} />
-            </Section>
-          </Section>
-          {/* Status/Notes Section */}
+      {/* Fixed theme toggle — top-right, safe-area aware */}
+      <ThemeToggle
+        className="fixed top-0 right-0 z-50 bg-neutral-950 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950 pb-3 px-4"
+        style={{
+          paddingTop: "max(0.75rem, env(safe-area-inset-top))",
+          paddingRight: "max(1rem, env(safe-area-inset-right))",
+        }}
+      />
 
-          {/* <section className="xl:w-full mb-4">
-            <div className="ml-6 mt-4 mb-4 md:ml-6 text-sm lg:text-base">
-              <StatusComment>
-                Currently seeking opportunities in System Administration, Cloud
-                Engineering and DevOps roles
-              </StatusComment>
-            </div>
-          </section> */}
-        </div>
-      </div>
-    </Layout>
+      {/* Body — 2-col grid: About/Certs row 1, Blog/Projects row 2
+          Mobile order: About → Certs → Blog → Projects             */}
+      <main id="main-content" className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto_1fr] md:min-h-dvh">
+
+        {/* About — col 1, row 1 */}
+        <section
+          aria-labelledby="about-heading"
+          className="p-6 pt-14 md:pt-6 md:border-r border-neutral-950 dark:border-neutral-100"
+        >
+          <SectionLabel><span id="about-heading">About</span></SectionLabel>
+          <p className="font-bold text-sm mb-0.5">Ali Aljaffer</p>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 mb-3">DevOps Engineer</p>
+          <p className="text-sm leading-5 text-neutral-700 dark:text-neutral-300">
+            Passionate about automation, infrastructure as code, and building
+            scalable, reliable systems. I come from a web development background
+            and absolutely love drawing system architecture diagrams.
+          </p>
+          <nav aria-label="Social links" className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+            {contactData.map((c) => (
+              <a
+                key={c.label}
+                href={c.value}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={c.label}
+                className="flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50"
+              >
+                <FontAwesomeIcon icon={c.icon} className="w-3.5 h-3.5" />
+                {c.handle}
+              </a>
+            ))}
+          </nav>
+        </section>
+
+        {/* Certifications — col 2, row 1 */}
+        <section aria-labelledby="certs-heading" className="p-6">
+          <SectionLabel><span id="certs-heading">Certifications</span></SectionLabel>
+          <ScrollableList className="space-y-2 md:max-h-[40vh] md:overflow-y-auto scrollbar-visible">
+            {certsData.sort((a, b) => b.order - a.order).map((cert, i) => (
+              <div key={i} className="flex justify-between gap-6 text-sm">
+                <a href={cert.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:underline">
+                  {cert.Icon && <cert.Icon className="w-3.5 h-3.5 shrink-0" />}
+                  {cert.name}
+                </a>
+                <span className="text-neutral-500 dark:text-neutral-400 shrink-0">{cert.date}</span>
+              </div>
+            ))}
+          </ScrollableList>
+        </section>
+
+        {/* Blog — col 1, row 2 */}
+        <section aria-labelledby="blog-heading" className="px-6 py-3 md:border-r border-neutral-950 dark:border-neutral-100">
+          <SectionLabel><span id="blog-heading">Blog</span></SectionLabel>
+          <ScrollableList className="space-y-4 md:max-h-[60vh] md:overflow-y-auto scrollbar-visible">
+            {blogPosts.map((post) => (
+              <Link
+                key={post.caseStudyId}
+                href={`/case-study/${post.caseStudyId}`}
+                aria-label={`${post.name} — read more`}
+                className="flex justify-between items-start gap-4 group"
+              >
+                <div>
+                  <p className="text-sm font-bold leading-snug group-hover:underline">{post.name}</p>
+                  <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-0.5 leading-snug">{post.description}</p>
+                </div>
+                <span className="text-sm shrink-0 mt-0.5" aria-hidden="true">→</span>
+              </Link>
+            ))}
+          </ScrollableList>
+        </section>
+
+        {/* Projects — col 2, row 2 */}
+        <section aria-labelledby="projects-heading" className="px-6 py-3">
+          <SectionLabel><span id="projects-heading">Projects</span></SectionLabel>
+          <ScrollableList className="space-y-4 md:max-h-[60vh] md:overflow-y-auto scrollbar-visible">
+            {projects.map((project) => (
+              <Link
+                key={project.caseStudyId}
+                href={`/case-study/${project.caseStudyId}`}
+                aria-label={`${project.name} — view case study`}
+                className="flex justify-between items-start gap-4 group"
+              >
+                <div>
+                  <p className="text-sm font-bold leading-snug group-hover:underline">{project.name}</p>
+                  <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-0.5 leading-snug">{project.description}</p>
+                </div>
+                <span className="text-sm shrink-0 mt-0.5" aria-hidden="true">→</span>
+              </Link>
+            ))}
+          </ScrollableList>
+        </section>
+
+      </main>
+    </div>
   );
 }

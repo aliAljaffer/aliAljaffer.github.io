@@ -15,7 +15,7 @@ export default function BackLink({
   return (
     <Link
       href={href}
-      className={`text-terminal-link hover:no-underline underline-offset-2 mb-8 inline-block underline ${className}`}
+      className={`text-xs uppercase tracking-[0.15em] font-bold hover:underline ${className}`}
     >
       {children}
     </Link>
