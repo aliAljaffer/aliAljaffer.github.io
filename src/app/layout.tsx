@@ -24,7 +24,7 @@ export default function RootLayout({
       className={Roboto.className}
       suppressHydrationWarning
     >
-      <body>{children}</body>
+      <body className="bg-terminal-bg">{children}</body>
       <GoogleAnalytics gaId="G-CWKB4GRTEB" />
     </html>
   );
