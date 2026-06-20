@@ -73,6 +73,6 @@ So, if you're building a cloud projects you're probably scared of running over a
 
 3. Record a demo, whether a silent quick demo or with voice-overs, it doesn't matter. Just explain your project, and go through its main functions.
 
-4. Once your demo is recorded, take down the website.
+4. Once your demo is recorded, take down the project and its resources.
 
 Depending on how long you spend recording the demo, you will pay literally CENTS only. And you never have to be more.
