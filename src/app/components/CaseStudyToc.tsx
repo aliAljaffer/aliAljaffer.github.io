@@ -46,7 +46,7 @@ export default function CaseStudyToc({ headings }: CaseStudyTocProps) {
   return (
     <ScrollableList
       direction="horizontal"
-      className="flex gap-4 overflow-x-auto px-6 py-2 scrollbar-hidden"
+      className="flex items-center gap-4 overflow-x-auto px-6 py-2 scrollbar-hidden"
     >
       {headings.map((h) => (
         <a
