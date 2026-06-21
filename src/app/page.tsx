@@ -1,123 +1,19 @@
-import type { ComponentType, ReactNode } from "react";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import ThemeToggle from "@/app/components/ThemeToggle";
 import RandomArsenalIcon from "@/app/components/RandomArsenalIcon";
 import { getVisibleCaseStudies } from "@/lib/case-studies";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faFileLines } from "@fortawesome/free-solid-svg-icons";
-import {
-  faAws,
-  faGithub,
-  faLinkedin,
-  faXTwitter,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
-import { SiGooglecloud, SiTerraform, SiKubernetes } from "react-icons/si";
 import { RiSeparator } from "react-icons/ri";
 import ScrollableList from "@/app/components/ScrollableList";
-import { learning } from "@/data/now";
+import KubestronautIcon from "@/app/components/KubestronautIcon";
+import { contactData, certsData, learning } from "@/data/profile";
 
 const sectionJumps: { label: string; href: string }[] = [
   { label: "About", href: "#about-heading" },
   { label: "Certs", href: "#certs-heading" },
   { label: "Blog", href: "#blog-heading" },
   { label: "Projects", href: "#projects-heading" },
-];
-
-type CertIcon = ComponentType<{ className?: string }>;
-
-const contactData: {
-  label: string;
-  handle: string;
-  value: string;
-  icon: IconDefinition;
-}[] = [
-  {
-    label: "Resume",
-    handle: "resume.alialjaffer.com",
-    value: "https://resume.alialjaffer.com",
-    icon: faFileLines,
-  },
-  {
-    label: "GitHub",
-    handle: "github/aliAljaffer",
-    value: "https://github.com/alialjaffer",
-    icon: faGithub,
-  },
-  {
-    label: "LinkedIn",
-    handle: "linkedin/aliAljaffer",
-    value: "https://linkedin.com/in/alialjaffer",
-    icon: faLinkedin,
-  },
-  {
-    label: "X",
-    handle: "x/aliAljaffer",
-    value: "https://x.com/alialjaffer",
-    icon: faXTwitter,
-  },
-  {
-    label: "YouTube",
-    handle: "youtube/aliAljaffer",
-    value: "https://www.youtube.com/@aliAljaffer",
-    icon: faYoutube,
-  },
-];
-
-const faAwsIcon: CertIcon = ({ className }) => (
-  <FontAwesomeIcon icon={faAws} className={className} />
-);
-
-const certsData: {
-  name: string;
-  date: string;
-  order: number;
-  url: string;
-  Icon?: CertIcon;
-}[] = [
-  {
-    name: "GCP Professional Cloud Architect",
-    date: "May 2026",
-    order: 10,
-    url: "https://www.credly.com/badges/f576ddd7-17b9-4a15-aa0e-86dca295cc37/public_url",
-    Icon: SiGooglecloud as CertIcon,
-  },
-  {
-    name: "Certified Kubernetes Security Specialist",
-    date: "Feb 2026",
-    order: 9,
-    url: "https://www.credly.com/badges/6d3a6109-76a3-4873-9305-5679d128f6ba/public_url",
-    Icon: SiKubernetes as CertIcon,
-  },
-  {
-    name: "Certified Kubernetes Administrator",
-    date: "Dec 2025",
-    order: 7,
-    url: "https://www.credly.com/badges/460fb1fe-342c-45e0-8b17-c6225e43ec7a/public_url",
-    Icon: SiKubernetes as CertIcon,
-  },
-  {
-    name: "Certified Kubernetes Application Developer",
-    date: "Dec 2025",
-    order: 6,
-    url: "https://www.credly.com/badges/574c7848-77e6-4c25-a1b6-d7d4f70a130c/public_url",
-    Icon: SiKubernetes as CertIcon,
-  },
-  {
-    name: "Terraform Associate",
-    date: "Aug 2025",
-    order: 5,
-    url: "https://www.credly.com/badges/2abf40d1-88d1-4d75-a79e-73d1c7ec94d9/public_url",
-    Icon: SiTerraform as CertIcon,
-  },
-  {
-    name: "AWS Solutions Architect – Associate",
-    date: "Jul 2025",
-    order: 4,
-    url: "https://www.credly.com/badges/90df08a0-de5d-4eab-9ed3-013e17556f71/public_url",
-    Icon: faAwsIcon,
-  },
 ];
 
 function SectionLabel({ children }: { children: ReactNode }) {
@@ -224,9 +120,25 @@ export default function Home() {
             <RandomArsenalIcon />
           </div>
           <p className="text-sm leading-5 text-neutral-700 dark:text-neutral-300">
-            Passionate about automation, infrastructure as code, and building
-            scalable, reliable systems. I come from a web development background
-            and absolutely love drawing system architecture diagrams.
+            I started as a web developer and slowly fell down the infrastructure
+            rabbit hole — these days I build and run cloud platforms in Riyadh
+            for Saudi AZM. I&apos;m a{" "}
+            <a
+              href="https://www.cncf.io/training/kubestronaut/?_sft_lf-country=sa#:~:text=Ali-,Aljaffer,-(He/Him)"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="CNCF Kubestronaut (opens in new tab)"
+              className="inline-flex items-center gap-1 align-middle hover:underline"
+            >
+              <KubestronautIcon
+                className="w-4 h-4 shrink-0"
+                aria-hidden={true}
+              />
+              Kubestronaut
+            </a>
+            , I run a 3-node Kubernetes cluster in my homelab for fun and
+            expirementation, and I genuinely enjoy drawing architecture
+            diagrams.
           </p>
           <nav
             aria-label="Social links"
