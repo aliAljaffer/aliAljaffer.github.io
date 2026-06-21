@@ -1,6 +1,7 @@
 import type { ComponentType, ReactNode } from "react";
 import Link from "next/link";
 import ThemeToggle from "@/app/components/ThemeToggle";
+import RandomArsenalIcon from "@/app/components/RandomArsenalIcon";
 import { getVisibleCaseStudies } from "@/lib/case-studies";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
@@ -142,22 +143,36 @@ export default function Home() {
 
       {/* Body — 2-col grid: About/Certs row 1, Blog/Projects row 2
           Mobile order: About → Certs → Blog → Projects             */}
-      <main id="main-content" className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto_1fr] md:min-h-dvh">
-
+      <main
+        id="main-content"
+        className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto_1fr] md:min-h-dvh"
+      >
         {/* About — col 1, row 1 */}
         <section
           aria-labelledby="about-heading"
           className="p-6 pt-14 md:pt-6 md:border-r border-neutral-950 dark:border-neutral-100"
         >
-          <SectionLabel><span id="about-heading">About</span></SectionLabel>
-          <p className="font-bold text-sm mb-0.5">Ali Aljaffer</p>
-          <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 mb-3">DevOps Engineer</p>
+          <SectionLabel>
+            <span id="about-heading">About</span>
+          </SectionLabel>
+          <div className="flex items-start justify-between gap-4 mb-3">
+            <div>
+              <p className="font-bold text-sm mb-0.5">Ali Aljaffer</p>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400">
+                DevOps Engineer
+              </p>
+            </div>
+            <RandomArsenalIcon />
+          </div>
           <p className="text-sm leading-5 text-neutral-700 dark:text-neutral-300">
             Passionate about automation, infrastructure as code, and building
             scalable, reliable systems. I come from a web development background
             and absolutely love drawing system architecture diagrams.
           </p>
-          <nav aria-label="Social links" className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+          <nav
+            aria-label="Social links"
+            className="mt-3 flex flex-wrap gap-x-4 gap-y-2"
+          >
             {contactData.map((c) => (
               <a
                 key={c.label}
@@ -176,23 +191,41 @@ export default function Home() {
 
         {/* Certifications — col 2, row 1 */}
         <section aria-labelledby="certs-heading" className="p-6">
-          <SectionLabel><span id="certs-heading">Certifications</span></SectionLabel>
+          <SectionLabel>
+            <span id="certs-heading">Certifications</span>
+          </SectionLabel>
           <ScrollableList className="space-y-2 md:max-h-[40vh] md:overflow-y-auto scrollbar-visible">
-            {certsData.sort((a, b) => b.order - a.order).map((cert, i) => (
-              <div key={i} className="flex justify-between gap-6 text-sm">
-                <a href={cert.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:underline">
-                  {cert.Icon && <cert.Icon className="w-3.5 h-3.5 shrink-0" />}
-                  {cert.name}
-                </a>
-                <span className="text-neutral-500 dark:text-neutral-400 shrink-0">{cert.date}</span>
-              </div>
-            ))}
+            {certsData
+              .sort((a, b) => b.order - a.order)
+              .map((cert, i) => (
+                <div key={i} className="flex justify-between gap-6 text-sm">
+                  <a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 hover:underline"
+                  >
+                    {cert.Icon && (
+                      <cert.Icon className="w-3.5 h-3.5 shrink-0" />
+                    )}
+                    {cert.name}
+                  </a>
+                  <span className="text-neutral-500 dark:text-neutral-400 shrink-0">
+                    {cert.date}
+                  </span>
+                </div>
+              ))}
           </ScrollableList>
         </section>
 
         {/* Blog — col 1, row 2 */}
-        <section aria-labelledby="blog-heading" className="px-6 py-3 md:border-r border-neutral-950 dark:border-neutral-100">
-          <SectionLabel><span id="blog-heading">Blog</span></SectionLabel>
+        <section
+          aria-labelledby="blog-heading"
+          className="px-6 py-3 md:border-r border-neutral-950 dark:border-neutral-100"
+        >
+          <SectionLabel>
+            <span id="blog-heading">Blog</span>
+          </SectionLabel>
           <ScrollableList className="space-y-4 md:max-h-[60vh] md:overflow-y-auto scrollbar-visible">
             {blogPosts.map((post) => (
               <Link
@@ -202,10 +235,16 @@ export default function Home() {
                 className="flex justify-between items-start gap-4 group"
               >
                 <div>
-                  <p className="text-sm font-bold leading-snug group-hover:underline">{post.name}</p>
-                  <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-0.5 leading-snug">{post.description}</p>
+                  <p className="text-sm font-bold leading-snug group-hover:underline">
+                    {post.name}
+                  </p>
+                  <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-0.5 leading-snug">
+                    {post.description}
+                  </p>
                 </div>
-                <span className="text-sm shrink-0 mt-0.5" aria-hidden="true">→</span>
+                <span className="text-sm shrink-0 mt-0.5" aria-hidden="true">
+                  →
+                </span>
               </Link>
             ))}
           </ScrollableList>
@@ -213,7 +252,9 @@ export default function Home() {
 
         {/* Projects — col 2, row 2 */}
         <section aria-labelledby="projects-heading" className="px-6 py-3">
-          <SectionLabel><span id="projects-heading">Projects</span></SectionLabel>
+          <SectionLabel>
+            <span id="projects-heading">Projects</span>
+          </SectionLabel>
           <ScrollableList className="space-y-4 md:max-h-[60vh] md:overflow-y-auto scrollbar-visible">
             {projects.map((project) => (
               <Link
@@ -223,15 +264,20 @@ export default function Home() {
                 className="flex justify-between items-start gap-4 group"
               >
                 <div>
-                  <p className="text-sm font-bold leading-snug group-hover:underline">{project.name}</p>
-                  <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-0.5 leading-snug">{project.description}</p>
+                  <p className="text-sm font-bold leading-snug group-hover:underline">
+                    {project.name}
+                  </p>
+                  <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-0.5 leading-snug">
+                    {project.description}
+                  </p>
                 </div>
-                <span className="text-sm shrink-0 mt-0.5" aria-hidden="true">→</span>
+                <span className="text-sm shrink-0 mt-0.5" aria-hidden="true">
+                  →
+                </span>
               </Link>
             ))}
           </ScrollableList>
         </section>
-
       </main>
     </div>
   );

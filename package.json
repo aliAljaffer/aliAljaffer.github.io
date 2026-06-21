@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --webpack -p 5050",
     "build": "tsc --noEmit && next build",
     "server": "json-server --port 3001 ./src/data/case-studies.json",
     "start": "next start",
