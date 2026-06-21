@@ -25,12 +25,9 @@ export default function RandomArsenalIcon() {
   return showCannon ? (
     <ArsenalCannonIcon
       className={`h-5 w-auto shrink-0 ${color}`}
-      aria-label="Arsenal F.C. supporter"
+      aria-hidden={true}
     />
   ) : (
-    <ArsenalIcon
-      className={`w-8 h-8 shrink-0 ${color}`}
-      aria-label="Arsenal F.C. supporter"
-    />
+    <ArsenalIcon className={`w-8 h-8 shrink-0 ${color}`} aria-hidden={true} />
   );
 }

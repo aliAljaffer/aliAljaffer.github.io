@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack -p 5050",
-    "build": "tsc --noEmit && next build",
+    "build": "tsc --noEmit && next build --webpack",
     "server": "json-server --port 3001 ./src/data/case-studies.json",
     "start": "next start",
     "lint": "next lint"

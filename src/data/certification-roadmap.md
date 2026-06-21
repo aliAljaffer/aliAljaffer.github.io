@@ -1,6 +1,6 @@
 ---
 certification-roadmap:
-  name: Cloud Certifications Roadmap
+  name: "Guide to: Cloud Certifications and Building Side Projects"
   caseStudyId: certification-roadmap
   description: A simple, 4-cert roadmap to cover many positions. And a how-to on showing off your projects.
   repo: ""
@@ -11,7 +11,7 @@ certification-roadmap:
   type: "blog"
 ---
 
-# Cloud Certifications Roadmap and Building Side Projects
+# Guide to: Cloud Certifications and Building Side Projects
 
 ## Overview
 

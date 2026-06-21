@@ -26,12 +26,24 @@
   --color-terminal-highlight: #60a5fa;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 * {
   font-family: "Roboto Mono", monospace;
   box-sizing: border-box;
 }
 
-a, button, [role="button"] {
+a,
+button,
+[role="button"] {
   cursor: pointer;
 }
 
@@ -62,6 +74,7 @@ body {
 .markdown-content h2 {
   @apply text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mt-6 mb-4;
   color: var(--color-terminal-accent);
+  scroll-margin-top: 5.5rem;
 }
 
 .markdown-content h3 {
@@ -379,6 +392,15 @@ figure > div > div {
   animation: blink 1s step-end infinite;
 }
 
+.scrollbar-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
 .scrollbar-visible {
   scrollbar-width: thin;
   scrollbar-color: #a3a3a3 #e5e5e5;
@@ -409,8 +431,13 @@ figure > div > div {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .bounce-dot {

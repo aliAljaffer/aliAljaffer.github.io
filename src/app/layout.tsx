@@ -8,7 +8,7 @@ config.autoAddCss = false;
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
-  title: "aliAljaffer",
+  title: "Ali Aljaffer - DevOps Engineer",
   description: "Cloud Engineering and DevOps Portfolio",
 };
 

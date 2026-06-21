@@ -14,7 +14,16 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { SiGooglecloud, SiTerraform, SiKubernetes } from "react-icons/si";
+import { RiSeparator } from "react-icons/ri";
 import ScrollableList from "@/app/components/ScrollableList";
+import { learning } from "@/data/now";
+
+const sectionJumps: { label: string; href: string }[] = [
+  { label: "About", href: "#about-heading" },
+  { label: "Certs", href: "#certs-heading" },
+  { label: "Blog", href: "#blog-heading" },
+  { label: "Projects", href: "#projects-heading" },
+];
 
 type CertIcon = ComponentType<{ className?: string }>;
 
@@ -123,7 +132,7 @@ export default function Home() {
   const projects = getVisibleCaseStudies("project") ?? [];
   const blogPosts = getVisibleCaseStudies("blog") ?? [];
   return (
-    <div className="bg-neutral-50 dark:bg-neutral-900 text-neutral-950 dark:text-neutral-50 font-mono">
+    <div className="bg-neutral-50 dark:bg-neutral-900 text-neutral-950 dark:text-neutral-50 font-mono min-h-dvh flex flex-col">
       {/* Skip to main content */}
       <a
         href="#main-content"
@@ -132,33 +141,83 @@ export default function Home() {
         Skip to main content
       </a>
 
-      {/* Fixed theme toggle — top-right, safe-area aware */}
-      <ThemeToggle
-        className="fixed top-0 right-0 z-50 bg-neutral-950 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950 pb-3 px-4"
-        style={{
-          paddingTop: "max(0.75rem, env(safe-area-inset-top))",
-          paddingRight: "max(1rem, env(safe-area-inset-right))",
-        }}
-      />
+      {/* Header bar — full-width, sticky, safe-area aware */}
+      <header className="sticky top-0 z-50 w-full bg-neutral-950 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950">
+        <div
+          className="px-6 py-3 flex items-center gap-4"
+          style={{ paddingTop: "max(0.75rem, env(safe-area-inset-top))" }}
+        >
+          <div className="flex-1 min-w-0">
+            <Link href="/" className="font-bold text-sm hover:opacity-75">
+              ~/ali-aljaffer
+            </Link>
+          </div>
+          {learning.length > 0 && (
+            <p className="hidden md:flex items-center justify-center gap-3 text-xs whitespace-nowrap text-neutral-300 dark:text-neutral-600">
+              <span>Currently learning:</span>
+              {learning.map(({ name, icon: Icon, url }, i) => (
+                <span key={name} className="flex items-center gap-3">
+                  {i > 0 && (
+                    <RiSeparator className="w-3.5 h-3.5" aria-hidden="true" />
+                  )}
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${name} (opens in new tab)`}
+                    className="flex items-center gap-1.5 hover:underline"
+                  >
+                    <Icon className="w-3.5 h-3.5" />
+                    {name}
+                  </a>
+                </span>
+              ))}
+            </p>
+          )}
+          <div className="flex-1 min-w-0 flex justify-end">
+            <ThemeToggle />
+          </div>
+        </div>
+
+        {/* Mobile section jumps */}
+        <nav
+          aria-label="Jump to section"
+          className="md:hidden flex gap-4 overflow-x-auto scrollbar-hidden px-6 pb-2 border-t border-neutral-800 dark:border-neutral-300 pt-2"
+        >
+          {sectionJumps.map((s) => (
+            <a
+              key={s.href}
+              href={s.href}
+              className="text-[10px] tracking-[0.2em] uppercase whitespace-nowrap hover:opacity-75"
+            >
+              {s.label}
+            </a>
+          ))}
+        </nav>
+      </header>
 
       {/* Body — 2-col grid: About/Certs row 1, Blog/Projects row 2
           Mobile order: About → Certs → Blog → Projects             */}
       <main
         id="main-content"
-        className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto_1fr] md:min-h-dvh"
+        className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto_1fr] flex-1 min-h-0"
       >
+        <h1 className="sr-only">Ali Aljaffer — DevOps Engineer</h1>
+
         {/* About — col 1, row 1 */}
         <section
           aria-labelledby="about-heading"
-          className="p-6 pt-14 md:pt-6 md:border-r border-neutral-950 dark:border-neutral-100"
+          className="p-6 md:border-r border-neutral-950 dark:border-neutral-100"
         >
           <SectionLabel>
-            <span id="about-heading">About</span>
+            <span id="about-heading" className="scroll-mt-28 md:scroll-mt-20">
+              About
+            </span>
           </SectionLabel>
           <div className="flex items-start justify-between gap-4 mb-3">
             <div>
               <p className="font-bold text-sm mb-0.5">Ali Aljaffer</p>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400">
                 DevOps Engineer
               </p>
             </div>
@@ -179,8 +238,8 @@ export default function Home() {
                 href={c.value}
                 target="_blank"
                 rel="noreferrer"
-                aria-label={c.label}
-                className="flex items-center gap-1.5 text-xs text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50"
+                aria-label={`${c.label} (opens in new tab)`}
+                className="flex items-center gap-1.5 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50"
               >
                 <FontAwesomeIcon icon={c.icon} className="w-3.5 h-3.5" />
                 {c.handle}
@@ -192,7 +251,9 @@ export default function Home() {
         {/* Certifications — col 2, row 1 */}
         <section aria-labelledby="certs-heading" className="p-6">
           <SectionLabel>
-            <span id="certs-heading">Certifications</span>
+            <span id="certs-heading" className="scroll-mt-28 md:scroll-mt-20">
+              Certifications
+            </span>
           </SectionLabel>
           <ScrollableList className="space-y-2 md:max-h-[40vh] md:overflow-y-auto scrollbar-visible">
             {certsData
@@ -203,6 +264,7 @@ export default function Home() {
                     href={cert.url}
                     target="_blank"
                     rel="noreferrer"
+                    aria-label={`${cert.name} (opens in new tab)`}
                     className="flex items-center gap-2 hover:underline"
                   >
                     {cert.Icon && (
@@ -210,7 +272,7 @@ export default function Home() {
                     )}
                     {cert.name}
                   </a>
-                  <span className="text-neutral-500 dark:text-neutral-400 shrink-0">
+                  <span className="text-neutral-600 dark:text-neutral-400 shrink-0">
                     {cert.date}
                   </span>
                 </div>
@@ -224,7 +286,9 @@ export default function Home() {
           className="px-6 py-3 md:border-r border-neutral-950 dark:border-neutral-100"
         >
           <SectionLabel>
-            <span id="blog-heading">Blog</span>
+            <span id="blog-heading" className="scroll-mt-28 md:scroll-mt-20">
+              Blog
+            </span>
           </SectionLabel>
           <ScrollableList className="space-y-4 md:max-h-[60vh] md:overflow-y-auto scrollbar-visible">
             {blogPosts.map((post) => (
@@ -253,7 +317,12 @@ export default function Home() {
         {/* Projects — col 2, row 2 */}
         <section aria-labelledby="projects-heading" className="px-6 py-3">
           <SectionLabel>
-            <span id="projects-heading">Projects</span>
+            <span
+              id="projects-heading"
+              className="scroll-mt-28 md:scroll-mt-20"
+            >
+              Projects
+            </span>
           </SectionLabel>
           <ScrollableList className="space-y-4 md:max-h-[60vh] md:overflow-y-auto scrollbar-visible">
             {projects.map((project) => (
