@@ -10,6 +10,8 @@
 import type { ComponentType } from "react";
 import type { IconType } from "react-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { AzmIcon } from "@/app/components/AzmIcon";
+import { ManafaIcon } from "@/app/components/ManafaIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -49,6 +51,13 @@ export type LearningTopic = {
   name: string;
   icon: IconType;
   url: string;
+};
+
+export type Experience = {
+  company: string;
+  title: string;
+  current: boolean;
+  Icon?: CertIcon;
 };
 
 const faAwsIcon: CertIcon = ({ className }) => (
@@ -137,4 +146,19 @@ export const learning: LearningTopic[] = [
   { name: "Golang", icon: FaGolang, url: "https://go.dev" },
   { name: "Backstage", icon: SiBackstage, url: "https://backstage.io" },
   { name: "Alibaba Cloud", icon: RiAlibabaCloudLine, url: "https://sccc.sa" },
+];
+
+export const experienceData: Experience[] = [
+  {
+    company: "Saudi AZM",
+    title: "DevOps Engineer",
+    current: true,
+    Icon: AzmIcon,
+  },
+  {
+    company: "Manafa Crowdfunding",
+    title: "DevOps Engineer Intern",
+    current: false,
+    Icon: ManafaIcon,
+  },
 ];

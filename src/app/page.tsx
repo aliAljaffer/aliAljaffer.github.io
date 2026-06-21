@@ -7,7 +7,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { RiSeparator } from "react-icons/ri";
 import ScrollableList from "@/app/components/ScrollableList";
 import KubestronautIcon from "@/app/components/KubestronautIcon";
-import { contactData, certsData, learning } from "@/data/profile";
+import {
+  contactData,
+  certsData,
+  learning,
+  experienceData,
+} from "@/data/profile";
 
 const sectionJumps: { label: string; href: string }[] = [
   { label: "About", href: "#about-heading" },
@@ -103,7 +108,7 @@ export default function Home() {
         {/* About — col 1, row 1 */}
         <section
           aria-labelledby="about-heading"
-          className="p-6 md:border-r border-neutral-950 dark:border-neutral-100"
+          className="px-6 py-4 md:border-r border-neutral-950 dark:border-neutral-100"
         >
           <SectionLabel>
             <span id="about-heading" className="scroll-mt-28 md:scroll-mt-20">
@@ -140,6 +145,26 @@ export default function Home() {
             expirementation, and I genuinely enjoy drawing architecture
             diagrams.
           </p>
+          {/* <ul className="my-2 space-y-1.5">
+            {experienceData.map((e) => (
+              <li key={e.company} className="flex items-center gap-2 text-xs">
+                {e.Icon && <e.Icon className="w-3.5 h-3.5 shrink-0" />}
+                <span className="font-medium">{e.company}</span>
+                <span className="text-neutral-500 dark:text-neutral-400">
+                  {e.title}
+                </span>
+                <span
+                  className={
+                    e.current
+                      ? "ml-auto text-[10px] uppercase tracking-[0.15em] text-neutral-950 dark:text-neutral-50"
+                      : "ml-auto text-[10px] uppercase tracking-[0.15em] text-neutral-400 dark:text-neutral-500"
+                  }
+                >
+                  {e.current ? "current" : "past"}
+                </span>
+              </li>
+            ))}
+          </ul> */}
           <nav
             aria-label="Social links"
             className="mt-3 flex flex-wrap gap-x-4 gap-y-2"
@@ -161,7 +186,7 @@ export default function Home() {
         </section>
 
         {/* Certifications — col 2, row 1 */}
-        <section aria-labelledby="certs-heading" className="p-6">
+        <section aria-labelledby="certs-heading" className="px-6 py-4">
           <SectionLabel>
             <span id="certs-heading" className="scroll-mt-28 md:scroll-mt-20">
               Certifications
@@ -195,7 +220,7 @@ export default function Home() {
         {/* Blog — col 1, row 2 */}
         <section
           aria-labelledby="blog-heading"
-          className="px-6 py-3 md:border-r border-neutral-950 dark:border-neutral-100"
+          className="px-6 py-4 md:border-r border-neutral-950 dark:border-neutral-100"
         >
           <SectionLabel>
             <span id="blog-heading" className="scroll-mt-28 md:scroll-mt-20">
@@ -227,7 +252,7 @@ export default function Home() {
         </section>
 
         {/* Projects — col 2, row 2 */}
-        <section aria-labelledby="projects-heading" className="px-6 py-3">
+        <section aria-labelledby="projects-heading" className="px-6 py-4">
           <SectionLabel>
             <span
               id="projects-heading"
