@@ -156,7 +156,7 @@ export const experienceData: Experience[] = [
     Icon: AzmIcon,
   },
   {
-    company: "Manafa Crowdfunding",
+    company: "Manafa",
     title: "DevOps Engineer Intern",
     current: false,
     Icon: ManafaIcon,

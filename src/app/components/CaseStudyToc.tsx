@@ -22,7 +22,7 @@ export default function CaseStudyToc({ headings }: CaseStudyTocProps) {
           setActive(visible[0].target.id);
         }
       },
-      { rootMargin: "-30% 0px -60% 0px", threshold: 0 }
+      { rootMargin: "-30% 0px -60% 0px", threshold: 0 },
     );
 
     const els = headings

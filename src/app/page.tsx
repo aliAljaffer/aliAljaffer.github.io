@@ -17,6 +17,7 @@ import {
 const sectionJumps: { label: string; href: string }[] = [
   { label: "About", href: "#about-heading" },
   { label: "Certs", href: "#certs-heading" },
+  { label: "Experience", href: "#experience-heading" },
   { label: "Blog", href: "#blog-heading" },
   { label: "Projects", href: "#projects-heading" },
 ];
@@ -42,7 +43,7 @@ export default function Home() {
         Skip to main content
       </a>
 
-      {/* Header bar — full-width, sticky, safe-area aware */}
+      {/* Header bar */}
       <header className="sticky top-0 z-50 w-full bg-neutral-950 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950">
         <div
           className="px-6 py-3 flex items-center gap-4"
@@ -97,18 +98,20 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* Body — 2-col grid: About/Certs row 1, Blog/Projects row 2
-          Mobile order: About → Certs → Blog → Projects             */}
+      {/* 2-col, 6-row grid on desktop.
+          Col 1: About (rows 1-2) → Certs (rows 3-4) → Experience (rows 5-6)
+          Col 2: Blog (rows 1-3) → Projects (rows 4-6)
+          Mobile: single column, DOM order.                                    */}
       <main
         id="main-content"
-        className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto_1fr] flex-1 min-h-0"
+        className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-6 flex-1 min-h-0"
       >
         <h1 className="sr-only">Ali Aljaffer — DevOps Engineer</h1>
 
-        {/* About — col 1, row 1 */}
+        {/* About — col 1, rows 1-2 */}
         <section
           aria-labelledby="about-heading"
-          className="px-6 py-4 md:border-r border-neutral-950 dark:border-neutral-100"
+          className="p-6 md:col-start-1 md:row-start-1 md:row-span-2 md:border-r md:border-b border-neutral-950 dark:border-neutral-100"
         >
           <SectionLabel>
             <span id="about-heading" className="scroll-mt-28 md:scroll-mt-20">
@@ -145,26 +148,6 @@ export default function Home() {
             expirementation, and I genuinely enjoy drawing architecture
             diagrams.
           </p>
-          {/* <ul className="my-2 space-y-1.5">
-            {experienceData.map((e) => (
-              <li key={e.company} className="flex items-center gap-2 text-xs">
-                {e.Icon && <e.Icon className="w-3.5 h-3.5 shrink-0" />}
-                <span className="font-medium">{e.company}</span>
-                <span className="text-neutral-500 dark:text-neutral-400">
-                  {e.title}
-                </span>
-                <span
-                  className={
-                    e.current
-                      ? "ml-auto text-[10px] uppercase tracking-[0.15em] text-neutral-950 dark:text-neutral-50"
-                      : "ml-auto text-[10px] uppercase tracking-[0.15em] text-neutral-400 dark:text-neutral-500"
-                  }
-                >
-                  {e.current ? "current" : "past"}
-                </span>
-              </li>
-            ))}
-          </ul> */}
           <nav
             aria-label="Social links"
             className="mt-3 flex flex-wrap gap-x-4 gap-y-2"
@@ -185,14 +168,17 @@ export default function Home() {
           </nav>
         </section>
 
-        {/* Certifications — col 2, row 1 */}
-        <section aria-labelledby="certs-heading" className="px-6 py-4">
+        {/* Certifications — col 1, rows 3-4 */}
+        <section
+          aria-labelledby="certs-heading"
+          className="p-6 md:col-start-1 md:row-start-3 md:row-span-2 md:border-r md:border-b border-neutral-950 dark:border-neutral-100 flex flex-col overflow-hidden"
+        >
           <SectionLabel>
             <span id="certs-heading" className="scroll-mt-28 md:scroll-mt-20">
               Certifications
             </span>
           </SectionLabel>
-          <ScrollableList className="space-y-2 md:max-h-[40vh] md:overflow-y-auto scrollbar-visible">
+          <ScrollableList className="space-y-2 flex-1 overflow-y-auto scrollbar-visible min-h-0">
             {certsData
               .sort((a, b) => b.order - a.order)
               .map((cert, i) => (
@@ -217,17 +203,52 @@ export default function Home() {
           </ScrollableList>
         </section>
 
-        {/* Blog — col 1, row 2 */}
+        {/* Experience — col 1, rows 5-6 */}
+        <section
+          aria-labelledby="experience-heading"
+          className="p-6 md:col-start-1 md:row-start-5 md:row-span-2 md:border-r border-neutral-950 dark:border-neutral-100"
+        >
+          <SectionLabel>
+            <span
+              id="experience-heading"
+              className="scroll-mt-28 md:scroll-mt-20"
+            >
+              Experience
+            </span>
+          </SectionLabel>
+          <ul className="space-y-1.5">
+            {experienceData.map((e) => (
+              <li key={e.company} className="flex items-center gap-2 text-xs">
+                {e.Icon && <e.Icon className="w-3.5 h-3.5 shrink-0" />}
+                <span className="font-medium">{e.company}</span>
+                <span className="text-neutral-500 dark:text-neutral-400">
+                  {e.title}
+                </span>
+                <span
+                  className={
+                    e.current
+                      ? "ml-auto text-[10px] uppercase tracking-[0.15em] text-neutral-950 dark:text-neutral-50"
+                      : "ml-auto text-[10px] uppercase tracking-[0.15em] text-neutral-400 dark:text-neutral-500"
+                  }
+                >
+                  {e.current ? "current" : "past"}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Blog — col 2, rows 1-3 */}
         <section
           aria-labelledby="blog-heading"
-          className="px-6 py-4 md:border-r border-neutral-950 dark:border-neutral-100"
+          className="p-6 md:col-start-2 md:row-start-1 md:row-span-3 md:border-b border-neutral-950 dark:border-neutral-100 flex flex-col overflow-hidden"
         >
           <SectionLabel>
             <span id="blog-heading" className="scroll-mt-28 md:scroll-mt-20">
               Blog
             </span>
           </SectionLabel>
-          <ScrollableList className="space-y-4 md:max-h-[60vh] md:overflow-y-auto scrollbar-visible">
+          <ScrollableList className="space-y-4 flex-1 overflow-y-auto scrollbar-visible min-h-0">
             {blogPosts.map((post) => (
               <Link
                 key={post.caseStudyId}
@@ -251,8 +272,11 @@ export default function Home() {
           </ScrollableList>
         </section>
 
-        {/* Projects — col 2, row 2 */}
-        <section aria-labelledby="projects-heading" className="px-6 py-4">
+        {/* Projects — col 2, rows 4-6 */}
+        <section
+          aria-labelledby="projects-heading"
+          className="p-6 md:col-start-2 md:row-start-4 md:row-span-3 flex flex-col overflow-hidden"
+        >
           <SectionLabel>
             <span
               id="projects-heading"
@@ -261,7 +285,7 @@ export default function Home() {
               Projects
             </span>
           </SectionLabel>
-          <ScrollableList className="space-y-4 md:max-h-[60vh] md:overflow-y-auto scrollbar-visible">
+          <ScrollableList className="space-y-4 flex-1 overflow-y-auto scrollbar-visible min-h-0">
             {projects.map((project) => (
               <Link
                 key={project.caseStudyId}
