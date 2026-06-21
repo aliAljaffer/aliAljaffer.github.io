@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
     return config;
   },
   output: "export",
+  productionBrowserSourceMaps: true,
   serverExternalPackages: ["gray-matter"],
   distDir: "dist",
   images: {

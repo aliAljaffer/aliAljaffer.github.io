@@ -134,7 +134,7 @@ export const certsData: Certification[] = [
 ];
 
 export const learning: LearningTopic[] = [
-  { name: "Go", icon: FaGolang, url: "https://go.dev" },
+  { name: "Golang", icon: FaGolang, url: "https://go.dev" },
   { name: "Backstage", icon: SiBackstage, url: "https://backstage.io" },
   { name: "Alibaba Cloud", icon: RiAlibabaCloudLine, url: "https://sccc.sa" },
 ];
