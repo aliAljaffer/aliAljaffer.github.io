@@ -23,7 +23,7 @@ const sectionJumps: { label: string; href: string }[] = [
 
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <h2 className="text-[10px] uppercase tracking-[0.2em] font-bold border-b border-neutral-950 dark:border-neutral-100 pb-2 mb-3">
+    <h2 className="text-[0.625rem] uppercase tracking-[0.2em] font-bold border-b border-neutral-950 dark:border-neutral-100 pb-2 mb-3">
       {children}
     </h2>
   );
@@ -59,7 +59,7 @@ export default function Home() {
               {learning.map(({ name, icon: Icon, url }, i) => (
                 <span key={name} className="flex items-center gap-3">
                   {i > 0 && (
-                    <RiSeparator className="w-3.5 h-3.5" aria-hidden="true" />
+                    <RiSeparator className="w-6 h-6" aria-hidden="true" />
                   )}
                   <a
                     href={url}
@@ -68,7 +68,7 @@ export default function Home() {
                     aria-label={`${name} (opens in new tab)`}
                     className="flex items-center gap-1.5 hover:underline"
                   >
-                    <Icon className="w-3.5 h-3.5" />
+                    <Icon className="w-6 h-6" />
                     {name}
                   </a>
                 </span>
@@ -88,11 +88,11 @@ export default function Home() {
           {sectionJumps.map((s, i) => (
             <span key={s.href} className="flex items-center gap-3">
               {i > 0 && (
-                <RiSeparator className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                <RiSeparator className="w-6 h-6 shrink-0" aria-hidden="true" />
               )}
               <a
                 href={s.href}
-                className="text-[10px] tracking-[0.2em] uppercase whitespace-nowrap hover:opacity-75"
+                className="text-[0.625rem] tracking-[0.2em] uppercase whitespace-nowrap hover:opacity-75"
               >
                 {s.label}
               </a>
@@ -122,7 +122,7 @@ export default function Home() {
           <div className="flex items-start justify-between gap-4 mb-3">
             <div>
               <p className="font-bold text-sm mb-0.5">Ali Aljaffer</p>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400">
+              <p className="text-[0.625rem] uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400">
                 DevOps Engineer
               </p>
             </div>
@@ -140,7 +140,7 @@ export default function Home() {
               className="inline-flex items-center gap-1 align-middle hover:underline"
             >
               <KubestronautIcon
-                className="w-4 h-4 shrink-0"
+                className="w-6 h-6 shrink-0"
                 aria-hidden={true}
               />
               Kubestronaut
@@ -162,7 +162,7 @@ export default function Home() {
                 aria-label={`${c.label} (opens in new tab)`}
                 className="flex items-center gap-1.5 text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50"
               >
-                <FontAwesomeIcon icon={c.icon} className="w-3.5 h-3.5" />
+                <FontAwesomeIcon icon={c.icon} className="w-7 h-7" />
                 {c.handle}
               </a>
             ))}
@@ -170,7 +170,7 @@ export default function Home() {
           {/* <ul className="mt-4 space-y-1.5">
             {experienceData.map((e) => (
               <li key={e.company} className="flex items-center gap-2 text-xs">
-                {e.Icon && <e.Icon className="w-3.5 h-3.5 shrink-0" />}
+                {e.Icon && <e.Icon className="w-6 h-6 shrink-0" />}
                 <span className="font-medium">{e.company}</span>
                 <span className="text-neutral-500 dark:text-neutral-400">
                   {e.title}
@@ -209,7 +209,7 @@ export default function Home() {
                     className="flex items-center gap-2 hover:underline"
                   >
                     {cert.Icon && (
-                      <cert.Icon className="w-3.5 h-3.5 shrink-0" />
+                      <cert.Icon className="w-5 h-5 shrink-0" />
                     )}
                     {cert.name}
                   </a>

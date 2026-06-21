@@ -55,7 +55,7 @@ export default function CaseStudyToc({ headings }: CaseStudyTocProps) {
           ref={(el) => {
             chipRefs.current[h.slug] = el;
           }}
-          className={`text-[10px] tracking-[0.2em] uppercase whitespace-nowrap transition-opacity ${
+          className={`text-[0.625rem] tracking-[0.2em] uppercase whitespace-nowrap transition-opacity ${
             active === h.slug
               ? "font-bold underline opacity-100"
               : "opacity-60 hover:opacity-100"

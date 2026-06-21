@@ -42,10 +42,10 @@ export default function ThemeToggle({
     <button
       onClick={toggle}
       style={style}
-      className={`flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] hover:opacity-75 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${className}`}
+      className={`flex items-center gap-1.5 text-[0.625rem] uppercase tracking-[0.2em] hover:opacity-75 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current ${className}`}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
-      <FontAwesomeIcon icon={isDark ? faSun : faMoon} className="w-3 h-3" />
+      <FontAwesomeIcon icon={isDark ? faSun : faMoon} className="w-5 h-5" />
       {isDark ? "light" : "dark"}
     </button>
   );

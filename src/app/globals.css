@@ -30,6 +30,20 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Scale the whole UI up on large monitors so rem-based text, icons,
+   and spacing don't look lost. Everything sizes off the root font. */
+@media (min-width: 1920px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 2560px) {
+  html {
+    font-size: 19px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
