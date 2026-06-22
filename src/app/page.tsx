@@ -34,7 +34,7 @@ export default function Home() {
           title="Blog"
           items={blogPosts}
           ctaLabel="read more"
-          className="py-3 md:border-r border-neutral-950 dark:border-neutral-100"
+          className="py-4 md:border-r border-neutral-950 dark:border-neutral-100"
         />
         <CaseStudySection
           id="projects-heading"
