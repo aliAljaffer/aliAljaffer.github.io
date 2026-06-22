@@ -17,9 +17,9 @@ keda:
   type: "project"
 ---
 
-Publish date: `2026-03-01`
-
 # Kubernetes Event-Driven Architecture (KEDA)
+
+Publish date: `2026-03-01`
 
 ## Overview
 

@@ -21,7 +21,7 @@ tuwaiq-tracker:
 
 # Tuwaiq Tracker
 
-Publish date: `2024-09-20~`
+Publish date: `2024-09-20`
 
 ## Overview
 

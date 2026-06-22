@@ -11,9 +11,9 @@ homelab:
   type: "blog"
 ---
 
-Publish date: `2025-11-05`
-
 # K3s Cluster Homelab
+
+Publish date: `2025-11-05`
 
 ## Overview
 

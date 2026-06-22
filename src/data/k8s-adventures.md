@@ -11,9 +11,9 @@ k8s-adventures:
   type: "blog"
 ---
 
-Publish date: `2025-11-22`
-
 # The Kubernetes learning journey (so far)
+
+Publish date: `2025-11-22`
 
 I've been getting in-depth with Kubernetes lately; from watching YouTube videos on real-life projects with it, to building a multi-node homelab with a K3s cluster. (And now another cluster using `kubeadm`)
 
