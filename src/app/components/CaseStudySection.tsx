@@ -27,7 +27,7 @@ export default function CaseStudySection({
             key={item.caseStudyId}
             href={`/case-study/${item.caseStudyId}`}
             aria-label={`${item.name} — ${ctaLabel}`}
-            className="flex justify-between items-start gap-4 group"
+            className="flex justify-between items-start gap-4 group rounded-md -mx-3 px-3 -my-1 py-1 transition-all duration-150 ease-out hover:-translate-y-0.5 hover:shadow-md hover:bg-neutral-100 dark:hover:bg-neutral-800"
           >
             <div>
               <p className="text-sm font-bold leading-snug group-hover:underline">
