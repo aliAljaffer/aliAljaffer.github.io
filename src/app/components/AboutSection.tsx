@@ -33,7 +33,7 @@ export default function AboutSection({
           target="_blank"
           rel="noreferrer"
           aria-label="CNCF Kubestronaut (opens in new tab)"
-          className="inline-flex items-center gap-1 align-middle hover:underline"
+          className="inline-flex items-center gap-1 align-middle underline font-bold underline-offset-2 hover:no-underline"
         >
           <KubestronautIcon className="w-6 h-6 shrink-0" aria-hidden={true} />
           Kubestronaut
