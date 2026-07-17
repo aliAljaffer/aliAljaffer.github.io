@@ -1,3 +1,5 @@
+import type { CaseStudyTag } from "@/data/case-study-tags";
+
 export interface ProjectImage {
   caption: string;
   "alt-text": string;
@@ -14,6 +16,8 @@ export interface CaseStudy {
   show: boolean;
   date: string;
   type: "blog" | "project";
+  icon?: string;
+  tags: CaseStudyTag[];
 }
 export type CaseStudyImage = ProjectImage;
 

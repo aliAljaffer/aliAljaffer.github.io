@@ -23,7 +23,7 @@ export default function CertsSection({
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`${cert.name} (opens in new tab)`}
-                className="flex items-center gap-2 hover:underline"
+                className="flex items-center gap-2 tracking-wide hover:underline"
               >
                 {cert.Icon && <cert.Icon className="w-5 h-5 shrink-0" />}
                 {cert.name}

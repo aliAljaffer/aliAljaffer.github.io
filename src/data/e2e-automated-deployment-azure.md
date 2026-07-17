@@ -12,11 +12,9 @@ e2e-automated-deployment-azure:
   show: true
   date: "2025-10-08"
   type: "project"
+  icon: "SiGithubactions"
+  tags: ["Azure", "CI/CD", "Terraform", "Ansible"]
 ---
-
-# End-to-End Automated App Deployment on Azure
-
-Publish date: `2025-10-08`
 
 ## Overview
 

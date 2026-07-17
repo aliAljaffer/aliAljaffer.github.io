@@ -5,13 +5,16 @@ import TerminalImage from "@/app/components/TerminalImage";
 import ExcalidrawViewer from "@/app/components/ExcalidrawViewer";
 import ThemeToggle from "@/app/components/ThemeToggle";
 import CaseStudyToc from "@/app/components/CaseStudyToc";
-import { useEffect, useMemo, isValidElement, type ReactNode } from "react";
+import CaseStudyHeader from "@/app/components/CaseStudyHeader";
+import Footer from "@/app/components/Footer";
+import { useMemo, isValidElement, type ReactNode } from "react";
 import Markdown, { type Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypePrism from "rehype-prism-plus";
 import NotFound from "@/app/not-found";
 import { CaseStudy } from "@/app/types";
 import { slugify } from "@/lib/slug";
+import { estimateReadingMinutes } from "@/lib/reading-time";
 
 function childrenToText(children: ReactNode): string {
   if (typeof children === "string") return children;
@@ -51,11 +54,6 @@ interface CaseStudyProps {
 }
 
 export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
-  useEffect(() => {
-    if (!caseStudy?.name) return;
-    document.title = caseStudy.name;
-  }, [caseStudy]);
-
   const hasImages = caseStudy?.images?.some(
     (project_image) => project_image.url.length > 1,
   );
@@ -65,6 +63,11 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
     if (hasImages) h.push({ text: "Screenshots", slug: "screenshots" });
     return h;
   }, [caseStudy?.content, hasImages]);
+
+  const readingMinutes = useMemo(
+    () => estimateReadingMinutes(caseStudy?.content ?? ""),
+    [caseStudy?.content],
+  );
 
   if (!caseStudy) return NotFound({ message: "Case Study not found" });
   return (
@@ -90,6 +93,7 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
       </div>
 
       <div className="max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-6 py-10">
+        <CaseStudyHeader caseStudy={caseStudy} readingMinutes={readingMinutes} />
         <div className="markdown-content prose prose-invert">
           <Markdown
             rehypePlugins={[rehypeRaw, rehypePrism]}
@@ -142,6 +146,7 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
           </div>
         )}
       </div>
+      <Footer />
     </Layout>
   );
 }

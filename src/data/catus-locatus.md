@@ -20,11 +20,9 @@ catus-locatus:
   show: true
   date: "2025-10-30"
   type: "project"
+  icon: "PiCatThin"
+  tags: ["Kubernetes", "Terraform", "Azure", "React"]
 ---
-
-# Catus Locatus
-
-Publish date: `2025-07-01`
 
 ## (2025-10-30) Major Update: Deploying to Kubernetes
 

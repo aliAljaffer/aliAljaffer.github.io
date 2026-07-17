@@ -9,11 +9,9 @@ homelab:
   show: true
   date: "2026-03-11"
   type: "blog"
+  icon: "SiK3S"
+  tags: ["Kubernetes", "Homelab", "Networking", "Automation"]
 ---
-
-# K3s Cluster Homelab
-
-Publish date: `2025-11-05`
 
 ## Overview
 

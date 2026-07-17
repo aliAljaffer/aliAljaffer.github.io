@@ -21,11 +21,9 @@ author-clock:
   show: true
   date: "2025-09-05"
   type: "blog"
+  icon: "SiRaspberrypi"
+  tags: ["Homelab", "React"]
 ---
-
-# Author Clock/Entertainment System
-
-Publish date: `2025-09-05`
 
 ## Overview
 

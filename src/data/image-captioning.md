@@ -20,11 +20,9 @@ image-captioning:
   show: true
   date: "2025-06-25"
   type: "project"
+  icon: "SiHuggingface"
+  tags: ["AWS", "Machine Learning", "Security", "Python"]
 ---
-
-# Textify.img
-
-Publish date: `2025-06-25`
 
 ## Overview
 

@@ -9,11 +9,9 @@ k8s-adventures-pt2:
   show: true
   date: "2026-02-15"
   type: "blog"
+  icon: "AiOutlineKubernetes"
+  tags: ["Kubernetes", "Career"]
 ---
-
-# The end (?) of the Kubernetes learning journey
-
-Publish date: `2026-02-15`
 
 As a follow-up to [The Kubernetes learning journey (so far)
 ](https://alialjaffer.com/case-study/k8s-adventures/), I've actually gone and achieved Kubestronaut status, by passing all five Kubernetes exams from the Cloud-Native Computing Foundation (CNCF): **CKAD** (Dec. 13, 2025) -> **CKA** (Dec. 19, 2025) -> **KCNA + KCSA** (Jan. 31, 2026) -> **CKS** (Feb. 8, 2026).

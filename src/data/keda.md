@@ -15,11 +15,9 @@ keda:
   show: true
   date: "2026-03-01"
   type: "project"
+  icon: "TbChartDots3"
+  tags: ["Kubernetes", "Automation", "Python"]
 ---
-
-# Kubernetes Event-Driven Architecture (KEDA)
-
-Publish date: `2026-03-01`
 
 ## Overview
 

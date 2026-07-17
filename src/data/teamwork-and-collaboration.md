@@ -12,11 +12,9 @@ teamwork-and-collaboration:
   show: true
   date: "2025-10-13"
   type: "blog"
+  icon: "SiGithub"
+  tags: ["Career"]
 ---
-
-# Teamwork And Collaboration
-
-Publish date: `2025-10-13`
 
 ## Overview
 

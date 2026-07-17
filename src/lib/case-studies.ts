@@ -1,9 +1,10 @@
 import "server-only";
 import { CaseStudy, ProjectImage } from "@/app/types";
+import { isCaseStudyTag } from "@/data/case-study-tags";
 import path from "path";
 import fs from "fs";
 import matter from "gray-matter";
-
+export const DEV_MODE = false;
 export function getVisibleCaseStudies(
   caseType: "project" | "blog" = "project",
 ): CaseStudy[] | null {
@@ -57,6 +58,9 @@ function isCaseStudy(data: unknown): data is CaseStudy {
   if (typeof data !== "object" || data === null) return false;
 
   const obj = data as Record<string, unknown>;
+  if (!Array.isArray(obj.tags) || !obj.tags.every(isCaseStudyTag)) {
+    return false;
+  }
   return typeof obj.name === "string" &&
     typeof obj.repo === "string" &&
     typeof obj.url === "string" &&

@@ -9,11 +9,9 @@ deployment-strategies:
   show: true
   date: "2026-02-28"
   type: "blog"
+  icon: "RxUpdate"
+  tags: ["Kubernetes", "CI/CD"]
 ---
-
-# Application Zero-Downtime Deployment Strategies
-
-Publish date: `2026-02-28`
 
 Diving into the most popular deployment strategies for deploying new versions or features out to the public. First going through examples, then moving onto demonstrating the deployment on a custom Kubernetes dashboard that interacts with a `minikube` cluster I set up. Feel free to contact me with any questions regarding this topic or others!
 

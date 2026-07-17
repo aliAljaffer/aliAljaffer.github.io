@@ -2,8 +2,7 @@ import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 import { getVisibleCaseStudies } from "@/lib/case-studies";
-
-const BASE_URL = "https://alialjaffer.com";
+import { SITE_URL as BASE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const projects = getVisibleCaseStudies("project") ?? [];

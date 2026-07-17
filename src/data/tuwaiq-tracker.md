@@ -17,11 +17,9 @@ tuwaiq-tracker:
   show: true
   date: "2024-09-20"
   type: "project"
+  icon: "PiBinoculars"
+  tags: ["Next.js", "Automation", "AWS"]
 ---
-
-# Tuwaiq Tracker
-
-Publish date: `2024-09-20`
 
 ## Overview
 

@@ -11,11 +11,9 @@ azure-3t-app:
   show: true
   date: "2025-09-20"
   type: "project"
+  icon: "VscAzure"
+  tags: ["Azure", "Terraform", "Networking", "Docker"]
 ---
-
-# Azure Three-tier E-commerce App
-
-Publish date: `2025-09-20`
 
 ## Overview
 

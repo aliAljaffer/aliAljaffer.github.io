@@ -12,11 +12,9 @@ aws-budget-discord-notifs:
   show: true
   date: "2025-07-31"
   type: "project"
+  icon: "MdMoneyOff"
+  tags: ["AWS", "Terraform", "Automation", "Python"]
 ---
-
-# AWS Budget Notifications for Discord Channels
-
-Publish date: `2025-07-31`
 
 ## Overview
 

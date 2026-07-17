@@ -9,9 +9,9 @@ certification-roadmap:
   show: true
   date: "2026-06-17"
   type: "blog"
+  icon: "RiShapesLine"
+  tags: ["Career"]
 ---
-
-# Guide to: Cloud Certifications and Building Side Projects
 
 ## Overview
 
