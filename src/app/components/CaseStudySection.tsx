@@ -21,10 +21,10 @@ export default function CaseStudySection({
   return (
     <section aria-labelledby={id} className={`px-6 ${className}`}>
       <SectionLabel id={id}>{title}</SectionLabel>
-      <ScrollableList className="space-y-4 md:max-h-[60vh] md:overflow-y-auto scrollbar-visible">
+      <ScrollableList className="space-y-4 md:max-h-[40vh] md:overflow-y-auto md:overflow-x-hidden scrollbar-hidden">
         {items.map((item) => (
           <Link
-            key={item.caseStudyId}
+            key={item.caseStudyId + crypto.randomUUID()}
             href={`/case-study/${item.caseStudyId}`}
             aria-label={`${item.name} — ${ctaLabel}`}
             className="flex justify-between items-start gap-4 group rounded-md -mx-3 px-3 -my-1 py-1 transition-all duration-150 ease-out hover:-translate-y-0.5 hover:shadow-md hover:bg-neutral-100 dark:hover:bg-neutral-800"

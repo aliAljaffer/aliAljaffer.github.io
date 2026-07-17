@@ -8,9 +8,12 @@ export default function CertsSection({
   className?: string;
 }) {
   return (
-    <section aria-labelledby="certs-heading" className={`px-6 py-4 ${className}`}>
+    <section
+      aria-labelledby="certs-heading"
+      className={`px-6 py-4 ${className}`}
+    >
       <SectionLabel id="certs-heading">Certifications</SectionLabel>
-      <ScrollableList className="space-y-2 md:max-h-[40vh] md:overflow-y-auto scrollbar-visible">
+      <ScrollableList className="space-y-2 md:max-h-[40vh] md:overflow-y-auto scrollbar-hidden">
         {certsData
           .sort((a, b) => b.order - a.order)
           .map((cert, i) => (
