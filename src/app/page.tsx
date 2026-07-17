@@ -2,13 +2,14 @@ import SiteHeader from "@/app/components/SiteHeader";
 import AboutSection from "@/app/components/AboutSection";
 import CertsSection from "@/app/components/CertsSection";
 import CaseStudySection from "@/app/components/CaseStudySection";
+import Footer from "@/app/components/Footer";
 import { getVisibleCaseStudies } from "@/lib/case-studies";
 
 export default function Home() {
   const projects = getVisibleCaseStudies("project") ?? [];
   const blogPosts = getVisibleCaseStudies("blog") ?? [];
   return (
-    <div className="bg-neutral-50 dark:bg-neutral-900 text-neutral-950 dark:text-neutral-50 font-mono min-h-dvh flex flex-col">
+    <div className="bg-neutral-50 dark:bg-neutral-900 text-neutral-950 dark:text-neutral-50 font-mono min-h-dvh md:h-dvh flex flex-col md:overflow-hidden">
       {/* Skip to main content */}
       <a
         href="#main-content"
@@ -32,7 +33,7 @@ export default function Home() {
         <CaseStudySection
           id="blog-heading"
           title="Blog"
-          items={blogPosts}
+          items={[...blogPosts, ...blogPosts, ...blogPosts]}
           ctaLabel="read more"
           className="py-4 md:border-r border-neutral-950 dark:border-neutral-100"
         />
@@ -44,6 +45,8 @@ export default function Home() {
           className="py-4"
         />
       </main>
+
+      <Footer />
     </div>
   );
 }

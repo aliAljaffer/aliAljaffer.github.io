@@ -10,7 +10,10 @@ export default function AboutSection({
   className?: string;
 }) {
   return (
-    <section aria-labelledby="about-heading" className={`px-6 py-4 ${className}`}>
+    <section
+      aria-labelledby="about-heading"
+      className={`px-6 py-4 ${className}`}
+    >
       <SectionLabel id="about-heading">About</SectionLabel>
       <div className="flex items-start justify-between gap-4 mb-3">
         <div>
