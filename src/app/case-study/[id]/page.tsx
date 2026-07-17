@@ -1,7 +1,11 @@
 // src/app/case-study/[id]/page.tsx
 
 import type { Metadata } from "next";
-import { getCaseStudy, getAllCaseStudyIds } from "@/lib/case-studies";
+import {
+  getCaseStudy,
+  getAllCaseStudyIds,
+  getRelatedCaseStudies,
+} from "@/lib/case-studies";
 import { getMarkdownContent } from "@/lib/markdown-loader";
 import { SITE_URL } from "@/lib/site";
 import CaseStudyClient from "./CaseStudyClient";
@@ -58,6 +62,7 @@ export default async function CaseStudyPage({
   if (!content) {
     return NotFound({ message: `No content found for case study: ${id}` });
   }
+  const relatedPosts = getRelatedCaseStudies(caseStudy);
 
   return (
     <CaseStudyClient
@@ -65,6 +70,7 @@ export default async function CaseStudyPage({
         ...caseStudy,
         content: content || "",
       }}
+      relatedPosts={relatedPosts}
     />
   );
 }

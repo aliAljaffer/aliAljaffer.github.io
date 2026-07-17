@@ -100,6 +100,14 @@ export default function ScrollableList({
               className="w-3 h-3"
             />
           </button>
+          <div
+            aria-hidden="true"
+            className={
+              isHorizontal
+                ? "absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-current to-transparent text-neutral-700 dark:text-neutral-300 pointer-events-none z-10"
+                : "absolute top-6 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent text-neutral-700 dark:text-neutral-300 pointer-events-none z-10"
+            }
+          />
         </>
       )}
       <div ref={ref} className={className}>
@@ -112,6 +120,14 @@ export default function ScrollableList({
               isHorizontal
                 ? "absolute top-0 bottom-0 right-0 w-8 bg-gradient-to-l from-neutral-50 dark:from-neutral-900 to-transparent pointer-events-none"
                 : "absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-neutral-50 dark:from-neutral-900 to-transparent pointer-events-none"
+            }
+          />
+          <div
+            aria-hidden="true"
+            className={
+              isHorizontal
+                ? "absolute right-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-current to-transparent text-neutral-700 dark:text-neutral-300 pointer-events-none"
+                : "absolute bottom-6 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent text-neutral-700 dark:text-neutral-300 pointer-events-none"
             }
           />
           <button

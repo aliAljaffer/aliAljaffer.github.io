@@ -19,6 +19,32 @@ export function getCaseStudy(id: string): CaseStudy | null {
   return getAllCaseStudies()?.find((study) => study.caseStudyId === id) || null;
 }
 
+// Ranks other visible posts by shared tag count (ties broken by most recent),
+// dropping anything with zero overlap rather than backfilling with unrelated
+// posts just to hit the limit.
+export function getRelatedCaseStudies(
+  current: CaseStudy,
+  limit = 3,
+): CaseStudy[] {
+  const all = getAllCaseStudies() ?? [];
+  return all
+    .filter((study) => study.show && study.caseStudyId !== current.caseStudyId)
+    .map((study) => ({
+      study,
+      sharedTags: study.tags.filter((tag) => current.tags.includes(tag))
+        .length,
+    }))
+    .filter(({ sharedTags }) => sharedTags > 0)
+    .sort((a, b) => {
+      if (b.sharedTags !== a.sharedTags) return b.sharedTags - a.sharedTags;
+      return (
+        new Date(b.study.date).getTime() - new Date(a.study.date).getTime()
+      );
+    })
+    .slice(0, limit)
+    .map(({ study }) => study);
+}
+
 export function getAllCaseStudies(): CaseStudy[] | null {
   const dirPath = path.join(process.cwd(), "src/data");
   const files = fs.readdirSync(dirPath);

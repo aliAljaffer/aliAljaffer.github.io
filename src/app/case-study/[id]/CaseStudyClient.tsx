@@ -6,6 +6,7 @@ import ExcalidrawViewer from "@/app/components/ExcalidrawViewer";
 import ThemeToggle from "@/app/components/ThemeToggle";
 import CaseStudyToc from "@/app/components/CaseStudyToc";
 import CaseStudyHeader from "@/app/components/CaseStudyHeader";
+import RelatedPosts from "@/app/components/RelatedPosts";
 import Footer from "@/app/components/Footer";
 import { useMemo, isValidElement, type ReactNode } from "react";
 import Markdown, { type Components } from "react-markdown";
@@ -51,9 +52,13 @@ export const inDeadRegion = (imageSrc: string) => {
 };
 interface CaseStudyProps {
   caseStudy: CaseStudy & { content: string };
+  relatedPosts?: CaseStudy[];
 }
 
-export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
+export default function CaseStudyClient({
+  caseStudy,
+  relatedPosts = [],
+}: CaseStudyProps) {
   const hasImages = caseStudy?.images?.some(
     (project_image) => project_image.url.length > 1,
   );
@@ -150,6 +155,8 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
             )}
           </div>
         )}
+
+        <RelatedPosts items={relatedPosts} />
       </div>
       <Footer />
     </Layout>
