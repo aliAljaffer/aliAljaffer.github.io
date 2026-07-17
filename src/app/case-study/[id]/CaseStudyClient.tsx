@@ -70,6 +70,7 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
   );
 
   if (!caseStudy) return NotFound({ message: "Case Study not found" });
+  let sawFirstImage = false;
   return (
     <Layout>
       {/* Nav bar + TOC — sticky stack */}
@@ -100,9 +101,10 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
             components={
               {
                 img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
-                  return inDeadRegion(props.src?.toString() + "")
-                    ? null
-                    : TerminalImage(props);
+                  if (inDeadRegion(props.src?.toString() + "")) return null;
+                  const priority = !sawFirstImage;
+                  sawFirstImage = true;
+                  return TerminalImage({ ...props, priority });
                 },
                 h2: (props: { children?: ReactNode }) => {
                   const text = childrenToText(props.children);

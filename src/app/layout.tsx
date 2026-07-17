@@ -8,10 +8,25 @@ config.autoAddCss = false;
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE_URL } from "@/lib/site";
 
+const title = "Ali Aljaffer - DevOps Engineer";
+const description = "Cloud Engineering and DevOps Portfolio";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Ali Aljaffer - DevOps Engineer",
-  description: "Cloud Engineering and DevOps Portfolio",
+  title,
+  description,
+  alternates: { canonical: SITE_URL },
+  openGraph: {
+    title,
+    description,
+    url: SITE_URL,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 const Roboto = Roboto_Mono({
@@ -27,6 +42,7 @@ export default function RootLayout({
     <html
       lang={defaultLang}
       className={Roboto.className}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <head>

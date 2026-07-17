@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import { getCaseStudy, getAllCaseStudyIds } from "@/lib/case-studies";
 import { getMarkdownContent } from "@/lib/markdown-loader";
 import { estimateReadingMinutes } from "@/lib/reading-time";
+import { loadRobotoMono, loadRomanesco } from "@/lib/og-font";
 
 export const alt = "Case study preview";
 export const size = { width: 1200, height: 630 };
@@ -9,22 +10,6 @@ export const contentType = "image/png";
 
 export function generateStaticParams() {
   return getAllCaseStudyIds().map((id) => ({ id }));
-}
-
-// ImageResponse (Satori) needs a raw ttf/otf buffer, not woff/woff2, so the
-// glyphs actually needed for this card are fetched at build time. Node's
-// default fetch UA (no browser UA header) is what gets Google to serve
-// truetype instead of a compressed woff2 build.
-async function loadRobotoMono(
-  text: string,
-  weight: 400 | 700,
-): Promise<ArrayBuffer> {
-  const cssUrl = `https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@${weight}&text=${encodeURIComponent(text)}`;
-  const css = await (await fetch(cssUrl)).text();
-  const match = css.match(/src: url\((.+?)\) format\('(?:opentype|truetype)'\)/);
-  if (!match) throw new Error("Could not resolve a Roboto Mono font file");
-  const fontRes = await fetch(match[1]);
-  return fontRes.arrayBuffer();
 }
 
 export default async function Image({
@@ -44,11 +29,21 @@ export default async function Image({
       })
     : "";
   const tags = caseStudy?.tags ?? [];
+  // Mirrors CaseStudyHeader.tsx's on-page meta line: date · reading time · Tags: a, b, c
+  const metaParts = [
+    formattedDate,
+    `${readingMinutes} min read`,
+    ...(tags.length > 0
+      ? [`Tags: ${tags.map((t) => t.toLowerCase()).join(", ")}`]
+      : []),
+  ];
+  const titleText = caseStudy?.name ?? "";
+  const descriptionText = caseStudy?.description ?? "";
+  const metaText = `~/ali-aljaffer${descriptionText}${metaParts.join(" · ")}`;
 
-  const text = `~/ali-aljaffer${caseStudy?.name ?? ""}${formattedDate}${readingMinutes} min read${tags.map((t) => `[${t}]`).join("")}`;
-  const [regular, bold] = await Promise.all([
-    loadRobotoMono(text, 400),
-    loadRobotoMono(text, 700),
+  const [regular, romanesco] = await Promise.all([
+    loadRobotoMono(metaText, 400),
+    loadRomanesco(titleText),
   ]);
 
   return new ImageResponse(
@@ -69,37 +64,33 @@ export default async function Image({
         <div style={{ display: "flex", fontSize: 28, opacity: 0.7 }}>
           ~/ali-aljaffer
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           <div
             style={{
               display: "flex",
-              fontSize: 56,
-              fontWeight: 700,
-              lineHeight: 1.25,
+              fontFamily: "Romanesco",
+              fontSize: 84,
+              lineHeight: 1.2,
             }}
           >
-            {caseStudy?.name}
+            {titleText}
           </div>
           <div
             style={{
-              display: "flex",
-              gap: 24,
-              fontSize: 26,
-              opacity: 0.7,
+              display: "-webkit-box",
+              WebkitBoxOrient: "vertical",
+              WebkitLineClamp: 2,
+              overflow: "hidden",
+              fontSize: 28,
+              lineHeight: 1.4,
+              opacity: 0.85,
             }}
           >
-            <div style={{ display: "flex" }}>{formattedDate}</div>
-            <div style={{ display: "flex" }}>{readingMinutes} min read</div>
+            {descriptionText}
           </div>
-          {tags.length > 0 && (
-            <div style={{ display: "flex", gap: 16, fontSize: 24 }}>
-              {tags.map((tag) => (
-                <div key={tag} style={{ display: "flex" }}>
-                  [{tag}]
-                </div>
-              ))}
-            </div>
-          )}
+          <div style={{ display: "flex", fontSize: 24, opacity: 0.7 }}>
+            {metaParts.join("  ·  ")}
+          </div>
         </div>
       </div>
     ),
@@ -107,7 +98,7 @@ export default async function Image({
       ...size,
       fonts: [
         { name: "Roboto Mono", data: regular, weight: 400, style: "normal" },
-        { name: "Roboto Mono", data: bold, weight: 700, style: "normal" },
+        { name: "Romanesco", data: romanesco, weight: 400, style: "normal" },
       ],
     },
   );

@@ -11,6 +11,7 @@ interface TerminalImageProps {
   width?: string | number;
   height?: string | number;
   className?: string;
+  priority?: boolean;
 }
 
 export default function TerminalImage({
@@ -20,6 +21,7 @@ export default function TerminalImage({
   width = 600,
   height = 400,
   className = "",
+  priority = false,
 }: TerminalImageProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -50,6 +52,7 @@ export default function TerminalImage({
               height={imageHeight}
               className="w-full h-auto object-contain p-1"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 75vw, 50vw"
+              priority={priority}
               style={{
                 maxHeight: "60vh",
                 objectFit: "contain",
