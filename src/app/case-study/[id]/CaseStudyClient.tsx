@@ -73,7 +73,7 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
   let sawFirstImage = false;
   return (
     <Layout>
-      {/* Nav bar + TOC — sticky stack */}
+      {/* Nav bar + TOC - sticky stack */}
       <div className="sticky top-0 left-0 w-full z-50">
         <div className="bg-neutral-950 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950 w-full px-6 py-4 flex items-center gap-4">
           <div className="flex-1 min-w-0">
@@ -94,7 +94,10 @@ export default function CaseStudyClient({ caseStudy }: CaseStudyProps) {
       </div>
 
       <div className="max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-6 py-10">
-        <CaseStudyHeader caseStudy={caseStudy} readingMinutes={readingMinutes} />
+        <CaseStudyHeader
+          caseStudy={caseStudy}
+          readingMinutes={readingMinutes}
+        />
         <div className="markdown-content prose prose-invert">
           <Markdown
             rehypePlugins={[rehypeRaw, rehypePrism]}

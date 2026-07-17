@@ -1,6 +1,6 @@
 // Central source of truth for the home page's hand-maintained lists:
 // contact/social links, certifications, and the "currently learning" topics.
-// Blog posts and projects are NOT here — those are sourced from the markdown
+// Blog posts and projects are NOT here - those are sourced from the markdown
 // files in src/data via src/lib/case-studies.ts.
 //
 // To add/remove an entry, edit the relevant array below. Icons are either
@@ -151,7 +151,7 @@ export const learning: LearningTopic[] = [
 export const experienceData: Experience[] = [
   {
     company: "Saudi AZM",
-    title: "DevOps Engineer",
+    title: "Platform Engineer",
     current: true,
     Icon: AzmIcon,
   },

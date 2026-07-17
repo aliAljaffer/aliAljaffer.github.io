@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-// Arsenal F.C. crest — single-path silhouette traced from the club logo.
+// Arsenal F.C. crest - single-path silhouette traced from the club logo.
 // Fills with `currentColor`, so it inherits the surrounding text color and
 // works in both light and dark themes.
 type ArsenalIconProps = SVGProps<SVGSVGElement>;

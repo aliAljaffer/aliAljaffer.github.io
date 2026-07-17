@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-// CNCF Kubestronaut badge — traced to a single fill so it renders monochrome
+// CNCF Kubestronaut badge - traced to a single fill so it renders monochrome
 // via `currentColor`, matching the other inline icons in both themes.
 type KubestronautIconProps = SVGProps<SVGSVGElement>;
 

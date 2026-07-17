@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-// Arsenal F.C. cannon ("The Gunners") — single-path silhouette traced from
+// Arsenal F.C. cannon ("The Gunners") - single-path silhouette traced from
 // the club mark. Fills with `currentColor`, so it inherits the surrounding
 // text color and works in both light and dark themes.
 type ArsenalCannonIconProps = SVGProps<SVGSVGElement>;

@@ -8,7 +8,7 @@ config.autoAddCss = false;
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE_URL } from "@/lib/site";
 
-const title = "Ali Aljaffer - DevOps Engineer";
+const title = "Ali Aljaffer - Platform Engineer";
 const description = "Cloud Engineering and DevOps Portfolio";
 
 export const metadata: Metadata = {

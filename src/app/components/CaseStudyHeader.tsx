@@ -18,7 +18,7 @@ export default function CaseStudyHeader({
   });
 
   const postUrl = `${SITE_URL}/case-study/${caseStudy.caseStudyId}/`;
-  const shareText = `"${caseStudy.name}" — ${caseStudy.description} (${readingMinutes} min read)`;
+  const shareText = `"${caseStudy.name}" - ${caseStudy.description} (${readingMinutes} min read)`;
   const xShareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(postUrl)}&text=${encodeURIComponent(shareText)}`;
   const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`;
 

@@ -57,7 +57,7 @@ So, my plan is to use more screen real-estate to show more information to the us
 
 ### High Friction
 
-> User friction—also called user experience friction or UX friction—is anything that keeps a user from accomplishing a desired action on a website or app. Just like physical friction prevents your shoes from slipping on a slick hardwood floor, digital friction can prevent users from achieving their goals online—for example, making purchases. Source: [What is user friction? How to avoid the mistakes and optimize your UX, Fullstory.com](https://www.fullstory.com/blog/user-friction/)
+> User friction-also called user experience friction or UX friction-is anything that keeps a user from accomplishing a desired action on a website or app. Just like physical friction prevents your shoes from slipping on a slick hardwood floor, digital friction can prevent users from achieving their goals online-for example, making purchases. Source: [What is user friction? How to avoid the mistakes and optimize your UX, Fullstory.com](https://www.fullstory.com/blog/user-friction/)
 
 To understand the amount of friction in the academy website, let's take a look at a typical userflow of landing page arrival and then navigating to course catalog:
 

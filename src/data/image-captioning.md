@@ -90,7 +90,7 @@ Size limitations that are enforced both on the frontend and the lambda backend s
 
 - **Great Developer Experience (DX)**: As the sole developer, automation saves me a lot of the headache of doing repetitive tasks, and ensures less human errors are made!
 
-- **Improved Web Accessibility at Scale**: By automating alt-text generation, this system promotes accessible design for websites and social media content — a benefit that becomes more impactful the more it's used.
+- **Improved Web Accessibility at Scale**: By automating alt-text generation, this system promotes accessible design for websites and social media content - a benefit that becomes more impactful the more it's used.
 
 - **Cost Efficiency for Early-Stage Projects**: Leveraging AWS free tier services (Lambda, S3, API Gateway, Cognito) makes this a cost-effective solution, especially valuable for prototypes, personal tools, and low-traffic use cases.
 

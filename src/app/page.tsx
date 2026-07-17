@@ -20,13 +20,13 @@ export default function Home() {
 
       <SiteHeader />
 
-      {/* Body — 2-col grid: About/Certs row 1, Blog/Projects row 2
+      {/* Body - 2-col grid: About/Certs row 1, Blog/Projects row 2
           Mobile order: About → Certs → Blog → Projects             */}
       <main
         id="main-content"
         className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto_1fr] flex-1 min-h-0"
       >
-        <h1 className="sr-only">Ali Aljaffer — DevOps Engineer</h1>
+        <h1 className="sr-only">Ali Aljaffer - Platform Engineer</h1>
 
         <AboutSection className="md:border-r border-neutral-950 dark:border-neutral-100" />
         <CertsSection />

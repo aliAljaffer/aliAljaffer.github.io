@@ -5,7 +5,7 @@ import SectionLabel from "@/app/components/SectionLabel";
 import { caseStudyIcons } from "@/data/case-study-icons";
 import { DEV_MODE } from "@/lib/case-studies";
 
-// Shared section for the Blog and Projects lists — same markup, differing only
+// Shared section for the Blog and Projects lists - same markup, differing only
 // in heading, items, and the screen-reader CTA on each link.
 export default function CaseStudySection({
   id,
@@ -40,7 +40,7 @@ export default function CaseStudySection({
             <Link
               key={item.caseStudyId}
               href={`/case-study/${item.caseStudyId}`}
-              aria-label={`${item.name} — ${cta}`}
+              aria-label={`${item.name} - ${cta}`}
               className="group flex items-start justify-between gap-3 border border-terminal-border px-3 py-2 transition active:scale-[0.99] hover:border-terminal-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
             >
               <div className="flex items-center gap-3 min-w-0">

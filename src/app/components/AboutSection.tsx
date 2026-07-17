@@ -19,14 +19,14 @@ export default function AboutSection({
         <div>
           <p className="font-bold text-sm mb-0.5">Ali Aljaffer</p>
           <p className="text-[0.625rem] uppercase tracking-[0.2em] text-neutral-600 dark:text-neutral-400">
-            DevOps Engineer
+            Platform Engineer
           </p>
         </div>
         <RandomArsenalIcon />
       </div>
       <p className="text-sm leading-5 text-neutral-700 dark:text-neutral-300">
         I started as a web developer and slowly fell down the infrastructure
-        rabbit hole — these days I build and run cloud platforms in Riyadh for
+        rabbit hole - these days I build and run cloud platforms in Riyadh for
         Saudi AZM. I&apos;m a{" "}
         <a
           href="https://www.cncf.io/training/kubestronaut/?_sft_lf-country=sa#:~:text=Ali-,Aljaffer,-(He/Him)"
