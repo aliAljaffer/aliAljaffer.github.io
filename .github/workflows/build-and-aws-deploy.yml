@@ -178,3 +178,10 @@ jobs:
             --region ${REGION} \
             --allow-unauthenticated \
             --project ${GCP_PROJECT}
+
+      - name: Purge Cloudflare cache (apex)
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"files":["https://alialjaffer.com/"]}'
