@@ -1,3 +1,5 @@
+import { slugify } from "@/lib/slug";
+
 // Fixed tag taxonomy for case-study frontmatter (`tags: [Kubernetes, Terraform]`).
 // A closed set, not freeform strings, so tagging stays consistent across
 // entries instead of drifting into near-duplicate labels over time.
@@ -30,4 +32,12 @@ export function isCaseStudyTag(value: unknown): value is CaseStudyTag {
     typeof value === "string" &&
     (CASE_STUDY_TAGS as readonly string[]).includes(value)
   );
+}
+
+export function tagToSlug(tag: CaseStudyTag): string {
+  return slugify(tag);
+}
+
+export function tagFromSlug(slug: string): CaseStudyTag | undefined {
+  return CASE_STUDY_TAGS.find((tag) => slugify(tag) === slug);
 }

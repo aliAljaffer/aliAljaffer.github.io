@@ -1,7 +1,8 @@
+import Link from "next/link";
 import type { CaseStudy } from "@/app/types";
-import { RiSeparator } from "react-icons/ri";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { tagToSlug } from "@/data/case-study-tags";
 import { SITE_URL } from "@/lib/site";
 
 export default function CaseStudyHeader({
@@ -28,16 +29,23 @@ export default function CaseStudyHeader({
         {caseStudy.name}
       </h1>
       <div className="flex flex-wrap items-center justify-between gap-3 mt-2">
-        <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-600 dark:text-neutral-400">
+        <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-600 dark:text-neutral-400">
           <time dateTime={caseStudy.date}>{formattedDate}</time>
-          <RiSeparator className="w-6 h-6 shrink-0" aria-hidden="true" />
+          <span aria-hidden="true">-</span>
           <span>{readingMinutes} min read</span>
           {caseStudy.tags.length > 0 && (
             <>
-              <RiSeparator className="w-6 h-6 shrink-0" aria-hidden="true" />
-              <span>
-                Tags:{" "}
-                {caseStudy.tags.map((tag) => tag.toLowerCase()).join(", ")}
+              <span aria-hidden="true">-</span>
+              <span className="flex flex-wrap gap-x-2 gap-y-1">
+                {caseStudy.tags.map((tag) => (
+                  <Link
+                    key={tag}
+                    href={`/tags/${tagToSlug(tag)}/`}
+                    className="hover:underline hover:text-neutral-950 dark:hover:text-neutral-50"
+                  >
+                    #{tagToSlug(tag)}
+                  </Link>
+                ))}
               </span>
             </>
           )}

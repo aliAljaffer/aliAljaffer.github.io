@@ -98,7 +98,7 @@ export default function CaseStudyClient({
         )}
       </div>
 
-      <div className="max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-6 py-10">
+      <div className="w-full flex-1 max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-6 py-10">
         <CaseStudyHeader
           caseStudy={caseStudy}
           readingMinutes={readingMinutes}

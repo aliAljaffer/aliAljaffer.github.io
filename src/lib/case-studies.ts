@@ -1,6 +1,6 @@
 import "server-only";
 import { CaseStudy, ProjectImage } from "@/app/types";
-import { isCaseStudyTag } from "@/data/case-study-tags";
+import { isCaseStudyTag, CaseStudyTag } from "@/data/case-study-tags";
 import path from "path";
 import fs from "fs";
 import matter from "gray-matter";
@@ -17,6 +17,26 @@ export function getVisibleCaseStudies(
 
 export function getCaseStudy(id: string): CaseStudy | null {
   return getAllCaseStudies()?.find((study) => study.caseStudyId === id) || null;
+}
+
+export function getCaseStudiesByTag(tag: CaseStudyTag): CaseStudy[] {
+  const all = getAllCaseStudies() ?? [];
+  return all
+    .filter((study) => study.show && study.tags.includes(tag))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+export function getTagCounts(): { tag: CaseStudyTag; count: number }[] {
+  const all = (getAllCaseStudies() ?? []).filter((study) => study.show);
+  const counts = new Map<CaseStudyTag, number>();
+  for (const study of all) {
+    for (const tag of study.tags) {
+      counts.set(tag, (counts.get(tag) ?? 0) + 1);
+    }
+  }
+  return [...counts.entries()]
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
 }
 
 // Ranks other visible posts by shared tag count (ties broken by most recent),

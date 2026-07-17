@@ -3,6 +3,7 @@ import { getCaseStudy, getAllCaseStudyIds } from "@/lib/case-studies";
 import { getMarkdownContent } from "@/lib/markdown-loader";
 import { estimateReadingMinutes } from "@/lib/reading-time";
 import { loadRobotoMono, loadRomanesco } from "@/lib/og-font";
+import { tagToSlug } from "@/data/case-study-tags";
 
 export const alt = "Case study preview";
 export const size = { width: 1200, height: 630 };
@@ -29,17 +30,17 @@ export default async function Image({
       })
     : "";
   const tags = caseStudy?.tags ?? [];
-  // Mirrors CaseStudyHeader.tsx's on-page meta line: date · reading time · Tags: a, b, c
+  // Mirrors CaseStudyHeader.tsx's on-page meta line: date - reading time - #tag1 #tag2
   const metaParts = [
     formattedDate,
     `${readingMinutes} min read`,
     ...(tags.length > 0
-      ? [`Tags: ${tags.map((t) => t.toLowerCase()).join(", ")}`]
+      ? [tags.map((t) => `#${tagToSlug(t)}`).join(" ")]
       : []),
   ];
   const titleText = caseStudy?.name ?? "";
   const descriptionText = caseStudy?.description ?? "";
-  const metaText = `~/ali-aljaffer${descriptionText}${metaParts.join(" · ")}`;
+  const metaText = `~/ali-aljaffer${descriptionText}${metaParts.join(" - ")}`;
 
   const [regular, romanesco] = await Promise.all([
     loadRobotoMono(metaText, 400),
@@ -89,7 +90,7 @@ export default async function Image({
             {descriptionText}
           </div>
           <div style={{ display: "flex", fontSize: 24, opacity: 0.7 }}>
-            {metaParts.join("  ·  ")}
+            {metaParts.join("  -  ")}
           </div>
         </div>
       </div>
