@@ -15,7 +15,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title,
   description,
-  alternates: { canonical: SITE_URL },
+  alternates: {
+    canonical: SITE_URL,
+    types: { "application/rss+xml": `${SITE_URL}/rss.xml` },
+  },
   openGraph: {
     title,
     description,
