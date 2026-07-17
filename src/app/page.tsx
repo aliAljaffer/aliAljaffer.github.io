@@ -33,7 +33,7 @@ export default function Home() {
         <CaseStudySection
           id="blog-heading"
           title="Blog"
-          items={[...blogPosts, ...blogPosts, ...blogPosts]}
+          items={blogPosts}
           ctaLabel="read more"
           className="py-4 md:border-r border-neutral-950 dark:border-neutral-100"
         />

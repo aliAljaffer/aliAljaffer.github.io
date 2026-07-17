@@ -26,7 +26,7 @@ export default function CaseStudySection({
       <SectionLabel id={id}>{title}</SectionLabel>
       <ScrollableList
         fitToContent
-        className="space-y-4 max-h-[40vh] md:max-h-[85%] overflow-y-auto md:overflow-x-hidden scrollbar-hidden"
+        className="space-y-4 max-h-[40vh] md:max-h-[85%] overflow-y-auto overflow-x-hidden scrollbar-hidden"
       >
         {items.map((item) => (
           <Link
