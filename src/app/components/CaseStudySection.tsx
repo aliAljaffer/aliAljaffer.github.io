@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { CaseStudy } from "@/app/types";
 import ScrollableList from "@/app/components/ScrollableList";
 import SectionLabel from "@/app/components/SectionLabel";
+import { DEV_MODE } from "@/lib/case-studies";
 
 // Shared section for the Blog and Projects lists — same markup, differing only
 // in heading, items, and the screen-reader CTA on each link.
@@ -18,6 +19,9 @@ export default function CaseStudySection({
   ctaLabel: string;
   className?: string;
 }) {
+  if (DEV_MODE) {
+    items = [...items, ...items, ...items];
+  }
   return (
     <section
       aria-labelledby={id}
@@ -28,26 +32,33 @@ export default function CaseStudySection({
         fitToContent
         className="space-y-4 max-h-[40vh] md:max-h-[85%] overflow-y-auto overflow-x-hidden scrollbar-hidden"
       >
-        {items.map((item) => (
-          <Link
-            key={item.caseStudyId}
-            href={`/case-study/${item.caseStudyId}`}
-            aria-label={`${item.name} — ${ctaLabel}`}
-            className="flex justify-between items-start gap-4 group rounded-md -mx-3 px-3 -my-1 py-1 transition-all duration-150 ease-out hover:-translate-y-0.5 hover:shadow-md hover:bg-neutral-100 dark:hover:bg-neutral-800"
-          >
-            <div>
-              <p className="text-sm font-bold leading-snug group-hover:underline">
-                {item.name}
-              </p>
-              <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-0.5 leading-snug">
-                {item.description}
-              </p>
-            </div>
-            <span className="text-sm shrink-0 mt-0.5" aria-hidden="true">
-              →
-            </span>
-          </Link>
-        ))}
+        {items.map((item) => {
+          const cta = ctaLabel || "Read article";
+          return (
+            <Link
+              key={item.caseStudyId}
+              href={`/case-study/${item.caseStudyId}`}
+              aria-label={`${item.name} — ${cta}`}
+              className="group flex items-start justify-between gap-3 rounded-lg border border-terminal-border bg-terminal-bg px-3 py-2 transition active:scale-[0.99] hover:border-terminal-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+            >
+              <div className="min-w-0">
+                <p className="text-sm font-bold leading-snug">{item.name}</p>
+                <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-0.5 leading-snug">
+                  {item.description}
+                </p>
+              </div>
+              <span className="inline-flex items-center gap-1 shrink-0 mt-0.5 text-xs font-bold whitespace-nowrap">
+                {cta}
+                <span
+                  className="transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1"
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+              </span>
+            </Link>
+          );
+        })}
       </ScrollableList>
     </section>
   );
