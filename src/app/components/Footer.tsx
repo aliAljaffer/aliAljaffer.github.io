@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { RiRssLine } from "react-icons/ri";
 import { contactData } from "@/data/profile";
@@ -11,7 +12,12 @@ export default function Footer() {
   return (
     <footer className="px-6 py-3 border-t border-neutral-950 dark:border-neutral-100 text-xs text-neutral-600 dark:text-neutral-400">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <span>© {new Date().getFullYear()} Ali Aljaffer</span>
+        <span className="flex items-center gap-4">
+          © {new Date().getFullYear()} Ali Aljaffer
+          <Link href="/archive" className={linkClass}>
+            // Archive
+          </Link>
+        </span>
         <div className="flex items-center gap-4">
           {socials.map((c) => (
             <a

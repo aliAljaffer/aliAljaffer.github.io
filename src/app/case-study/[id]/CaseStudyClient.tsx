@@ -4,9 +4,11 @@ import BackLink from "@/app/components/BackLink";
 import TerminalImage from "@/app/components/TerminalImage";
 import ExcalidrawViewer from "@/app/components/ExcalidrawViewer";
 import ThemeToggle from "@/app/components/ThemeToggle";
+import SiteSearch from "@/app/components/SiteSearch";
 import CaseStudyToc from "@/app/components/CaseStudyToc";
 import CaseStudyHeader from "@/app/components/CaseStudyHeader";
 import RelatedPosts from "@/app/components/RelatedPosts";
+import GiscusComments from "@/app/components/GiscusComments";
 import Footer from "@/app/components/Footer";
 import { useMemo, isValidElement, type ReactNode } from "react";
 import Markdown, { type Components } from "react-markdown";
@@ -87,7 +89,8 @@ export default function CaseStudyClient({
           <p className="hidden md:block min-w-0 truncate text-xs font-bold text-center uppercase tracking-[0.2em]">
             {caseStudy.name}
           </p>
-          <div className="flex-1 min-w-0 flex justify-end">
+          <div className="flex-1 min-w-0 flex justify-end items-center gap-4">
+            <SiteSearch />
             <ThemeToggle />
           </div>
         </div>
@@ -157,6 +160,7 @@ export default function CaseStudyClient({
         )}
 
         <RelatedPosts items={relatedPosts} />
+        <GiscusComments key={caseStudy.caseStudyId} />
       </div>
       <Footer />
     </Layout>

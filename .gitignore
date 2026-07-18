@@ -1,6 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-Icon*
-!icon.svg
+# macOS custom-folder-icon artifact (literal filename "Icon" + carriage return),
+# not a prefix match - broader patterns like `Icon*` also swallow real icon*.png/svg assets.
+Icon[\r]
 # dependencies
 .vscode
 /node_modules

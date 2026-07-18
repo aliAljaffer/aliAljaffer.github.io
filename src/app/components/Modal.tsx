@@ -1,7 +1,8 @@
 "use client";
 
 import type React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 interface ModalProps {
   isOpen: boolean;
@@ -16,6 +17,12 @@ export default function Modal({
   children,
   className = "",
 }: ModalProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -44,27 +51,28 @@ export default function Modal({
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
+  return createPortal(
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center modal-backdrop ${className}`}
+      className={`fixed inset-0 z-50 flex items-center justify-center px-4 ${className}`}
       onClick={onClose}
     >
-      <div className="absolute inset-0 h-screen w-screen backdrop-blur-sm bg-black/30" />
+      <div className="absolute inset-0 bg-black/85" />
+      <button
+        onClick={onClose}
+        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-10 text-xs font-bold tracking-[0.2em] uppercase text-neutral-50 hover:opacity-75 font-mono"
+        aria-label="Close"
+      >
+        [×]
+      </button>
       <div
-        className="relative max-w-[90vw] max-h-[90vh] p-4"
+        className="relative max-w-[92vw] max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {children}
-        <button
-          onClick={onClose}
-          className="absolute -top-2 -right-2 w-8 h-8 bg-terminal-bg border border-terminal-border text-terminal-text hover:bg-terminal-border rounded-full flex items-center justify-center text-sm font-mono"
-          aria-label="Close modal"
-        >
-          ×
-        </button>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

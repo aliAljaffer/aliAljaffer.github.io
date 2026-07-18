@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { RiSeparator } from "react-icons/ri";
 import ThemeToggle from "@/app/components/ThemeToggle";
+import SiteSearch from "@/app/components/SiteSearch";
 import { learning } from "@/data/profile";
 
 const sectionJumps: { label: string; href: string }[] = [
@@ -46,7 +47,8 @@ export default function SiteHeader() {
             ))}
           </p>
         )}
-        <div className="flex-1 min-w-0 flex justify-end">
+        <div className="flex-1 min-w-0 flex justify-end items-center gap-4">
+          <SiteSearch />
           <ThemeToggle />
         </div>
       </div>

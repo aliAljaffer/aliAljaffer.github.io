@@ -63,14 +63,33 @@ export default async function CaseStudyPage({
     return NotFound({ message: `No content found for case study: ${id}` });
   }
   const relatedPosts = getRelatedCaseStudies(caseStudy);
+  const url = `${SITE_URL}/case-study/${id}/`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": caseStudy.type === "blog" ? "BlogPosting" : "CreativeWork",
+    headline: caseStudy.name,
+    description: caseStudy.description,
+    url,
+    datePublished: caseStudy.date,
+    dateModified: caseStudy.date,
+    keywords: caseStudy.tags.join(", "),
+    image: `${SITE_URL}/case-study/${id}/opengraph-image`,
+    author: { "@id": `${SITE_URL}/#person` },
+  };
 
   return (
-    <CaseStudyClient
-      caseStudy={{
-        ...caseStudy,
-        content: content || "",
-      }}
-      relatedPosts={relatedPosts}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <CaseStudyClient
+        caseStudy={{
+          ...caseStudy,
+          content: content || "",
+        }}
+        relatedPosts={relatedPosts}
+      />
+    </>
   );
 }
