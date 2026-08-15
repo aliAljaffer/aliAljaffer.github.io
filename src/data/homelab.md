@@ -1,146 +1,82 @@
 ---
 homelab:
-  name: K3s Cluster Homelab
+  name: The Homelab, Ten Months In
   caseStudyId: homelab
-  description: Documenting my homelabbing journey! :)
+  description: The k3s cluster grew up. Talos Linux, full GitOps, real disaster recovery, and three stacked firmware bugs on a 2012 MacBook.
   repo: "https://github.com/aliAljaffer/homelab"
   url: ""
-  images:
+  images: []
   show: true
-  date: "2026-03-11"
+  date: "2026-08-15"
   type: "blog"
-  icon: "SiK3S"
-  tags: ["Kubernetes", "Homelab", "Networking", "Automation"]
+  icon: "SiTalos"
+  tags: ["Kubernetes", "Homelab", "Networking", "Automation", "Security"]
 ---
 
 ## Overview
 
-This is a project I wanted to work on for some time now. Creating my own Kubernetes cluster, starting with `k3s` and moving onto `kubeadm` later! To start with my first node and control plane, I'm using a Macbook Pro Mid-2012 system with Ubuntu 24.04 installed. As of November 1st, 2025, it has 2GB RAM and a 500GB HDD.
+If you read my [k3s homelab post](/case-study/k3s-homelab/), you met this cluster back when it was one secondhand MacBook Pro and a `k3s` install. That post is basically a baby photo at this point :) Ten months later it's a 5-node [Talos Linux](https://www.talos.dev/) cluster, ~33 [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)-managed apps, disaster recovery split across two cloud providers, and a full observability stack. Barely resembles the old cluster anymore, so this gets its own post instead of an update to the old one.
 
-The end-goal is to add a few more nodes and use this cluster to learn K8s networking, Persistent Volumes, and Cluster administration. And to also use Pi-Hole ;)
+The one rule that hasn't changed, straight from the repo's README: **"Everything is in this repo - if it's not here, it doesn't exist on the cluster."** ArgoCD reconciles `main` against the live cluster. The only thing applied by hand is the bootstrap step that installs ArgoCD itself. Chicken, egg, you know how it goes.
 
-Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight enough to run on a Raspberry Pi. But as soon as I upgrade the RAM, I'll probably move to `MicroK8s`
+## Hardware
 
-## Nodes
+![The homelab in its 9U rack, looking a lot more legit than a laptop balanced on a shelf](https://storage.googleapis.com/alialjaffer-portfolio/images/homelab/homelab.jpg)
 
-- Control Plane: Macbook Pro, Mid-2012
-  - OS: Ubuntu 24.04
-  - RAM: 2GB ~Upgraded~> 16GB DDR3
-  - Storage: 500GB HDD ~Upgraded~> 240GB SSD
-  - CPU: Some Intel i5 2.5Ghz
-- GPU Node: Custom-Built PC
-  - OS: Fedora Workstation 43
-  - RAM: 32GB
-  - Storage: 3x 2TB NVMe
-  - CPU: AMD Ryzen 7 7800x3D
-  - GPU: RTX 4070 Ti Super
+- **Control plane (`cp0`)**: still the same 2012 MacBook Pro! 13", Intel i5, upgraded to 16GB DDR3, 256GB SATA SSD. New RAM after a crash-on-boot, an SSD swap with a thermal paste redo, and it has survived two full cluster rebuilds (`k3s` -> a `kubeadm` detour -> Talos). This laptop will not quit.
+- **Workers (`wrk0`-`wrk3`)**: four Lenovo M920q Tiny boxes, Intel i5/i7, 16-32GB DDR4, NVMe. Each exposes its iGPU via Talos's `i915` extension for hardware transcoding, used by the media server.
+- **GPU node**: a separate gaming PC, Ryzen 7 7800X3D, RTX 4070 Ti Super. Joins the cluster on-demand, tainted `gpu=nvidia`, for ML workloads. Way too expensive to leave running 24/7 for nothing.
 
-## Running Deployments
+![kubectl get nodes -owide, all 5 Ready, and kubectl get httproutes -A because I like proof](https://storage.googleapis.com/alialjaffer-portfolio/images/homelab/kubectl.png)
 
-- [Pi-hole](https://pi-hole.net/)
-- [Nvidia Runtime Class](https://developer.nvidia.com/container-runtime) for MLOps workloads, still needs testing
-- [MetalLB](https://metallb.io/): To give LoadBalancer services a Private IP address on my network
-- [Prometheus](https://prometheus.io/) + [Grafana](https://grafana.com/): Metrics and monitoring dashboards for the cluster
-- Git Runners with [Action Runner Controller (ARC)](https://github.com/actions/actions-runner-controller): Now I can access private IPs on my network thanks to self-hosting the runners!
-- [Catus Locatus](https://team4.tuwaiqtracker.com/) App
-- [ArgoCD](https://argo-cd.readthedocs.io/en/stable/getting_started/)
-- [Velero](https://github.com/vmware-tanzu/velero/releases/tag/v1.18.0): Cluster backups to AWS S3
-- [ExternalDNS](https://kubernetes-sigs.github.io/external-dns/latest/): Manages my AWS Route53 DNS by adding subdomains I specify in my Ingress objects.
-- [Cert-Manager](https://cert-manager.io/docs/): Manages my SSL certificates for mTLS communication in the cluster
+## The stack
 
-## YAML Manifests
+- **OS/K8s**: Talos Linux, Kubernetes v1.36.2
+- **Networking**: [Cilium](https://cilium.io/) as the CNI, Gateway API, no NGINX Ingress needed
+- **Storage/DB**: [Longhorn](https://longhorn.io/) for storage, [CloudNativePG](https://cloudnative-pg.io/) for Postgres
+- **GitOps**: ArgoCD, obviously
+- **Secrets**: [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets) + [SOPS](https://github.com/getsops/sops) for anything sensitive
+- **Policy**: [Kyverno](https://kyverno.io/)
+- **Metrics/logs**: kube-prometheus-stack + [Thanos](https://thanos.io/) + [Loki](https://grafana.com/oss/loki/)
+- **DR**: [Velero](https://velero.io/) + Longhorn's own backup target
+- **Power**: [Kepler](https://sustainable-computing.io/) feeds a power-cost panel in Grafana, priced in SAR since that's where this cluster lives
 
-Manifests I use can be found in here: https://github.com/aliAljaffer/homelab
+Why Talos instead of a regular distro plus `kubeadm`? No SSH surface to harden, API-managed end to end, fits the "everything through the repo" idea all the way down to the OS. It also, as it turns out, does not fit an EFI Mac out of the box. Which brings me to the best story in this whole project.
 
-## Photo updates
+## The MacBook Pro vs. Talos Linux saga
 
-### UPDATES Mar. 10, 2026
+Fully written up in [`docs/talos-intel-mac.md`](https://github.com/aliAljaffer/homelab/blob/main/docs/talos-intel-mac.md) in the repo, but here's the short version: three separate, unrelated firmware bugs, stacked on top of each other, on the same 14-year-old laptop. Seriously.
 
-#### Cert Manager + ExternalDNS in Action
+**Bug 1:** Talos 1.13+ switched their kernel build to Clang+LLD, and Apple's EFI firmware just rejects the resulting binary outright. Machine hangs at the boot logo, ZERO kernel output. Credit to GitHub user [virtualm2000](https://github.com/virtualm2000) for narrowing this down on [`siderolabs/talos` issue #13231](https://github.com/siderolabs/talos/issues/13231), since I built on their findings. For the workers, the fix was easy: just use Talos v1.12.7 instead, still within the supported version skew. Not an option for `cp0` though, since control-plane nodes all need the same Kubernetes version. So for the control plane I rebuilt the Talos kernel from source, stripping `LLVM: 1` out of the build config so it compiles with GNU `ld` instead. Cloned `siderolabs/pkgs`, stood up a local Docker registry and BuildKit builder, rebuilt the kernel, installer, and imager myself. About 1-2 hours, mostly compile time.
 
-![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/certmanager.png)
+**Bug 2:** with a byte-for-byte correct kernel and a full install, the machine froze at the exact same screen anyway. This time it was `systemd-stub`'s status line, not the Talos logo, so the firmware clearly could run the binary fine. The freeze was happening inside `systemd-boot` itself, before the kernel even got a chance to run. Fix: swap `systemd-boot` for GRUB. Talos only lets you pick GRUB through the imager's disk-image build mode though, not through machine config, since the real installer hardcodes the choice on UEFI hardware. So I had to build a GRUB image separately and `dd` it straight onto the disk from rescue media.
 
-All my ingresses:
+**Bug 3, a bonus** found while fixing bug 2: Talos's GRUB build hardcodes `(hd0,gpt3)/grub`, assuming the boot disk is always disk 0. Once the installer USB came out, this Mac's firmware enumerated the internal disk as `hd1` instead. Of course it did. GRUB dropped to a rescue prompt on every cold boot, useless for a node that needs to survive an unattended reboot. Fixed by rebuilding just the GRUB binary with an embedded config that finds the boot partition by filesystem UUID instead of a disk number.
 
-- Get a Private IP (Thanks to **MetalLB**)
-- Are assigned a DNS record on my domain (Thanks to **ExternalDNS**)
-- Get SSL certificates and communicate over HTTPS (Thanks to **cert-manager**)
+End result: a fully custom Talos image running as the control plane of a Kubernetes cluster, on a 14-year-old laptop, and it survives unattended reboots now. Still super proud of this one, I have to say.
 
-Accessing my applications becomes easier!
+## Disaster recovery, for real this time
 
-### UPDATES Nov. 17, 2025
+I went auditing my backups a while back and found Velero had been silently failing 100% of the time, thanks to a bug in `velero-plugin-for-gcp:v1.13.0`'s backup-exists check. Not great! Fixed by bumping the version, and this time I actually verified it end-to-end instead of trusting a green checkmark.
 
-#### A new toy in town: ArgoCD
+![Velero's actual backup objects sitting in the GCS bucket, proof beats a green checkmark](https://storage.googleapis.com/alialjaffer-portfolio/images/homelab/velero.png)
 
-![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/argocd.png)
+Same audit, second surprise: Longhorn's own native backup target, completely separate from Velero, was pointing at nothing. Rather than fight GCS credentials into a shape Longhorn could use, I stood up a whole new AWS account and bucket just for this. Why a whole separate cloud account? So the two backups can't die together. **NOTE:** setting Longhorn's backup target through Helm values does _not_ update it once it already exists, only on first creation. Had to manage it directly as a Kustomize resource instead. A daily job now backs up every volume with 14-day retention, and I actually tested a restore instead of trusting the status field. Once bitten, twice shy!
 
-![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/argocd2.png)
+![Longhorn's dashboard: 14 volumes, all healthy, nothing degraded](https://storage.googleapis.com/alialjaffer-portfolio/images/homelab/longhorn.png)
 
-We're up and functional! Really enjoyed getting to know this tool and I can immediately feel the benefits of it.
+## Observability and networking
 
-### UPDATES Nov. 8, 2025
+![The Cluster Health dashboard in Grafana, Kepler's power numbers and all](https://storage.googleapis.com/alialjaffer-portfolio/images/homelab/grafana.png)
 
-#### Self-hosted GitHub Action Runners!
+kube-prometheus-stack, Thanos, Loki, and Grafana Alloy cover metrics and logs now, with Kepler thrown in for power draw. Getting every piece of infrastructure actually scraped was mostly grunt work, going chart by chart turning on `ServiceMonitor`s, since almost none of them expose metrics by default. A couple fought back and needed hand-written PodMonitors instead (looking at you, [`frr-k8s`](https://github.com/metallb/frr-k8s) and [ARC](https://github.com/actions/actions-runner-controller)). Worth it though: two real bugs only surfaced because the dashboards existed, including a GCS key that got rotated out from under Thanos and quietly broke it for a while before I noticed.
 
-![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/runner.png)
+For networking, public traffic now goes through a dedicated Cloudflare Tunnel Gateway instead of per-app tunnel configs, and remote `kubectl`/`talosctl` access moved from an old SSH bastion to Cloudflare Zero Trust. Before writing any `NetworkPolicy`, I mapped real namespace-to-namespace traffic first using [Hubble](https://github.com/cilium/hubble) plus a grep across the whole repo, since I'd rather find the surprises before enforcement than after. Good thing too: Cilium enforces on the pod's real post-DNAT port, not the Service's declared port, and a couple of my services would've silently broken under a naive policy. The default-deny rollout still wasn't perfectly smooth either. I pushed it, it broke something, I reverted it, then it came back clean a bit later. Revert first, debug after.
 
-Ran my first workflow to build and deploy THIS website on a Kubernetes pod! :)
+## Conclusion
 
-#### RAM upgrade! 2GB -> 16GB
+Going from a 2GB MacBook running `k3s` to a fully GitOps'd, disaster-recovered, actually-observable cluster took about ten months and a genuinely stupid amount of firmware debugging. The MacBook saga is still my favorite part of this whole project. Three unrelated bugs stacked on 14-year-old Apple hardware, and somehow it survives unattended reboots now. INSANE.
 
-![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/after-ram-upgrade.png)
+But honestly, what sticks with me is that the boring stuff mattered most: verifying backups actually restore, mapping traffic before writing a deny policy, rotating a credential the second I know it leaked instead of leaving myself a note. None of that is exciting to write about. But it's the difference between a homelab and a homelab you can actually trust.
 
-### UPDATES Nov. 6, 2025
-
-#### New node!
-
-![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/updated.png)
-
-- New node specs:
-  - `OS`: Fedora Workstation 43
-  - `CPU`: AMD 7800x3D
-  - `Memory`: 32GB
-  - `GPU`: RTX 4070 Ti Super
-  - Tainted with `gpu=nvidia` to run exclusively for ML workloads
-- Prometheus + Grafana Monitoring stack with External IP using MetalLB for Grafana
-- Pi-hole now runs its service as `NodePort`
-
-#### Grafana Control Plane Monitoring
-
-![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/grafana.png)
-
-### UPDATES Nov. 5, 2025
-
-#### Pi-Hole
-
-![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/pihole.png)
-
-#### Upgrades
-
-##### Before SSD upgrade
-
-![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/pre.jpeg)
-
-##### After: SSD upgraded, thermal paste changed
-
-![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/post.jpeg)
-
-#### Cluster is ready! 😊
-
-![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/homelab/l.jpeg)
-
-## Text Updates
-
-`2026-03-10`: (`dns`) I installed ExternalDNS and Cert Manager - now my apps are managed under my domain with TLS :)
-
-`2025-11-08`: (`ram`) Ram arrived, works wonderfully!
-
-`2025-11-07`: (`nodes`) Added new Node running Fedora, 32GB RAM, AMD 7800x3D, and RTX 4070 Ti Super for ML workloads (tainted)
-
-`2025-11-06`: (`pihole`) Pi-Hole is running and blocking! :)
-
-`2025-11-05`: (`os`) Purchased a Kingston 240GB SSD off Amazon, installed Ubuntu 24.04 LTS!
-
-`2025-11-01`: (`ram`) Well. One of the RAM sticks is causing the system to crash on boot. Time for new ones. Ordered 2x8GB DDR3 sticks.
-
-`2025-11-01`: (`start`) Journey starts! Acquired this old Macbook from my sister. i5 2.5Ghz, 4GB RAM, and a WD Blue 500GB HDD.
+Next up: getting ArgoCD's own metrics actually wired in, and finding out why the tunnel's metrics endpoint just won't respond. Onwards :)

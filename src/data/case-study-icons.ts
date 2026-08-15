@@ -9,6 +9,7 @@ import {
   SiGithub,
   SiRaspberrypi,
   SiK3S,
+  SiTalos,
   SiGithubactions,
 } from "react-icons/si";
 import { FaGolang } from "react-icons/fa6";
@@ -35,6 +36,7 @@ export const caseStudyIcons: Record<string, IconType> = {
   SiRaspberrypi,
   FaGolang,
   SiK3S,
+  SiTalos,
   RxUpdate,
   VscAzure,
   RiAlibabaCloudLine,
