@@ -21,13 +21,13 @@ The one rule that hasn't changed, straight from the repo's README: **"Everything
 
 ## Hardware
 
-![The homelab in its 9U rack, looking a lot more legit than a laptop balanced on a shelf](https://storage.googleapis.com/alialjaffer-portfolio/images/homelab/homelab.jpg)
+![The homelab in its 9U rack, looking a lot more legit than a laptop balanced on a shelf](https://assets.alialjaffer.com/images/homelab/homelab.jpg)
 
 - **Control plane (`cp0`)**: still the same 2012 MacBook Pro! 13", Intel i5, upgraded to 16GB DDR3, 256GB SATA SSD. New RAM after a crash-on-boot, an SSD swap with a thermal paste redo, and it has survived two full cluster rebuilds (`k3s` -> a `kubeadm` detour -> Talos). This laptop will not quit.
 - **Workers (`wrk0`-`wrk3`)**: four Lenovo M920q Tiny boxes, Intel i5/i7, 16-32GB DDR4, NVMe. Each exposes its iGPU via Talos's `i915` extension for hardware transcoding, used by the media server.
 - **GPU node**: a separate gaming PC, Ryzen 7 7800X3D, RTX 4070 Ti Super. Joins the cluster on-demand, tainted `gpu=nvidia`, for ML workloads. Way too expensive to leave running 24/7 for nothing.
 
-![kubectl get nodes -owide, all 5 Ready, and kubectl get httproutes -A because I like proof](https://storage.googleapis.com/alialjaffer-portfolio/images/homelab/kubectl.png)
+![kubectl get nodes -owide, all 5 Ready, and kubectl get httproutes -A because I like proof](https://assets.alialjaffer.com/images/homelab/kubectl.png)
 
 ## The stack
 
@@ -59,15 +59,15 @@ End result: a fully custom Talos image running as the control plane of a Kuberne
 
 I went auditing my backups a while back and found Velero had been silently failing 100% of the time, thanks to a bug in `velero-plugin-for-gcp:v1.13.0`'s backup-exists check. Not great! Fixed by bumping the version, and this time I actually verified it end-to-end instead of trusting a green checkmark.
 
-![Velero's actual backup objects sitting in the GCS bucket, proof beats a green checkmark](https://storage.googleapis.com/alialjaffer-portfolio/images/homelab/velero.png)
+![Velero's actual backup objects sitting in the GCS bucket, proof beats a green checkmark](https://assets.alialjaffer.com/images/homelab/velero.png)
 
 Same audit, second surprise: Longhorn's own native backup target, completely separate from Velero, was pointing at nothing. Rather than fight GCS credentials into a shape Longhorn could use, I stood up a whole new AWS account and bucket just for this. Why a whole separate cloud account? So the two backups can't die together. **NOTE:** setting Longhorn's backup target through Helm values does _not_ update it once it already exists, only on first creation. Had to manage it directly as a Kustomize resource instead. A daily job now backs up every volume with 14-day retention, and I actually tested a restore instead of trusting the status field. Once bitten, twice shy!
 
-![Longhorn's dashboard: 14 volumes, all healthy, nothing degraded](https://storage.googleapis.com/alialjaffer-portfolio/images/homelab/longhorn.png)
+![Longhorn's dashboard: 14 volumes, all healthy, nothing degraded](https://assets.alialjaffer.com/images/homelab/longhorn.png)
 
 ## Observability and networking
 
-![The Cluster Health dashboard in Grafana, Kepler's power numbers and all](https://storage.googleapis.com/alialjaffer-portfolio/images/homelab/grafana.png)
+![The Cluster Health dashboard in Grafana, Kepler's power numbers and all](https://assets.alialjaffer.com/images/homelab/grafana.png)
 
 kube-prometheus-stack, Thanos, Loki, and Grafana Alloy cover metrics and logs now, with Kepler thrown in for power draw. Getting every piece of infrastructure actually scraped was mostly grunt work, going chart by chart turning on `ServiceMonitor`s, since almost none of them expose metrics by default. A couple fought back and needed hand-written PodMonitors instead (looking at you, [`frr-k8s`](https://github.com/metallb/frr-k8s) and [ARC](https://github.com/actions/actions-runner-controller)). Worth it though: two real bugs only surfaced because the dashboards existed, including a GCS key that got rotated out from under Thanos and quietly broke it for a while before I noticed.
 

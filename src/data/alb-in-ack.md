@@ -21,7 +21,7 @@ NGINX Ingress Controller can only provision a Classic Load Balancer. To use an A
 
 You can install this add-on on Alibaba Console by going to:
 
-![Showcasing where to manage add-ons in Alibaba Console](https://storage.googleapis.com/alialjaffer-portfolio/images/alb-in-ack/alb-addons.png)
+![Showcasing where to manage add-ons in Alibaba Console](https://assets.alialjaffer.com/images/alb-in-ack/alb-addons.png)
 
 - Services
 - → Container **Service for Kubernetes (ACK)**
