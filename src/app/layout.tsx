@@ -97,7 +97,7 @@ export default function RootLayout({
         {children}
         <script
           defer
-          src="https://umami.alialjaffer.com/script.js"
+          src="https://umami.alialjaffer.com/assets/web.js"
           data-website-id="ea36b581-4b7d-4c81-9691-3182bfd8dfc8"
         />
       </body>
