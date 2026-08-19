@@ -93,7 +93,14 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-neutral-50 dark:bg-neutral-900">{children}</body>
+      <body className="bg-neutral-50 dark:bg-neutral-900">
+        {children}
+        <script
+          defer
+          src="https://umami.alialjaffer.com/script.js"
+          data-website-id="ea36b581-4b7d-4c81-9691-3182bfd8dfc8"
+        />
+      </body>
       <GoogleAnalytics gaId="G-CWKB4GRTEB" />
     </html>
   );
