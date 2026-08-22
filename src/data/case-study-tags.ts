@@ -11,6 +11,7 @@ export const CASE_STUDY_TAGS = [
   "Alibaba Cloud",
   "CI/CD",
   "Homelab",
+  "Linux",
   "Networking",
   "Web Development",
   "Machine Learning",

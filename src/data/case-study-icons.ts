@@ -13,6 +13,7 @@ import {
   SiGithubactions,
 } from "react-icons/si";
 import { FaGolang } from "react-icons/fa6";
+import { BiHeadphone } from "react-icons/bi";
 import { VscAzure } from "react-icons/vsc";
 import { RiAlibabaCloudLine, RiShapesLine } from "react-icons/ri";
 import { TbChartDots3 } from "react-icons/tb";
@@ -23,6 +24,7 @@ import { MdMoneyOff } from "react-icons/md";
 import { CgGym } from "react-icons/cg";
 
 export const caseStudyIcons: Record<string, IconType> = {
+  BiHeadphone,
   SiKubernetes,
   MdMoneyOff,
   SiGithubactions,
