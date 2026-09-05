@@ -14,7 +14,7 @@ export default function AboutSection({
       className={`shrink-0 py-4 ${className}`}
     >
       <SectionLabel id="about-heading">About</SectionLabel>
-      <p className="text-sm leading-6 text-neutral-700 dark:text-neutral-300 max-w-[820px]">
+      <p className="text-sm leading-6 text-neutral-700 dark:text-neutral-300">
         I started as a web developer and slowly fell down the infrastructure
         rabbit hole - these days I build and run cloud platforms in Riyadh for
         Saudi AZM. I&apos;m a{" "}

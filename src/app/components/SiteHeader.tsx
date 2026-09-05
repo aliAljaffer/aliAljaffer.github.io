@@ -1,6 +1,6 @@
 import { contactData, learning } from "@/data/profile";
 import ThemeToggle from "@/app/components/ThemeToggle";
-import SiteSearch from "@/app/components/SiteSearch";
+import RandomArsenalIcon from "@/app/components/RandomArsenalIcon";
 
 // Typographic masthead for the home page: name and role on the left, socials,
 // search, and theme toggle on the right. Replaces the old black bar header.
@@ -9,9 +9,12 @@ export default function SiteHeader() {
     <header className="shrink-0 w-full max-w-[1100px] mx-auto px-6 pt-7 pb-4">
       <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
         <div className="min-w-0">
-          <h1 className="text-[1.375rem] md:text-[1.625rem] font-bold leading-tight">
-            Ali Aljaffer
-          </h1>
+          <div className="flex items-center gap-2">
+            <h1 className="text-[1.375rem] md:text-[1.625rem] font-bold leading-tight">
+              Ali Aljaffer
+            </h1>
+            <RandomArsenalIcon />
+          </div>
           <p className="text-[0.625rem] uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400 mt-1">
             Platform Engineer · Riyadh, KSA
           </p>
@@ -58,7 +61,6 @@ export default function SiteHeader() {
           >
             rss
           </a>
-          <SiteSearch />
           <ThemeToggle />
         </nav>
       </div>

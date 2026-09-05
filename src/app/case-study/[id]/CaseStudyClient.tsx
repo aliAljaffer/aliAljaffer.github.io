@@ -4,7 +4,6 @@ import BackLink from "@/app/components/BackLink";
 import TerminalImage from "@/app/components/TerminalImage";
 import ExcalidrawViewer from "@/app/components/ExcalidrawViewer";
 import ThemeToggle from "@/app/components/ThemeToggle";
-import SiteSearch from "@/app/components/SiteSearch";
 import CaseStudyToc from "@/app/components/CaseStudyToc";
 import CaseStudyHeader from "@/app/components/CaseStudyHeader";
 import RelatedPosts from "@/app/components/RelatedPosts";
@@ -87,7 +86,6 @@ export default function CaseStudyClient({
             <BackLink href="/">← ~/ali-aljaffer</BackLink>
           </div>
           <div className="flex-1 min-w-0 flex justify-end items-center gap-4">
-            <SiteSearch />
             <ThemeToggle />
           </div>
         </div>
