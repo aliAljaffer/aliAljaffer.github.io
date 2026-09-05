@@ -1,6 +1,7 @@
 ---
 template:
   name: Template for writing case studies efficiently
+  short-title: "Short Title"
   caseStudyId: template
   description: A template example
   repo: "https://github.com/example"

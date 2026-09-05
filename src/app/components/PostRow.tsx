@@ -29,7 +29,8 @@ export default function PostRow({
         </span>
       )}
       <span className="min-w-0 truncate group-hover:underline underline-offset-2">
-        {item.name}
+        <span className="md:hidden">{item["short-title"] ?? item.name}</span>
+        <span className="hidden md:inline">{item.name}</span>
       </span>
       <span
         aria-hidden="true"

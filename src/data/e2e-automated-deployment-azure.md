@@ -1,6 +1,7 @@
 ---
 e2e-automated-deployment-azure:
   name: End-to-End Automated App Deployment on Azure
+  short-title: "E2E Deployment on Azure"
   caseStudyId: e2e-automated-deployment-azure
   description: A fully automated approach with CI/CD pipelines and monitoring to deploy a three-tier application
   repo: "https://github.com/aliAljaffer/e2e-automated-deployment-azure-app"

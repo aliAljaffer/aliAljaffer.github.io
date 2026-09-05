@@ -1,6 +1,7 @@
 ---
 k8s-adventures:
   name: The Kubernetes learning journey (so far)
+  short-title: "The K8s journey (so far)"
   caseStudyId: k8s-adventures
   description: Sharing thoughts after getting into the administration side of K8s
   repo: ""
