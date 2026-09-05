@@ -79,28 +79,22 @@ export default function CaseStudyClient({
   let sawFirstImage = false;
   return (
     <Layout>
-      {/* Slim sticky nav + TOC chips - no black bar, typographic chrome */}
-      <div className="sticky top-0 left-0 w-full z-50 bg-terminal-bg">
-        <div className="px-6 py-3 flex items-center gap-4 border-b border-terminal-border">
-          <div className="flex-1 min-w-0">
-            <BackLink href="/">← ~/ali-aljaffer</BackLink>
-          </div>
-          <div className="flex-1 min-w-0 flex justify-end items-center gap-4">
-            <ThemeToggle />
-          </div>
+      {/* Variant A: no chrome. A slim back/tools row sticks inside the
+          article column; TOC chips live under the masthead, in the flow. */}
+      <div className="w-full flex-1 max-w-4xl mx-auto px-6 pb-8 article-body">
+        <div className="sticky top-0 z-50 bg-terminal-bg flex items-center justify-between gap-4 pt-4 pb-2.5 border-b border-terminal-border">
+          <BackLink href="/">← ~/ali-aljaffer</BackLink>
+          <ThemeToggle />
         </div>
-        {headings.length >= 2 && (
-          <div className="bg-terminal-bg border-b border-terminal-border">
-            <CaseStudyToc headings={headings} />
-          </div>
-        )}
-      </div>
-
-      <div className="w-full flex-1 max-w-4xl mx-auto px-6 py-8 article-body">
         <CaseStudyHeader
           caseStudy={caseStudy}
           readingMinutes={readingMinutes}
         />
+        {headings.length >= 2 && (
+          <div className="mt-3 mb-6">
+            <CaseStudyToc headings={headings} />
+          </div>
+        )}
         <div className="markdown-content prose prose-invert">
           <Markdown
             rehypePlugins={[rehypeRaw, rehypePrism]}
