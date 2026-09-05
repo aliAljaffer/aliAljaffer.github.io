@@ -10,25 +10,31 @@ export default function CertsSection({
   return (
     <section
       aria-labelledby="certs-heading"
-      className={`px-6 py-4 ${className}`}
+      className={`shrink-0 py-4 ${className}`}
     >
       <SectionLabel id="certs-heading">Certifications</SectionLabel>
-      <ScrollableList className="space-y-2 md:max-h-[40vh] md:overflow-y-auto scrollbar-hidden">
+      <ScrollableList className="space-y-2">
         {certsData
           .sort((a, b) => b.order - a.order)
           .map((cert, i) => (
-            <div key={i} className="flex justify-between gap-6 text-sm">
+            <div
+              key={i}
+              className="flex items-baseline gap-2.5 text-sm min-w-0"
+            >
               <a
                 href={cert.url}
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`${cert.name} (opens in new tab)`}
-                className="flex items-center gap-2 tracking-wide hover:underline"
+                className="min-w-0 truncate tracking-wide hover:underline underline-offset-2"
               >
-                {cert.Icon && <cert.Icon className="w-5 h-5 shrink-0" />}
                 {cert.name}
               </a>
-              <span className="text-neutral-600 dark:text-neutral-400 shrink-0">
+              <span
+                aria-hidden="true"
+                className="flex-1 min-w-4 self-center border-b border-dotted border-neutral-400 dark:border-neutral-600"
+              />
+              <span className="shrink-0 text-xs text-neutral-600 dark:text-neutral-400">
                 {cert.date}
               </span>
             </div>

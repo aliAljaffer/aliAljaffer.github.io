@@ -6,10 +6,14 @@ import Footer from "@/app/components/Footer";
 import { getVisibleCaseStudies } from "@/lib/case-studies";
 
 export default function Home() {
-  const projects = getVisibleCaseStudies("project") ?? [];
-  const blogPosts = getVisibleCaseStudies("blog") ?? [];
+  // Blog and projects are one merged list now: everything, newest first.
+  const posts = [
+    ...(getVisibleCaseStudies("blog") ?? []),
+    ...(getVisibleCaseStudies("project") ?? []),
+  ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
   return (
-    <div className="bg-neutral-50 dark:bg-neutral-900 text-neutral-950 dark:text-neutral-50 font-mono min-h-dvh md:h-dvh flex flex-col md:overflow-hidden">
+    <div className="bg-neutral-50 dark:bg-neutral-900 text-neutral-950 dark:text-neutral-50 font-mono min-h-dvh md:h-dvh md:overflow-hidden flex flex-col">
       {/* Skip to main content */}
       <a
         href="#main-content"
@@ -20,29 +24,20 @@ export default function Home() {
 
       <SiteHeader />
 
-      {/* Body - 2-col grid: About/Certs row 1, Blog/Projects row 2
-          Mobile order: About → Certs → Blog → Projects             */}
+      {/* Single column: about, certifications, blog. The blog area takes the
+          remaining height and scrolls on md+; the page stacks and scrolls on
+          smaller screens. */}
       <main
         id="main-content"
-        className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-[auto_1fr] flex-1 min-h-0"
+        className="w-full max-w-[1100px] mx-auto px-6 flex-1 min-h-0 flex flex-col"
       >
-        <h1 className="sr-only">Ali Aljaffer - Platform Engineer</h1>
-
-        <AboutSection className="md:border-r border-neutral-950 dark:border-neutral-100" />
+        <AboutSection />
         <CertsSection />
         <CaseStudySection
           id="blog-heading"
           title="Blog"
-          items={blogPosts}
+          items={posts}
           ctaLabel="read more"
-          className="py-4 md:border-r border-neutral-950 dark:border-neutral-100"
-        />
-        <CaseStudySection
-          id="projects-heading"
-          title="Projects"
-          items={projects}
-          ctaLabel="view case study"
-          className="py-4"
         />
       </main>
 

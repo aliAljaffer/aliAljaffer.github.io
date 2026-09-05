@@ -1,11 +1,12 @@
 import type { CaseStudy } from "@/app/types";
 import ScrollableList from "@/app/components/ScrollableList";
 import SectionLabel from "@/app/components/SectionLabel";
-import CaseStudyCard from "@/app/components/CaseStudyCard";
+import PostRow from "@/app/components/PostRow";
 import { DEV_MODE } from "@/lib/case-studies";
 
-// Shared section for the Blog and Projects lists - same markup, differing only
-// in heading, items, and the screen-reader CTA on each link.
+// Home page blog list: all posts and projects in one merged, date-sorted,
+// scrollable list of dotted-leader rows. Takes the remaining height on md+
+// screens so the whole page fits one screen.
 export default function CaseStudySection({
   id,
   title,
@@ -25,15 +26,20 @@ export default function CaseStudySection({
   return (
     <section
       aria-labelledby={id}
-      className={`px-6 md:flex md:flex-col md:min-h-0 md:overflow-hidden ${className}`}
+      className={`py-4 flex-1 min-h-0 flex flex-col ${className}`}
     >
-      <SectionLabel id={id}>{title}</SectionLabel>
+      <SectionLabel
+        id={id}
+        note={`${items.length} ${items.length === 1 ? "post" : "posts"} · scrolls`}
+      >
+        {title}
+      </SectionLabel>
       <ScrollableList
         fitToContent
-        className="space-y-4 max-h-[40vh] md:max-h-full overflow-y-auto overflow-x-hidden scrollbar-hidden"
+        className="space-y-2.5 max-h-[40vh] md:max-h-full overflow-y-auto overflow-x-hidden scrollbar-hidden"
       >
-        {items.map((item) => (
-          <CaseStudyCard key={item.caseStudyId} item={item} ctaLabel={ctaLabel} />
+        {items.map((item, i) => (
+          <PostRow key={item.caseStudyId} item={item} index={i} ctaLabel={ctaLabel} />
         ))}
       </ScrollableList>
     </section>

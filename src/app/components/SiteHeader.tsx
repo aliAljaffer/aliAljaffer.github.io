@@ -1,77 +1,67 @@
-import Link from "next/link";
-import { RiSeparator } from "react-icons/ri";
+import { contactData, learning } from "@/data/profile";
 import ThemeToggle from "@/app/components/ThemeToggle";
 import SiteSearch from "@/app/components/SiteSearch";
-import { learning } from "@/data/profile";
 
-const sectionJumps: { label: string; href: string }[] = [
-  { label: "About", href: "#about-heading" },
-  { label: "Certs", href: "#certs-heading" },
-  { label: "Blog", href: "#blog-heading" },
-  { label: "Projects", href: "#projects-heading" },
-];
-
-// Full-width, sticky, safe-area-aware header: logo, "currently learning"
-// (desktop only), theme toggle, and a mobile-only section-jump nav.
+// Typographic masthead for the home page: name and role on the left, socials,
+// search, and theme toggle on the right. Replaces the old black bar header.
 export default function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 w-full bg-neutral-950 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950">
-      <div
-        className="px-6 py-3 flex items-center gap-4"
-        style={{ paddingTop: "max(0.75rem, env(safe-area-inset-top))" }}
-      >
-        <div className="flex-1 min-w-0">
-          <Link href="/" className="font-bold text-sm hover:opacity-75">
-            ~/ali-aljaffer
-          </Link>
-        </div>
-        {learning.length > 0 && (
-          <p className="hidden md:flex items-center justify-center gap-3 text-xs whitespace-nowrap text-neutral-300 dark:text-neutral-600">
-            <span>Currently learning:</span>
-            {learning.map(({ name, icon: Icon, url }, i) => (
-              <span key={name} className="flex items-center gap-3">
-                {i > 0 && (
-                  <RiSeparator className="w-6 h-6" aria-hidden="true" />
-                )}
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`${name} (opens in new tab)`}
-                  className="flex items-center gap-1.5 hover:underline"
-                >
-                  <Icon className="w-6 h-6" />
-                  {name}
-                </a>
-              </span>
-            ))}
+    <header className="shrink-0 w-full max-w-[1100px] mx-auto px-6 pt-7 pb-4">
+      <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
+        <div className="min-w-0">
+          <h1 className="text-[1.375rem] md:text-[1.625rem] font-bold leading-tight">
+            Ali Aljaffer
+          </h1>
+          <p className="text-[0.625rem] uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400 mt-1">
+            Platform Engineer · Riyadh, KSA
           </p>
-        )}
-        <div className="flex-1 min-w-0 flex justify-end items-center gap-4">
+          {learning.length > 0 && (
+            <p className="hidden md:flex items-center gap-2 text-[0.625rem] text-neutral-500 dark:text-neutral-500 mt-2">
+              <span>currently learning:</span>
+              {learning.map(({ name, url }, i) => (
+                <span key={name} className="flex items-center gap-2">
+                  {i > 0 && <span aria-hidden="true">·</span>}
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${name} (opens in new tab)`}
+                    className="hover:underline hover:text-neutral-950 dark:hover:text-neutral-50"
+                  >
+                    {name.toLowerCase()}
+                  </a>
+                </span>
+              ))}
+            </p>
+          )}
+        </div>
+        <nav
+          aria-label="Social links"
+          className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.6875rem] text-neutral-600 dark:text-neutral-400"
+        >
+          {contactData.map((c) => (
+            <a
+              key={c.label}
+              href={c.value}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${c.label} (opens in new tab)`}
+              className="hover:text-neutral-950 dark:hover:text-neutral-50"
+            >
+              {c.label.toLowerCase()}
+            </a>
+          ))}
+          <a
+            href="/rss.xml"
+            aria-label="RSS feed"
+            className="hover:text-neutral-950 dark:hover:text-neutral-50"
+          >
+            rss
+          </a>
           <SiteSearch />
           <ThemeToggle />
-        </div>
+        </nav>
       </div>
-
-      {/* Mobile section jumps */}
-      <nav
-        aria-label="Jump to section"
-        className="md:hidden flex items-center gap-3 overflow-x-auto scrollbar-hidden px-6 pb-2 border-t border-neutral-800 dark:border-neutral-300 pt-2"
-      >
-        {sectionJumps.map((s, i) => (
-          <span key={s.href} className="flex items-center gap-3">
-            {i > 0 && (
-              <RiSeparator className="w-6 h-6 shrink-0" aria-hidden="true" />
-            )}
-            <a
-              href={s.href}
-              className="text-[0.625rem] tracking-[0.2em] uppercase whitespace-nowrap hover:opacity-75"
-            >
-              {s.label}
-            </a>
-          </span>
-        ))}
-      </nav>
     </header>
   );
 }

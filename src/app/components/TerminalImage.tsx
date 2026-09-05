@@ -39,31 +39,27 @@ export default function TerminalImage({
 
   return (
     <>
-      <figure
-        className={`my-6 w-fit max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl ${className}`}
-      >
+      <figure className={`my-7 max-w-full ${className}`}>
         <div
-          className="inline-block border border-terminal-border bg-terminal-border p-2 cursor-pointer hover:border-terminal-accent transition-colors"
+          className="inline-block max-w-full border border-terminal-accent cursor-pointer hover:opacity-90 transition-opacity"
           onClick={() => setIsModalOpen(true)}
         >
-          <div className="bg-terminal-bg p-1">
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              width={imageWidth}
-              height={imageHeight}
-              className="w-full h-auto object-contain p-1"
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 75vw, 50vw"
-              priority={priority}
-              style={{
-                maxHeight: "60vh",
-                objectFit: "contain",
-              }}
-            />
-          </div>
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={imageWidth}
+            height={imageHeight}
+            className="block w-auto h-auto max-w-full object-contain"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 75vw, 50vw"
+            priority={priority}
+            style={{
+              maxHeight: "60vh",
+              objectFit: "contain",
+            }}
+          />
         </div>
         {caption && (
-          <figcaption className="text-terminal-comment text-xs mt-2 pt-2 border-t border-terminal-border">
+          <figcaption className="text-terminal-comment text-xs mt-2">
             {caption}
           </figcaption>
         )}

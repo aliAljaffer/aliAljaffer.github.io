@@ -1,28 +1,19 @@
 import type { CaseStudy } from "@/app/types";
-import CaseStudyCard from "@/app/components/CaseStudyCard";
+import SectionLabel from "@/app/components/SectionLabel";
+import PostRow from "@/app/components/PostRow";
 
+// End-of-article related posts as dotted-leader rows.
 export default function RelatedPosts({ items }: { items: CaseStudy[] }) {
   if (items.length === 0) return null;
 
   return (
-    <section
-      aria-labelledby="related-heading"
-      className="mt-10 pt-6 border-t border-terminal-border"
-    >
-      <h2
-        id="related-heading"
-        className="text-xs font-bold uppercase tracking-[0.2em] mb-4 text-neutral-600 dark:text-neutral-400"
-      >
+    <section aria-labelledby="related-heading" className="mt-12">
+      <SectionLabel id="related-heading" line="weak">
         Related
-      </h2>
-      <div className="space-y-3">
+      </SectionLabel>
+      <div className="space-y-2.5">
         {items.map((item) => (
-          <CaseStudyCard
-            key={item.caseStudyId}
-            item={item}
-            ctaLabel="read more"
-            showType
-          />
+          <PostRow key={item.caseStudyId} item={item} />
         ))}
       </div>
     </section>

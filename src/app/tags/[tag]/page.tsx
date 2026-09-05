@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Layout from "@/app/components/Layout";
 import BackLink from "@/app/components/BackLink";
 import ThemeToggle from "@/app/components/ThemeToggle";
-import CaseStudyCard from "@/app/components/CaseStudyCard";
+import SectionLabel from "@/app/components/SectionLabel";
+import PostRow from "@/app/components/PostRow";
 import Footer from "@/app/components/Footer";
 import NotFound from "@/app/not-found";
 import {
@@ -56,34 +57,31 @@ export default async function TagPage({
 
   return (
     <Layout>
-      <div className="sticky top-0 left-0 w-full z-50 bg-neutral-950 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950 px-6 py-4 flex items-center gap-4">
+      <div className="sticky top-0 left-0 w-full z-50 bg-terminal-bg border-b border-terminal-border px-6 py-3 flex items-center gap-4">
         <div className="flex-1 min-w-0">
-          <BackLink href="/">← Home</BackLink>
+          <BackLink href="/">← ~/ali-aljaffer</BackLink>
         </div>
-        <p className="hidden md:block min-w-0 truncate text-xs font-bold text-center uppercase tracking-[0.2em]">
-          #{tagToSlug(tag)}
-        </p>
         <div className="flex-1 min-w-0 flex justify-end">
           <ThemeToggle />
         </div>
       </div>
 
-      <div className="w-full flex-1 max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-6 py-10">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-terminal-accent">
-          Showing posts with tag #{tagToSlug(tag)}
-        </h1>
-        <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1 mb-6">
-          {items.length} {items.length === 1 ? "post" : "posts"}
-        </p>
-        <div className="space-y-3">
-          {items.map((item) => (
-            <CaseStudyCard
-              key={item.caseStudyId}
-              item={item}
-              ctaLabel="read more"
-              showType
-            />
-          ))}
+      <div className="w-full flex-1 max-w-4xl mx-auto px-6 py-8">
+        <header className="pb-6 border-b border-terminal-accent">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-terminal-accent">
+            #{tagToSlug(tag)}
+          </h1>
+          <p className="text-[0.6875rem] text-neutral-600 dark:text-neutral-400 mt-2">
+            {items.length} {items.length === 1 ? "post" : "posts"}
+          </p>
+        </header>
+        <div className="mt-8">
+          <SectionLabel line="weak">Posts</SectionLabel>
+          <div className="space-y-2.5">
+            {items.map((item) => (
+              <PostRow key={item.caseStudyId} item={item} />
+            ))}
+          </div>
         </div>
       </div>
       <Footer />

@@ -32,34 +32,39 @@ export default function TagsIndexPage() {
 
   return (
     <Layout>
-      <div className="sticky top-0 left-0 w-full z-50 bg-neutral-950 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950 px-6 py-4 flex items-center gap-4">
+      <div className="sticky top-0 left-0 w-full z-50 bg-terminal-bg border-b border-terminal-border px-6 py-3 flex items-center gap-4">
         <div className="flex-1 min-w-0">
-          <BackLink href="/">← Home</BackLink>
+          <BackLink href="/">← ~/ali-aljaffer</BackLink>
         </div>
-        <p className="hidden md:block min-w-0 truncate text-xs font-bold text-center uppercase tracking-[0.2em]">
-          Tags
-        </p>
         <div className="flex-1 min-w-0 flex justify-end">
           <ThemeToggle />
         </div>
       </div>
 
-      <div className="w-full flex-1 max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-6 py-10">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-terminal-accent">
-          Browse by tag
-        </h1>
-        <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1 mb-6">
-          {tagCounts.length} {tagCounts.length === 1 ? "tag" : "tags"} in use
-        </p>
-        <div className="flex flex-wrap gap-3">
+      <div className="w-full flex-1 max-w-4xl mx-auto px-6 py-8">
+        <header className="pb-6 border-b border-terminal-accent">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-terminal-accent">
+            Tags
+          </h1>
+          <p className="text-[0.6875rem] text-neutral-600 dark:text-neutral-400 mt-2">
+            {tagCounts.length} {tagCounts.length === 1 ? "tag" : "tags"} in use
+          </p>
+        </header>
+        <div className="mt-8 space-y-2.5">
           {tagCounts.map(({ tag, count }) => (
             <Link
               key={tag}
               href={`/tags/${tagToSlug(tag)}/`}
-              className="inline-flex items-center gap-1.5 border border-terminal-border px-3 py-1.5 text-sm transition hover:border-terminal-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+              className="group flex items-baseline gap-2.5 text-sm min-w-0"
             >
-              <span className="font-bold">#{tagToSlug(tag)}</span>
-              <span className="text-neutral-600 dark:text-neutral-400">
+              <span className="min-w-0 truncate group-hover:underline underline-offset-2">
+                #{tagToSlug(tag)}
+              </span>
+              <span
+                aria-hidden="true"
+                className="flex-1 min-w-4 self-center border-b border-dotted border-neutral-400 dark:border-neutral-600"
+              />
+              <span className="shrink-0 text-xs text-neutral-600 dark:text-neutral-400">
                 {count}
               </span>
             </Link>

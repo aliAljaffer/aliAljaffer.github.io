@@ -1,24 +1,22 @@
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { RiRssLine } from "react-icons/ri";
 import { contactData } from "@/data/profile";
 
-const linkClass =
-  "text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50";
-
+// Typographic endnote footer shared by every page.
 export default function Footer() {
   const socials = contactData.filter((c) => c.label !== "Resume");
+  const linkClass =
+    "hover:text-neutral-950 dark:hover:text-neutral-50 hover:underline underline-offset-2";
 
   return (
-    <footer className="px-6 py-3 border-t border-neutral-950 dark:border-neutral-100 text-xs text-neutral-600 dark:text-neutral-400">
-      <div className="flex flex-wrap items-center justify-between gap-3">
+    <footer className="shrink-0 w-full px-6 py-3 border-t border-terminal-accent text-[0.6875rem] text-neutral-600 dark:text-neutral-400">
+      <div className="max-w-[1100px] mx-auto flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <span className="flex items-center gap-4">
           © {new Date().getFullYear()} Ali Aljaffer
           <Link href="/archive" className={linkClass}>
-            // Archive
+            {"// archive"}
           </Link>
         </span>
-        <div className="flex items-center gap-4">
+        <span className="flex flex-wrap items-center gap-4">
           {socials.map((c) => (
             <a
               key={c.label}
@@ -28,13 +26,13 @@ export default function Footer() {
               aria-label={c.label}
               className={linkClass}
             >
-              <FontAwesomeIcon icon={c.icon} className="w-4 h-4" />
+              {c.label.toLowerCase()}
             </a>
           ))}
           <a href="/rss.xml" aria-label="RSS feed" className={linkClass}>
-            <RiRssLine className="w-4 h-4" aria-hidden="true" />
+            rss
           </a>
-        </div>
+        </span>
       </div>
     </footer>
   );

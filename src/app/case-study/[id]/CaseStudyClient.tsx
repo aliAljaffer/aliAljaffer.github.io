@@ -80,28 +80,25 @@ export default function CaseStudyClient({
   let sawFirstImage = false;
   return (
     <Layout>
-      {/* Nav bar + TOC - sticky stack */}
-      <div className="sticky top-0 left-0 w-full z-50">
-        <div className="bg-neutral-950 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950 w-full px-6 py-4 flex items-center gap-4">
+      {/* Slim sticky nav + TOC chips - no black bar, typographic chrome */}
+      <div className="sticky top-0 left-0 w-full z-50 bg-terminal-bg">
+        <div className="px-6 py-3 flex items-center gap-4 border-b border-terminal-border">
           <div className="flex-1 min-w-0">
-            <BackLink href="/">← Home</BackLink>
+            <BackLink href="/">← ~/ali-aljaffer</BackLink>
           </div>
-          <p className="hidden md:block min-w-0 truncate text-xs font-bold text-center uppercase tracking-[0.2em]">
-            {caseStudy.name}
-          </p>
           <div className="flex-1 min-w-0 flex justify-end items-center gap-4">
             <SiteSearch />
             <ThemeToggle />
           </div>
         </div>
         {headings.length >= 2 && (
-          <div className="bg-neutral-50 dark:bg-neutral-900 text-neutral-950 dark:text-neutral-50 border-b border-neutral-200 dark:border-neutral-800">
+          <div className="bg-terminal-bg border-b border-terminal-border">
             <CaseStudyToc headings={headings} />
           </div>
         )}
       </div>
 
-      <div className="w-full flex-1 max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto px-6 py-10">
+      <div className="w-full flex-1 max-w-4xl mx-auto px-6 py-8 article-body">
         <CaseStudyHeader
           caseStudy={caseStudy}
           readingMinutes={readingMinutes}
@@ -142,7 +139,7 @@ export default function CaseStudyClient({
         {caseStudy.images?.some(
           (project_image) => project_image.url.length > 1,
         ) && (
-          <div className="markdown-content">
+          <div className="markdown-content mt-10">
             <h2 id="screenshots">Screenshots</h2>
             {caseStudy.images.map((image) =>
               image.url.length > 0 ? (
