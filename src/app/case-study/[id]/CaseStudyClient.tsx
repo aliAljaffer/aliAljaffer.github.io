@@ -91,7 +91,7 @@ export default function CaseStudyClient({
           readingMinutes={readingMinutes}
         />
         {headings.length >= 2 && (
-          <div className="sticky top-[47px] z-40 bg-terminal-bg mt-3 mb-6 border-b border-terminal-border">
+          <div className="sticky top-[47px] z-40 bg-terminal-bg mb-6 border-b border-terminal-border">
             {/* top-[47px] pins the chips right under the back/tools row; keep
                 it in sync with that row's height (pt-4 + line + pb-2.5 + border) */}
             <CaseStudyToc headings={headings} />
