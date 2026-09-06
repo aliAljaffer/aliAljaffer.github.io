@@ -1,7 +1,6 @@
 ---
 body-power-gym:
   name: Body & Power Gym
-  short-title: "Body & Power Gym"
   caseStudyId: body-power-gym
   repo: ""
   url: ""

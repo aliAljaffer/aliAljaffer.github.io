@@ -1,7 +1,6 @@
 ---
 k3s-homelab:
   name: K3s Cluster Homelab
-  short-title: "K3s Cluster Homelab"
   caseStudyId: k3s-homelab
   description: Documenting my homelabbing journey! :)
   repo: "https://github.com/aliAljaffer/homelab"

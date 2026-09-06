@@ -1,7 +1,6 @@
 ---
 azure-3t-app:
   name: Azure Three-Tier web app
-  short-title: "Azure Three-Tier web app"
   caseStudyId: app
   description: Azure Three-Tier web app deployed using Terraform and containers
   repo: "https://github.com/aliAljaffer/azure-3t-app"

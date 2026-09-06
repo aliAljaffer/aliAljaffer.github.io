@@ -11,13 +11,11 @@ export default function CaseStudySection({
   id,
   title,
   items,
-  ctaLabel,
   className = "",
 }: {
   id: string;
   title: string;
   items: CaseStudy[];
-  ctaLabel: string;
   className?: string;
 }) {
   if (DEV_MODE) {
@@ -28,23 +26,13 @@ export default function CaseStudySection({
       aria-labelledby={id}
       className={`py-4 flex-1 min-h-0 flex flex-col ${className}`}
     >
-      <SectionLabel
-        id={id}
-        // note={`${items.length} ${items.length === 1 ? "post" : "posts"} · scrolls`}
-      >
-        {title}
-      </SectionLabel>
+      <SectionLabel id={id}>{title}</SectionLabel>
       <ScrollableList
         fitToContent
         className="space-y-2.5 max-h-[40vh] md:max-h-full overflow-y-auto overflow-x-hidden scrollbar-hidden"
       >
         {items.map((item) => (
-          <PostRow
-            key={item.caseStudyId}
-            item={item}
-            showIcon
-            ctaLabel={ctaLabel}
-          />
+          <PostRow key={item.caseStudyId} item={item} showIcon />
         ))}
       </ScrollableList>
     </section>

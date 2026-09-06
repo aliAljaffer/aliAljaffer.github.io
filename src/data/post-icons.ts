@@ -2,7 +2,6 @@
 // react-icons imports only, so the bundle only ships icons actually mapped.
 import type { IconType } from "react-icons";
 import {
-  SiKubernetes,
   SiHuggingface,
   SiGithub,
   SiRaspberrypi,
@@ -42,6 +41,3 @@ export const postIcons: Record<string, IconType> = {
   "teamwork-and-collaboration": SiGithub,
   "tuwaiq-tracker": PiBinoculars,
 };
-
-// Fallback for posts not yet mapped above.
-export const defaultPostIcon: IconType = SiKubernetes;
