@@ -16,7 +16,6 @@ airpods-status:
   show: true
   date: "2026-08-22"
   type: "project"
-  icon: "BiHeadphone"
   tags: ["Linux", "Automation"]
 ---
 

@@ -28,7 +28,7 @@ export default function TerminalImage({
   // Convert src to string, handling undefined and Blob cases
   const imageSrc =
     src instanceof Blob ? URL.createObjectURL(src) : src || "/placeholder.svg";
-  const imageAlt = alt || "Image";
+  const imageAlt = alt || caption || "Figure";
 
   const imageWidth =
     typeof width === "string" ? parseInt(width) || 600 : width || 600;
@@ -40,9 +40,11 @@ export default function TerminalImage({
   return (
     <>
       <figure className={`my-7 max-w-full ${className}`}>
-        <div
-          className="inline-block max-w-full border border-terminal-accent cursor-pointer hover:opacity-90 transition-opacity"
+        <button
+          type="button"
           onClick={() => setIsModalOpen(true)}
+          className="inline-block max-w-full border border-terminal-accent hover:opacity-90 transition-opacity p-0 bg-transparent"
+          aria-label={imageAlt ? `Enlarge image: ${imageAlt}` : "Enlarge image"}
         >
           <Image
             src={imageSrc}
@@ -57,7 +59,7 @@ export default function TerminalImage({
               objectFit: "contain",
             }}
           />
-        </div>
+        </button>
         {caption && (
           <figcaption className="text-terminal-comment text-xs mt-2">
             {caption}
@@ -68,22 +70,28 @@ export default function TerminalImage({
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <div className="flex flex-col items-center gap-3 max-w-[92vw] max-h-[90vh]">
           <div className="border border-neutral-50/40 p-1 min-h-0">
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              width={0}
-              height={0}
-              sizes="92vw"
-              className="max-w-full w-auto h-auto object-contain cursor-pointer"
-              style={{
-                width: "auto",
-                height: "auto",
-                maxWidth: "88vw",
-                maxHeight: caption ? "78vh" : "86vh",
-              }}
-              onClick={() => window.open(imageSrc, "_blank")}
-              title="Click to open full size in new tab"
-            />
+            <a
+              href={imageSrc}
+              target="_blank"
+              rel="noreferrer"
+              title="Open full size in new tab"
+              className="block"
+            >
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                width={0}
+                height={0}
+                sizes="92vw"
+                className="max-w-full w-auto h-auto object-contain"
+                style={{
+                  width: "auto",
+                  height: "auto",
+                  maxWidth: "88vw",
+                  maxHeight: caption ? "78vh" : "86vh",
+                }}
+              />
+            </a>
           </div>
 
           {caption && (

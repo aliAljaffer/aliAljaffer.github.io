@@ -29,7 +29,7 @@ export default function Home() {
           smaller screens. */}
       <main
         id="main-content"
-        className="w-full max-w-[1100px] mx-auto px-6 flex-1 min-h-0 flex flex-col"
+        className="w-full max-w-4xl mx-auto px-6 flex-1 min-h-0 flex flex-col"
       >
         <AboutSection />
         <CertsSection />
@@ -41,7 +41,7 @@ export default function Home() {
         />
       </main>
 
-      <Footer wide />
+      <Footer />
     </div>
   );
 }

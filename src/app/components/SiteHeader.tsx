@@ -1,4 +1,5 @@
 import { contactData, learning } from "@/data/profile";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeToggle from "@/app/components/ThemeToggle";
 import RandomArsenalIcon from "@/app/components/RandomArsenalIcon";
 
@@ -7,22 +8,22 @@ import RandomArsenalIcon from "@/app/components/RandomArsenalIcon";
 // old black bar header.
 export default function SiteHeader() {
   return (
-    <header className="shrink-0 w-full max-w-[1100px] mx-auto px-6 pt-7 pb-4">
+    <header className="shrink-0 w-full max-w-4xl mx-auto px-6 pt-7 pb-4">
       <div className="flex items-center justify-between gap-6">
-        <h1 className="text-[1.375rem] md:text-[1.625rem] font-bold leading-tight">
+        <h1 className="masthead-name text-[1.375rem] md:text-[1.625rem] font-bold leading-tight">
           Ali Aljaffer
         </h1>
         <RandomArsenalIcon />
       </div>
-      <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3 mt-1.5">
+      <div className="flex flex-wrap items-end  justify-between gap-x-6 gap-y-3 mt-1.5">
         <div className="min-w-0">
           <p className="text-[0.625rem] uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400">
             Platform Engineer · Riyadh, KSA
           </p>
           {learning.length > 0 && (
-            <p className="hidden md:flex items-center gap-2 text-[0.625rem] text-neutral-500 dark:text-neutral-500 mt-2">
+            <p className="hidden md:flex items-center gap-2 text-[0.625rem] text-neutral-600 dark:text-neutral-400 mt-2">
               <span>currently learning:</span>
-              {learning.map(({ name, url }, i) => (
+              {learning.map(({ name, url, icon: Icon }, i) => (
                 <span key={name} className="flex items-center gap-2">
                   {i > 0 && <span aria-hidden="true">·</span>}
                   <a
@@ -30,8 +31,9 @@ export default function SiteHeader() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`${name} (opens in new tab)`}
-                    className="hover:underline hover:text-neutral-950 dark:hover:text-neutral-50"
+                    className="flex items-center gap-1 hover:underline hover:text-neutral-950 dark:hover:text-neutral-50"
                   >
+                    <Icon className="w-3 h-3" aria-hidden="true" />
                     {name.toLowerCase()}
                   </a>
                 </span>
@@ -50,18 +52,16 @@ export default function SiteHeader() {
               target="_blank"
               rel="noreferrer"
               aria-label={`${c.label} (opens in new tab)`}
-              className="hover:text-neutral-950 dark:hover:text-neutral-50"
+              className="flex items-center gap-1.5 hover:text-neutral-950 dark:hover:text-neutral-50"
             >
+              <FontAwesomeIcon
+                icon={c.icon}
+                className="w-3 h-3"
+                aria-hidden="true"
+              />
               {c.label.toLowerCase()}
             </a>
           ))}
-          <a
-            href="/rss.xml"
-            aria-label="RSS feed"
-            className="hover:text-neutral-950 dark:hover:text-neutral-50"
-          >
-            rss
-          </a>
           <ThemeToggle />
         </nav>
       </div>

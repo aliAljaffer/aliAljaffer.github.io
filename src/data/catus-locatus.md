@@ -21,7 +21,6 @@ catus-locatus:
   show: true
   date: "2025-10-30"
   type: "project"
-  icon: "PiCatThin"
   tags: ["Kubernetes", "Terraform", "Azure", "React"]
 ---
 

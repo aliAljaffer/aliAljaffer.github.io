@@ -10,7 +10,6 @@ k3s-homelab:
   show: true
   date: "2026-03-11"
   type: "blog"
-  icon: "SiK3S"
   tags: ["Kubernetes", "Homelab", "Networking", "Automation"]
 ---
 

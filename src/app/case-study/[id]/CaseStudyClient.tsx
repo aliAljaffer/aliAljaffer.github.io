@@ -81,13 +81,14 @@ export default function CaseStudyClient({
     <Layout>
       {/* Variant A: no chrome. A slim back/tools row sticks inside the
           article column; TOC chips live under the masthead, in the flow. */}
-      <div className="w-full flex-1 max-w-4xl mx-auto px-6 pb-8 article-body">
-        {/* h-11 on this row and top-11 on the chips below must stay in sync:
-            the chips pin flush under this row's border. */}
-        <div className="sticky top-0 z-50 bg-terminal-bg h-11 flex items-center justify-between gap-4 border-b border-terminal-border">
-          <BackLink href="/">← ~/ali-aljaffer</BackLink>
-          <ThemeToggle />
-        </div>
+      <div className="sticky top-0 z-50 bg-terminal-bg h-11 flex items-center justify-between gap-4 border-b border-terminal-border max-w-4xl w-full mx-auto px-6">
+        <BackLink href="/">← Home</BackLink>
+        <ThemeToggle />
+      </div>
+      <main
+        id="main-content"
+        className="w-full flex-1 max-w-4xl mx-auto px-6 pb-8 article-body"
+      >
         <CaseStudyHeader
           caseStudy={caseStudy}
           readingMinutes={readingMinutes}
@@ -115,7 +116,7 @@ export default function CaseStudyClient({
                 p: "div",
                 a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
                   return (
-                    <a {...props} target="_blank">
+                    <a {...props} target="_blank" rel="noopener noreferrer">
                       {props.children}
                     </a>
                   );
@@ -152,7 +153,7 @@ export default function CaseStudyClient({
 
         <RelatedPosts items={relatedPosts} />
         <GiscusComments key={caseStudy.caseStudyId} />
-      </div>
+      </main>
       <Footer />
     </Layout>
   );

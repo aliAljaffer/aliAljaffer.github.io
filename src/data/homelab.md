@@ -10,7 +10,6 @@ homelab:
   show: true
   date: "2026-08-15"
   type: "blog"
-  icon: "SiTalos"
   tags: ["Kubernetes", "Homelab", "Networking", "Automation", "Security"]
 ---
 

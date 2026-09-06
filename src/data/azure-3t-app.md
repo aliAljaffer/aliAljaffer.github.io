@@ -12,7 +12,6 @@ azure-3t-app:
   show: true
   date: "2025-09-20"
   type: "project"
-  icon: "VscAzure"
   tags: ["Azure", "Terraform", "Networking", "Docker"]
 ---
 

@@ -10,7 +10,6 @@ alb-in-ack:
   show: true
   date: "2026-04-26"
   type: "blog"
-  icon: "RiAlibabaCloudLine"
   tags: ["Kubernetes", "Alibaba Cloud", "Networking", "Security"]
 ---
 

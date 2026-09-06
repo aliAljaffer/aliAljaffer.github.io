@@ -12,7 +12,7 @@ export default function NotFound({ message }: { message?: string }) {
         }}
       />
       <div className="flex-1 flex flex-col items-center justify-center gap-3 p-8">
-        <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-neutral-400 dark:text-neutral-500">
+        <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-neutral-600 dark:text-neutral-400">
           404
         </p>
         <p className="text-sm">Page not found.</p>

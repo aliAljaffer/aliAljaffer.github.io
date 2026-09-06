@@ -10,7 +10,6 @@ deployment-strategies:
   show: true
   date: "2026-02-28"
   type: "blog"
-  icon: "RxUpdate"
   tags: ["Kubernetes", "CI/CD"]
 ---
 

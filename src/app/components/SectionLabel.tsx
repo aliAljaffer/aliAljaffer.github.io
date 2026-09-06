@@ -29,7 +29,7 @@ export default function SectionLabel({
         }`}
       />
       {note && (
-        <span className="text-[0.625rem] text-neutral-500 dark:text-neutral-500 whitespace-nowrap">
+        <span className="text-[0.625rem] text-neutral-600 dark:text-neutral-400 whitespace-nowrap">
           {note}
         </span>
       )}

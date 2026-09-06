@@ -24,7 +24,6 @@ body-power-gym:
   show: true
   date: "2025-07-01"
   type: "project"
-  icon: "CgGym"
   tags: ["Next.js", "Docker", "AWS", "CI/CD"]
 ---
 

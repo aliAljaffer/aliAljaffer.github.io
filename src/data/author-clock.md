@@ -22,7 +22,6 @@ author-clock:
   show: true
   date: "2025-09-05"
   type: "blog"
-  icon: "SiRaspberrypi"
   tags: ["Homelab", "React"]
 ---
 

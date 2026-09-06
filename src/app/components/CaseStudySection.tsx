@@ -30,7 +30,7 @@ export default function CaseStudySection({
     >
       <SectionLabel
         id={id}
-        note={`${items.length} ${items.length === 1 ? "post" : "posts"} · scrolls`}
+        // note={`${items.length} ${items.length === 1 ? "post" : "posts"} · scrolls`}
       >
         {title}
       </SectionLabel>
@@ -38,8 +38,13 @@ export default function CaseStudySection({
         fitToContent
         className="space-y-2.5 max-h-[40vh] md:max-h-full overflow-y-auto overflow-x-hidden scrollbar-hidden"
       >
-        {items.map((item, i) => (
-          <PostRow key={item.caseStudyId} item={item} index={i} ctaLabel={ctaLabel} />
+        {items.map((item) => (
+          <PostRow
+            key={item.caseStudyId}
+            item={item}
+            showIcon
+            ctaLabel={ctaLabel}
+          />
         ))}
       </ScrollableList>
     </section>

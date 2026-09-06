@@ -10,7 +10,6 @@ certification-roadmap:
   show: true
   date: "2026-06-17"
   type: "blog"
-  icon: "RiShapesLine"
   tags: ["Career"]
 ---
 

@@ -10,7 +10,6 @@ k8s-adventures-pt2:
   show: true
   date: "2026-02-15"
   type: "blog"
-  icon: "AiOutlineKubernetes"
   tags: ["Kubernetes", "Career"]
 ---
 

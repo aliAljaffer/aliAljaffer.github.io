@@ -12,6 +12,7 @@ import type { IconType } from "react-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { AzmIcon } from "@/app/components/AzmIcon";
 import { ManafaIcon } from "@/app/components/ManafaIcon";
+import KubestronautIcon from "@/app/components/KubestronautIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -112,9 +113,17 @@ export const certsData: Certification[] = [
     name: "Certified Kubernetes Security Specialist",
     short: "CKS - Kubernetes Security",
     date: "Feb 2026",
-    order: 9,
+    order: 8,
     url: "https://www.credly.com/badges/6d3a6109-76a3-4873-9305-5679d128f6ba/public_url",
     Icon: SiKubernetes,
+  },
+  {
+    name: "CNCF Kubestronaut",
+    short: "Kubestronaut",
+    date: "Feb 2026",
+    order: 9,
+    url: "https://www.cncf.io/training/kubestronaut/?_sft_lf-country=sa#:~:text=Ali-,Aljaffer,-(He/Him)",
+    Icon: KubestronautIcon,
   },
   {
     name: "Certified Kubernetes Administrator",
@@ -153,7 +162,7 @@ export const certsData: Certification[] = [
 export const learning: LearningTopic[] = [
   { name: "Golang", icon: FaGolang, url: "https://go.dev" },
   { name: "Backstage", icon: SiBackstage, url: "https://backstage.io" },
-  { name: "Alibaba Cloud", icon: RiAlibabaCloudLine, url: "https://sccc.sa" },
+  // { name: "Alibaba Cloud", icon: RiAlibabaCloudLine, url: "https://sccc.sa" },
 ];
 
 export const experienceData: Experience[] = [

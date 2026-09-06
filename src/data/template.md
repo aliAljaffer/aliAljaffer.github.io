@@ -16,7 +16,6 @@ template:
   show: true
   date: "YYYY-MM-DD"
   type: "project"
-  icon: "SiKubernetes" # optional; name must match a key in src/data/case-study-icons.ts
   tags: ["Kubernetes"] # required; every value must be one of CASE_STUDY_TAGS in src/data/case-study-tags.ts
 ---
 

@@ -34,14 +34,17 @@ export default function TagsIndexPage() {
     <Layout>
       <div className="sticky top-0 left-0 w-full z-50 bg-terminal-bg border-b border-terminal-border px-6 py-3 flex items-center gap-4">
         <div className="flex-1 min-w-0">
-          <BackLink href="/">← ~/ali-aljaffer</BackLink>
+          <BackLink href="/">← HOME</BackLink>
         </div>
         <div className="flex-1 min-w-0 flex justify-end">
           <ThemeToggle />
         </div>
       </div>
 
-      <div className="w-full flex-1 max-w-4xl mx-auto px-6 py-8">
+      <main
+        id="main-content"
+        className="w-full flex-1 max-w-4xl mx-auto px-6 py-8"
+      >
         <header className="pb-6 border-b border-terminal-accent">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-terminal-accent">
             Tags
@@ -70,7 +73,7 @@ export default function TagsIndexPage() {
             </Link>
           ))}
         </div>
-      </div>
+      </main>
       <Footer />
     </Layout>
   );

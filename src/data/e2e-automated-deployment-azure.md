@@ -13,7 +13,6 @@ e2e-automated-deployment-azure:
   show: true
   date: "2025-10-08"
   type: "project"
-  icon: "SiGithubactions"
   tags: ["Azure", "CI/CD", "Terraform", "Ansible"]
 ---
 

@@ -10,7 +10,6 @@ k8s-adventures:
   show: true
   date: "2025-11-22"
   type: "blog"
-  icon: "AiOutlineKubernetes"
   tags: ["Kubernetes", "Career", "Ansible"]
 ---
 

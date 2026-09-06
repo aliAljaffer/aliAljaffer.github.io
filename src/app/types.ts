@@ -18,7 +18,6 @@ export interface CaseStudy {
   show: boolean;
   date: string;
   type: "blog" | "project";
-  icon?: string;
   tags: CaseStudyTag[];
 }
 export type CaseStudyImage = ProjectImage;

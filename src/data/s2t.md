@@ -10,7 +10,6 @@ s2t:
   show: true
   date: "2026-07-15"
   type: "project"
-  icon: "FaGolang"
   tags: ["Kubernetes", "Automation", "Go"]
 ---
 
