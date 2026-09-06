@@ -1,7 +1,6 @@
 ---
 catus-locatus:
   name: Catus Locatus
-  short-title: "Catus Locatus"
   caseStudyId: catus-locatus
   repo: https://github.com/aliAljaffer/catus-locatus
   url: https://cl.alialjaffer.com/

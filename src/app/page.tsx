@@ -14,14 +14,6 @@ export default function Home() {
 
   return (
     <div className="bg-neutral-50 dark:bg-neutral-900 text-neutral-950 dark:text-neutral-50 font-mono min-h-dvh md:h-dvh md:overflow-hidden flex flex-col">
-      {/* Skip to main content */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-6 focus:z-[60] focus:bg-neutral-950 focus:text-neutral-50 dark:focus:bg-neutral-50 dark:focus:text-neutral-950 focus:px-4 focus:py-2 focus:text-sm focus:font-bold"
-      >
-        Skip to main content
-      </a>
-
       <SiteHeader />
 
       {/* Single column: about, certifications, blog. The blog area takes the
@@ -37,7 +29,6 @@ export default function Home() {
           id="blog-heading"
           title="Blog"
           items={posts}
-          ctaLabel="read more"
         />
       </main>
 

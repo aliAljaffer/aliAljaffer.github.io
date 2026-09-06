@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { CaseStudy } from "@/app/types";
-import { postIcons, defaultPostIcon } from "@/data/post-icons";
+import { postIcons } from "@/data/post-icons";
 
 // Dotted-leader list row for a post/project link. Shared by the home blog
 // list, related posts, the archive, and tag pages. `showIcon` renders the
@@ -8,24 +8,22 @@ import { postIcons, defaultPostIcon } from "@/data/post-icons";
 export default function PostRow({
   item,
   showIcon = false,
-  ctaLabel = "read more",
 }: {
   item: CaseStudy;
   showIcon?: boolean;
-  ctaLabel?: string;
 }) {
   const date = new Date(item.date).toLocaleDateString("en-US", {
     month: "short",
     year: "numeric",
   });
-  const Icon = postIcons[item.caseStudyId] ?? defaultPostIcon;
+  const Icon = postIcons[item.caseStudyId];
   return (
     <Link
       href={`/case-study/${item.caseStudyId}`}
-      aria-label={`${item.name} - ${ctaLabel}`}
+      aria-label={`${item.name} - read more`}
       className="group flex items-baseline gap-2.5 text-sm min-w-0"
     >
-      {showIcon && (
+      {showIcon && Icon && (
         <span className="shrink-0 w-6 self-center flex items-center text-neutral-600 dark:text-neutral-400">
           <Icon className="w-4 h-4" aria-hidden="true" />
         </span>

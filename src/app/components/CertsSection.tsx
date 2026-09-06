@@ -28,7 +28,7 @@ export default function CertsSection({
                 aria-label={`${cert.name} (opens in new tab)`}
                 className="min-w-0 truncate tracking-wide hover:underline underline-offset-2"
               >
-                <span className="md:hidden">{cert.short}</span>
+                <span className="md:hidden">{cert.short ?? cert.name}</span>
                 <span className="hidden md:inline">{cert.name}</span>
               </a>
               <span
