@@ -82,7 +82,9 @@ export default function CaseStudyClient({
       {/* Variant A: no chrome. A slim back/tools row sticks inside the
           article column; TOC chips live under the masthead, in the flow. */}
       <div className="w-full flex-1 max-w-4xl mx-auto px-6 pb-8 article-body">
-        <div className="sticky top-0 z-50 bg-terminal-bg flex items-center justify-between gap-4 pt-4 pb-2.5 border-b border-terminal-border">
+        {/* h-11 on this row and top-11 on the chips below must stay in sync:
+            the chips pin flush under this row's border. */}
+        <div className="sticky top-0 z-50 bg-terminal-bg h-11 flex items-center justify-between gap-4 border-b border-terminal-border">
           <BackLink href="/">← ~/ali-aljaffer</BackLink>
           <ThemeToggle />
         </div>
@@ -91,9 +93,7 @@ export default function CaseStudyClient({
           readingMinutes={readingMinutes}
         />
         {headings.length >= 2 && (
-          <div className="sticky top-[47px] z-40 bg-terminal-bg mb-6 border-b border-terminal-border">
-            {/* top-[47px] pins the chips right under the back/tools row; keep
-                it in sync with that row's height (pt-4 + line + pb-2.5 + border) */}
+          <div className="sticky top-11 z-40 bg-terminal-bg mb-6 border-b border-terminal-border">
             <CaseStudyToc headings={headings} />
           </div>
         )}
