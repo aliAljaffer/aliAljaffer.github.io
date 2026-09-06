@@ -1,6 +1,7 @@
 ---
 k8s-adventures-pt2:
   name: The end (?) of the Kubernetes learning journey
+  short-title: "End of the K8s journey"
   caseStudyId: k8s-adventures-pt2
   description: After achieving Kubestronaut, am I done with Kubernetes?
   repo: ""
@@ -9,7 +10,6 @@ k8s-adventures-pt2:
   show: true
   date: "2026-02-15"
   type: "blog"
-  icon: "AiOutlineKubernetes"
   tags: ["Kubernetes", "Career"]
 ---
 

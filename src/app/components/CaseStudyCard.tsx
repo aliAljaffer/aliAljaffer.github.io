@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { CaseStudy } from "@/app/types";
-import { caseStudyIcons } from "@/data/case-study-icons";
 
 // Shared card used by both the homepage Blog/Projects lists and the
 // end-of-article related posts section.
@@ -14,7 +13,6 @@ export default function CaseStudyCard({
   showType?: boolean;
 }) {
   const cta = ctaLabel || "Read article";
-  const Icon = item.icon ? caseStudyIcons[item.icon] : undefined;
 
   return (
     <Link
@@ -23,10 +21,9 @@ export default function CaseStudyCard({
       className="group flex items-start justify-between gap-3 border border-terminal-border px-3 py-2 transition active:scale-[0.99] hover:border-terminal-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
     >
       <div className="flex items-center gap-3 min-w-0">
-        {Icon && <Icon className="w-7 h-7 shrink-0" aria-hidden="true" />}
         <div className="min-w-0">
           {showType && (
-            <p className="text-[10px] font-bold uppercase tracking-wide text-neutral-500 dark:text-neutral-500">
+            <p className="text-[10px] font-bold uppercase tracking-wide text-neutral-600 dark:text-neutral-400">
               [{item.type}]
             </p>
           )}

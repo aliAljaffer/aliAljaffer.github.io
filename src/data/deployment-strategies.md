@@ -1,6 +1,7 @@
 ---
 deployment-strategies:
   name: Application Zero-Downtime Deployment Strategies
+  short-title: "Zero-Downtime Deployments"
   caseStudyId: deployment-strategies
   description: We explore Rolling Updates, Canary Deployments, and Blue/Green Deployments
   repo: ""
@@ -9,7 +10,6 @@ deployment-strategies:
   show: true
   date: "2026-02-28"
   type: "blog"
-  icon: "RxUpdate"
   tags: ["Kubernetes", "CI/CD"]
 ---
 

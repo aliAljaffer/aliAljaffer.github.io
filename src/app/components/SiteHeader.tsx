@@ -1,77 +1,70 @@
-import Link from "next/link";
-import { RiSeparator } from "react-icons/ri";
+import { contactData, learning } from "@/data/profile";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeToggle from "@/app/components/ThemeToggle";
-import SiteSearch from "@/app/components/SiteSearch";
-import { learning } from "@/data/profile";
+import RandomArsenalIcon from "@/app/components/RandomArsenalIcon";
 
-const sectionJumps: { label: string; href: string }[] = [
-  { label: "About", href: "#about-heading" },
-  { label: "Certs", href: "#certs-heading" },
-  { label: "Blog", href: "#blog-heading" },
-  { label: "Projects", href: "#projects-heading" },
-];
-
-// Full-width, sticky, safe-area-aware header: logo, "currently learning"
-// (desktop only), theme toggle, and a mobile-only section-jump nav.
+// Typographic masthead for the home page: name left with the Arsenal crest
+// pinned right on the first row, role and socials on the second. Replaces the
+// old black bar header.
 export default function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 w-full bg-neutral-950 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-950">
-      <div
-        className="px-6 py-3 flex items-center gap-4"
-        style={{ paddingTop: "max(0.75rem, env(safe-area-inset-top))" }}
-      >
-        <div className="flex-1 min-w-0">
-          <Link href="/" className="font-bold text-sm hover:opacity-75">
-            ~/ali-aljaffer
-          </Link>
-        </div>
-        {learning.length > 0 && (
-          <p className="hidden md:flex items-center justify-center gap-3 text-xs whitespace-nowrap text-neutral-300 dark:text-neutral-600">
-            <span>Currently learning:</span>
-            {learning.map(({ name, icon: Icon, url }, i) => (
-              <span key={name} className="flex items-center gap-3">
-                {i > 0 && (
-                  <RiSeparator className="w-6 h-6" aria-hidden="true" />
-                )}
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`${name} (opens in new tab)`}
-                  className="flex items-center gap-1.5 hover:underline"
-                >
-                  <Icon className="w-6 h-6" />
-                  {name}
-                </a>
-              </span>
-            ))}
-          </p>
-        )}
-        <div className="flex-1 min-w-0 flex justify-end items-center gap-4">
-          <SiteSearch />
-          <ThemeToggle />
-        </div>
+    <header className="shrink-0 w-full max-w-4xl mx-auto px-6 pt-7 pb-4">
+      <div className="flex items-center justify-between gap-6">
+        <h1 className="masthead-name text-[1.375rem] md:text-[1.625rem] font-bold leading-tight">
+          Ali Aljaffer
+        </h1>
+        <RandomArsenalIcon />
       </div>
-
-      {/* Mobile section jumps */}
-      <nav
-        aria-label="Jump to section"
-        className="md:hidden flex items-center gap-3 overflow-x-auto scrollbar-hidden px-6 pb-2 border-t border-neutral-800 dark:border-neutral-300 pt-2"
-      >
-        {sectionJumps.map((s, i) => (
-          <span key={s.href} className="flex items-center gap-3">
-            {i > 0 && (
-              <RiSeparator className="w-6 h-6 shrink-0" aria-hidden="true" />
-            )}
+      <div className="flex flex-wrap items-end  justify-between gap-x-6 gap-y-3 mt-1.5">
+        <div className="min-w-0">
+          <p className="text-[0.625rem] uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400">
+            Platform Engineer · Riyadh, KSA
+          </p>
+          {learning.length > 0 && (
+            <p className="hidden md:flex items-center gap-2 text-[0.625rem] text-neutral-600 dark:text-neutral-400 mt-2">
+              <span>currently learning:</span>
+              {learning.map(({ name, url, icon: Icon }, i) => (
+                <span key={name} className="flex items-center gap-2">
+                  {i > 0 && <span aria-hidden="true">·</span>}
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${name} (opens in new tab)`}
+                    className="flex items-center gap-1 hover:underline hover:text-neutral-950 dark:hover:text-neutral-50"
+                  >
+                    <Icon className="w-3 h-3" aria-hidden="true" />
+                    {name.toLowerCase()}
+                  </a>
+                </span>
+              ))}
+            </p>
+          )}
+        </div>
+        <nav
+          aria-label="Social links"
+          className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.6875rem] text-neutral-600 dark:text-neutral-400"
+        >
+          {contactData.map((c) => (
             <a
-              href={s.href}
-              className="text-[0.625rem] tracking-[0.2em] uppercase whitespace-nowrap hover:opacity-75"
+              key={c.label}
+              href={c.value}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${c.label} (opens in new tab)`}
+              className="flex items-center gap-1.5 hover:text-neutral-950 dark:hover:text-neutral-50"
             >
-              {s.label}
+              <FontAwesomeIcon
+                icon={c.icon}
+                className="w-3 h-3"
+                aria-hidden="true"
+              />
+              {c.label.toLowerCase()}
             </a>
-          </span>
-        ))}
-      </nav>
+          ))}
+          <ThemeToggle />
+        </nav>
+      </div>
     </header>
   );
 }

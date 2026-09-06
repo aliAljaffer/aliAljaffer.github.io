@@ -1,6 +1,7 @@
 ---
 keda:
   name: Kubernetes Event-Driven Architecture (KEDA)
+  short-title: "KEDA"
   caseStudyId: keda
   description: A simple, yet powerful way to scale your app's workers on Kubernetes!
   repo: "https://github.com/keda-project-youtube"
@@ -15,7 +16,6 @@ keda:
   show: true
   date: "2026-03-01"
   type: "project"
-  icon: "TbChartDots3"
   tags: ["Kubernetes", "Automation", "Python"]
 ---
 

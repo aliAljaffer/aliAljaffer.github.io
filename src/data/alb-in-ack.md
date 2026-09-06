@@ -1,6 +1,7 @@
 ---
 alb-in-ack:
   name: Using ALB in Alibaba Container Service for Kubernetes
+  short-title: "ALB in Alibaba ACK"
   caseStudyId: alb-in-ack
   description: Customize an Application Load Balancer and use it with Ingress or Gateway API on Alibaba cloud.
   repo: ""
@@ -9,7 +10,6 @@ alb-in-ack:
   show: true
   date: "2026-04-26"
   type: "blog"
-  icon: "RiAlibabaCloudLine"
   tags: ["Kubernetes", "Alibaba Cloud", "Networking", "Security"]
 ---
 

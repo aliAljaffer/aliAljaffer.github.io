@@ -1,7 +1,7 @@
 import type React from "react";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Roboto_Mono } from "next/font/google";
+import { Bodoni_Moda, Roboto_Mono } from "next/font/google";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
@@ -67,7 +67,15 @@ export const viewport: Viewport = {
 
 const Roboto = Roboto_Mono({
   subsets: ["latin"],
+  variable: "--font-roboto-mono",
 });
+
+const BodoniModa = Bodoni_Moda({
+  subsets: ["latin"],
+  variable: "--font-masthead",
+  axes: ["opsz"],
+});
+
 export default function RootLayout({
   children,
 }: {
@@ -77,7 +85,7 @@ export default function RootLayout({
   return (
     <html
       lang={defaultLang}
-      className={Roboto.className}
+      className={`${Roboto.variable} ${BodoniModa.variable}`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >

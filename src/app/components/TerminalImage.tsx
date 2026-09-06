@@ -28,7 +28,7 @@ export default function TerminalImage({
   // Convert src to string, handling undefined and Blob cases
   const imageSrc =
     src instanceof Blob ? URL.createObjectURL(src) : src || "/placeholder.svg";
-  const imageAlt = alt || "Image";
+  const imageAlt = alt || caption || "Figure";
 
   const imageWidth =
     typeof width === "string" ? parseInt(width) || 600 : width || 600;
@@ -39,31 +39,29 @@ export default function TerminalImage({
 
   return (
     <>
-      <figure
-        className={`my-6 w-fit max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl ${className}`}
-      >
-        <div
-          className="inline-block border border-terminal-border bg-terminal-border p-2 cursor-pointer hover:border-terminal-accent transition-colors"
+      <figure className={`my-7 max-w-full ${className}`}>
+        <button
+          type="button"
           onClick={() => setIsModalOpen(true)}
+          className="inline-block max-w-full border border-terminal-accent hover:opacity-90 transition-opacity p-0 bg-transparent"
+          aria-label={imageAlt ? `Enlarge image: ${imageAlt}` : "Enlarge image"}
         >
-          <div className="bg-terminal-bg p-1">
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              width={imageWidth}
-              height={imageHeight}
-              className="w-full h-auto object-contain p-1"
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 75vw, 50vw"
-              priority={priority}
-              style={{
-                maxHeight: "60vh",
-                objectFit: "contain",
-              }}
-            />
-          </div>
-        </div>
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={imageWidth}
+            height={imageHeight}
+            className="block w-auto h-auto max-w-full object-contain"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 75vw, 50vw"
+            priority={priority}
+            style={{
+              maxHeight: "60vh",
+              objectFit: "contain",
+            }}
+          />
+        </button>
         {caption && (
-          <figcaption className="text-terminal-comment text-xs mt-2 pt-2 border-t border-terminal-border">
+          <figcaption className="text-terminal-comment text-xs mt-2">
             {caption}
           </figcaption>
         )}
@@ -72,22 +70,28 @@ export default function TerminalImage({
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <div className="flex flex-col items-center gap-3 max-w-[92vw] max-h-[90vh]">
           <div className="border border-neutral-50/40 p-1 min-h-0">
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              width={0}
-              height={0}
-              sizes="92vw"
-              className="max-w-full w-auto h-auto object-contain cursor-pointer"
-              style={{
-                width: "auto",
-                height: "auto",
-                maxWidth: "88vw",
-                maxHeight: caption ? "78vh" : "86vh",
-              }}
-              onClick={() => window.open(imageSrc, "_blank")}
-              title="Click to open full size in new tab"
-            />
+            <a
+              href={imageSrc}
+              target="_blank"
+              rel="noreferrer"
+              title="Open full size in new tab"
+              className="block"
+            >
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                width={0}
+                height={0}
+                sizes="92vw"
+                className="max-w-full w-auto h-auto object-contain"
+                style={{
+                  width: "auto",
+                  height: "auto",
+                  maxWidth: "88vw",
+                  maxHeight: caption ? "78vh" : "86vh",
+                }}
+              />
+            </a>
           </div>
 
           {caption && (

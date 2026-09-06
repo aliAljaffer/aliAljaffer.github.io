@@ -1,6 +1,7 @@
 ---
 image-captioning:
   name: Image Captioning with AWS and HuggingFace
+  short-title: "Image Captioning on AWS"
   caseStudyId: image-captioning
   description:
     A serverless image captioning app using AWS services and a HuggingFace
@@ -20,7 +21,6 @@ image-captioning:
   show: true
   date: "2025-06-25"
   type: "project"
-  icon: "SiHuggingface"
   tags: ["AWS", "Machine Learning", "Security", "Python"]
 ---
 

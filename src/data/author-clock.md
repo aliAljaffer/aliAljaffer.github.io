@@ -1,6 +1,7 @@
 ---
 author-clock:
   name: Author Clock/Entertainment System
+  short-title: "Author Clock"
   caseStudyId: author-clock
   description: Author Clock replica built on Raspberry Pi with YouTube, Spotify, and Kodi integration
   repo: "https://github.com/no-repo"
@@ -21,7 +22,6 @@ author-clock:
   show: true
   date: "2025-09-05"
   type: "blog"
-  icon: "SiRaspberrypi"
   tags: ["Homelab", "React"]
 ---
 

@@ -1,6 +1,7 @@
 ---
 k3s-homelab:
   name: K3s Cluster Homelab
+  short-title: "K3s Cluster Homelab"
   caseStudyId: k3s-homelab
   description: Documenting my homelabbing journey! :)
   repo: "https://github.com/aliAljaffer/homelab"
@@ -9,7 +10,6 @@ k3s-homelab:
   show: true
   date: "2026-03-11"
   type: "blog"
-  icon: "SiK3S"
   tags: ["Kubernetes", "Homelab", "Networking", "Automation"]
 ---
 

@@ -1,6 +1,7 @@
 ---
 azure-3t-app:
   name: Azure Three-Tier web app
+  short-title: "Azure Three-Tier web app"
   caseStudyId: app
   description: Azure Three-Tier web app deployed using Terraform and containers
   repo: "https://github.com/aliAljaffer/azure-3t-app"
@@ -11,7 +12,6 @@ azure-3t-app:
   show: true
   date: "2025-09-20"
   type: "project"
-  icon: "VscAzure"
   tags: ["Azure", "Terraform", "Networking", "Docker"]
 ---
 

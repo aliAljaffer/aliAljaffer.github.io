@@ -12,6 +12,7 @@ import type { IconType } from "react-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { AzmIcon } from "@/app/components/AzmIcon";
 import { ManafaIcon } from "@/app/components/ManafaIcon";
+import KubestronautIcon from "@/app/components/KubestronautIcon";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -41,6 +42,8 @@ export type ContactLink = {
 
 export type Certification = {
   name: string;
+  /** Compact label shown on narrow screens so cert rows never ellipsize. */
+  short: string;
   date: string;
   order: number;
   url: string;
@@ -100,6 +103,7 @@ export const contactData: ContactLink[] = [
 export const certsData: Certification[] = [
   {
     name: "GCP Professional Cloud Architect",
+    short: "GCP Prof. Cloud Architect",
     date: "May 2026",
     order: 10,
     url: "https://www.credly.com/badges/f576ddd7-17b9-4a15-aa0e-86dca295cc37/public_url",
@@ -107,13 +111,23 @@ export const certsData: Certification[] = [
   },
   {
     name: "Certified Kubernetes Security Specialist",
+    short: "CKS - Kubernetes Security",
     date: "Feb 2026",
-    order: 9,
+    order: 8,
     url: "https://www.credly.com/badges/6d3a6109-76a3-4873-9305-5679d128f6ba/public_url",
     Icon: SiKubernetes,
   },
   {
+    name: "CNCF Kubestronaut",
+    short: "Kubestronaut",
+    date: "Feb 2026",
+    order: 9,
+    url: "https://www.cncf.io/training/kubestronaut/?_sft_lf-country=sa#:~:text=Ali-,Aljaffer,-(He/Him)",
+    Icon: KubestronautIcon,
+  },
+  {
     name: "Certified Kubernetes Administrator",
+    short: "CKA - Kubernetes Admin",
     date: "Dec 2025",
     order: 7,
     url: "https://www.credly.com/badges/460fb1fe-342c-45e0-8b17-c6225e43ec7a/public_url",
@@ -121,6 +135,7 @@ export const certsData: Certification[] = [
   },
   {
     name: "Certified Kubernetes Application Developer",
+    short: "CKAD - Kubernetes Dev",
     date: "Dec 2025",
     order: 6,
     url: "https://www.credly.com/badges/574c7848-77e6-4c25-a1b6-d7d4f70a130c/public_url",
@@ -128,13 +143,15 @@ export const certsData: Certification[] = [
   },
   {
     name: "Terraform Associate",
+    short: "Terraform Associate",
     date: "Aug 2025",
     order: 5,
     url: "https://www.credly.com/badges/2abf40d1-88d1-4d75-a79e-73d1c7ec94d9/public_url",
     Icon: SiTerraform,
   },
   {
-    name: "AWS Solutions Architect – Associate",
+    name: "AWS Solutions Architect - Associate",
+    short: "AWS SA - Associate",
     date: "Jul 2025",
     order: 4,
     url: "https://www.credly.com/badges/90df08a0-de5d-4eab-9ed3-013e17556f71/public_url",
@@ -145,7 +162,7 @@ export const certsData: Certification[] = [
 export const learning: LearningTopic[] = [
   { name: "Golang", icon: FaGolang, url: "https://go.dev" },
   { name: "Backstage", icon: SiBackstage, url: "https://backstage.io" },
-  { name: "Alibaba Cloud", icon: RiAlibabaCloudLine, url: "https://sccc.sa" },
+  // { name: "Alibaba Cloud", icon: RiAlibabaCloudLine, url: "https://sccc.sa" },
 ];
 
 export const experienceData: Experience[] = [

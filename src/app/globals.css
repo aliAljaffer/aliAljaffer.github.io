@@ -1,10 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-terminal-bg: #ffffff;
+  --color-terminal-bg: #fafafa;
   --color-terminal-text: #111111;
   --color-terminal-accent: #000000;
   --color-terminal-link: #000000;
@@ -48,11 +47,22 @@ html {
   html {
     scroll-behavior: auto;
   }
+
+  .bounce-dot,
+  .cursor-blink {
+    animation: none;
+  }
 }
 
 * {
-  font-family: "Roboto Mono", monospace;
+  font-family: var(--font-roboto-mono), monospace;
   box-sizing: border-box;
+}
+
+/* Unlayered so it wins over the global * font-family above; a Tailwind
+   font-* utility would sit in @layer utilities and lose that race. */
+.masthead-name {
+  font-family: var(--font-masthead), var(--font-roboto-mono), monospace;
 }
 
 a,
@@ -71,7 +81,7 @@ body {
   outline-offset: 3px;
 }
 .markdown-content {
-  @apply leading-relaxed text-sm sm:text-base lg:text-lg xl:text-xl;
+  @apply leading-relaxed text-sm sm:text-base;
   color: var(--color-terminal-text);
 }
 
@@ -86,19 +96,53 @@ body {
 }
 
 .markdown-content h2 {
-  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mt-6 mb-4;
+  @apply pt-4 mb-4 flex items-center gap-3 text-[0.75rem] font-bold uppercase tracking-[0.2em];
   color: var(--color-terminal-accent);
+  /* border-top: 1px solid var(--color-terminal-border); */
+  counter-increment: md-h2;
   scroll-margin-top: 5.5rem;
 }
 
+/* Numbered hairline sections: "01 - Overview ----------" */
+.markdown-content h2::before {
+  content: counter(md-h2, decimal-leading-zero);
+  @apply font-normal text-neutral-600 dark:text-neutral-400;
+}
+
+.markdown-content h2::after {
+  content: "";
+  @apply flex-1 h-px bg-terminal-border;
+}
+
+.markdown-content h2:first-child {
+  @apply mt-0;
+}
+
 .markdown-content h3 {
-  @apply text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mt-5 mb-2;
+  @apply text-lg sm:text-xl font-bold mt-5 mb-2;
   color: var(--color-terminal-accent);
 }
 
 .markdown-content h4 {
-  @apply text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold mt-4 mb-2;
+  @apply text-base sm:text-lg font-bold mt-4 mb-2;
   color: var(--color-terminal-strong);
+}
+
+/* Numbered figures: "fig. 01" prefixes in captions. The counters live on
+   .article-body (the case study page container) so the Screenshots section
+   continues the article's numbering. */
+.article-body {
+  counter-reset: md-h2 md-fig;
+}
+
+.markdown-content figure {
+  counter-increment: md-fig;
+}
+
+.markdown-content figcaption::before {
+  content: "fig. " counter(md-fig, decimal-leading-zero);
+  @apply font-bold mr-2;
+  color: var(--color-terminal-accent);
 }
 
 .markdown-content p {
@@ -126,8 +170,17 @@ body {
   color: var(--color-terminal-text);
 }
 
-.markdown-content ul li {
-  @apply list-disc;
+.markdown-content ul {
+  @apply list-none pl-0;
+}
+
+.markdown-content ul > li {
+  @apply relative pl-5;
+}
+
+.markdown-content ul > li::before {
+  content: "-";
+  @apply absolute left-1 top-0 text-neutral-600 dark:text-neutral-400;
 }
 
 .markdown-content ol li {
@@ -149,19 +202,16 @@ body {
 
 /* ── Code block ──────────────────────────────────────────── */
 .markdown-content pre {
-  @apply overflow-x-auto my-6 text-sm;
+  @apply overflow-x-auto my-6 text-sm p-4;
   position: relative;
-  padding: 1rem;
-  background-color: #f6f8fa;
-  color: #24292f;
-  border: 1px solid #d0d7de;
+  background-color: color-mix(
+    in srgb,
+    var(--color-terminal-comment) 8%,
+    transparent
+  );
+  color: var(--color-terminal-text);
+  border: 1px solid var(--color-terminal-accent);
   border-radius: 0;
-}
-
-.dark .markdown-content pre {
-  background-color: #0d1117;
-  color: #e6edf3;
-  border-color: #30363d;
 }
 
 /* Language label */
@@ -175,17 +225,13 @@ body {
   top: 0;
   right: 0;
   padding: 0.2rem 0.6rem;
-  font-size: 0.65rem;
+  font-size: 0.625rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #6e7781;
-  border-bottom: 1px solid #d0d7de;
-  border-left: 1px solid #d0d7de;
-}
-
-.dark .markdown-content pre[data-language]::before {
-  color: #8b949e;
-  border-color: #30363d;
+  letter-spacing: 0.15em;
+  color: var(--color-terminal-comment);
+  background: var(--color-terminal-bg);
+  border-bottom: 1px solid var(--color-terminal-accent);
+  border-left: 1px solid var(--color-terminal-accent);
 }
 
 .markdown-content pre code {
@@ -362,7 +408,7 @@ body {
 }
 
 .markdown-content blockquote {
-  @apply border-l-4 pl-4 my-4 italic text-sm sm:text-base lg:text-lg;
+  @apply border-l-2 pl-4 my-5 text-sm sm:text-base;
   border-color: var(--color-terminal-accent);
   color: var(--color-terminal-comment);
 }

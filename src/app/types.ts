@@ -8,6 +8,8 @@ export interface ProjectImage {
 
 export interface CaseStudy {
   name: string;
+  /** Compact title shown on narrow screens so list rows never ellipsize. */
+  "short-title"?: string;
   caseStudyId: string;
   repo: string;
   url: string;
@@ -16,7 +18,6 @@ export interface CaseStudy {
   show: boolean;
   date: string;
   type: "blog" | "project";
-  icon?: string;
   tags: CaseStudyTag[];
 }
 export type CaseStudyImage = ProjectImage;

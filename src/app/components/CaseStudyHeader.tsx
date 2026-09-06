@@ -1,7 +1,5 @@
 import Link from "next/link";
 import type { CaseStudy } from "@/app/types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXTwitter, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { tagToSlug } from "@/data/case-study-tags";
 import { SITE_URL } from "@/lib/site";
 
@@ -13,9 +11,9 @@ export default function CaseStudyHeader({
   readingMinutes: number;
 }) {
   const formattedDate = new Date(caseStudy.date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
+    month: "short",
     day: "numeric",
+    year: "numeric",
   });
 
   const postUrl = `${SITE_URL}/case-study/${caseStudy.caseStudyId}/`;
@@ -24,18 +22,18 @@ export default function CaseStudyHeader({
   const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`;
 
   return (
-    <div className="mb-4 pb-2 border-b border-terminal-border">
-      <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-terminal-accent">
+    <header className="pb-6 border-b border-terminal-accent">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-terminal-accent">
         {caseStudy.name}
       </h1>
-      <div className="flex flex-wrap items-center justify-between gap-3 mt-2">
-        <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-600 dark:text-neutral-400">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 mt-3">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.6875rem] text-neutral-600 dark:text-neutral-400">
           <time dateTime={caseStudy.date}>{formattedDate}</time>
-          <span aria-hidden="true">-</span>
+          <span aria-hidden="true">·</span>
           <span>{readingMinutes} min read</span>
           {caseStudy.tags.length > 0 && (
             <>
-              <span aria-hidden="true">-</span>
+              <span aria-hidden="true">·</span>
               <span className="flex flex-wrap gap-x-2 gap-y-1">
                 {caseStudy.tags.map((tag) => (
                   <Link
@@ -50,27 +48,28 @@ export default function CaseStudyHeader({
             </>
           )}
         </div>
-        <div className="flex items-center gap-4 shrink-0">
+        <div className="flex items-center gap-3 text-[0.6875rem] text-neutral-600 dark:text-neutral-400">
+          <span>share</span>
           <a
             href={xShareUrl}
             target="_blank"
             rel="noreferrer"
             aria-label="Share on X"
-            className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50"
+            className="hover:text-neutral-950 dark:hover:text-neutral-50"
           >
-            <FontAwesomeIcon icon={faXTwitter} className="w-4 h-4" />
+            x
           </a>
           <a
             href={linkedInShareUrl}
             target="_blank"
             rel="noreferrer"
             aria-label="Share on LinkedIn"
-            className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50"
+            className="hover:text-neutral-950 dark:hover:text-neutral-50"
           >
-            <FontAwesomeIcon icon={faLinkedin} className="w-4 h-4" />
+            in
           </a>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

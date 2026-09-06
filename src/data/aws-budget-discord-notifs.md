@@ -1,6 +1,7 @@
 ---
 aws-budget-discord-notifs:
   name: AWS Budget Notifications for Discord Channels
+  short-title: "AWS Budget Discord Notifs"
   caseStudyId: aws-budget-discord-notifs
   description: Receive Budget Alerts straight to your personal Discord server channel!
   repo: "https://github.com/aliAljaffer/terraform-aws-budgets-discord-notifs"
@@ -12,7 +13,6 @@ aws-budget-discord-notifs:
   show: true
   date: "2025-07-31"
   type: "project"
-  icon: "MdMoneyOff"
   tags: ["AWS", "Terraform", "Automation", "Python"]
 ---
 

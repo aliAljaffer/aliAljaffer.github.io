@@ -46,7 +46,7 @@ export default function CaseStudyToc({ headings }: CaseStudyTocProps) {
   return (
     <ScrollableList
       direction="horizontal"
-      className="flex items-center gap-4 overflow-x-auto px-6 py-2 scrollbar-hidden"
+      className="flex items-center gap-4 overflow-x-auto py-2.5 scrollbar-hidden"
     >
       {headings.map((h) => (
         <a
@@ -55,6 +55,7 @@ export default function CaseStudyToc({ headings }: CaseStudyTocProps) {
           ref={(el) => {
             chipRefs.current[h.slug] = el;
           }}
+          aria-current={active === h.slug ? "true" : undefined}
           className={`text-[0.625rem] tracking-[0.2em] uppercase whitespace-nowrap transition-opacity ${
             active === h.slug
               ? "font-bold underline opacity-100"

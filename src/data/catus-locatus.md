@@ -1,6 +1,7 @@
 ---
 catus-locatus:
   name: Catus Locatus
+  short-title: "Catus Locatus"
   caseStudyId: catus-locatus
   repo: https://github.com/aliAljaffer/catus-locatus
   url: https://cl.alialjaffer.com/
@@ -20,7 +21,6 @@ catus-locatus:
   show: true
   date: "2025-10-30"
   type: "project"
-  icon: "PiCatThin"
   tags: ["Kubernetes", "Terraform", "Azure", "React"]
 ---
 
