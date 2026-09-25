@@ -17,7 +17,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
-  faKoFi,
   faLinkedin,
   faXTwitter,
   faYoutube,
@@ -62,12 +61,6 @@ export const contactData: ContactLink[] = [
     handle: "resume.alialjaffer.com",
     value: "https://resume.alialjaffer.com",
     icon: faFileLines,
-  },
-  {
-    label: "ko-fi",
-    handle: "ko-fi",
-    value: "https://ko-fi.com/alialjaffer",
-    icon: faKoFi,
   },
   {
     label: "GitHub",
