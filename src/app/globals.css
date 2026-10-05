@@ -154,6 +154,15 @@ body {
   color: var(--color-terminal-text);
 }
 
+/* KaTeX builds formulas from nested spans, which would otherwise pick up the
+   generic span margin above. Inside a flex heading that margin shifts the
+   formula off centre, since flex aligns the margin box. */
+.markdown-content span.katex,
+.markdown-content .katex span {
+  margin-bottom: 0;
+  color: inherit;
+}
+
 .markdown-content ul,
 .markdown-content ol {
   @apply mb-4 mt-2 pl-6;

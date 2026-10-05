@@ -51,10 +51,7 @@ export default function ExcalidrawViewer({
   }, [api, data]);
 
   useEffect(() => {
-    if (!src) {
-      setError("No src provided");
-      return;
-    }
+    if (!src) return;
     let cancelled = false;
     fetch(src)
       .then((r) => {
@@ -72,10 +69,11 @@ export default function ExcalidrawViewer({
     };
   }, [src]);
 
-  if (error) {
+  const failure = src ? error : "No src provided";
+  if (failure) {
     return (
       <div className="text-terminal-red font-mono text-sm p-4 border border-terminal-red rounded">
-        Failed to load drawing: {error}
+        Failed to load drawing: {failure}
       </div>
     );
   }

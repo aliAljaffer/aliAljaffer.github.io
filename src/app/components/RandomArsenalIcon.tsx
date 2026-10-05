@@ -1,21 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import ArsenalIcon from "./ArsenalIcon";
 import ArsenalCannonIcon from "./ArsenalCannonIcon";
 
-// Rolls a die on mount to show either the full crest or the cannon.
-// The roll must run client-side: the site is a static export, so a
-// build-time pick would be baked into the HTML and never change. Picking
-// during render would also cause a hydration mismatch, hence useEffect.
+// Shows either the full crest or the cannon. The roll must happen client-side:
+// the site is a static export, so a build-time pick would be baked into the
+// HTML and never change. Reading it as an external store keeps the first client
+// render identical to the server's (null, an empty slot) without a hydration
+// mismatch. The roll is cached per page load, so client-side navigation does
+// not reshuffle the footer icon.
 const color = "text-neutral-900 dark:text-neutral-50";
 
-export default function RandomArsenalIcon() {
-  const [showCannon, setShowCannon] = useState<boolean | null>(null);
+let roll: boolean | null = null;
+const getRoll = () => (roll ??= Math.random() < 0.5);
+const noRoll = () => null;
+const neverChanges = () => () => {};
 
-  useEffect(() => {
-    setShowCannon(Math.random() < 0.5);
-  }, []);
+export default function RandomArsenalIcon() {
+  const showCannon = useSyncExternalStore(neverChanges, getRoll, noRoll);
 
   // Fixed-size slot shared by both variants (and the pre-roll empty state),
   // so the footprint never changes regardless of which icon rolls. Sized to
@@ -24,7 +27,10 @@ export default function RandomArsenalIcon() {
   return (
     <span className="flex items-center justify-end w-16 h-11 shrink-0">
       {showCannon === null ? null : showCannon ? (
-        <ArsenalCannonIcon className={`h-7 w-auto ${color}`} aria-hidden={true} />
+        <ArsenalCannonIcon
+          className={`h-7 w-auto ${color}`}
+          aria-hidden={true}
+        />
       ) : (
         <ArsenalIcon className={`w-11 h-11 ${color}`} aria-hidden={true} />
       )}

@@ -13,7 +13,7 @@ import { FaGolang } from "react-icons/fa6";
 import { BiHeadphone } from "react-icons/bi";
 import { VscAzure } from "react-icons/vsc";
 import { RiAlibabaCloudLine, RiShapesLine } from "react-icons/ri";
-import { TbChartDots3 } from "react-icons/tb";
+import { TbChartDots3, TbLogicNor } from "react-icons/tb";
 import { RxUpdate } from "react-icons/rx";
 import { PiCatThin, PiBinoculars } from "react-icons/pi";
 import { AiOutlineKubernetes } from "react-icons/ai";
@@ -36,6 +36,7 @@ export const postIcons: Record<string, IconType> = {
   "k3s-homelab": SiK3S,
   "k8s-adventures": AiOutlineKubernetes,
   "k8s-adventures-pt2": AiOutlineKubernetes,
+  "logic-for-documentation": TbLogicNor,
   keda: TbChartDots3,
   s2t: FaGolang,
   "teamwork-and-collaboration": SiGithub,

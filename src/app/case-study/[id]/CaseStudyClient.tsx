@@ -2,33 +2,24 @@
 import Layout from "@/app/components/Layout";
 import BackLink from "@/app/components/BackLink";
 import TerminalImage from "@/app/components/TerminalImage";
-import ExcalidrawViewer from "@/app/components/ExcalidrawViewer";
 import ThemeToggle from "@/app/components/ThemeToggle";
 import CaseStudyToc from "@/app/components/CaseStudyToc";
 import CaseStudyHeader from "@/app/components/CaseStudyHeader";
 import RelatedPosts from "@/app/components/RelatedPosts";
 import GiscusComments from "@/app/components/GiscusComments";
 import Footer from "@/app/components/Footer";
-import { useMemo, isValidElement, type ReactNode } from "react";
-import Markdown, { type Components } from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import rehypePrism from "rehype-prism-plus";
+import { useMemo } from "react";
+import dynamic from "next/dynamic";
 import NotFound from "@/app/not-found";
 import { CaseStudy } from "@/app/types";
-import { slugify } from "@/lib/slug";
+import { headingLabel, headingSlug, headingSource } from "@/lib/heading";
 import { estimateReadingMinutes } from "@/lib/reading-time";
+import ArticleBody from "./ArticleBody";
 
-function childrenToText(children: ReactNode): string {
-  if (typeof children === "string") return children;
-  if (typeof children === "number") return String(children);
-  if (Array.isArray(children)) return children.map(childrenToText).join("");
-  if (isValidElement(children)) {
-    return childrenToText(
-      (children.props as { children?: ReactNode }).children,
-    );
-  }
-  return "";
-}
+// KaTeX and its stylesheet are ~290KB, so the math renderer loads only for the
+// documents that need it. Server rendering stays on: the prerendered HTML has
+// to carry the heading ids the table of contents links to.
+const ArticleBodyMath = dynamic(() => import("./ArticleBodyMath"));
 
 function extractHeadings(markdown: string): { text: string; slug: string }[] {
   const headings: { text: string; slug: string }[] = [];
@@ -41,24 +32,23 @@ function extractHeadings(markdown: string): { text: string; slug: string }[] {
     if (inFence) continue;
     const m = line.match(/^##\s+(.+)$/);
     if (m) {
-      const text = m[1].replace(/#+\s*$/, "").trim();
-      if (text) headings.push({ text, slug: slugify(text) });
+      const raw = headingSource(m[0]);
+      if (raw)
+        headings.push({ text: headingLabel(raw), slug: headingSlug(raw) });
     }
   }
   return headings;
 }
-const DEAD_REGION = "me-south-1";
-export const inDeadRegion = (imageSrc: string) => {
-  return imageSrc.includes(DEAD_REGION);
-};
 interface CaseStudyProps {
   caseStudy: CaseStudy & { content: string };
   relatedPosts?: CaseStudy[];
+  hasMath?: boolean;
 }
 
 export default function CaseStudyClient({
   caseStudy,
   relatedPosts = [],
+  hasMath = false,
 }: CaseStudyProps) {
   const hasImages = caseStudy?.images?.some(
     (project_image) => project_image.url.length > 1,
@@ -76,7 +66,6 @@ export default function CaseStudyClient({
   );
 
   if (!caseStudy) return NotFound({ message: "Case Study not found" });
-  let sawFirstImage = false;
   return (
     <Layout>
       {/* Variant A: no chrome. A slim back/tools row sticks inside the
@@ -98,38 +87,11 @@ export default function CaseStudyClient({
             <CaseStudyToc headings={headings} />
           </div>
         )}
-        <div className="markdown-content prose prose-invert">
-          <Markdown
-            rehypePlugins={[rehypeRaw, rehypePrism]}
-            components={
-              {
-                img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
-                  if (inDeadRegion(props.src?.toString() + "")) return null;
-                  const priority = !sawFirstImage;
-                  sawFirstImage = true;
-                  return TerminalImage({ ...props, priority });
-                },
-                h2: (props: { children?: ReactNode }) => {
-                  const text = childrenToText(props.children);
-                  return <h2 id={slugify(text)}>{props.children}</h2>;
-                },
-                p: "div",
-                a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
-                  return (
-                    <a {...props} target="_blank" rel="noopener noreferrer">
-                      {props.children}
-                    </a>
-                  );
-                },
-                excalidraw: (props: { src?: string; height?: string }) => (
-                  <ExcalidrawViewer src={props.src} height={props.height} />
-                ),
-              } as Components
-            }
-          >
-            {caseStudy.content}
-          </Markdown>
-        </div>
+        {hasMath ? (
+          <ArticleBodyMath content={caseStudy.content} />
+        ) : (
+          <ArticleBody content={caseStudy.content} />
+        )}
 
         {caseStudy.images?.some(
           (project_image) => project_image.url.length > 1,

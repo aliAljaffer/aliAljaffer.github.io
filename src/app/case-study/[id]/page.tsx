@@ -7,6 +7,7 @@ import {
   getRelatedCaseStudies,
 } from "@/lib/case-studies";
 import { getMarkdownContent } from "@/lib/markdown-loader";
+import { hasMath } from "@/lib/has-math";
 import { SITE_URL } from "@/lib/site";
 import CaseStudyClient from "./CaseStudyClient";
 import NotFound from "@/app/not-found";
@@ -89,6 +90,7 @@ export default async function CaseStudyPage({
           content: content || "",
         }}
         relatedPosts={relatedPosts}
+        hasMath={hasMath(content)}
       />
     </>
   );

@@ -13,7 +13,6 @@ import type { IconType } from "react-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { AzmIcon } from "@/app/components/AzmIcon";
 import { ManafaIcon } from "@/app/components/ManafaIcon";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,

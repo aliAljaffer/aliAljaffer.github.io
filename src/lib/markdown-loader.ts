@@ -3,6 +3,8 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import remarkParse from "remark-parse";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
 import { remark } from "remark";
 
 export async function getMarkdownContent(id: string): Promise<string | null> {
@@ -14,7 +16,9 @@ export async function getMarkdownContent(id: string): Promise<string | null> {
     }
     const fileContent = fs.readFileSync(markdownPath, "utf8");
     const { content } = matter(fileContent);
-    const processed = String(await remark().use(remarkParse).process(content));
+    const processed = String(
+      await remark().use(remarkParse).use(remarkGfm).use(remarkMath).process(content),
+    );
     return processed;
   } catch (error) {
     console.error(`Error reading markdown file ${id}.md:`, error);
