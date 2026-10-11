@@ -13,6 +13,7 @@ import type { IconType } from "react-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { AzmIcon } from "@/app/components/AzmIcon";
 import { ManafaIcon } from "@/app/components/ManafaIcon";
+import { HelmIcon } from "@/app/components/HelmIcon";
 import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -20,7 +21,6 @@ import {
   faXTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import { SiBackstage } from "react-icons/si";
 import { FaGolang } from "react-icons/fa6";
 
 type CertIcon = ComponentType<{ className?: string }>;
@@ -140,7 +140,7 @@ export const certsData: Certification[] = [
 
 export const learning: LearningTopic[] = [
   { name: "Golang", icon: FaGolang, url: "https://go.dev" },
-  { name: "Backstage", icon: SiBackstage, url: "https://backstage.io" },
+  { name: "Helm Charts", icon: HelmIcon, url: "https://helm.sh/" },
 ];
 
 export const experienceData: Experience[] = [
