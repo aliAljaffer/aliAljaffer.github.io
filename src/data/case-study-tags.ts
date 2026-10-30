@@ -24,6 +24,8 @@ export const CASE_STUDY_TAGS = [
   "Python",
   "React",
   "Next.js",
+  "Finance",
+  "Productivity",
 ] as const;
 
 export type CaseStudyTag = (typeof CASE_STUDY_TAGS)[number];
