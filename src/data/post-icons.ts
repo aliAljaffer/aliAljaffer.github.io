@@ -19,6 +19,8 @@ import { PiCatThin, PiBinoculars } from "react-icons/pi";
 import { AiOutlineKubernetes } from "react-icons/ai";
 import { MdMoneyOff } from "react-icons/md";
 import { CgGym } from "react-icons/cg";
+import { FaiIcon } from "@/app/components/FaiIcon";
+import { GrooszyIcon } from "@/app/components/GrooszyIcon";
 
 export const postIcons: Record<string, IconType> = {
   "airpods-status": BiHeadphone,
@@ -31,6 +33,8 @@ export const postIcons: Record<string, IconType> = {
   "certification-roadmap": RiShapesLine,
   "deployment-strategies": RxUpdate,
   "e2e-automated-deployment-azure": SiGithubactions,
+  fai: FaiIcon,
+  grooszy: GrooszyIcon,
   homelab: SiTalos,
   "image-captioning": SiHuggingface,
   "k3s-homelab": SiK3S,
