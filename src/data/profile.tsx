@@ -89,6 +89,13 @@ export const contactData: ContactLink[] = [
 
 export const certsData: Certification[] = [
   {
+    name: "GCP Professional Cloud Security Engineer",
+    short: "GCP Prof. Cloud Security Engineer",
+    date: "Oct 2026",
+    order: 11,
+    url: "https://www.credly.com/badges/c3075985-e760-46f9-981a-a23c785702eb/public_url",
+  },
+  {
     name: "GCP Professional Cloud Architect",
     short: "GCP Prof. Cloud Architect",
     date: "May 2026",
