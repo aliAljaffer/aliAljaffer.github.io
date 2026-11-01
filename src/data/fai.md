@@ -38,6 +38,8 @@ Its sibling, [grooszy](/case-study/grooszy/), was built the same week on the sam
 
 fai sits behind Keycloak on my homelab, so there is no public demo. The screenshots will have to do.
 
+Visit the Github repo @ [github.com/aliAljaffer/fai](https://github.com/aliAljaffer/fai)
+
 Here are the stats page, with a year of (randomized, synthetic) activity, and the calendar:
 
 ![Stats page with the completion heatmap for the past year](https://assets.alialjaffer.com/images/fai/stats-desktop-dark.png)

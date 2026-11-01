@@ -32,6 +32,8 @@ My two banks share no statement format and no view of my spending, so I couldn't
 
 ## Demo
 
+Visit the Github repo @ [github.com/aliAljaffer/grooszy](https://github.com/aliAljaffer/grooszy)
+
 grooszy sits behind Keycloak and only allows one subject (me), so there is no public demo. Everything below is synthetic data.
 
 ![The suggestions page, with recurring payments and more](https://assets.alialjaffer.com/images/grooszy/suggestions-desktop-dark.png)
