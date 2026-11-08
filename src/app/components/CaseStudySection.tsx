@@ -29,7 +29,7 @@ export default function CaseStudySection({
       <SectionLabel id={id}>{title}</SectionLabel>
       <ScrollableList
         fitToContent
-        className="space-y-2.5 max-h-[40vh] md:max-h-full overflow-y-auto overflow-x-hidden scrollbar-hidden"
+        className="space-y-2.5 max-h-none md:max-h-full overflow-y-auto overflow-x-hidden scrollbar-hidden"
       >
         {items.map((item) => (
           <PostRow key={item.caseStudyId} item={item} showIcon />

@@ -2,17 +2,21 @@ import { contactData, learning } from "@/data/profile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThemeToggle from "@/app/components/ThemeToggle";
 import RandomArsenalIcon from "@/app/components/RandomArsenalIcon";
+import BrandMark from "@/app/components/BrandMark";
 
 // Typographic masthead for the home page: name left with the Arsenal crest
 // pinned right on the first row, role and socials on the second. Replaces the
 // old black bar header.
 export default function SiteHeader() {
   return (
-    <header className="shrink-0 w-full max-w-4xl mx-auto px-6 pt-7 pb-4">
+    <header className="site-masthead shrink-0 w-full max-w-4xl mx-auto px-6 pt-7 pb-4">
       <div className="flex items-center justify-between gap-6">
-        <h1 className="masthead-name text-[1.375rem] md:text-[1.625rem] font-bold leading-tight">
-          Ali Aljaffer
-        </h1>
+        <div className="flex items-center gap-2 min-w-0">
+          <BrandMark className="w-7 h-7 shrink-0" />
+          <h1 className="masthead-name text-[1.375rem] md:text-[1.625rem] font-bold leading-tight">
+            Ali Aljaffer
+          </h1>
+        </div>
         <RandomArsenalIcon />
       </div>
       <div className="flex flex-wrap items-end  justify-between gap-x-6 gap-y-3 mt-1.5">

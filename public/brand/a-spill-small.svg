@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="a spill">
+<title>a spill</title>
+<circle cx="27" cy="30" r="15.5" fill="none" stroke="#3b3144" stroke-width="8.5"/>
+<path d="M44,15 L44,45" fill="none" stroke="#3b3144" stroke-width="8.5"/>
+<rect x="8" y="47.5" width="48" height="7" rx="3.5" fill="#c4677c"/>
+</svg>

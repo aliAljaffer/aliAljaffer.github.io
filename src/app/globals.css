@@ -3,26 +3,40 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-terminal-bg: #fafafa;
-  --color-terminal-text: #111111;
-  --color-terminal-accent: #000000;
-  --color-terminal-link: #000000;
-  --color-terminal-strong: #000000;
-  --color-terminal-comment: #6b7280;
-  --color-terminal-border: #e5e7eb;
-  --color-terminal-highlight: #1d4ed8;
+  --color-terminal-bg: #fff9f2;
+  --color-terminal-text: #3b3144;
+  --color-terminal-accent: #3b3144;
+  --color-terminal-link: #8c4f63;
+  --color-terminal-strong: #2f2638;
+  --color-terminal-comment: #6b6070;
+  --color-terminal-border: rgba(59, 49, 68, 0.16);
+  --color-terminal-highlight: #8c6777;
+  --color-terminal-red: #a34a5f;
+
+  --color-neutral-50: #fff9f2;
+  --color-neutral-100: #f9efe6;
+  --color-neutral-200: #eddfd8;
+  --color-neutral-300: #d5c8d2;
+  --color-neutral-400: #b2a6b8;
+  --color-neutral-500: #90839b;
+  --color-neutral-600: #6b5f78;
+  --color-neutral-700: #574b64;
+  --color-neutral-800: #403449;
+  --color-neutral-900: #161029;
+  --color-neutral-950: #0d0817;
 }
 
 /* Dark mode overrides for terminal CSS variables (used by case study pages) */
 .dark {
-  --color-terminal-bg: #171717;
-  --color-terminal-text: #f5f5f5;
-  --color-terminal-accent: #f5f5f5;
-  --color-terminal-link: #f5f5f5;
-  --color-terminal-strong: #f5f5f5;
-  --color-terminal-comment: #a3a3a3;
-  --color-terminal-border: #262626;
-  --color-terminal-highlight: #60a5fa;
+  --color-terminal-bg: #161029;
+  --color-terminal-text: #f3ecef;
+  --color-terminal-accent: #f3ecef;
+  --color-terminal-link: #e0b1cb;
+  --color-terminal-strong: #fffcf7;
+  --color-terminal-comment: #b3adb6;
+  --color-terminal-border: rgba(255, 252, 247, 0.16);
+  --color-terminal-highlight: #be95c4;
+  --color-terminal-red: #ff9fb0;
 }
 
 html {
@@ -52,6 +66,10 @@ html {
   .cursor-blink {
     animation: none;
   }
+}
+
+a[target="_blank"]:not(:empty):not(:has(*))::after {
+  content: "";
 }
 
 * {
@@ -105,7 +123,12 @@ body {
 /* Numbered hairline sections: "01 - Overview ----------" */
 .markdown-content h2::before {
   content: counter(md-h2, decimal-leading-zero);
-  @apply font-normal text-neutral-600 dark:text-neutral-400;
+  @apply font-normal;
+  color: var(--mauve);
+}
+
+.markdown-content h2 {
+  color: var(--rose-ink);
 }
 
 .markdown-content h2::after {
@@ -261,49 +284,52 @@ body {
   background-color: transparent;
 }
 
-/* ── Syntax highlighting — GitHub Light ──────────────────── */
+/* ── Syntax highlighting ─────────────────────────────────── */
 .markdown-content pre code .token.comment,
 .markdown-content pre code .token.prolog,
 .markdown-content pre code .token.doctype,
 .markdown-content pre code .token.cdata {
-  color: #6e7781;
+  color: #7a7080;
   font-style: italic;
 }
 
 .markdown-content pre code .token.punctuation {
-  color: #24292f;
+  color: #4a4152;
   opacity: 1;
 }
 
 .markdown-content pre code .token.keyword,
 .markdown-content pre code .token.atrule {
-  color: #cf222e;
+  color: #a2455c;
   font-weight: 600;
 }
 
 .markdown-content pre code .token.attr-value,
 .markdown-content pre code .token.string,
 .markdown-content pre code .token.char,
-.markdown-content pre code .token.builtin,
 .markdown-content pre code .token.inserted {
-  color: #0a3069;
+  color: #4a6b55;
+}
+
+.markdown-content pre code .token.builtin {
+  color: #3f6f57;
 }
 
 .markdown-content pre code .token.function,
 .markdown-content pre code .token.class-name {
-  color: #8250df;
+  color: #6a5a8a;
 }
 
 .markdown-content pre code .token.number,
 .markdown-content pre code .token.boolean,
 .markdown-content pre code .token.constant {
-  color: #0550ae;
+  color: #8a5a2f;
 }
 
 .markdown-content pre code .token.operator,
 .markdown-content pre code .token.entity,
 .markdown-content pre code .token.url {
-  color: #cf222e;
+  color: #8c4f63;
 }
 
 .markdown-content pre code .token.property,
@@ -311,17 +337,17 @@ body {
 .markdown-content pre code .token.selector,
 .markdown-content pre code .token.attr-name,
 .markdown-content pre code .token.symbol {
-  color: #116329;
+  color: #466875;
 }
 
 .markdown-content pre code .token.regex,
 .markdown-content pre code .token.important,
 .markdown-content pre code .token.variable {
-  color: #953800;
+  color: #8a6a3f;
 }
 
 .markdown-content pre code .token.deleted {
-  color: #82071e;
+  color: #a2455c;
 }
 
 .markdown-content pre code .token.important,
@@ -333,49 +359,48 @@ body {
   font-style: italic;
 }
 
-/* ── Syntax highlighting — GitHub Dark ───────────────────── */
 .dark .markdown-content pre code .token.comment,
 .dark .markdown-content pre code .token.prolog,
 .dark .markdown-content pre code .token.doctype,
 .dark .markdown-content pre code .token.cdata {
-  color: #8b949e;
-  font-style: italic;
+  color: #918899;
 }
 
 .dark .markdown-content pre code .token.punctuation {
-  color: #e6edf3;
-  opacity: 1;
+  color: #d8cfdd;
 }
 
 .dark .markdown-content pre code .token.keyword,
 .dark .markdown-content pre code .token.atrule {
-  color: #ff7b72;
-  font-weight: 600;
+  color: #f2a6b2;
 }
 
 .dark .markdown-content pre code .token.attr-value,
 .dark .markdown-content pre code .token.string,
 .dark .markdown-content pre code .token.char,
-.dark .markdown-content pre code .token.builtin,
 .dark .markdown-content pre code .token.inserted {
-  color: #a5d6ff;
+  color: #a9d6bd;
+}
+
+.dark .markdown-content pre code .token.builtin {
+  color: #a9d6bd;
 }
 
 .dark .markdown-content pre code .token.function,
 .dark .markdown-content pre code .token.class-name {
-  color: #d2a8ff;
+  color: #cba9e2;
 }
 
 .dark .markdown-content pre code .token.number,
 .dark .markdown-content pre code .token.boolean,
 .dark .markdown-content pre code .token.constant {
-  color: #79c0ff;
+  color: #f2c78f;
 }
 
 .dark .markdown-content pre code .token.operator,
 .dark .markdown-content pre code .token.entity,
 .dark .markdown-content pre code .token.url {
-  color: #ff7b72;
+  color: #f2a6b2;
 }
 
 .dark .markdown-content pre code .token.property,
@@ -383,17 +408,17 @@ body {
 .dark .markdown-content pre code .token.selector,
 .dark .markdown-content pre code .token.attr-name,
 .dark .markdown-content pre code .token.symbol {
-  color: #7ee787;
+  color: #9fd8ca;
 }
 
 .dark .markdown-content pre code .token.regex,
 .dark .markdown-content pre code .token.important,
 .dark .markdown-content pre code .token.variable {
-  color: #ffa657;
+  color: #f2c78f;
 }
 
 .dark .markdown-content pre code .token.deleted {
-  color: #ffa198;
+  color: #f5a0b1;
 }
 
 .markdown-content a {
@@ -528,4 +553,336 @@ figure > div > div {
   40% {
     transform: scale(1);
   }
+}
+
+/* ── Plein Air: pastel Impressionist surface ─────────────── */
+
+:root {
+  --paper: #fff9f2;
+  --paper-2: #fffdfa;
+  --paper-3: #f6efe9;
+  --ink: #3b3144;
+  --ink-soft: #5c5362;
+  --rose: #f4acb7;
+  --rose-ink: #8c4f63;
+  --mint: #d8e2dc;
+  --shell: #ffe5d9;
+  --mauve: #9d8189;
+  --wash-a: rgba(244, 172, 183, 0.5);
+  --wash-b: rgba(216, 226, 220, 0.42);
+  --wash-c: rgba(255, 229, 217, 0.55);
+  --grain: 0.42;
+}
+
+.dark {
+  --paper: #161029;
+  --paper-2: #221a30;
+  --paper-3: #1d1529;
+  --ink: #f3ecef;
+  --ink-soft: #b3adb6;
+  --rose: #e0b1cb;
+  --rose-ink: #e0b1cb;
+  --mint: #9f86c0;
+  --mauve: #be95c4;
+  --wash-a: rgba(224, 177, 203, 0.24);
+  --wash-b: rgba(159, 134, 192, 0.22);
+  --wash-c: rgba(94, 84, 142, 0.34);
+  --grain: 0.2;
+}
+
+body {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(120% 55% at 4% -18%, rgba(244, 172, 183, 0.32), transparent 62%),
+    radial-gradient(90% 46% at 98% -12%, rgba(216, 226, 220, 0.36), transparent 60%),
+    radial-gradient(100% 46% at 50% 108%, rgba(255, 229, 217, 0.3), transparent 66%);
+  background-attachment: fixed;
+}
+
+.dark body {
+  background-image:
+    radial-gradient(120% 55% at 4% -18%, rgba(224, 177, 203, 0.15), transparent 62%),
+    radial-gradient(90% 46% at 98% -12%, rgba(159, 134, 192, 0.17), transparent 60%),
+    radial-gradient(100% 46% at 50% 108%, rgba(94, 84, 142, 0.24), transparent 66%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: var(--grain);
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
+}
+
+.dark body::after {
+  mix-blend-mode: screen;
+}
+
+::selection {
+  background: rgba(244, 172, 183, 0.5);
+  color: var(--ink);
+}
+
+.dark ::selection {
+  background: rgba(224, 177, 203, 0.32);
+}
+
+.brush-rule {
+  height: 6px;
+  opacity: 0.5;
+  background-color: var(--ink);
+  background-image: none;
+  -webkit-mask-image: url("/paint/rule.png");
+  mask-image: url("/paint/rule.png");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.article-body > header,
+footer > div {
+  border-image: linear-gradient(
+      90deg,
+      var(--ink) 0%,
+      color-mix(in srgb, var(--ink) 45%, transparent) 58%,
+      transparent 100%
+    )
+    1;
+}
+
+.markdown-content h1,
+.article-body > header h1 {
+  font-family: var(--font-masthead), var(--font-roboto-mono), monospace;
+  letter-spacing: -0.015em;
+}
+
+.markdown-content a {
+  color: var(--rose-ink);
+  text-decoration-color: color-mix(in srgb, var(--rose-ink) 45%, transparent);
+  text-underline-offset: 3px;
+}
+
+.markdown-content a:hover {
+  text-decoration-color: var(--rose-ink);
+}
+
+.markdown-content blockquote {
+  border-left: 2px solid var(--rose-ink);
+  background-image: linear-gradient(
+    90deg,
+    rgba(244, 172, 183, 0.24),
+    transparent 72%
+  );
+  padding: 0.75rem 1rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.dark .markdown-content blockquote {
+  background-image: linear-gradient(
+    90deg,
+    rgba(224, 177, 203, 0.12),
+    transparent 72%
+  );
+}
+
+.markdown-content hr {
+  height: 1px;
+  border: 0;
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--ink) 18%,
+    color-mix(in srgb, var(--ink) 55%, transparent) 62%,
+    transparent 100%
+  );
+  opacity: 0.3;
+}
+
+.markdown-content code {
+  background-color: rgba(157, 129, 137, 0.16);
+  color: var(--rose-ink);
+}
+
+.dark .markdown-content code {
+  background-color: rgba(224, 177, 203, 0.14);
+  color: #e0b1cb;
+}
+
+.markdown-content pre {
+  background-color: color-mix(in srgb, var(--paper-2) 70%, var(--shell));
+  border-color: color-mix(in srgb, var(--ink) 30%, transparent);
+}
+
+.dark .markdown-content pre {
+  background-color: rgba(255, 252, 247, 0.045);
+  border-color: rgba(255, 252, 247, 0.2);
+}
+
+.markdown-content th {
+  background-color: rgba(244, 172, 183, 0.2);
+}
+
+.dark .markdown-content th {
+  background-color: rgba(255, 252, 247, 0.08);
+}
+
+.markdown-content ul > li::before {
+  color: var(--mauve);
+}
+
+.markdown-content figcaption::before {
+  color: var(--rose-ink);
+}
+
+.scrollbar-visible {
+  scrollbar-color: var(--mauve) var(--paper-3);
+}
+
+.scrollbar-visible::-webkit-scrollbar-track {
+  background: var(--paper-3);
+}
+
+.scrollbar-visible::-webkit-scrollbar-thumb {
+  background-color: var(--mauve);
+}
+
+.dark .scrollbar-visible {
+  scrollbar-color: #5a4b66 #2a2035;
+}
+
+.dark .scrollbar-visible::-webkit-scrollbar-track {
+  background: #2a2035;
+}
+
+.dark .scrollbar-visible::-webkit-scrollbar-thumb {
+  background-color: #5a4b66;
+}
+
+:focus-visible {
+  outline-color: var(--rose-ink);
+}
+
+.masthead-name {
+  position: relative;
+}
+
+/* the mark carries the underline now */
+.masthead-name::after { content: none; }
+
+.leader {
+  border-color: color-mix(in srgb, var(--mauve) 55%, transparent);
+}
+
+.post-row {
+  margin-inline: -0.5rem;
+  padding-inline: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 160ms ease;
+}
+
+.post-row:hover {
+  background-color: color-mix(in srgb, var(--rose) 14%, transparent);
+}
+
+.post-row:hover .leader {
+  border-color: color-mix(in srgb, var(--mauve) 85%, transparent);
+}
+
+.article-bar {
+  position: sticky;
+  isolation: isolate;
+  background: transparent;
+}
+
+.article-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: color-mix(in srgb, var(--paper) 84%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+}
+
+.article-bar::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 0;
+  height: 1px;
+  background: color-mix(in srgb, var(--ink) 18%, transparent);
+}
+
+.markdown-content h2::after {
+  content: "";
+  flex: 1;
+  height: 6px;
+  background-color: var(--rose-ink);
+  background-image: none;
+  opacity: 0.4;
+  -webkit-mask: url("/paint/rule-wide.png") no-repeat center / 100% 100%;
+  mask: url("/paint/rule-wide.png") no-repeat center / 100% 100%;
+}
+
+.markdown-content hr {
+  height: 8px;
+  border: 0;
+  background-color: var(--mauve);
+  background-image: none;
+  opacity: 0.4;
+  -webkit-mask: url("/paint/rule-wide.png") no-repeat center / 100% 100%;
+  mask: url("/paint/rule-wide.png") no-repeat center / 100% 100%;
+}
+
+.masthead-name,
+.article-body > header h1 {
+  filter: url(#paint-edge);
+}
+
+.post-row {
+  position: relative;
+  isolation: isolate;
+}
+
+.post-row::before {
+  content: "";
+  position: absolute;
+  inset: -1px -10px;
+  z-index: -1;
+  background-color: var(--rose);
+  opacity: 0;
+  -webkit-mask: url("/paint/rule-wide.png") no-repeat center / 100% 100%;
+  mask: url("/paint/rule-wide.png") no-repeat center / 100% 100%;
+  transition: opacity 180ms ease;
+}
+
+.post-row:hover {
+  background-color: transparent;
+}
+
+.post-row:hover::before {
+  opacity: 0.45;
+}
+
+
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 17px;
+  height: 7px;
+  margin-right: 8px;
+  vertical-align: 1px;
+  background-color: var(--rose);
+  opacity: 0.9;
+  -webkit-mask: url("/paint/rule.png") no-repeat center / 100% 100%;
+  mask: url("/paint/rule.png") no-repeat center / 100% 100%;
 }

@@ -57,12 +57,16 @@ export const metadata: Metadata = {
     description,
   },
   icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
     apple: "/icons/apple-touch-icon.png",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
+  themeColor: "#3b3144",
 };
 
 const Roboto = Roboto_Mono({
@@ -101,7 +105,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-neutral-50 dark:bg-neutral-900">
+      <body>
+        <svg aria-hidden="true" width="0" height="0" style={{ position: "absolute" }}>
+          <filter id="paint-edge" x="-6%" y="-12%" width="112%" height="124%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="7" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </svg>
         {children}
         <script
           defer

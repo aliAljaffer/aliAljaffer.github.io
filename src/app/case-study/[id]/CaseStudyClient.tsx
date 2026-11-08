@@ -70,7 +70,7 @@ export default function CaseStudyClient({
     <Layout>
       {/* Variant A: no chrome. A slim back/tools row sticks inside the
           article column; TOC chips live under the masthead, in the flow. */}
-      <div className="sticky top-0 z-50 bg-terminal-bg h-11 flex items-center justify-between gap-4 border-b border-terminal-border max-w-4xl w-full mx-auto px-6">
+      <div className="article-bar sticky top-0 z-50 h-11 flex items-center justify-between gap-4 max-w-4xl w-full mx-auto px-6">
         <BackLink href="/">← Home</BackLink>
         <ThemeToggle />
       </div>
@@ -83,7 +83,7 @@ export default function CaseStudyClient({
           readingMinutes={readingMinutes}
         />
         {headings.length >= 2 && (
-          <div className="sticky top-11 z-40 bg-terminal-bg mb-6 border-b border-terminal-border">
+          <div className="article-bar sticky top-11 z-40 mb-6">
             <CaseStudyToc headings={headings} />
           </div>
         )}

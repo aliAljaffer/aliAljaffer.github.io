@@ -17,16 +17,14 @@ export default function SectionLabel({
 }) {
   return (
     <div className="flex items-center gap-3 mb-3">
-      <h2 className="text-[0.625rem] uppercase tracking-[0.2em] font-bold whitespace-nowrap">
+      <h2 className="section-label text-[0.625rem] uppercase tracking-[0.2em] font-bold whitespace-nowrap text-terminal-link">
         <span id={id} className="scroll-mt-24">
           {children}
         </span>
       </h2>
       <span
         aria-hidden="true"
-        className={`flex-1 h-px ${
-          line === "strong" ? "bg-terminal-accent" : "bg-terminal-border"
-        }`}
+        className={`flex-1 ${line === "strong" ? "brush-rule" : "h-px bg-terminal-border"}`}
       />
       {note && (
         <span className="text-[0.625rem] text-neutral-600 dark:text-neutral-400 whitespace-nowrap">

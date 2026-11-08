@@ -28,3 +28,7 @@ export function loadRobotoMono(
 export function loadRomanesco(text: string): Promise<ArrayBuffer> {
   return loadGoogleFont("Romanesco", 400, text);
 }
+
+export function loadBodoni(text: string, weight: 500 | 600): Promise<ArrayBuffer> {
+  return loadGoogleFont("Bodoni+Moda", weight, text);
+}

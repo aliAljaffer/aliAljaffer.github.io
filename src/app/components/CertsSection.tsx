@@ -17,20 +17,18 @@ export default function CertsSection({
         {certsData
           .sort((a, b) => b.order - a.order)
           .map((cert, i) => (
-            <div
+            <a
               key={i}
-              className="flex items-baseline gap-2.5 text-sm min-w-0"
+              href={cert.url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${cert.name} (opens in new tab)`}
+              className="post-row flex items-baseline gap-2.5 text-sm min-w-0"
             >
-              <a
-                href={cert.url}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`${cert.name} (opens in new tab)`}
-                className="min-w-0 truncate tracking-wide hover:underline underline-offset-2"
-              >
+              <span className="min-w-0 truncate tracking-wide hover:underline underline-offset-2">
                 <span className="md:hidden">{cert.short ?? cert.name}</span>
                 <span className="hidden md:inline">{cert.name}</span>
-              </a>
+              </span>
               <span
                 aria-hidden="true"
                 className="flex-1 min-w-4 self-center border-b border-dotted border-neutral-400 dark:border-neutral-600"
@@ -38,7 +36,7 @@ export default function CertsSection({
               <span className="shrink-0 text-xs text-neutral-600 dark:text-neutral-400">
                 {cert.date}
               </span>
-            </div>
+            </a>
           ))}
       </ScrollableList>
     </section>
