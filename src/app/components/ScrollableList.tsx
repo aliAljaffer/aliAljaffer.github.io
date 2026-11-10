@@ -30,6 +30,7 @@ export default function ScrollableList({
   const ref = useRef<HTMLDivElement>(null);
   const [hasMore, setHasMore] = useState(false);
   const [hasPrev, setHasPrev] = useState(false);
+  const [gutter, setGutter] = useState(false);
 
   const isHorizontal = direction === "horizontal";
 
@@ -46,6 +47,12 @@ export default function ScrollableList({
       const client = isHorizontal ? el.clientWidth : el.clientHeight;
       const pos = isHorizontal ? el.scrollLeft : el.scrollTop;
 
+      // The hint band claims 16px at each end. Measure against the band-free
+      // height, otherwise applying the band would keep the flag true at the
+      // borderline and the list would flicker between the two layouts.
+      const avail = client + (!isHorizontal && gutter ? 32 : 0);
+      setGutter(!isHorizontal && size > avail + 4);
+
       setHasMore(size > client + 4 && pos + client < size - 4);
       setHasPrev(pos > 4);
     };
@@ -59,7 +66,7 @@ export default function ScrollableList({
       el.removeEventListener("scroll", check);
       ro.disconnect();
     };
-  }, [isHorizontal, fitToContent]);
+  }, [isHorizontal, fitToContent, gutter]);
 
   const scrollPrev = () =>
     ref.current?.scrollBy(
@@ -76,14 +83,18 @@ export default function ScrollableList({
     );
 
   return (
-    <div className="relative md:flex-1 md:min-h-0">
+    <div
+      className={`relative md:flex-1 md:min-h-0 ${
+        !isHorizontal && gutter ? "pt-4 pb-4" : ""
+      }`}
+    >
       {hasPrev && (
         <>
           <div
             className={
               isHorizontal
                 ? "absolute top-0 bottom-0 left-0 w-8 bg-gradient-to-r from-neutral-50 dark:from-neutral-900 to-transparent pointer-events-none z-10"
-                : "absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-neutral-50 dark:from-neutral-900 to-transparent pointer-events-none z-10"
+                : "absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-neutral-50 dark:from-neutral-900 from-50% to-transparent pointer-events-none z-10"
             }
           />
           <button
@@ -92,7 +103,7 @@ export default function ScrollableList({
             className={
               isHorizontal
                 ? "absolute left-1 top-1/2 -translate-y-1/2 text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-neutral-50 z-10"
-                : "absolute top-1 left-1/2 -translate-x-1/2 text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-neutral-50 z-10"
+                : "absolute top-0.5 left-1/2 -translate-x-1/2 leading-none text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-neutral-50 z-10"
             }
           >
             <FontAwesomeIcon
@@ -105,7 +116,7 @@ export default function ScrollableList({
             className={
               isHorizontal
                 ? "absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-current to-transparent text-neutral-700 dark:text-neutral-300 pointer-events-none z-10"
-                : "absolute top-6 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent text-neutral-700 dark:text-neutral-300 pointer-events-none z-10"
+                : "absolute top-4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent text-neutral-700 dark:text-neutral-300 pointer-events-none z-10"
             }
           />
         </>
@@ -119,7 +130,7 @@ export default function ScrollableList({
             className={
               isHorizontal
                 ? "absolute top-0 bottom-0 right-0 w-8 bg-gradient-to-l from-neutral-50 dark:from-neutral-900 to-transparent pointer-events-none"
-                : "absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-neutral-50 dark:from-neutral-900 to-transparent pointer-events-none"
+                : "absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-neutral-50 dark:from-neutral-900 from-50% to-transparent pointer-events-none"
             }
           />
           <div
@@ -127,7 +138,7 @@ export default function ScrollableList({
             className={
               isHorizontal
                 ? "absolute right-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-current to-transparent text-neutral-700 dark:text-neutral-300 pointer-events-none"
-                : "absolute bottom-6 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent text-neutral-700 dark:text-neutral-300 pointer-events-none"
+                : "absolute bottom-4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent text-neutral-700 dark:text-neutral-300 pointer-events-none"
             }
           />
           <button
@@ -136,7 +147,7 @@ export default function ScrollableList({
             className={
               isHorizontal
                 ? "absolute right-1 top-1/2 -translate-y-1/2 text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-neutral-50"
-                : "absolute bottom-1 left-1/2 -translate-x-1/2 text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-neutral-50"
+                : "absolute bottom-0.5 left-1/2 -translate-x-1/2 leading-none text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-neutral-50"
             }
           >
             <FontAwesomeIcon
