@@ -22,6 +22,7 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { FaGolang } from "react-icons/fa6";
+import { SiBookstack } from "react-icons/si";
 
 type CertIcon = ComponentType<{ className?: string }>;
 
@@ -29,7 +30,7 @@ export type ContactLink = {
   label: string;
   handle: string;
   value: string;
-  icon: IconDefinition;
+  icon: IconDefinition | IconType;
 };
 
 export type Certification = {
@@ -60,6 +61,12 @@ export const contactData: ContactLink[] = [
     handle: "resume.alialjaffer.com",
     value: "https://resume.alialjaffer.com",
     icon: faFileLines,
+  },
+  {
+    label: "Docs",
+    handle: "docs.alialjaffer.com",
+    value: "https://docs.alialjaffer.com/",
+    icon: SiBookstack,
   },
   {
     label: "GitHub",

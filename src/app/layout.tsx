@@ -22,7 +22,7 @@ const jsonLd = {
       jobTitle: "Platform Engineer",
       url: SITE_URL,
       sameAs: contactData
-        .filter((c) => c.label !== "Resume")
+        .filter((c) => c.label !== "Resume" && c.label !== "Docs")
         .map((c) => c.value),
     },
     {

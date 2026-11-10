@@ -54,11 +54,15 @@ export default function SiteHeader() {
               aria-label={`${c.label} (opens in new tab)`}
               className="flex items-center gap-1.5 hover:text-neutral-950 dark:hover:text-neutral-50"
             >
-              <FontAwesomeIcon
-                icon={c.icon}
-                className="w-3 h-3"
-                aria-hidden="true"
-              />
+              {typeof c.icon === "function" ? (
+                <c.icon className="w-3 h-3" aria-hidden="true" />
+              ) : (
+                <FontAwesomeIcon
+                  icon={c.icon}
+                  className="w-3 h-3"
+                  aria-hidden="true"
+                />
+              )}
               {c.label.toLowerCase()}
             </a>
           ))}
