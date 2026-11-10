@@ -7,6 +7,16 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import { remark } from "remark";
 
+const WIKILINK = /\[\[([a-z0-9-]+(?:\/[a-z0-9-]+)*)(?:\|([^\]]+))?\]\]/g;
+
+function linkDefinitions(text: string): string {
+  return text.replace(
+    WIKILINK,
+    (_, target: string, label?: string) =>
+      `[${label ?? target}](https://docs.alialjaffer.com/definitions/${target}/)`,
+  );
+}
+
 export async function getMarkdownContent(id: string): Promise<string | null> {
   try {
     const markdownPath = path.join(process.cwd(), "src/data", `${id}.md`);
@@ -17,7 +27,7 @@ export async function getMarkdownContent(id: string): Promise<string | null> {
     const fileContent = fs.readFileSync(markdownPath, "utf8");
     const { content } = matter(fileContent);
     const processed = String(
-      await remark().use(remarkParse).use(remarkGfm).use(remarkMath).process(content),
+      await remark().use(remarkParse).use(remarkGfm).use(remarkMath).process(linkDefinitions(content)),
     );
     return processed;
   } catch (error) {
