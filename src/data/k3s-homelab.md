@@ -45,8 +45,8 @@ Why `k3s`? It's not as resource-heavy as other cluster managers. Lightweight eno
 - Git Runners with [Action Runner Controller (ARC)](https://github.com/actions/actions-runner-controller): Now I can access private IPs on my network thanks to self-hosting the runners!
 - [Catus Locatus](https://team4.tuwaiqtracker.com/) App
 - [ArgoCD](https://argo-cd.readthedocs.io/en/stable/getting_started/)
-- [Velero](https://github.com/vmware-tanzu/velero/releases/tag/v1.18.0): Cluster backups to AWS S3
-- [ExternalDNS](https://kubernetes-sigs.github.io/external-dns/latest/): Manages my AWS Route53 DNS by adding subdomains I specify in my Ingress objects.
+- [Velero](https://github.com/vmware-tanzu/velero/releases/tag/v1.18.0): Cluster backups to AWS [[aws/storage-s3|S3]]
+- [ExternalDNS](https://kubernetes-sigs.github.io/external-dns/latest/): Manages my AWS [[aws/networking-route53|Route53]] DNS by adding subdomains I specify in my Ingress objects.
 - [Cert-Manager](https://cert-manager.io/docs/): Manages my SSL certificates for mTLS communication in the cluster
 
 ## YAML Manifests

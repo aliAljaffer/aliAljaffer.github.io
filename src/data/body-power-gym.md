@@ -48,12 +48,12 @@ The other requirements included: Pages for offers, subscription plans, and an im
 
 ## Technical Skills Demonstrated
 
-- **AWS Services**: VPC, [[aws/containers-ecs|ECS]] [[aws/compute-fargate|Fargate]], ALB, [[aws/containers-ecr|ECR]], CodeBuild, [[aws/application-integration-eventbridge|EventBridge]], [[aws/management-and-governance-cloudwatch|CloudWatch]], Lambda, Certificate Manager, RDS, NAT Gateway, Security Groups, IAM, [[aws/management-and-governance-cloudformation|CloudFormation]]
+- **AWS Services**: VPC, [[aws/containers-ecs|ECS]] [[aws/compute-fargate|Fargate]], ALB, [[aws/containers-ecr|ECR]], CodeBuild, [[aws/application-integration-eventbridge|EventBridge]], [[aws/management-and-governance-cloudwatch|CloudWatch]], [[aws/compute-lambda|Lambda]], Certificate Manager, RDS, NAT Gateway, Security Groups, IAM, [[aws/management-and-governance-cloudformation|CloudFormation]]
 - **[[cloud/containers|Containerization]]**: Docker, multi-stage builds, container orchestration, image optimization
 - **CI/CD**: GitHub Actions, CodeBuild, automated testing, webhook integrations
 - **Infrastructure**: Network design, load balancing, SSL/TLS configuration, auto-scaling policies
 - **Monitoring**: CloudWatch metrics, EventBridge rules, alerting systems, [[cloud/logging|log aggregation]]
-- **Security**: Network segmentation, least-privilege access, encryption in transit, vulnerability scanning
+- **Security**: Network segmentation, [[cloud/principle-of-least-privilege|least-privilege]] access, encryption in transit, vulnerability scanning
 - **DevOps**: [[cloud/infrastructure-as-code|Infrastructure as Code]] (soon!), configuration management, deployment automation, rollback strategies
 
 ## Approach
@@ -70,7 +70,7 @@ For the frontend I went with Next.js. It's such an easy-to-work-with framework t
 
 ### The Backend
 
-I went with Strapi because it seemed easy to work with, just looking at the documentation. (And it was.) It also has great features like Webhook integration, plugins like i18n, and the support for 3 database engines: SQLite, MySQL, PostgreSQL. For development, I started with SQLite, as it was lite (heh), local, and easily transferrable. For production, I knew I'd switch to MySQL due to my familiarity with it. For file uploads like images and videos, I set up an S3 bucket and used Strapi's `plugins.js` file to configure the upload parameters.
+I went with Strapi because it seemed easy to work with, just looking at the documentation. (And it was.) It also has great features like Webhook integration, plugins like i18n, and the support for 3 database engines: SQLite, MySQL, PostgreSQL. For development, I started with SQLite, as it was lite (heh), local, and easily transferrable. For production, I knew I'd switch to MySQL due to my familiarity with it. For file uploads like images and videos, I set up an [[aws/storage-s3|S3]] bucket and used Strapi's `plugins.js` file to configure the upload parameters.
 
 ### Isolating Services
 
@@ -78,7 +78,7 @@ For this project, I valued security. All services that should be isolated are in
 
 ### Containers?
 
-I also thought, why not containerize? Containerization would tremendously help with scalability of the website. The website is under load? Spin up another instance. Not too busy? Scale down. I containerized each of the two layers: frontend and backend. With this solution, I can **cost-optimize** by launching the backend on an ECS Fargate _Spot_ instance - to get discounts up to 70%! Moreover, when there's no traffic going the backend's way, I can **scale-to-zero**, for even more savings on cost. The decision to decouple the app definitely paid off. Additionally, there are only 5 staff members at the gym, so no worries around the availability of Spot instances.
+I also thought, why not containerize? Containerization would tremendously help with [[cloud/scalability|scalability]] of the website. The website is under load? Spin up another instance. Not too busy? Scale down. I containerized each of the two layers: frontend and backend. With this solution, I can **cost-optimize** by launching the backend on an ECS Fargate _Spot_ instance - to get discounts up to 70%! Moreover, when there's no traffic going the backend's way, I can **scale-to-zero**, for even more savings on cost. The decision to decouple the app definitely paid off. Additionally, there are only 5 staff members at the gym, so no worries around the availability of Spot instances.
 
 Unlike the backend instance, the frontend container would be the one always running, and getting **[[aws/management-and-governance-auto-scaling|Auto Scaling]]**, as it'd be the one seeing most of the traffic. I set a `minimum: 1`, `maximum:5`, and a `desired:1` as initial numbers. Thanks to ECS, I can always scale-up or -down in seconds.
 
@@ -116,7 +116,7 @@ The same lambda function comes to the rescue. This time, we will be counting the
 
 #### Content Changes
 
-Webhooks are wonderful. They are basically a way for service A to notify service B that an event occurred. In our case, service A would be Strapi, and service B would be AWS (somehow). Basically we want a way to tell the frontend to rebuild itself, when a PUBLISH or UNPUBLISH event happens in Strapi - so new content is added. One way to achieve this is with API Gateway, with an endpoint (`/webhook` for example) that triggers a Lambda to rebuild the frontend.
+Webhooks are wonderful. They are basically a way for service A to notify service B that an event occurred. In our case, service A would be Strapi, and service B would be AWS (somehow). Basically we want a way to tell the frontend to rebuild itself, when a PUBLISH or UNPUBLISH event happens in Strapi - so new content is added. One way to achieve this is with [[aws/networking-api-gateway|API Gateway]], with an endpoint (`/webhook` for example) that triggers a Lambda to rebuild the frontend.
 
 ![CI/CD Flow for a Strapi content change by a staff member](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/body-power-gym/cicd-staff.png)
 

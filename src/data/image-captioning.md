@@ -61,7 +61,7 @@ Once that was done, I setup two [[aws/storage-s3|S3]] buckets: `textify-website`
 
 And thanks to this process, development and deployment are automated and taken care of.
 
-Next, I created two Lambda functions. One function receives an image file `image/*` from the frontend, and uploads it to `textify-img/uploads`, then passes the object key to the second Lambda, which sends the image for processing using [[aws/machine-learning-sagemaker|SageMaker]] AI. The model used for captioning is [Salesforce/blip-image-captioning-large](https://huggingface.co/Salesforce/blip-image-captioning-large) running on an `ml.m5.xlarge` instance.
+Next, I created two [[aws/compute-lambda|Lambda]] functions. One function receives an image file `image/*` from the frontend, and uploads it to `textify-img/uploads`, then passes the object key to the second Lambda, which sends the image for processing using [[aws/machine-learning-sagemaker|SageMaker]] AI. The model used for captioning is [Salesforce/blip-image-captioning-large](https://huggingface.co/Salesforce/blip-image-captioning-large) running on an `ml.m5.xlarge` instance.
 
 To handle uploads, I setup an [[aws/networking-api-gateway|API Gateway]] with a `/upload` **POST** route. This is what triggers the first Lambda to receive the user image.
 

@@ -29,7 +29,7 @@ Along with Vagrant for easy VM provisioning, Ansible helps so much with running 
 
 ![The etcd backup process can be simplified with a CronJob and an external storage solution.](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/k8s-adventure/etcd-backup.png)
 
-In managed environments like AKS (Azure), [[gcp/gke|GKE]] (Google), or EKS (AWS), I didn't really focus on the inner workings of a cluster - I just wanted it to work. And that's actually one of the main benefits of using a managed service for K8s. But in a bare-metal environment, backing up `etcd` is essential. Think of it like the state file in Terraform - it stores information on what pods, deployments, services, etc are running in the cluster. Losing your `etcd` database means losing access to the core benefit of K8s: orchestration.
+In managed environments like AKS (Azure), [[gcp/gke|GKE]] (Google), or [[aws/containers-eks|EKS]] (AWS), I didn't really focus on the inner workings of a cluster - I just wanted it to work. And that's actually one of the main benefits of using a managed service for K8s. But in a bare-metal environment, backing up `etcd` is essential. Think of it like the state file in Terraform - it stores information on what pods, deployments, services, etc are running in the cluster. Losing your `etcd` database means losing access to the core benefit of K8s: orchestration.
 
 ## Linux helps. A ton!!
 
