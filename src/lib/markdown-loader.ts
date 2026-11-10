@@ -9,11 +9,23 @@ import { remark } from "remark";
 
 const WIKILINK = /\[\[([a-z0-9-]+(?:\/[a-z0-9-]+)*)(?:\|([^\]]+))?\]\]/g;
 
-function linkDefinitions(text: string): string {
-  return text.replace(
-    WIKILINK,
-    (_, target: string, label?: string) =>
-      `[${label ?? target}](https://docs.alialjaffer.com/definitions/${target}/)`,
+let definitions: Promise<Set<string> | null> | undefined;
+
+function knownDefinitions(): Promise<Set<string> | null> {
+  definitions ??= fetch("https://docs.alialjaffer.com/definitions.json")
+    .then((res) => (res.ok ? res.json() : null))
+    .then((list: string[] | null) => (list ? new Set(list) : null))
+    .catch(() => null);
+  return definitions;
+}
+
+async function linkDefinitions(text: string): Promise<string> {
+  const known = await knownDefinitions();
+  if (!known) console.warn("definitions.json unavailable, wikilinks left unverified");
+  return text.replace(WIKILINK, (_, target: string, label?: string) =>
+    known && !known.has(target)
+      ? (label ?? target)
+      : `[${label ?? target}](https://docs.alialjaffer.com/definitions/${target}/)`,
   );
 }
 
@@ -27,7 +39,7 @@ export async function getMarkdownContent(id: string): Promise<string | null> {
     const fileContent = fs.readFileSync(markdownPath, "utf8");
     const { content } = matter(fileContent);
     const processed = String(
-      await remark().use(remarkParse).use(remarkGfm).use(remarkMath).process(linkDefinitions(content)),
+      await remark().use(remarkParse).use(remarkGfm).use(remarkMath).process(await linkDefinitions(content)),
     );
     return processed;
   } catch (error) {
