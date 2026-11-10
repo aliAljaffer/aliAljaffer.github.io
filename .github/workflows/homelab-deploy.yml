@@ -1,0 +1,144 @@
+name: Deploy to homelab
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - docs/**
+      - .github/workflows/build-and-*.yml
+      - .github/workflows/nextjs.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  HARBOR_IMAGE: harbor.alialjaffer.com/mirror/portfolio-website
+
+jobs:
+  image:
+    timeout-minutes: 30
+    runs-on: arc-runner-portfolio
+    outputs:
+      digest: ${{ steps.build.outputs.digest }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "25"
+          cache: npm
+      - run: echo "NEXT_TELEMETRY_DISABLED=1" >> "$GITHUB_ENV"
+      - run: npm ci
+      - run: npm run build -- --webpack
+      - name: Create honeypot env.txt
+        run: |
+          cat > dist/env.txt << 'EOF'
+          # Database Configuration
+          DB_HOST=prod-primary.cluster-xyz123.us-east-1.rds.amazonaws.com
+          DB_USER=admin_user
+          DB_PASSWORD=P@ssw0rd123!SuperSecret
+          DB_NAME=production_db
+
+          # AWS Credentials
+          AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+          AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+          AWS_REGION=us-east-1
+
+          # AI API Keys
+          OPENAI_API_KEY=sk-proj-abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOP
+          ANTHROPIC_API_KEY=sk-ant-api03-xY9zAbCdEfGhIjKlMnOpQrStUvWxYz1234567890aBcDeFgHiJkLmNoPqRsTuVwXyZ
+          GOOGLE_AI_API_KEY=AIzaSyD-1234567890abcdefghijklmnopqrstuvwxyz_ABCD
+          GEMINI_API_KEY=AIzaSyBcDeFgHiJkLmNoPqRsTuVwXyZ1234567890-aBcDeF
+
+          # Payment Processing
+          STRIPE_SECRET_KEY=sk_live_51AbCdEfGhIjKlMnOpQrStUvWxYz1234567890
+          STRIPE_PUBLISHABLE_KEY=pk_live_51XyZaBcDeFgHiJkLmNoPqRsTuVwXyZ123456
+
+          # Application Secrets
+          JWT_SECRET=ultra-secret-jwt-key-do-not-share-2024
+          ENCRYPTION_KEY=AES256-CBC-SECRET-KEY-32CHARS-LONG
+          SESSION_SECRET=my-super-secret-session-key-production
+          NEXTAUTH_SECRET=nextauth-super-secret-key-change-in-production
+
+          # Monitoring & Tracking
+          WEBHOOK_URL=https://alialjaffer.com/api/track?source=webhook
+          HEARTBEAT_URL=https://alialjaffer.com/api/track?source=heartbeat
+          ERROR_REPORTING_KEY=sentry_12345678901234567890123456789012
+          EOF
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4.7.0
+        with:
+          registry: harbor.alialjaffer.com
+          username: ${{ secrets.HARBOR_USERNAME }}
+          password: ${{ secrets.HARBOR_PASSWORD }}
+      - uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        id: build
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: |
+            ${{ env.HARBOR_IMAGE }}:${{ github.sha }}
+            ${{ env.HARBOR_IMAGE }}:latest
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+
+  update-manifests:
+    needs: [image]
+    timeout-minutes: 10
+    runs-on: arc-runner-portfolio
+    steps:
+      - name: Create a GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          app-id: ${{ secrets.HOMELAB_APP_ID }}
+          private-key: ${{ secrets.HOMELAB_APP_PRIVATE_KEY }}
+          owner: aliAljaffer
+          repositories: homelab
+
+      - name: Check out the homelab manifests
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: aliAljaffer/homelab
+          token: ${{ steps.app-token.outputs.token }}
+          path: homelab
+
+      - name: Pin the portfolio image digest
+        working-directory: homelab
+        env:
+          DIGEST: ${{ needs.image.outputs.digest }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          latest=$(curl -fsSL \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/commits/main" | jq -r .sha)
+          if [ "$latest" != "$GITHUB_SHA" ]; then
+            echo "Skipping: main moved to $latest."
+            exit 0
+          fi
+          test -n "$DIGEST"
+          sed -i -E "s#harbor\.alialjaffer\.com/mirror/portfolio-website@sha256:[0-9a-f]{64}#harbor.alialjaffer.com/mirror/portfolio-website@${DIGEST}#" kubernetes/apps/portfolio/deployment.yaml
+          grep -q "harbor.alialjaffer.com/mirror/portfolio-website@${DIGEST}" kubernetes/apps/portfolio/deployment.yaml
+          if git diff --quiet; then
+            echo "The portfolio image is already pinned."
+            exit 0
+          fi
+          git config user.name "portfolio-manifest-bot"
+          git config user.email "portfolio-manifest-bot@users.noreply.github.com"
+          git add kubernetes/apps/portfolio/deployment.yaml
+          git commit -m "portfolio: pin image for ${GITHUB_SHA:0:7}"
+          for _ in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            git pull --rebase
+          done
+          exit 1
