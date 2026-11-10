@@ -50,7 +50,7 @@ Not shown are monitoring alerts and autoscaling settings. This just serves as a 
 
 - Monitors the provisioned resources for CPU/Memory/Network utilization and sends alerts via Email for remediation.
 
-- Principle of least privilege is applied to Network Security Groups, offering a high level of security.
+- Principle of [[cloud/principle-of-least-privilege|least privilege]] is applied to Network Security Groups, offering a high level of security.
 
 - Frontend, backend, and database all isolated in their own subnets with private communication between them using private endpoints for the database and IP restrictions on the frontend/backend, limiting communication to the Application Gateway.
 

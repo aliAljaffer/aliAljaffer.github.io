@@ -32,7 +32,7 @@ For example, setting a monthly budget of $20 USD and wanting to be alerted when 
 
 Three secrets are needed in `/secrets.auto.tfvars`:
 
-- `AWS_ACCESS_KEY`: AWS Access Key with access to Lambda, SNS, Budgets, and IAM. See: [https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
+- `AWS_ACCESS_KEY`: AWS Access Key with access to Lambda, [[aws/application-integration-sns|SNS]], Budgets, and [[aws/security-iam|IAM]]. See: [https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
 - `AWS_SECRET_KEY`: AWS Secret Key. See: [https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
 - `WEBHOOK_URL`: A webhook URL for the targeted Discord channel to send notifications to. Just need the URL, See the \"Making a Webhook\" section here: [https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
 

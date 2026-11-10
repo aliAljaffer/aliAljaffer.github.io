@@ -55,7 +55,7 @@ NOTE: I mentioned that we worked on this as a team, but the preceding week I wor
 
 I began on creating a backend, because in my original project I was using `supabase`, which is a platform that provides you with a database and an API to go alongside it. Their free tier was generous, so I had no issues with that. But for this implementation, I needed a decoupled backend to work alongside the frontend. After building the backend in `expressjs`, I began writing the Dockerfiles.
 
-### Containerization
+### [[cloud/containers|Containerization]]
 
 Nothing fancy here, just a multi-stage build of a containerized app. The frontend image was a React app, so I simply built it and used an Nginx base image with an `nginx.conf`. Final image size was 58MB. Cool. The backend was Express.js, with the usual middleware. The image ended up being 140MB. A bit high for my liking but not too bad. The two images are hosted on Azure Container Registry.
 
@@ -80,7 +80,7 @@ Backend and frontend contained deployments and HPAs, the monitoring folder conta
 
 ### Terraform
 
-Our main Infrastructure-as-Code tool. Since the domain we were using (this same one you're on!) is on AWS Route 53, we used the AWS provider. AzureRM worked well for Azure resources, and like mentioned before, Kubernetes and Helm providers were also used. I wrote the resource files in Module Pattern.
+Our main Infrastructure-as-Code tool. Since the domain we were using (this same one you're on!) is on AWS [[aws/networking-route53|Route 53]], we used the AWS provider. AzureRM worked well for Azure resources, and like mentioned before, Kubernetes and Helm providers were also used. I wrote the resource files in Module Pattern.
 
 ### CI/CD
 
@@ -116,7 +116,7 @@ The reason why I'm using AWS here is because my domain is managed in AWS Route 5
 
 ![](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/catus-locatus/aws.png)
 
-Again, nothing too fancy. We'll use the domain's Hosted Zone, and to manage the DNS records on it I created an IAM User that has access to ONLY the hosted zone. Principle of Least Privilege, anyone?
+Again, nothing too fancy. We'll use the domain's Hosted Zone, and to manage the DNS records on it I created an IAM User that has access to ONLY the hosted zone. Principle of [[cloud/principle-of-least-privilege|Least Privilege]], anyone?
 
 Here's the Terraform code for the policy attached to the user:
 

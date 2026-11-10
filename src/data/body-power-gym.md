@@ -48,13 +48,13 @@ The other requirements included: Pages for offers, subscription plans, and an im
 
 ## Technical Skills Demonstrated
 
-- **AWS Services**: VPC, ECS Fargate, ALB, ECR, CodeBuild, EventBridge, CloudWatch, Lambda, Certificate Manager, RDS, NAT Gateway, Security Groups, IAM, CloudFormation
-- **Containerization**: Docker, multi-stage builds, container orchestration, image optimization
+- **AWS Services**: VPC, [[aws/containers-ecs|ECS]] [[aws/compute-fargate|Fargate]], ALB, [[aws/containers-ecr|ECR]], CodeBuild, [[aws/application-integration-eventbridge|EventBridge]], [[aws/management-and-governance-cloudwatch|CloudWatch]], Lambda, Certificate Manager, RDS, NAT Gateway, Security Groups, IAM, [[aws/management-and-governance-cloudformation|CloudFormation]]
+- **[[cloud/containers|Containerization]]**: Docker, multi-stage builds, container orchestration, image optimization
 - **CI/CD**: GitHub Actions, CodeBuild, automated testing, webhook integrations
 - **Infrastructure**: Network design, load balancing, SSL/TLS configuration, auto-scaling policies
-- **Monitoring**: CloudWatch metrics, EventBridge rules, alerting systems, log aggregation
+- **Monitoring**: CloudWatch metrics, EventBridge rules, alerting systems, [[cloud/logging|log aggregation]]
 - **Security**: Network segmentation, least-privilege access, encryption in transit, vulnerability scanning
-- **DevOps**: Infrastructure as Code (soon!), configuration management, deployment automation, rollback strategies
+- **DevOps**: [[cloud/infrastructure-as-code|Infrastructure as Code]] (soon!), configuration management, deployment automation, rollback strategies
 
 ## Approach
 
@@ -80,7 +80,7 @@ For this project, I valued security. All services that should be isolated are in
 
 I also thought, why not containerize? Containerization would tremendously help with scalability of the website. The website is under load? Spin up another instance. Not too busy? Scale down. I containerized each of the two layers: frontend and backend. With this solution, I can **cost-optimize** by launching the backend on an ECS Fargate _Spot_ instance - to get discounts up to 70%! Moreover, when there's no traffic going the backend's way, I can **scale-to-zero**, for even more savings on cost. The decision to decouple the app definitely paid off. Additionally, there are only 5 staff members at the gym, so no worries around the availability of Spot instances.
 
-Unlike the backend instance, the frontend container would be the one always running, and getting **Auto Scaling**, as it'd be the one seeing most of the traffic. I set a `minimum: 1`, `maximum:5`, and a `desired:1` as initial numbers. Thanks to ECS, I can always scale-up or -down in seconds.
+Unlike the backend instance, the frontend container would be the one always running, and getting **[[aws/management-and-governance-auto-scaling|Auto Scaling]]**, as it'd be the one seeing most of the traffic. I set a `minimum: 1`, `maximum:5`, and a `desired:1` as initial numbers. Thanks to ECS, I can always scale-up or -down in seconds.
 
 ### Balancing the Load
 

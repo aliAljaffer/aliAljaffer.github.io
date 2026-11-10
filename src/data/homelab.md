@@ -15,7 +15,7 @@ homelab:
 
 ## Overview
 
-If you read my [k3s homelab post](/case-study/k3s-homelab/), you met this cluster back when it was one secondhand MacBook Pro and a `k3s` install. That post is basically a baby photo at this point :) Ten months later it's a 5-node [Talos Linux](https://www.talos.dev/) cluster, ~33 [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)-managed apps, disaster recovery split across two cloud providers, and a full observability stack. Barely resembles the old cluster anymore, so this gets its own post instead of an update to the old one.
+If you read my [k3s homelab post](/case-study/k3s-homelab/), you met this cluster back when it was one secondhand MacBook Pro and a `k3s` install. That post is basically a baby photo at this point :) Ten months later it's a 5-node [Talos Linux](https://www.talos.dev/) cluster, ~33 [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)-managed apps, [[cloud/disaster-recovery|disaster recovery]] split across two cloud providers, and a full observability stack. Barely resembles the old cluster anymore, so this gets its own post instead of an update to the old one.
 
 The one rule that hasn't changed, straight from the repo's README: **"Everything is in this repo - if it's not here, it doesn't exist on the cluster."** ArgoCD reconciles `main` against the live cluster. The only thing applied by hand is the bootstrap step that installs ArgoCD itself. Chicken, egg, you know how it goes.
 

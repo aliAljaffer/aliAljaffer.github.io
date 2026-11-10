@@ -48,7 +48,7 @@ This should be a fun one!
 
 ## Approach
 
-For the application, we'll host it as a containerized Azure Web App. It provides a simple platform to deploy and manage the versioning and scaling of your containers. The database will be Azure SQL (MSSQL) database, another managed solution. Additionally, for testing purposes, we'll add a VM for testing purposes in the same Virtual Network as the other resources. Using an Application Gateway with path-based routing, we'll restrict any public access to our application, and only allow access via the App Gateway public IP.
+For the application, we'll host it as a containerized Azure Web App. It provides a simple platform to deploy and manage the versioning and scaling of your [[cloud/containers|containers]]. The database will be Azure SQL (MSSQL) database, another managed solution. Additionally, for testing purposes, we'll add a VM for testing purposes in the same Virtual Network as the other resources. Using an Application Gateway with path-based routing, we'll restrict any public access to our application, and only allow access via the App Gateway public IP.
 
 In another Virtual Network, we'll deploy a VM hosting a SonarQube server, to run code scanning and analysis in our CI/CD pipelines. Monitoring will be done via Application Insights and Alerts. This includes the monitoring for autoscaling the web app. To access the Azure subscription from CI/CD pipelines, we'll use a Service Principal.
 
@@ -94,7 +94,7 @@ Both frontend and backend applications were containerized using multi-stage Dock
 
 Both images are tagged with commit hashes for version tracking and pushed to DockerHub, allowing precise rollbacks and deployment tracking.
 
-### Infrastructure as Code - Terraform Modules
+### [[cloud/infrastructure-as-code|Infrastructure as Code]] - Terraform Modules
 
 The infrastructure follows a modular Terraform structure with 10 distinct modules:
 

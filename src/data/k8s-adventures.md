@@ -29,7 +29,7 @@ Along with Vagrant for easy VM provisioning, Ansible helps so much with running 
 
 ![The etcd backup process can be simplified with a CronJob and an external storage solution.](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/k8s-adventure/etcd-backup.png)
 
-In managed environments like AKS (Azure), GKE (Google), or EKS (AWS), I didn't really focus on the inner workings of a cluster - I just wanted it to work. And that's actually one of the main benefits of using a managed service for K8s. But in a bare-metal environment, backing up `etcd` is essential. Think of it like the state file in Terraform - it stores information on what pods, deployments, services, etc are running in the cluster. Losing your `etcd` database means losing access to the core benefit of K8s: orchestration.
+In managed environments like AKS (Azure), [[gcp/gke|GKE]] (Google), or EKS (AWS), I didn't really focus on the inner workings of a cluster - I just wanted it to work. And that's actually one of the main benefits of using a managed service for K8s. But in a bare-metal environment, backing up `etcd` is essential. Think of it like the state file in Terraform - it stores information on what pods, deployments, services, etc are running in the cluster. Losing your `etcd` database means losing access to the core benefit of K8s: orchestration.
 
 ## Linux helps. A ton!!
 
@@ -41,7 +41,7 @@ Yes, knowing the `kubeadm` and `kubectl` commands makes your life easier. But do
 
 ![Using Vagrant enables easy teardown (or bringing up) of your entire cluster or specific nodes.](https://alialjaffer-website.s3.me-south-1.amazonaws.com/images/k8s-adventure/vagrant.png)
 
-I learned this saying, which is a design philosophy where you treat your systems that you build as **cattle**: easily replaceable and disposable, and not **pets**: precious, unique and irreplaceable. As soon as cattle (server, cluster, whatever) is lost, be ready to immediately replace it with a new identical (Or nearly identical) one. Practice GitOps and Infrastructure as Code to achieve this!
+I learned this saying, which is a design philosophy where you treat your systems that you build as **cattle**: easily replaceable and disposable, and not **pets**: precious, unique and irreplaceable. As soon as cattle (server, cluster, whatever) is lost, be ready to immediately replace it with a new identical (Or nearly identical) one. Practice GitOps and [[cloud/infrastructure-as-code|Infrastructure as Code]] to achieve this!
 
 ## Conclusion
 

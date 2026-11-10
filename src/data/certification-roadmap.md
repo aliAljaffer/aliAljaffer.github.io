@@ -45,7 +45,7 @@ a. Cisco Certified Networking Associate: More networking knowledge than you need
 
 b. CompTIA Network+: The lightweight networking certificate. Contains just what you need to know how to design your network cloud resources.
 
-4. **Certified Kubernetes Administrator (CKA)**: Just like Linux, Kubernetes is everywhere, especially in Saudi Arabia. Even though you'll probably work with managed Kubernetes services like Google Kubernetes Engine (GKE), it's insanely useful to know the inner workings of Kubernetes components to get good at debugging its issues.
+4. **Certified Kubernetes Administrator (CKA)**: Just like Linux, Kubernetes is everywhere, especially in Saudi Arabia. Even though you'll probably work with managed Kubernetes services like Google Kubernetes Engine ([[gcp/gke|GKE]]), it's insanely useful to know the inner workings of Kubernetes components to get good at debugging its issues.
 
 5. **STOP!** Choose the "Professional" level cloud architecting certification **FOR THE CLOUD YOU WORK ON!** Do not bother getting a professional certification while unemployed, it will probably work against you!
 

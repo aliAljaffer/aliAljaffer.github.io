@@ -13,7 +13,7 @@ deployment-strategies:
   tags: ["Kubernetes", "CI/CD"]
 ---
 
-Diving into the most popular deployment strategies for deploying new versions or features out to the public. First going through examples, then moving onto demonstrating the deployment on a custom Kubernetes dashboard that interacts with a `minikube` cluster I set up. Feel free to contact me with any questions regarding this topic or others!
+Diving into the most popular [[gcp/deployment-strategies|deployment strategies]] for deploying new versions or features out to the public. First going through examples, then moving onto demonstrating the deployment on a custom Kubernetes dashboard that interacts with a `minikube` cluster I set up. Feel free to contact me with any questions regarding this topic or others!
 
 ![The dashboard demonstrating Rolling Updates](https://raw.githubusercontent.com/aliAljaffer/app-deployments/refs/heads/main/dashboard-image.png)
 
