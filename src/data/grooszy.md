@@ -26,6 +26,8 @@ grooszy:
 
 ## Overview
 
+**Documentation:** [docs.alialjaffer.com/projects/grooszy/](https://docs.alialjaffer.com/projects/grooszy/)
+
 My two banks share no statement format and no view of my spending, so I couldn't answer a simple question: where am I leaking money?
 
 **grooszy** is a private, self-hosted analysis tool for Alinma XLSX and Al Rajhi PDF exports. Support for other banks leans on the question "Do I have a bank account there or not?" 🤷🏽
