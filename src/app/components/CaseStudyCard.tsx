@@ -23,7 +23,7 @@ export default function CaseStudyCard({
       <div className="flex items-center gap-3 min-w-0">
         <div className="min-w-0">
           {showType && (
-            <p className="text-[10px] font-bold uppercase tracking-wide text-neutral-600 dark:text-neutral-400">
+            <p className="text-xs font-bold uppercase tracking-wide text-neutral-600 dark:text-neutral-400">
               [{item.type}]
             </p>
           )}

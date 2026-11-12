@@ -27,7 +27,7 @@ export default function CaseStudyHeader({
         {caseStudy.name}
       </h1>
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 mt-3">
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.6875rem] text-neutral-600 dark:text-neutral-400">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-neutral-600 dark:text-neutral-400">
           <time dateTime={caseStudy.date}>{formattedDate}</time>
           <span aria-hidden="true">·</span>
           <span>{readingMinutes} min read</span>
@@ -48,7 +48,7 @@ export default function CaseStudyHeader({
             </>
           )}
         </div>
-        <div className="flex items-center gap-3 text-[0.6875rem] text-neutral-600 dark:text-neutral-400">
+        <div className="flex items-center gap-3 text-xs text-neutral-600 dark:text-neutral-400">
           <span>share</span>
           <a
             href={xShareUrl}

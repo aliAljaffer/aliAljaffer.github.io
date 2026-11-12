@@ -49,7 +49,7 @@ export default function TagsIndexPage() {
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-terminal-accent">
             Tags
           </h1>
-          <p className="text-[0.6875rem] text-neutral-600 dark:text-neutral-400 mt-2">
+          <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-2">
             {tagCounts.length} {tagCounts.length === 1 ? "tag" : "tags"} in use
           </p>
         </header>

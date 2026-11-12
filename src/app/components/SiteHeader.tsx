@@ -17,11 +17,11 @@ export default function SiteHeader() {
       </div>
       <div className="flex flex-wrap items-end  justify-between gap-x-6 gap-y-3 mt-1.5">
         <div className="min-w-0">
-          <p className="text-[0.625rem] uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400">
+          <p className="text-xs uppercase tracking-[0.25em] text-neutral-600 dark:text-neutral-400">
             Platform Engineer · Riyadh, KSA
           </p>
           {learning.length > 0 && (
-            <p className="hidden md:flex items-center gap-2 text-[0.625rem] text-neutral-600 dark:text-neutral-400 mt-2">
+            <p className="hidden md:flex items-center gap-2 text-xs text-neutral-600 dark:text-neutral-400 mt-2">
               <span>currently learning:</span>
               {learning.map(({ name, url, icon: Icon }, i) => (
                 <span key={name} className="flex items-center gap-2">
@@ -43,7 +43,7 @@ export default function SiteHeader() {
         </div>
         <nav
           aria-label="Social links"
-          className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.6875rem] text-neutral-600 dark:text-neutral-400"
+          className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-neutral-600 dark:text-neutral-400"
         >
           {contactData.map((c) => (
             <a
