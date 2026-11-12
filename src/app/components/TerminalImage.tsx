@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Modal from "./Modal";
 
@@ -24,6 +24,8 @@ export default function TerminalImage({
   priority = false,
 }: TerminalImageProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [status, setStatus] = useState<"loading" | "loaded" | "error">("loading");
+  const imgRef = useRef<HTMLImageElement>(null);
 
   // Convert src to string, handling undefined and Blob cases
   const imageSrc =
@@ -37,26 +39,56 @@ export default function TerminalImage({
 
   if (!caption || caption.length === 0) caption = alt;
 
+  // An image that settled before hydration never fires onLoad or onError, so read its state once mounted.
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img?.complete) setStatus(img.naturalWidth > 0 ? "loaded" : "error");
+  }, [imageSrc]);
+
+  if (status === "error") {
+    return (
+      <figure className={`my-7 max-w-full ${className}`}>
+        <div
+          role="img"
+          aria-label={imageAlt}
+          className="img-placeholder w-full border border-terminal-accent"
+          style={{ aspectRatio: `${imageWidth} / ${imageHeight}`, maxHeight: "60vh" }}
+        >
+          <span>Image unavailable · {imageSrc.split("/").pop()}</span>
+        </div>
+        {caption && (
+          <figcaption className="text-terminal-comment text-xs mt-2">
+            {caption}
+          </figcaption>
+        )}
+      </figure>
+    );
+  }
+
   return (
     <>
       <figure className={`my-7 max-w-full ${className}`}>
         <button
           type="button"
           onClick={() => setIsModalOpen(true)}
-          className="inline-block max-w-full border border-terminal-accent hover:opacity-90 transition-opacity p-0 bg-transparent"
+          className={`max-w-full border border-terminal-accent hover:opacity-90 transition-opacity p-0 ${status === "loading" ? "img-stripes block w-full" : "inline-block bg-transparent"}`}
           aria-label={imageAlt ? `Enlarge image: ${imageAlt}` : "Enlarge image"}
         >
           <Image
+            ref={imgRef}
             src={imageSrc}
             alt={imageAlt}
             width={imageWidth}
             height={imageHeight}
-            className="block w-auto h-auto max-w-full object-contain"
+            onLoad={() => setStatus("loaded")}
+            onError={() => setStatus("error")}
+            className={`block max-w-full object-contain ${status === "loading" ? "w-full" : "w-auto h-auto"}`}
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 75vw, 50vw"
             priority={priority}
             style={{
               maxHeight: "60vh",
               objectFit: "contain",
+              ...(status === "loading" && { aspectRatio: `${imageWidth} / ${imageHeight}`, height: "auto" }),
             }}
           />
         </button>
