@@ -1,4 +1,5 @@
 import SiteHeader from "@/app/components/SiteHeader";
+import BrandPlate from "@/app/components/BrandPlate";
 import AboutSection from "@/app/components/AboutSection";
 import CertsSection from "@/app/components/CertsSection";
 import CaseStudySection from "@/app/components/CaseStudySection";
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <div className="bg-neutral-50 dark:bg-neutral-900 text-neutral-950 dark:text-neutral-50 font-mono min-h-dvh md:h-dvh md:overflow-hidden flex flex-col">
       <SiteHeader />
+      <BrandPlate />
 
       {/* Single column: about, certifications, blog. The blog area takes the
           remaining height and scrolls on md+; the page stacks and scrolls on

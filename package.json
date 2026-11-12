@@ -7,7 +7,8 @@
     "build": "tsc --noEmit && next build --webpack",
     "server": "json-server --port 3001 ./src/data/case-studies.json",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "brand": "sh scripts/brand.sh"
   },
   "dependencies": {
     "@excalidraw/excalidraw": "^0.18.1",

@@ -1,7 +1,8 @@
 import type React from "react";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Bodoni_Moda, Roboto_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import brand from "@/brand/brand.json";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
@@ -62,18 +63,33 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: brand.light.paper },
+    { media: "(prefers-color-scheme: dark)", color: brand.night.paper },
+  ],
 };
 
-const Roboto = Roboto_Mono({
-  subsets: ["latin"],
-  variable: "--font-roboto-mono",
+const TextFont = localFont({
+  src: [
+    { path: "../brand/fonts/Karla.ttf", style: "normal", weight: "200 800" },
+    { path: "../brand/fonts/Karla-Italic.ttf", style: "italic", weight: "200 800" },
+  ],
+  variable: "--font-text",
+  display: "swap",
 });
 
-const BodoniModa = Bodoni_Moda({
-  subsets: ["latin"],
-  variable: "--font-masthead",
-  axes: ["opsz"],
+const MonoFont = localFont({
+  src: "../brand/fonts/SplineSansMono.ttf",
+  weight: "300 700",
+  variable: "--font-mono",
+  display: "swap",
+});
+
+const DisplayFont = localFont({
+  src: "../brand/fonts/Fraunces.ttf",
+  weight: "100 900",
+  variable: "--font-display",
+  display: "swap",
 });
 
 export default function RootLayout({
@@ -85,7 +101,7 @@ export default function RootLayout({
   return (
     <html
       lang={defaultLang}
-      className={`${Roboto.variable} ${BodoniModa.variable}`}
+      className={`${TextFont.variable} ${MonoFont.variable} ${DisplayFont.variable}`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
