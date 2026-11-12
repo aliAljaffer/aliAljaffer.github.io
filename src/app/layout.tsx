@@ -71,22 +71,22 @@ export const viewport: Viewport = {
 
 const TextFont = localFont({
   src: [
-    { path: "../brand/fonts/Karla.ttf", style: "normal", weight: "200 800" },
-    { path: "../brand/fonts/Karla-Italic.ttf", style: "italic", weight: "200 800" },
+    { path: "../brand/fonts/Karla.woff2", style: "normal", weight: "200 800" },
+    { path: "../brand/fonts/Karla-Italic.woff2", style: "italic", weight: "200 800" },
   ],
   variable: "--font-text",
   display: "swap",
 });
 
 const MonoFont = localFont({
-  src: "../brand/fonts/SplineSansMono.ttf",
+  src: "../brand/fonts/SplineSansMono.woff2",
   weight: "300 700",
   variable: "--font-mono",
   display: "swap",
 });
 
 const DisplayFont = localFont({
-  src: "../brand/fonts/Fraunces.ttf",
+  src: "../brand/fonts/Fraunces.woff2",
   weight: "100 900",
   variable: "--font-display",
   display: "swap",
