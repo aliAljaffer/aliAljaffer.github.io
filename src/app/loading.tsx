@@ -3,7 +3,7 @@ export default function Loading() {
     <div
       role="status"
       aria-label="Loading"
-      className="min-h-screen flex items-center justify-center bg-neutral-50 dark:bg-neutral-900"
+      className="min-h-screen flex items-center justify-center"
     >
       <div className="flex space-x-2" aria-hidden="true">
         <div className="w-3 h-3 rounded-full bounce-dot bg-neutral-900 dark:bg-neutral-200"></div>

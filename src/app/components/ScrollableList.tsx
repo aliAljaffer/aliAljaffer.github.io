@@ -82,6 +82,11 @@ export default function ScrollableList({
         : { top: 150, behavior: "smooth" }
     );
 
+  const fade =
+    hasPrev || hasMore
+      ? `linear-gradient(${isHorizontal ? "to right" : "to bottom"}, ${hasPrev ? "transparent, #000 2rem" : "#000"}, ${hasMore ? "#000 calc(100% - 2rem), transparent" : "#000"})`
+      : undefined;
+
   return (
     <div
       className={`relative md:flex-1 md:min-h-0 ${
@@ -90,13 +95,6 @@ export default function ScrollableList({
     >
       {hasPrev && (
         <>
-          <div
-            className={
-              isHorizontal
-                ? "absolute top-0 bottom-0 left-0 w-8 bg-gradient-to-r from-neutral-50 dark:from-neutral-900 to-transparent pointer-events-none z-10"
-                : "absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-neutral-50 dark:from-neutral-900 from-50% to-transparent pointer-events-none z-10"
-            }
-          />
           <button
             onClick={scrollPrev}
             aria-label={isHorizontal ? "Scroll left" : "Scroll up"}
@@ -121,18 +119,11 @@ export default function ScrollableList({
           />
         </>
       )}
-      <div ref={ref} className={className}>
+      <div ref={ref} className={className} style={{ maskImage: fade, WebkitMaskImage: fade }}>
         {children}
       </div>
       {hasMore && (
         <>
-          <div
-            className={
-              isHorizontal
-                ? "absolute top-0 bottom-0 right-0 w-8 bg-gradient-to-l from-neutral-50 dark:from-neutral-900 to-transparent pointer-events-none"
-                : "absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-neutral-50 dark:from-neutral-900 from-50% to-transparent pointer-events-none"
-            }
-          />
           <div
             aria-hidden="true"
             className={
