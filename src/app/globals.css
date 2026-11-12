@@ -62,6 +62,24 @@ h1 {
   letter-spacing: -0.02em;
 }
 
+.img-stripes,
+.img-placeholder {
+  background: repeating-linear-gradient(135deg, var(--brand-paper-2) 0 12px, var(--brand-paper-3) 12px 24px);
+}
+
+.img-placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--brand-ink-soft);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  overflow-wrap: anywhere;
+  padding: 1rem;
+}
+
 a,
 button,
 [role="button"] {
