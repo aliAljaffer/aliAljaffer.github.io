@@ -587,6 +587,7 @@ figure > div > div {
   transition: opacity 1.2s ease-in-out;
 }
 
+.plate-still,
 .plate-layer {
   position: absolute;
   top: 0;
@@ -596,8 +597,11 @@ figure > div > div {
   height: 100%;
   object-fit: cover;
   object-position: top;
-  opacity: 0;
   pointer-events: none;
+}
+
+.plate-layer {
+  opacity: 0;
   will-change: transform;
 }
 
@@ -611,10 +615,13 @@ figure > div > div {
 
 .plate-stage.live .plate-sky {
   animation: plate-drift-sky var(--brand-plate-sky-period) ease-in-out infinite;
+  /* Start a quarter cycle in, at translate 0, so the first frame matches the still. */
+  animation-delay: calc(var(--brand-plate-sky-period) * -0.25);
 }
 
 .plate-stage.live .plate-cloud {
   animation: plate-drift-cloud var(--brand-plate-cloud-period) ease-in-out infinite;
+  animation-delay: calc(var(--brand-plate-cloud-period) * -0.25);
 }
 
 .plate-stage.paused .plate-layer {

@@ -37,11 +37,12 @@ export default function BrandPlate() {
     };
   }, []);
 
-  const still = "block w-full h-auto max-h-40 object-cover object-top select-none plate-still";
+  // The still shares the layers' overscanned box so the swap to the live layers doesn't shift or rescale.
+  const still = "select-none plate-still";
   const live = loaded === 2;
   return (
     <div className="shrink-0 w-full max-w-4xl mx-auto px-6" aria-hidden="true">
-      <div ref={stage} className={`plate-stage ${live ? "live" : ""} ${paused ? "paused" : ""}`}>
+      <div ref={stage} className={`plate-stage w-full aspect-[2000/420] max-h-40 ${live ? "live" : ""} ${paused ? "paused" : ""}`}>
         <img src="/brand/plate-day.webp" alt="" width={2000} height={420} decoding="async" fetchPriority="high" className={`${still} dark:hidden`} />
         <img src="/brand/plate-night.webp" alt="" width={2000} height={420} decoding="async" className={`${still} hidden dark:block`} />
         {mode &&
