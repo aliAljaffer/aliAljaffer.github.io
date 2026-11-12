@@ -13,7 +13,7 @@ export default function AboutSection({
       className={`shrink-0 ${className}`}
     >
       <SectionLabel id="about-heading">About</SectionLabel>
-      <p className="text-sm leading-6 text-neutral-700 dark:text-neutral-300">
+      <p className="text-base leading-7 max-w-[72ch] text-neutral-700 dark:text-neutral-300">
         I started as a web developer and slowly fell down the infrastructure
         rabbit hole - these days I build and run cloud platforms in Riyadh for
         Saudi AZM.

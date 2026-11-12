@@ -21,7 +21,7 @@ export default function PostRow({
     <Link
       href={`/case-study/${item.caseStudyId}`}
       aria-label={`${item.name} - read more`}
-      className="group flex items-baseline gap-2.5 text-sm min-w-0"
+      className="group flex items-baseline gap-2.5 text-base min-w-0"
     >
       {showIcon && Icon && (
         <span className="shrink-0 w-6 self-center flex items-center text-neutral-600 dark:text-neutral-400">

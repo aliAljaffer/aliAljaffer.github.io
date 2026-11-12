@@ -17,15 +17,15 @@ export default function SectionLabel({
 }) {
   return (
     <div className="flex items-center gap-3 mb-3">
-      <h2 className="text-xs uppercase tracking-[0.2em] font-bold whitespace-nowrap">
+      <h2 className="brand-section-title whitespace-nowrap">
         <span id={id} className="scroll-mt-24">
           {children}
         </span>
       </h2>
       <span
         aria-hidden="true"
-        className={`flex-1 h-px ${
-          line === "strong" ? "bg-terminal-accent" : "bg-terminal-border"
+        className={`flex-1 ${
+          line === "strong" ? "brand-section-rule" : "h-px bg-terminal-border"
         }`}
       />
       {note && (

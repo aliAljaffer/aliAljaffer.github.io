@@ -56,10 +56,10 @@ export default function CaseStudyToc({ headings }: CaseStudyTocProps) {
             chipRefs.current[h.slug] = el;
           }}
           aria-current={active === h.slug ? "true" : undefined}
-          className={`text-xs tracking-[0.2em] uppercase whitespace-nowrap transition-opacity ${
+          className={`brand-label whitespace-nowrap ${
             active === h.slug
-              ? "font-bold underline opacity-100"
-              : "opacity-60 hover:opacity-100"
+              ? "brand-pill font-bold text-neutral-950 dark:text-neutral-50"
+              : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50"
           }`}
         >
           {h.text}
