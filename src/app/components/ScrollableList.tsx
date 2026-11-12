@@ -152,7 +152,7 @@ export default function ScrollableList({
           >
             <FontAwesomeIcon
               icon={isHorizontal ? faChevronRight : faChevronDown}
-              className="w-3 h-3"
+              className="w-4 h-4"
             />
           </button>
         </>
