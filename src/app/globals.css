@@ -571,6 +571,15 @@ figure > div > div {
 .plate-stage {
   position: relative;
   overflow: hidden;
+  --plate-edge: var(--brand-plate-edge, 8%);
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, #000 var(--plate-edge), #000 calc(100% - var(--plate-edge)), transparent),
+    linear-gradient(to bottom, transparent, #000 var(--plate-edge));
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent, #000 var(--plate-edge), #000 calc(100% - var(--plate-edge)), transparent),
+    linear-gradient(to bottom, transparent, #000 var(--plate-edge));
+  mask-composite: intersect;
 }
 
 .plate-still,

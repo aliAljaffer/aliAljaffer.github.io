@@ -41,7 +41,7 @@ export default function BrandPlate() {
   const live = loaded === 2;
   return (
     <div className="shrink-0 w-full max-w-4xl mx-auto px-6" aria-hidden="true">
-      <div ref={stage} className={`plate-stage rounded-t-2xl ${live ? "live" : ""} ${paused ? "paused" : ""}`}>
+      <div ref={stage} className={`plate-stage ${live ? "live" : ""} ${paused ? "paused" : ""}`}>
         <img src="/brand/plate-day.webp" alt="" width={2000} height={420} decoding="async" fetchPriority="high" className={`${still} dark:hidden`} />
         <img src="/brand/plate-night.webp" alt="" width={2000} height={420} decoding="async" className={`${still} hidden dark:block`} />
         {mode &&
