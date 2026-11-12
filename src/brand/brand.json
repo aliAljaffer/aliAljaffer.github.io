@@ -15,7 +15,11 @@
     "accent_ink": "#231942",
     "code": "#231942",
     "accent_fill": "#231942",
-    "on_accent": "#faf1f0"
+    "on_accent": "#faf1f0",
+    "complement": "#e0b1cb",
+    "wash_a": "#e0b1cb",
+    "wash_b": "#be95c4",
+    "wash_c": "#9f86c0"
   },
   "night": {
     "paper": "#161029",
@@ -30,7 +34,11 @@
     "accent_ink": "#847e95",
     "code": "#fcf7f6",
     "accent_fill": "#847e95",
-    "on_accent": "#161029"
+    "on_accent": "#161029",
+    "complement": "#e4bad1",
+    "wash_a": "#e3b9d0",
+    "wash_b": "#c4a0ca",
+    "wash_c": "#a992c6"
   },
   "syntax": {
     "light": {
@@ -61,7 +69,22 @@
     "radius_lg": "18px",
     "label_size": "12px",
     "shadow": true,
-    "headings": "display"
+    "headings": "display",
+    "surfaces": "filled",
+    "washes": true,
+    "grain": true,
+    "logo_size": "34px"
+  },
+  "type": {
+    "body_size": "17px",
+    "h1_size": "40px",
+    "h2_size": "25.6px",
+    "h3_size": "20px",
+    "heading_weight": 500,
+    "heading_rule": false,
+    "display_settings": "\"SOFT\" 90, \"WONK\" 1",
+    "label_font": "code",
+    "label_track": "0.14em"
   },
   "fonts": {
     "text": "Karla",
@@ -71,5 +94,6 @@
   "stylesheets": [
     "fonts/fonts.css"
   ],
-  "icon": "icon.svg"
+  "icon": "icon.svg",
+  "favicon": "favicon.svg"
 }
