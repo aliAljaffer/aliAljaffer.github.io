@@ -44,6 +44,18 @@ jobs:
             ${{ runner.os }}-nextjs-
 
       - run: npm ci
+      - name: Create a GitHub App token for branding
+        id: brand-token
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          app-id: 5511128
+          private-key: ${{ secrets.HOMELAB_APP_PRIVATE_KEY }}
+          owner: aliAljaffer
+          repositories: branding
+      - name: Pull the theme from branding main
+        run: npm run brand
+        env:
+          GH_TOKEN: ${{ steps.brand-token.outputs.token }}
       - run: npm run build -- --webpack
 
       - name: Create honeypot .env <evil emoji>

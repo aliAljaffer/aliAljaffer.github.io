@@ -1,5 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-  <rect x="0" y="0"  width="30" height="10" fill="#0a0a0a"/>
-  <rect x="0" y="10" width="30" height="10" fill="#fafafa"/>
-  <rect x="0" y="20" width="30" height="10" fill="#737373"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="a spill"><title>a spill</title><defs><filter id="f-sp" x="-22%" y="-22%" width="144%" height="144%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.009 0.014" numOctaves="4" seed="323" result="a"/>
+<feDisplacementMap in="SourceGraphic" in2="a" scale="14" xChannelSelector="R" yChannelSelector="G" result="b"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.34" numOctaves="2" seed="324" result="c"/>
+<feDisplacementMap in="b" in2="c" scale="2.8" xChannelSelector="R" yChannelSelector="G" result="d"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" seed="325" result="g"/>
+<feColorMatrix in="g" type="saturate" values="0" result="gs"/>
+<feComponentTransfer in="gs" result="gt">
+<feFuncR type="linear" slope="0.46" intercept="0.54"/><feFuncG type="linear" slope="0.46" intercept="0.54"/><feFuncB type="linear" slope="0.46" intercept="0.54"/>
+</feComponentTransfer>
+<feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="326" result="m"/>
+<feColorMatrix in="m" type="saturate" values="0" result="ms"/>
+<feComponentTransfer in="ms" result="mt"><feFuncR type="linear" slope="0.36" intercept="0.64"/><feFuncG type="linear" slope="0.36" intercept="0.64"/><feFuncB type="linear" slope="0.36" intercept="0.64"/></feComponentTransfer>
+<feBlend in="d" in2="gt" mode="multiply" result="e"/>
+<feBlend in="e" in2="mt" mode="multiply" result="e2"/>
+<feComposite in="e2" in2="d" operator="in"/>
+</filter></defs><g filter="url(#f-sp)"><ellipse cx="128" cy="212" rx="92" ry="11" fill="#c4677c" opacity=".9"/><circle cx="108" cy="128" r="54" fill="none" stroke="#3b3144" stroke-width="30"/><path d="M172,74 L172,196" fill="none" stroke="#3b3144" stroke-width="30"/><path d="M86,214 L84,242" fill="none" stroke="#c4677c" stroke-width="7" stroke-linecap="round"/><path d="M132,216 L133,246" fill="none" stroke="#c4677c" stroke-width="6" stroke-linecap="round"/><path d="M174,214 L177,240" fill="none" stroke="#c4677c" stroke-width="7" stroke-linecap="round"/></g><g><circle cx="195.3" cy="206.4" r="1.8" fill="#c4677c" opacity="0.38"/><circle cx="27.9" cy="213.9" r="1.3" fill="#c4677c" opacity="0.59"/><circle cx="41.9" cy="181.0" r="1.0" fill="#c4677c" opacity="0.27"/><circle cx="38.0" cy="131.1" r="0.8" fill="#c4677c" opacity="0.45"/><circle cx="69.4" cy="219.7" r="2.4" fill="#c4677c" opacity="0.33"/><circle cx="90.4" cy="46.2" r="2.1" fill="#c4677c" opacity="0.35"/><circle cx="165.4" cy="53.6" r="0.9" fill="#c4677c" opacity="0.4"/><circle cx="212.0" cy="160.0" r="1.2" fill="#c4677c" opacity="0.45"/></g></svg>

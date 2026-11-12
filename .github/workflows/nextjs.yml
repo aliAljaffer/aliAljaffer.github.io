@@ -73,6 +73,18 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: Create a GitHub App token for branding
+        id: brand-token
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          app-id: 5511128
+          private-key: ${{ secrets.HOMELAB_APP_PRIVATE_KEY }}
+          owner: aliAljaffer
+          repositories: branding
+      - name: Pull the theme from branding main
+        run: npm run brand
+        env:
+          GH_TOKEN: ${{ steps.brand-token.outputs.token }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact

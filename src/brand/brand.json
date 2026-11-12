@@ -1,0 +1,75 @@
+{
+  "id": "giverny",
+  "name": "Plein Air: Dusk at Giverny",
+  "source": "branding main, tokens/tokens.json (giverny), plate storm-cloud",
+  "light": {
+    "paper": "#faf1f0",
+    "paper_2": "#fdfaf9",
+    "paper_3": "#eee5e6",
+    "ink": "#231942",
+    "ink_strong": "#231942",
+    "ink_soft": "#574d6c",
+    "ink_faint": "#857b91",
+    "rule": "#dcd3d8",
+    "accent": "#231942",
+    "accent_ink": "#231942",
+    "code": "#231942",
+    "accent_fill": "#231942",
+    "on_accent": "#faf1f0"
+  },
+  "night": {
+    "paper": "#161029",
+    "paper_2": "#262138",
+    "paper_3": "#1e1830",
+    "ink": "#fcf7f6",
+    "ink_strong": "#fcf7f6",
+    "ink_soft": "#a39ea7",
+    "ink_faint": "#716c7a",
+    "rule": "#363046",
+    "accent": "#847e95",
+    "accent_ink": "#847e95",
+    "code": "#fcf7f6",
+    "accent_fill": "#847e95",
+    "on_accent": "#161029"
+  },
+  "syntax": {
+    "light": {
+      "bg": "#fdfaf9",
+      "text": "#231942",
+      "keyword": "#503ea4",
+      "type": "#8b3ea4",
+      "string": "#a43e81",
+      "number": "#8a6e34",
+      "function": "#347b8a",
+      "comment": "#766e88",
+      "punctuation": "#574d6c"
+    },
+    "night": {
+      "bg": "#262138",
+      "text": "#fcf7f6",
+      "keyword": "#9082d0",
+      "type": "#b574ca",
+      "string": "#c970aa",
+      "number": "#ab8941",
+      "function": "#4199ab",
+      "comment": "#8f8a96",
+      "punctuation": "#a39ea7"
+    }
+  },
+  "shape": {
+    "radius": "12px",
+    "radius_lg": "18px",
+    "label_size": "12px",
+    "shadow": true,
+    "headings": "display"
+  },
+  "fonts": {
+    "text": "Karla",
+    "code": "Spline Sans Mono",
+    "display": "Fraunces"
+  },
+  "stylesheets": [
+    "fonts/fonts.css"
+  ],
+  "icon": "icon.svg"
+}
