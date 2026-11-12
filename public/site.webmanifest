@@ -4,8 +4,8 @@
   "description": "Cloud Engineering and DevOps Portfolio",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#0a0a0a",
+  "background_color": "#faf1f0",
+  "theme_color": "#faf1f0",
   "icons": [
     {
       "src": "/icons/icon-192.png",
