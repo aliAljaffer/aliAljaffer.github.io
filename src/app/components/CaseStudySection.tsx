@@ -24,7 +24,7 @@ export default function CaseStudySection({
   return (
     <section
       aria-labelledby={id}
-      className={`py-4 ${className}`}
+      className={className}
     >
       <SectionLabel id={id}>{title}</SectionLabel>
       <ScrollableList

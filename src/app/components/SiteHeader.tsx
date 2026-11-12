@@ -8,7 +8,7 @@ import RandomArsenalIcon from "@/app/components/RandomArsenalIcon";
 // old black bar header.
 export default function SiteHeader() {
   return (
-    <header className="shrink-0 w-full max-w-4xl mx-auto px-6 pt-7 pb-4">
+    <header className="shrink-0 w-full max-w-4xl mx-auto px-6 pt-4 pb-3">
       <div className="flex items-center justify-between gap-6">
         <h1 className="masthead-name text-[1.375rem] md:text-[1.625rem] font-bold leading-tight">
           Ali Aljaffer

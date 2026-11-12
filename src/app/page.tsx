@@ -20,7 +20,7 @@ export default function Home() {
 
       <main
         id="main-content"
-        className="w-full max-w-4xl mx-auto px-6 flex-1"
+        className="w-full max-w-4xl mx-auto px-6 pt-5 pb-6 flex-1 flex flex-col gap-6"
       >
         <AboutSection />
         <CaseStudySection

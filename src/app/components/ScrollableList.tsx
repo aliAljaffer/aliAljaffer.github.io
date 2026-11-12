@@ -47,10 +47,10 @@ export default function ScrollableList({
       const client = isHorizontal ? el.clientWidth : el.clientHeight;
       const pos = isHorizontal ? el.scrollLeft : el.scrollTop;
 
-      // The hint band claims 16px at each end. Measure against the band-free
+      // The hint band claims 16px at the bottom. Measure against the band-free
       // height, otherwise applying the band would keep the flag true at the
       // borderline and the list would flicker between the two layouts.
-      const avail = client + (!isHorizontal && gutter ? 32 : 0);
+      const avail = client + (!isHorizontal && gutter ? 16 : 0);
       setGutter(!isHorizontal && size > avail + 4);
 
       setHasMore(size > client + 4 && pos + client < size - 4);
@@ -85,7 +85,7 @@ export default function ScrollableList({
   return (
     <div
       className={`relative md:flex-1 md:min-h-0 ${
-        !isHorizontal && gutter ? "pt-4 pb-4" : ""
+        !isHorizontal && gutter ? "pb-4" : ""
       }`}
     >
       {hasPrev && (
