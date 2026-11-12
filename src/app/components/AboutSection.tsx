@@ -10,7 +10,7 @@ export default function AboutSection({
   return (
     <section
       aria-labelledby="about-heading"
-      className={`shrink-0 py-4 ${className}`}
+      className={`shrink-0 ${className}`}
     >
       <SectionLabel id="about-heading">About</SectionLabel>
       <p className="text-sm leading-6 text-neutral-700 dark:text-neutral-300">

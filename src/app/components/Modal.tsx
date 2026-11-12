@@ -45,7 +45,7 @@ export default function Modal({
       onClick={(e) => {
         if (e.target === dialogRef.current) onClose();
       }}
-      className={`m-auto p-0 bg-transparent border-none max-w-none z-50 [&::backdrop]:bg-black/85 ${className}`}
+      className={`m-auto p-0 bg-transparent border-none max-w-none z-50 [&::backdrop]:bg-neutral-950/85 ${className}`}
     >
       <button
         onClick={onClose}

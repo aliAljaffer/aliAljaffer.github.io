@@ -10,7 +10,7 @@ export default function CertsSection({
   return (
     <section
       aria-labelledby="certs-heading"
-      className={`shrink-0 py-4 ${className}`}
+      className={`shrink-0 ${className}`}
     >
       <SectionLabel id="certs-heading">Certifications</SectionLabel>
       <ScrollableList className="space-y-2">
