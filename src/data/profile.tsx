@@ -13,6 +13,7 @@ import type { IconType } from "react-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { AzmIcon } from "@/app/components/AzmIcon";
 import { ManafaIcon } from "@/app/components/ManafaIcon";
+import { GcpIcon } from "@/app/components/GcpIcon";
 import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 import {
   faGithub,
@@ -20,8 +21,14 @@ import {
   faXTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-import { FaGolang } from "react-icons/fa6";
-import { SiBookstack, SiHelm } from "react-icons/si";
+import { FaAws, FaGolang } from "react-icons/fa6";
+import {
+  SiBookstack,
+  SiCncf,
+  SiHelm,
+  SiKubernetes,
+  SiTerraform,
+} from "react-icons/si";
 
 type CertIcon = ComponentType<{ className?: string }>;
 
@@ -39,6 +46,7 @@ export type Certification = {
   date: string;
   order: number;
   url: string;
+  icon: IconType;
 };
 
 export type LearningTopic = {
@@ -100,6 +108,7 @@ export const certsData: Certification[] = [
     date: "Oct 2026",
     order: 11,
     url: "https://www.credly.com/badges/c3075985-e760-46f9-981a-a23c785702eb/public_url",
+    icon: GcpIcon,
   },
   {
     name: "GCP Professional Cloud Architect",
@@ -107,6 +116,7 @@ export const certsData: Certification[] = [
     date: "May 2026",
     order: 10,
     url: "https://www.credly.com/badges/f576ddd7-17b9-4a15-aa0e-86dca295cc37/public_url",
+    icon: GcpIcon,
   },
   {
     name: "Certified Kubernetes Security Specialist",
@@ -114,6 +124,7 @@ export const certsData: Certification[] = [
     date: "Feb 2026",
     order: 8,
     url: "https://www.credly.com/badges/6d3a6109-76a3-4873-9305-5679d128f6ba/public_url",
+    icon: SiKubernetes,
   },
   {
     name: "CNCF Kubestronaut",
@@ -121,6 +132,7 @@ export const certsData: Certification[] = [
     date: "Feb 2026",
     order: 9,
     url: "https://www.cncf.io/training/kubestronaut/?_sft_lf-country=sa#:~:text=Ali-,Aljaffer,-(He/Him)",
+    icon: SiCncf,
   },
   {
     name: "Certified Kubernetes Administrator",
@@ -128,6 +140,7 @@ export const certsData: Certification[] = [
     date: "Dec 2025",
     order: 7,
     url: "https://www.credly.com/badges/460fb1fe-342c-45e0-8b17-c6225e43ec7a/public_url",
+    icon: SiKubernetes,
   },
   {
     name: "Certified Kubernetes Application Developer",
@@ -135,12 +148,14 @@ export const certsData: Certification[] = [
     date: "Dec 2025",
     order: 6,
     url: "https://www.credly.com/badges/574c7848-77e6-4c25-a1b6-d7d4f70a130c/public_url",
+    icon: SiKubernetes,
   },
   {
     name: "Terraform Associate",
     date: "Aug 2025",
     order: 5,
     url: "https://www.credly.com/badges/2abf40d1-88d1-4d75-a79e-73d1c7ec94d9/public_url",
+    icon: SiTerraform,
   },
   {
     name: "AWS Solutions Architect - Associate",
@@ -148,6 +163,7 @@ export const certsData: Certification[] = [
     date: "Jul 2025",
     order: 4,
     url: "https://www.credly.com/badges/90df08a0-de5d-4eab-9ed3-013e17556f71/public_url",
+    icon: FaAws,
   },
 ];
 
