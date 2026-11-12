@@ -21,7 +21,7 @@ export default function CertsSection({
             return (
               <div
                 key={i}
-                className="flex items-baseline gap-2.5 text-sm min-w-0"
+                className="flex items-baseline gap-2.5 text-base min-w-0"
               >
                 <span className="shrink-0 w-6 self-center flex items-center text-neutral-600 dark:text-neutral-400">
                   <Icon className="w-4 h-4" aria-hidden="true" />

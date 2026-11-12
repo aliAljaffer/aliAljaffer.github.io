@@ -22,8 +22,8 @@ export default function CaseStudyHeader({
   const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`;
 
   return (
-    <header className="pb-6 border-b border-terminal-accent">
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-terminal-accent">
+    <header className="pb-6">
+      <h1 className="leading-tight text-terminal-accent text-[2rem] md:text-[length:var(--brand-h1-size)]">
         {caseStudy.name}
       </h1>
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 mt-3">
@@ -34,12 +34,12 @@ export default function CaseStudyHeader({
           {caseStudy.tags.length > 0 && (
             <>
               <span aria-hidden="true">·</span>
-              <span className="flex flex-wrap gap-x-2 gap-y-1">
+              <span className="flex flex-wrap gap-x-1.5 gap-y-1.5 font-mono">
                 {caseStudy.tags.map((tag) => (
                   <Link
                     key={tag}
                     href={`/tags/${tagToSlug(tag)}/`}
-                    className="hover:underline hover:text-neutral-950 dark:hover:text-neutral-50"
+                    className="brand-tag hover:underline hover:text-neutral-950 dark:hover:text-neutral-50"
                   >
                     #{tagToSlug(tag)}
                   </Link>

@@ -21,6 +21,18 @@
   --color-neutral-900: #161029;
   --color-neutral-950: #0e0a1b;
 
+  --brand-radius: 12px;
+  --brand-radius-lg: 18px;
+  --brand-label-size: 12px;
+  --brand-logo-size: 34px;
+  --brand-body-size: 17px;
+  --brand-h1-size: 40px;
+  --brand-h2-size: 25.6px;
+  --brand-h3-size: 20px;
+  --brand-heading-weight: 500;
+  --brand-display-settings: "SOFT" 90, "WONK" 1;
+  --brand-label-track: 0.14em;
+  --brand-font-label: var(--font-mono);
   --brand-paper: #faf1f0;
   --brand-paper-2: #fdfaf9;
   --brand-paper-3: #eee5e6;
@@ -34,6 +46,10 @@
   --brand-code: #231942;
   --brand-accent-fill: #231942;
   --brand-on-accent: #faf1f0;
+  --brand-complement: #e0b1cb;
+  --brand-wash-a: #e0b1cb;
+  --brand-wash-b: #be95c4;
+  --brand-wash-c: #9f86c0;
   --brand-syntax-bg: #fdfaf9;
   --brand-syntax-text: #231942;
   --brand-syntax-keyword: #503ea4;
@@ -44,6 +60,19 @@
   --brand-syntax-comment: #766e88;
   --brand-syntax-punctuation: #574d6c;
   --brand-shadow: 0 1px 2px rgba(35, 25, 66, 0.04), 0 6px 18px rgba(35, 25, 66, 0.05);
+  --brand-shadow-lg: 0 2px 4px rgba(35, 25, 66, 0.06), 0 18px 40px rgba(35, 25, 66, 0.12);
+  --brand-header-bg: color-mix(in srgb, #faf1f0 88%, transparent);
+  --brand-pill-bg: color-mix(in srgb, #231942 22%, transparent);
+  --brand-tag-bg: color-mix(in srgb, #231942 18%, transparent);
+  --brand-code-inline-bg: color-mix(in srgb, #231942 18%, #fdfaf9);
+  --brand-code-inline-fg: #231942;
+  --brand-panel-bg: color-mix(in srgb, #e0b1cb 16%, #fdfaf9);
+  --brand-panel-edge: #e0b1cb;
+  --brand-section-rule: linear-gradient(90deg, #231942, transparent);
+  --brand-wash-a-strength: 30%;
+  --brand-wash-b-strength: 24%;
+  --brand-wash-c-strength: 20%;
+  --brand-grain-opacity: 0.5;
 }
 
 .dark {
@@ -69,6 +98,10 @@
   --brand-code: #fcf7f6;
   --brand-accent-fill: #847e95;
   --brand-on-accent: #161029;
+  --brand-complement: #e4bad1;
+  --brand-wash-a: #e3b9d0;
+  --brand-wash-b: #c4a0ca;
+  --brand-wash-c: #a992c6;
   --brand-syntax-bg: #262138;
   --brand-syntax-text: #fcf7f6;
   --brand-syntax-keyword: #9082d0;
@@ -78,5 +111,18 @@
   --brand-syntax-function: #4199ab;
   --brand-syntax-comment: #8f8a96;
   --brand-syntax-punctuation: #a39ea7;
-  --brand-shadow: 0 1px 2px rgba(252, 247, 246, 0.04), 0 6px 18px rgba(252, 247, 246, 0.3);
+  --brand-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 6px 18px rgba(0, 0, 0, 0.3);
+  --brand-shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.06), 0 18px 40px rgba(0, 0, 0, 0.5);
+  --brand-header-bg: color-mix(in srgb, #161029 88%, transparent);
+  --brand-pill-bg: color-mix(in srgb, #847e95 22%, transparent);
+  --brand-tag-bg: color-mix(in srgb, #847e95 18%, transparent);
+  --brand-code-inline-bg: color-mix(in srgb, #847e95 18%, #262138);
+  --brand-code-inline-fg: #fcf7f6;
+  --brand-panel-bg: color-mix(in srgb, #e4bad1 16%, #262138);
+  --brand-panel-edge: #e4bad1;
+  --brand-section-rule: linear-gradient(90deg, #847e95, transparent);
+  --brand-wash-a-strength: 10%;
+  --brand-wash-b-strength: 8%;
+  --brand-wash-c-strength: 0%;
+  --brand-grain-opacity: 0.25;
 }

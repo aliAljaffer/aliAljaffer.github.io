@@ -58,7 +58,8 @@ html {
 .masthead-name,
 h1 {
   font-family: var(--font-display), Georgia, serif;
-  font-variation-settings: "SOFT" 90, "WONK" 1;
+  font-variation-settings: var(--brand-display-settings);
+  font-weight: var(--brand-heading-weight);
   letter-spacing: -0.02em;
 }
 
@@ -89,6 +90,68 @@ button,
 body {
   margin: 0;
   padding: 0;
+  background-image:
+    radial-gradient(60% 50% at 8% 0%, color-mix(in srgb, var(--brand-wash-a) var(--brand-wash-a-strength), transparent), transparent 70%),
+    radial-gradient(50% 45% at 100% 30%, color-mix(in srgb, var(--brand-wash-b) var(--brand-wash-b-strength), transparent), transparent 70%),
+    radial-gradient(60% 50% at 30% 100%, color-mix(in srgb, var(--brand-wash-c) var(--brand-wash-c-strength), transparent), transparent 70%);
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: var(--brand-grain-opacity);
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.18 0 0 0 0 0.28 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.dark body::before {
+  mix-blend-mode: screen;
+}
+
+.brand-label,
+.markdown-content h2::before,
+.markdown-content pre[data-language]::before {
+  font-family: var(--brand-font-label), monospace;
+  font-size: var(--brand-label-size);
+  letter-spacing: var(--brand-label-track);
+  text-transform: uppercase;
+}
+
+.brand-section-title,
+.markdown-content h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-variation-settings: var(--brand-display-settings);
+  font-weight: var(--brand-heading-weight);
+  font-size: var(--brand-h2-size);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+:is(.brand-label, .brand-section-title, .masthead-name, h1, .markdown-content h2) :not(code, kbd, samp) {
+  font-family: inherit;
+}
+
+.brand-section-rule,
+.markdown-content h2::after {
+  height: 2px;
+  border-radius: 2px;
+  background: var(--brand-section-rule);
+}
+
+.brand-tag {
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--brand-tag-bg);
+}
+
+.brand-pill {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--brand-pill-bg);
 }
 
 :focus-visible {
@@ -96,14 +159,16 @@ body {
   outline-offset: 3px;
 }
 .markdown-content {
-  @apply leading-relaxed text-sm sm:text-base;
+  font-size: var(--brand-body-size);
+  line-height: 1.75;
   color: var(--color-terminal-text);
 }
 
 .markdown-content h1 {
-  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mt-8 mb-4 pb-2 border-b;
+  @apply mt-8 mb-4;
+  font-size: var(--brand-h1-size);
+  line-height: 1.2;
   color: var(--color-terminal-accent);
-  border-color: var(--color-terminal-border);
 }
 
 .markdown-content h1:first-child {
@@ -111,7 +176,7 @@ body {
 }
 
 .markdown-content h2 {
-  @apply pt-4 mb-4 flex items-center gap-3 text-[0.75rem] font-bold uppercase tracking-[0.2em];
+  @apply mt-10 mb-4 flex items-center gap-3;
   color: var(--color-terminal-accent);
   counter-increment: md-h2;
   scroll-margin-top: 5.5rem;
@@ -120,12 +185,12 @@ body {
 /* Numbered hairline sections: "01 - Overview ----------" */
 .markdown-content h2::before {
   content: counter(md-h2, decimal-leading-zero);
-  @apply font-normal text-neutral-600 dark:text-neutral-400;
+  @apply text-neutral-600 dark:text-neutral-400;
 }
 
 .markdown-content h2::after {
   content: "";
-  @apply flex-1 h-px bg-terminal-border;
+  flex: 1;
 }
 
 .markdown-content h2:first-child {
@@ -133,7 +198,11 @@ body {
 }
 
 .markdown-content h3 {
-  @apply text-lg sm:text-xl font-bold mt-5 mb-2;
+  @apply mt-6 mb-2;
+  font-family: var(--font-display), Georgia, serif;
+  font-variation-settings: var(--brand-display-settings);
+  font-weight: var(--brand-heading-weight);
+  font-size: var(--brand-h3-size);
   color: var(--color-terminal-accent);
 }
 
@@ -153,10 +222,25 @@ body {
   counter-increment: md-fig;
 }
 
+.markdown-content figcaption {
+  font-style: italic;
+  font-size: 0.875rem;
+}
+
 .markdown-content figcaption::before {
   content: "fig. " counter(md-fig, decimal-leading-zero);
   @apply font-bold mr-2;
+  font-style: normal;
+  font-size: 0.75rem;
+  font-family: var(--font-mono), monospace;
   color: var(--color-terminal-accent);
+}
+
+.markdown-content figure img,
+.markdown-content figure .img-placeholder {
+  border: 1px solid var(--brand-rule);
+  border-radius: var(--brand-radius-lg);
+  box-shadow: var(--brand-shadow-lg);
 }
 
 .markdown-content p {
@@ -202,8 +286,14 @@ body {
 }
 
 .markdown-content ul > li::before {
-  content: "-";
-  @apply absolute left-1 top-0 text-neutral-600 dark:text-neutral-400;
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand-panel-edge);
 }
 
 .markdown-content ol li {
@@ -212,25 +302,23 @@ body {
 
 /* ── Inline code ─────────────────────────────────────────── */
 .markdown-content code {
-  @apply px-1 py-0.5 text-xs sm:text-sm;
+  padding: 0.1em 0.3em;
+  font-size: max(0.75rem, 0.85em);
   font-family: var(--font-mono), monospace;
-  background-color: color-mix(in srgb, var(--brand-accent-ink) 14%, var(--brand-paper-2));
-  color: var(--brand-code);
-  border-radius: 4px;
+  background-color: var(--brand-code-inline-bg);
+  color: var(--brand-code-inline-fg);
+  border-radius: calc(var(--brand-radius) / 2);
 }
 
 /* ── Code block ──────────────────────────────────────────── */
 .markdown-content pre {
   @apply overflow-x-auto my-6 text-sm p-4;
   position: relative;
-  background-color: color-mix(
-    in srgb,
-    var(--color-terminal-comment) 8%,
-    transparent
-  );
-  color: var(--color-terminal-text);
-  border: 1px solid var(--color-terminal-accent);
-  border-radius: 0;
+  background-color: var(--brand-syntax-bg);
+  color: var(--brand-syntax-text);
+  border: 1px solid var(--brand-rule);
+  border-radius: var(--brand-radius);
+  box-shadow: var(--brand-shadow);
 }
 
 /* Language label */
@@ -246,11 +334,7 @@ body {
   padding: 0.2rem 0.6rem;
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
   color: var(--color-terminal-comment);
-  background: var(--color-terminal-bg);
-  border-bottom: 1px solid var(--color-terminal-accent);
-  border-left: 1px solid var(--color-terminal-accent);
 }
 
 .markdown-content pre code {
@@ -367,9 +451,12 @@ body {
 }
 
 .markdown-content blockquote {
-  @apply border-l-2 pl-4 my-5 text-sm sm:text-base;
-  border-color: var(--color-terminal-accent);
-  color: var(--color-terminal-comment);
+  @apply my-5 px-4 py-3;
+  border-left: 4px solid var(--brand-panel-edge);
+  border-radius: var(--brand-radius);
+  background: var(--brand-panel-bg);
+  box-shadow: var(--brand-shadow);
+  color: var(--color-terminal-text);
 }
 
 .markdown-content hr {
