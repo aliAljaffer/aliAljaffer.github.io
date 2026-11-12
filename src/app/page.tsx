@@ -23,12 +23,12 @@ export default function Home() {
         className="w-full max-w-4xl mx-auto px-6 flex-1"
       >
         <AboutSection />
-        <CertsSection />
         <CaseStudySection
           id="blog-heading"
           title="Blog"
           items={posts}
         />
+        <CertsSection />
       </main>
 
       <Footer />
