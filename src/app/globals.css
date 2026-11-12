@@ -567,3 +567,63 @@ figure > div > div {
     transform: scale(1);
   }
 }
+
+.plate-stage {
+  position: relative;
+  overflow: hidden;
+}
+
+.plate-still,
+.plate-layer {
+  transition: opacity 1.2s ease-in-out;
+}
+
+.plate-layer {
+  position: absolute;
+  top: 0;
+  left: calc(-1 * var(--brand-plate-overscan));
+  width: calc(100% + 2 * var(--brand-plate-overscan));
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.plate-stage.live .plate-layer {
+  opacity: 1;
+}
+
+.plate-stage.live .plate-still {
+  opacity: 0;
+}
+
+.plate-stage.live .plate-sky {
+  animation: plate-drift-sky var(--brand-plate-sky-period) ease-in-out infinite;
+}
+
+.plate-stage.live .plate-cloud {
+  animation: plate-drift-cloud var(--brand-plate-cloud-period) ease-in-out infinite;
+}
+
+.plate-stage.paused .plate-layer {
+  animation-play-state: paused;
+}
+
+@keyframes plate-drift-sky {
+  0%, 100% { transform: translate3d(calc(-1 * var(--brand-plate-sky-drift)), 0, 0); }
+  50% { transform: translate3d(var(--brand-plate-sky-drift), 0, 0); }
+}
+
+@keyframes plate-drift-cloud {
+  0%, 100% { transform: translate3d(calc(-1 * var(--brand-plate-cloud-drift)), 0, 0); }
+  50% { transform: translate3d(var(--brand-plate-cloud-drift), 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plate-layer {
+    display: none;
+  }
+}
