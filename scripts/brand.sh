@@ -14,6 +14,8 @@ rm -rf src/brand public/brand
 mkdir -p src/brand/fonts public/brand
 cp "$src/brand.json" "$src/portfolio.css" src/brand/
 cp "$src"/fonts/*.woff2 "$src"/fonts/OFL-*.txt src/brand/fonts/
+mkdir -p src/brand/og
+cp "$src"/og/* src/brand/og/
 cp "$src"/plate-*.webp "$src/icon.svg" "$src/icon-reversed.svg" public/brand/
 cp "$src/favicon.svg" src/app/icon.svg
 cp "$src/favicon.ico" src/app/favicon.ico
