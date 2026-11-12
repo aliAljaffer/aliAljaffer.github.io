@@ -11,8 +11,8 @@ export default function SiteHeader() {
     <header className="shrink-0 w-full max-w-4xl mx-auto px-6 pt-4 pb-3">
       <div className="flex items-center justify-between gap-6">
         <div className="flex items-center gap-3">
-          <img src="/brand/icon.svg" alt="" width={34} height={34} className="block dark:hidden" style={{ width: "var(--brand-logo-size)", height: "var(--brand-logo-size)" }} />
-          <img src="/brand/icon-reversed.svg" alt="" width={34} height={34} className="hidden dark:block" style={{ width: "var(--brand-logo-size)", height: "var(--brand-logo-size)" }} />
+          <img src="/brand/icon.svg" alt="" width={44} height={44} className="block dark:hidden w-11 h-11 shrink-0" />
+          <img src="/brand/icon-reversed.svg" alt="" width={44} height={44} className="hidden dark:block w-11 h-11 shrink-0" />
           <h1 className="masthead-name text-[1.75rem] md:text-[2.25rem] leading-tight">
             Ali Aljaffer
           </h1>
