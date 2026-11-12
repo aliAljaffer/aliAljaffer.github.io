@@ -146,8 +146,8 @@ jobs:
             echo "The portfolio image is already pinned."
             exit 0
           fi
-          git config user.name "portfolio-manifest-bot"
-          git config user.email "portfolio-manifest-bot@users.noreply.github.com"
+          git config user.name "update-manifests-homelab[bot]"
+          git config user.email "349350479+update-manifests-homelab[bot]@users.noreply.github.com"
           git add kubernetes/apps/portfolio/deployment.yaml
           git commit -m "portfolio: pin image for ${GITHUB_SHA:0:7}"
           for _ in 1 2 3; do
