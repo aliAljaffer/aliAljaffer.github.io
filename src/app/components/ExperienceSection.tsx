@@ -26,7 +26,7 @@ export default function ExperienceSection({
               </span>
             </span>
             {exp.current && (
-              <span className="text-[10px] uppercase tracking-wide text-neutral-500 shrink-0">
+              <span className="text-xs uppercase tracking-wide text-neutral-500 shrink-0">
                 [current]
               </span>
             )}

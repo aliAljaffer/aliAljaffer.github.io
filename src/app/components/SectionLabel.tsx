@@ -17,7 +17,7 @@ export default function SectionLabel({
 }) {
   return (
     <div className="flex items-center gap-3 mb-3">
-      <h2 className="text-[0.625rem] uppercase tracking-[0.2em] font-bold whitespace-nowrap">
+      <h2 className="text-xs uppercase tracking-[0.2em] font-bold whitespace-nowrap">
         <span id={id} className="scroll-mt-24">
           {children}
         </span>
@@ -29,7 +29,7 @@ export default function SectionLabel({
         }`}
       />
       {note && (
-        <span className="text-[0.625rem] text-neutral-600 dark:text-neutral-400 whitespace-nowrap">
+        <span className="text-xs text-neutral-600 dark:text-neutral-400 whitespace-nowrap">
           {note}
         </span>
       )}

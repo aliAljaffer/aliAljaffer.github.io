@@ -244,7 +244,7 @@ body {
   top: 0;
   right: 0;
   padding: 0.2rem 0.6rem;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--color-terminal-comment);
