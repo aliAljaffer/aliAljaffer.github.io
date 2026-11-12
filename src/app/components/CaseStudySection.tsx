@@ -1,5 +1,4 @@
 import type { CaseStudy } from "@/app/types";
-import ScrollableList from "@/app/components/ScrollableList";
 import SectionLabel from "@/app/components/SectionLabel";
 import PostRow from "@/app/components/PostRow";
 import { DEV_MODE } from "@/lib/case-studies";
@@ -24,17 +23,14 @@ export default function CaseStudySection({
   return (
     <section
       aria-labelledby={id}
-      className={`py-4 flex-1 min-h-0 flex flex-col ${className}`}
+      className={`py-4 ${className}`}
     >
       <SectionLabel id={id}>{title}</SectionLabel>
-      <ScrollableList
-        fitToContent
-        className="space-y-2.5 max-h-[40vh] md:max-h-full overflow-y-auto overflow-x-hidden scrollbar-hidden"
-      >
+      <div className="space-y-2.5">
         {items.map((item) => (
           <PostRow key={item.caseStudyId} item={item} showIcon />
         ))}
-      </ScrollableList>
+      </div>
     </section>
   );
 }
