@@ -21,6 +21,11 @@
   --color-neutral-900: #161029;
   --color-neutral-950: #0e0a1b;
 
+  --brand-plate-sky-drift: 1.5%;
+  --brand-plate-sky-period: 64s;
+  --brand-plate-cloud-drift: 2.4%;
+  --brand-plate-cloud-period: 40s;
+  --brand-plate-overscan: 3%;
   --brand-radius: 12px;
   --brand-radius-lg: 18px;
   --brand-label-size: 12px;
