@@ -6,8 +6,6 @@ on:
       - public/
       - docs/
       - .github/workflows/
-  pull_request:
-    branches: ["main"]
 env:
   BUILD_DIR_NAME: dist
 permissions:
