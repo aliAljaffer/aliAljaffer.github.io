@@ -50,7 +50,7 @@ export default function CaseStudyClient({
           readingMinutes={readingMinutes}
         />
         {headings.length >= 2 && (
-          <div className="sticky top-11 z-40 bg-terminal-bg mb-6 border-b border-terminal-border">
+          <div className="sticky top-11 z-40 bg-terminal-bg mb-6 -mx-6 px-6 border-b border-terminal-border">
             <CaseStudyToc headings={headings} />
           </div>
         )}
