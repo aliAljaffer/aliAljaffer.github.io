@@ -24,7 +24,9 @@ export default function TerminalImage({
   priority = false,
 }: TerminalImageProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [status, setStatus] = useState<"loading" | "loaded" | "error">("loading");
+  const [status, setStatus] = useState<"loading" | "loaded" | "error">(
+    "loading",
+  );
   const imgRef = useRef<HTMLImageElement>(null);
 
   // Convert src to string, handling undefined and Blob cases
@@ -51,8 +53,11 @@ export default function TerminalImage({
         <div
           role="img"
           aria-label={imageAlt}
-          className="img-placeholder w-full border border-terminal-accent"
-          style={{ aspectRatio: `${imageWidth} / ${imageHeight}`, maxHeight: "60vh" }}
+          className="img-placeholder w-full "
+          style={{
+            aspectRatio: `${imageWidth} / ${imageHeight}`,
+            maxHeight: "60vh",
+          }}
         >
           <span>Image unavailable · {imageSrc.split("/").pop()}</span>
         </div>
@@ -71,7 +76,7 @@ export default function TerminalImage({
         <button
           type="button"
           onClick={() => setIsModalOpen(true)}
-          className={`max-w-full border border-terminal-accent hover:opacity-90 motion-safe:transition-opacity p-0 ${status === "loading" ? "img-stripes block w-full" : "inline-block bg-transparent"}`}
+          className={`max-w-full hover:opacity-90 motion-safe:transition-opacity p-0 ${status === "loading" ? "img-stripes block w-full" : "inline-block bg-transparent"}`}
           aria-label={imageAlt ? `Enlarge image: ${imageAlt}` : "Enlarge image"}
         >
           <Image
@@ -88,7 +93,10 @@ export default function TerminalImage({
             style={{
               maxHeight: "60vh",
               objectFit: "contain",
-              ...(status === "loading" && { aspectRatio: `${imageWidth} / ${imageHeight}`, height: "auto" }),
+              ...(status === "loading" && {
+                aspectRatio: `${imageWidth} / ${imageHeight}`,
+                height: "auto",
+              }),
             }}
           />
         </button>
@@ -101,7 +109,7 @@ export default function TerminalImage({
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <div className="flex flex-col items-center gap-3 max-w-[92vw] max-h-[90vh]">
-          <div className="border border-neutral-50/40 p-1 min-h-0">
+          <div className=" p-1 min-h-0">
             <a
               href={imageSrc}
               target="_blank"
@@ -127,7 +135,7 @@ export default function TerminalImage({
           </div>
 
           {caption && (
-            <p className="text-neutral-300 text-xs text-center max-w-[88vw] break-words border-t border-neutral-50/20 pt-2">
+            <p className="text-neutral-300 text-xs text-center max-w-[88vw] break-words  pt-2">
               {caption}
             </p>
           )}
