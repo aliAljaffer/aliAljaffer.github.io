@@ -75,6 +75,12 @@ html {
   font-family: var(--font-mono), monospace;
 }
 
+/* Let KaTeX's own fonts cascade through its nested spans instead of the global
+   * rule above. :where() keeps this weaker than KaTeX's per-glyph font classes. */
+:where(.katex) span {
+  font-family: inherit;
+}
+
 /* Unlayered so it wins over the global * font-family above; a Tailwind
    font-* utility would sit in @layer utilities and lose that race. */
 .masthead-name,
@@ -279,6 +285,38 @@ body::before {
   .katex span {
     margin-bottom: 0;
     color: inherit;
+  }
+
+  /* Display math ($$...$$): bare and centred, equation number flush right
+     via \tag. Long formulas scroll sideways instead of widening the page. */
+  .katex-display {
+    margin: 1.5rem 0;
+    padding-block: 0.25rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+  }
+
+  /* Reserve room for the number on both sides (keeps the formula centred) and
+     let the row grow with the formula, so on narrow screens the number scrolls
+     with it instead of sitting on top of it. */
+  .katex-display > .katex > .katex-html:has(> .tag) {
+    box-sizing: border-box;
+    width: max-content;
+    min-width: 100%;
+    padding-inline: 2.5em;
+
+    /* On phones, give up exact centring rather than force a scrollbar. */
+    @media (max-width: 480px) {
+      padding-inline: 0 2em;
+    }
+  }
+
+  /* rehype-katex bundles KaTeX 0.16, which names the equation number `.tag`;
+     the 0.19 stylesheet we import only positions `.katex-tag`. */
+  .katex-display > .katex > .katex-html > .tag {
+    position: absolute;
+    right: 0;
   }
 
   ul,

@@ -29,7 +29,9 @@ Let me introduce the main components of propositional logic, and how they connec
 
 $\forall$ reads "for all" or "for every":
 
-> $\forall x \in$ Users, $x$ can reset their password
+$$
+\forall x \in \text{Users},\ x \text{ can reset their password} \tag{1}
+$$
 
 Every user, no exceptions. The claim covers the whole set.
 
@@ -44,7 +46,9 @@ Vague writing hides scope. "Users can do **X**" - but which users? All of them, 
 
 $\exists$ means "there exists at least one":
 
-> $\exists x \in$ Settings, $x$ controls the timeout value
+$$
+\exists x \in \text{Settings},\ x \text{ controls the timeout value} \tag{2}
+$$
 
 There is at least one setting that controls the timeout. Which one? The formula doesn't say, and that's the problem with $\exists$ claims in docs: they confirm the thing exists, then leave you to find it on your own.
 
@@ -70,7 +74,9 @@ Flip those quantifiers and you've written nonsense..
 
 The big one. $P \implies Q$ reads "if P, then Q", where P is the condition and Q is the result:
 
-> If the user is not authenticated $\implies$ the system returns HTTP 401
+$$
+\text{the user is not authenticated} \implies \text{the system returns HTTP 401} \tag{3}
+$$
 
 That's a contract. When P is true, Q must be true. Writers break it constantly, usually by stating the result first and the condition second, or by dropping the condition entirely.
 
@@ -84,7 +90,11 @@ That's a contract. When P is true, Q must be true. Writers break it constantly, 
 
 Here's my favorite part. If $P \implies Q$ is true, then $\neg Q \implies \neg P$ is true too. Always. Same claim, flipped:
 
-> $(P \implies Q) \equiv (\neg Q \implies \neg P)$ (By the way, $\equiv$ means equivalent, or equal)
+$$
+(P \implies Q) \equiv (\neg Q \implies \neg P) \tag{4}
+$$
+
+By the way, $\equiv$ means equivalent, or equal.
 
 I keep saying error messages are contrapositives, so let me be careful with that. "Disk full" isn't the contrapositive of anything. But look at what a useful failure message actually does: the request failed, so which condition didn't hold? "If you have write access, the file saves" pairs with "If the file did not save, you do not have write access". That's the contrapositive doing its job in the wild.
 
@@ -108,19 +118,26 @@ That means "you must complete verification to proceed." The reader just did a tr
 
 Then the quiet one: scope. "Not all users can edit this field" - what does that mean?
 
-> $\neg (\forall x, P(x)) \equiv \exists x, \neg P(x)$
+$$
+\neg\bigl(\forall x\,P(x)\bigr) \equiv \exists x\,\neg P(x) \tag{5}
+$$
 
 "Not all users can edit" means "some user cannot edit" or "there is at least one user that cannot edit the field". Not "every user cannot edit"; that one is:
 
-> $\forall x, \neg P(x)$
+$$
+\forall x\,\neg P(x) \tag{6}
+$$
 
 If you mean "no user", say "no user". The reader shouldn't need set theory to figure out which of the two you meant.
 
 ### De Morgan's Laws
 
-> $\neg (P \land Q) \equiv \neg P \lor \neg Q$
->
-> $\neg (P \land Q) \equiv \neg P \land \neg Q$
+$$
+\begin{aligned}
+\neg(P \land Q) &\equiv \neg P \lor \neg Q \\
+\neg(P \lor Q) &\equiv \neg P \land \neg Q
+\end{aligned} \tag{7}
+$$
 
 In English, "not (A and B)" equals "not A, or not B", and "not (A or B)" equals "not A, and not B".
 
