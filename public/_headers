@@ -1,0 +1,16 @@
+# Security headers, carried over from the nginx.conf this replaces.
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+
+# Next writes Open Graph images without a file extension, so the platform
+# cannot infer a type. Both shapes cover the root, tag and case-study pages.
+/opengraph-image
+  Content-Type: image/png
+
+/*/opengraph-image
+  Content-Type: image/png
+
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable

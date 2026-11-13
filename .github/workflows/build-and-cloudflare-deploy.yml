@@ -1,18 +1,14 @@
-name: Build and Deploy to GCP Cloud Storage
+name: Build and Deploy to Cloudflare
 on:
-  # push:
-  #   branches: ["main"]
-  #   paths-ignore:
-  #     - public/
-  #     - docs/
-  #     - .github/workflows/
-  # pull_request:
-  #   branches: ["main"]
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - docs/
+      - .github/workflows/
   workflow_dispatch:
 env:
   BUILD_DIR_NAME: dist
 permissions:
-  id-token: write
   contents: read
 
 jobs:
@@ -45,32 +41,29 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.brand-token.outputs.token }}
       - run: npm run build -- --webpack
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
       - name: Upload build
         uses: actions/upload-artifact@v7
         with:
           name: build_files
           path: ${{env.BUILD_DIR_NAME}}
+
   deploy:
     needs: builder
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v6
+
       - name: Download build
         uses: actions/download-artifact@v8
         with:
           name: build_files
           path: ./dist
 
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
+      - name: Deploy to Cloudflare
+        uses: cloudflare/wrangler-action@v4
         with:
-          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
-
-      - name: Sync to Cloud Storage
-        run: |
-          gsutil -m rsync -r -d \
-            -x "images/.*|documents/.*" \
-            ./dist gs://${{ secrets.GCP_BUCKET_NAME }}/
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
