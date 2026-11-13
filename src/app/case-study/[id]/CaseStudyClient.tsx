@@ -35,25 +35,21 @@ export default function CaseStudyClient({
   if (!caseStudy) return NotFound({ message: "Case Study not found" });
   return (
     <Layout>
-      {/* Variant A: no chrome. A slim back/tools row sticks inside the
-          article column; TOC chips live under the masthead, in the flow. */}
-      <div className="sticky top-0 z-50 bg-terminal-bg h-11 flex items-center justify-between gap-4 border-b border-terminal-border max-w-4xl w-full mx-auto px-6">
-        <BackLink href="/">← Home</BackLink>
-        <ThemeToggle />
+      <div className="sticky top-0 z-50 bg-terminal-bg h-11 flex items-center justify-between gap-5 border-b border-terminal-border max-w-4xl w-full mx-auto px-6">
+        <BackLink href="/" className="shrink-0">
+          ← <span className="max-md:sr-only">Home</span>
+        </BackLink>
+        <CaseStudyToc headings={headings} />
+        <ThemeToggle className="shrink-0" labelClassName="max-md:sr-only" />
       </div>
       <main
         id="main-content"
-        className="w-full flex-1 max-w-4xl mx-auto px-6 pb-8 article-body"
+        className="w-full flex-1 max-w-4xl mx-auto px-6 pt-6 pb-8 article-body"
       >
         <CaseStudyHeader
           caseStudy={caseStudy}
           readingMinutes={readingMinutes}
         />
-        {headings.length >= 2 && (
-          <div className="sticky top-11 z-40 bg-terminal-bg mb-6 -mx-6 px-6 border-b border-terminal-border">
-            <CaseStudyToc headings={headings} />
-          </div>
-        )}
         {hasMath ? (
           <ArticleBodyMath content={caseStudy.content} />
         ) : (

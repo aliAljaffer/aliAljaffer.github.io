@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ViewTransition } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import type { CaseStudy } from "@/app/types";
 import { tagToSlug } from "@/data/case-study-tags";
 import { SITE_URL } from "@/lib/site";
@@ -54,25 +56,25 @@ export default function CaseStudyHeader({
             </>
           )}
         </div>
-        <div className="flex items-center gap-3 text-xs text-muted">
-          <span>share</span>
+        <div className="flex items-center gap-1 text-xs text-muted">
+          <span className="mr-1">Share</span>
           <a
             href={xShareUrl}
             target="_blank"
             rel="noreferrer"
             aria-label="Share on X"
-            className="hover:text-fg"
+            className="inline-flex size-7 items-center justify-center hover:text-fg"
           >
-            x
+            <FontAwesomeIcon icon={faXTwitter} className="size-3.5" />
           </a>
           <a
             href={linkedInShareUrl}
             target="_blank"
             rel="noreferrer"
             aria-label="Share on LinkedIn"
-            className="hover:text-fg"
+            className="inline-flex size-7 items-center justify-center hover:text-fg"
           >
-            in
+            <FontAwesomeIcon icon={faLinkedin} className="size-3.5" />
           </a>
         </div>
       </div>

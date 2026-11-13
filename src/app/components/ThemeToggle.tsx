@@ -22,9 +22,11 @@ const noTheme = () => null;
 
 export default function ThemeToggle({
   className = "",
+  labelClassName,
   style,
 }: {
   className?: string;
+  labelClassName?: string;
   style?: CSSProperties;
 }) {
   const isDark = useSyncExternalStore(subscribe, readTheme, noTheme);
@@ -67,7 +69,7 @@ export default function ThemeToggle({
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       <FontAwesomeIcon icon={isDark ? faSun : faMoon} className="w-5 h-5" />
-      {isDark ? "light" : "dark"}
+      <span className={labelClassName}>{isDark ? "light" : "dark"}</span>
     </button>
   );
 }
