@@ -354,7 +354,7 @@ body::before {
     }
   }
 
-  ol li {
+  ol > li {
     @apply list-decimal;
   }
 
