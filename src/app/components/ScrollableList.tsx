@@ -110,14 +110,12 @@ export default function ScrollableList({
               className="w-3 h-3"
             />
           </button>
-          <div
-            aria-hidden="true"
-            className={
-              isHorizontal
-                ? "absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-current to-transparent text-body pointer-events-none z-10"
-                : "absolute top-4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent text-body pointer-events-none z-10"
-            }
-          />
+          {!isHorizontal && (
+            <div
+              aria-hidden="true"
+              className="absolute top-4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent text-body pointer-events-none z-10"
+            />
+          )}
         </>
       )}
       <div ref={ref} className={className} style={{ maskImage: fade }}>
@@ -125,14 +123,12 @@ export default function ScrollableList({
       </div>
       {hasMore && (
         <>
-          <div
-            aria-hidden="true"
-            className={
-              isHorizontal
-                ? "absolute right-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-current to-transparent text-body pointer-events-none"
-                : "absolute bottom-4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent text-body pointer-events-none"
-            }
-          />
+          {!isHorizontal && (
+            <div
+              aria-hidden="true"
+              className="absolute bottom-4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent text-body pointer-events-none"
+            />
+          )}
           <button
             onClick={scrollNext}
             aria-label={isHorizontal ? "Scroll right" : "Scroll for more"}
