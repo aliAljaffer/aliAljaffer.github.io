@@ -8,6 +8,8 @@ import {
 } from "@/lib/case-studies";
 import { getMarkdownContent } from "@/lib/markdown-loader";
 import { hasMath } from "@/lib/has-math";
+import { extractHeadings } from "@/lib/heading";
+import { estimateReadingMinutes } from "@/lib/reading-time";
 import { SITE_URL } from "@/lib/site";
 import CaseStudyClient from "./CaseStudyClient";
 import NotFound from "@/app/not-found";
@@ -64,6 +66,9 @@ export default async function CaseStudyPage({
     return NotFound({ message: `No content found for case study: ${id}` });
   }
   const relatedPosts = getRelatedCaseStudies(caseStudy);
+  const headings = extractHeadings(content);
+  if (caseStudy.images?.some((image) => image.url.length > 1))
+    headings.push({ text: "Screenshots", slug: "screenshots" });
   const url = `${SITE_URL}/case-study/${id}/`;
   const jsonLd = {
     "@context": "https://schema.org",
@@ -82,7 +87,9 @@ export default async function CaseStudyPage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
       />
       <CaseStudyClient
         caseStudy={{
@@ -91,6 +98,8 @@ export default async function CaseStudyPage({
         }}
         relatedPosts={relatedPosts}
         hasMath={hasMath(content)}
+        headings={headings}
+        readingMinutes={estimateReadingMinutes(content)}
       />
     </>
   );

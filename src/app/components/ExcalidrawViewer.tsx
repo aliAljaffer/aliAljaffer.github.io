@@ -52,21 +52,20 @@ export default function ExcalidrawViewer({
 
   useEffect(() => {
     if (!src) return;
-    let cancelled = false;
-    fetch(src)
+    const ac = new AbortController();
+    fetch(src, { signal: ac.signal })
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();
       })
       .then((json: SceneData) => {
-        if (!cancelled) setData(json);
+        setData(json);
       })
       .catch((e: Error) => {
-        if (!cancelled) setError(e.message);
+        if (e.name === "AbortError") return;
+        setError(e.message);
       });
-    return () => {
-      cancelled = true;
-    };
+    return () => ac.abort();
   }, [src]);
 
   const failure = src ? error : "No src provided";

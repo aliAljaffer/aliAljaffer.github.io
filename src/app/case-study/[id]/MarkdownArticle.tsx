@@ -1,9 +1,7 @@
-"use client";
 import TerminalImage from "@/app/components/TerminalImage";
 import ExcalidrawViewer from "@/app/components/ExcalidrawViewer";
 import {
   isValidElement,
-  useMemo,
   type ComponentProps,
   type ReactNode,
 } from "react";
@@ -57,12 +55,12 @@ export default function MarkdownArticle({
 }: MarkdownArticleProps) {
   // The first image that actually renders gets fetch priority. Derived from the
   // source rather than tracked while rendering, which would mutate render state.
-  const firstImageSrc = useMemo(() => {
+  const firstImageSrc = (() => {
     for (const m of content.matchAll(/!\[[^\]]*\]\(\s*<?([^)\s>]+)/g)) {
       if (!inDeadRegion(m[1])) return m[1];
     }
     return null;
-  }, [content]);
+  })();
 
   return (
     <div className="markdown-content prose prose-invert">
@@ -71,13 +69,23 @@ export default function MarkdownArticle({
         rehypePlugins={rehypePlugins}
         components={
           {
-            img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
+            img: (
+              props: React.ImgHTMLAttributes<HTMLImageElement> & {
+                node?: unknown;
+              },
+            ) => {
               const src = props.src?.toString() ?? "";
               if (inDeadRegion(src)) return null;
-              return TerminalImage({
-                ...props,
-                priority: src === firstImageSrc,
-              });
+              return (
+                <TerminalImage
+                  src={src}
+                  alt={props.alt}
+                  width={props.width}
+                  height={props.height}
+                  className={props.className}
+                  priority={src === firstImageSrc}
+                />
+              );
             },
             h2: (props: { children?: ReactNode; node?: HastElement }) => {
               const raw = rawHeading(props.node, content);
@@ -85,11 +93,19 @@ export default function MarkdownArticle({
               return <h2 id={headingSlug(text)}>{props.children}</h2>;
             },
             p: "div",
-            a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-              <a {...props} target="_blank" rel="noopener noreferrer">
-                {props.children}
-              </a>
-            ),
+            a: (
+              props: React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+                node?: unknown;
+              },
+            ) => {
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              const { node, ...rest } = props;
+              return (
+                <a {...rest} target="_blank" rel="noopener noreferrer">
+                  {props.children}
+                </a>
+              );
+            },
             excalidraw: (props: { src?: string; height?: string }) => (
               <ExcalidrawViewer src={props.src} height={props.height} />
             ),

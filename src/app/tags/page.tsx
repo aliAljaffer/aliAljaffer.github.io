@@ -49,7 +49,7 @@ export default function TagsIndexPage() {
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-terminal-accent">
             Tags
           </h1>
-          <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-2">
+          <p className="text-xs text-muted mt-2">
             {tagCounts.length} {tagCounts.length === 1 ? "tag" : "tags"} in use
           </p>
         </header>
@@ -65,9 +65,9 @@ export default function TagsIndexPage() {
               </span>
               <span
                 aria-hidden="true"
-                className="flex-1 min-w-4 self-center border-b border-dotted border-neutral-400 dark:border-neutral-600"
+                className="flex-1 min-w-4 self-center border-b border-dotted border-subtle"
               />
-              <span className="shrink-0 text-xs text-neutral-600 dark:text-neutral-400">
+              <span className="shrink-0 text-xs text-muted">
                 {count}
               </span>
             </Link>

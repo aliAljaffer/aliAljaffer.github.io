@@ -23,7 +23,7 @@ export default function CertsSection({
                 key={i}
                 className="flex items-baseline gap-2.5 text-base min-w-0"
               >
-                <span className="shrink-0 w-6 self-center flex items-center text-neutral-600 dark:text-neutral-400">
+                <span className="shrink-0 w-6 self-center flex items-center text-muted">
                   <Icon className="w-4 h-4" aria-hidden="true" />
                 </span>
                 <a
@@ -38,9 +38,9 @@ export default function CertsSection({
                 </a>
                 <span
                   aria-hidden="true"
-                  className="flex-1 min-w-4 self-center border-b border-dotted border-neutral-400 dark:border-neutral-600"
+                  className="flex-1 min-w-4 self-center border-b border-dotted border-subtle"
                 />
-                <span className="shrink-0 text-xs text-neutral-600 dark:text-neutral-400">
+                <span className="shrink-0 text-xs text-muted">
                   {cert.date}
                 </span>
               </div>

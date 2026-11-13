@@ -44,9 +44,10 @@ export default function CaseStudyToc({ headings }: CaseStudyTocProps) {
   if (headings.length < 2) return null;
 
   return (
+    <nav aria-label="On this page">
     <ScrollableList
       direction="horizontal"
-      className="flex items-center gap-4 overflow-x-auto py-2.5 scrollbar-hidden"
+      className="flex items-center gap-4 overflow-x-auto snap-x snap-proximity py-2.5 scrollbar-hidden"
     >
       {headings.map((h) => (
         <a
@@ -56,15 +57,16 @@ export default function CaseStudyToc({ headings }: CaseStudyTocProps) {
             chipRefs.current[h.slug] = el;
           }}
           aria-current={active === h.slug ? "true" : undefined}
-          className={`brand-label whitespace-nowrap ${
+          className={`brand-label whitespace-nowrap snap-start ${
             active === h.slug
-              ? "brand-pill font-bold text-neutral-950 dark:text-neutral-50"
-              : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50"
+              ? "brand-pill font-bold text-fg"
+              : "text-muted hover:text-fg"
           }`}
         >
           {h.text}
         </a>
       ))}
     </ScrollableList>
+    </nav>
   );
 }

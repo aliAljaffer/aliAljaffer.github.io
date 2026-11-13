@@ -68,3 +68,25 @@ export function headingSlug(raw: string): string {
     raw.replace(MATH_SPAN, (_, tex: string) => tex.replace(/\\/g, " ")),
   );
 }
+
+/** `##` headings outside code fences, for the table of contents. */
+export function extractHeadings(
+  markdown: string,
+): { text: string; slug: string }[] {
+  const headings: { text: string; slug: string }[] = [];
+  let inFence = false;
+  for (const line of markdown.split("\n")) {
+    if (/^\s*```/.test(line)) {
+      inFence = !inFence;
+      continue;
+    }
+    if (inFence) continue;
+    const m = line.match(/^##\s+(.+)$/);
+    if (m) {
+      const raw = headingSource(m[0]);
+      if (raw)
+        headings.push({ text: headingLabel(raw), slug: headingSlug(raw) });
+    }
+  }
+  return headings;
+}

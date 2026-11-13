@@ -12,8 +12,8 @@ export default function SiteHeader() {
       <div className="flex items-center justify-between gap-6">
         <div className="flex items-center gap-3">
           <img src="/brand/icon.svg" alt="" width={44} height={44} className="block dark:hidden w-11 h-11 shrink-0" />
-          <img src="/brand/icon-reversed.svg" alt="" width={44} height={44} className="hidden dark:block w-11 h-11 shrink-0" />
-          <h1 className="masthead-name text-[1.75rem] md:text-[2.25rem] leading-tight">
+          <img src="/brand/icon-reversed.svg" alt="" width={44} height={44} loading="lazy" className="hidden dark:block w-11 h-11 shrink-0" />
+          <h1 className="masthead-name text-balance text-[1.75rem] md:text-[2.25rem] leading-tight">
             Ali Aljaffer
           </h1>
         </div>
@@ -21,11 +21,11 @@ export default function SiteHeader() {
       </div>
       <div className="flex flex-wrap items-end  justify-between gap-x-6 gap-y-3 mt-1.5">
         <div className="min-w-0">
-          <p className="brand-label text-neutral-600 dark:text-neutral-400">
+          <p className="brand-label text-muted">
             Platform Engineer · Riyadh, KSA
           </p>
           {learning.length > 0 && (
-            <p className="hidden md:flex items-center gap-2 text-xs text-neutral-600 dark:text-neutral-400 mt-2">
+            <p className="hidden md:flex items-center gap-2 text-xs text-muted mt-2">
               <span>currently learning:</span>
               {learning.map(({ name, url, icon: Icon }, i) => (
                 <span key={name} className="flex items-center gap-2">
@@ -35,7 +35,7 @@ export default function SiteHeader() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`${name} (opens in new tab)`}
-                    className="flex items-center gap-1 hover:underline hover:text-neutral-950 dark:hover:text-neutral-50"
+                    className="flex items-center gap-1 hover:underline hover:text-fg"
                   >
                     <Icon className="w-3 h-3" aria-hidden="true" />
                     {name.toLowerCase()}
@@ -47,7 +47,7 @@ export default function SiteHeader() {
         </div>
         <nav
           aria-label="Social links"
-          className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-neutral-600 dark:text-neutral-400"
+          className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted"
         >
           {contactData.map((c) => (
             <a
@@ -56,7 +56,7 @@ export default function SiteHeader() {
               target="_blank"
               rel="noreferrer"
               aria-label={`${c.label} (opens in new tab)`}
-              className="flex items-center gap-1.5 hover:text-neutral-950 dark:hover:text-neutral-50"
+              className="flex items-center gap-1.5 hover:text-fg"
             >
               {typeof c.icon === "function" ? (
                 <c.icon className="w-3 h-3" aria-hidden="true" />

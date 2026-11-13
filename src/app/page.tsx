@@ -14,7 +14,7 @@ export default function Home() {
   ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
-    <div className="text-neutral-950 dark:text-neutral-50 font-mono min-h-dvh flex flex-col">
+    <div className="text-fg font-mono min-h-dvh flex flex-col">
       <SiteHeader />
       <BrandPlate />
 

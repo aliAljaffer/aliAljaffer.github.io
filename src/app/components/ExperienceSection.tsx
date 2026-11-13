@@ -21,7 +21,7 @@ export default function ExperienceSection({
             <span className="flex items-center gap-2">
               {exp.Icon && <exp.Icon className="w-5 h-5 shrink-0" />}
               <span className="font-bold">{exp.title}</span>
-              <span className="text-neutral-600 dark:text-neutral-400">
+              <span className="text-muted">
                 at {exp.company}
               </span>
             </span>

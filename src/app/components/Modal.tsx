@@ -2,6 +2,7 @@
 
 import type React from "react";
 import { useEffect, useRef } from "react";
+import styles from "./Modal.module.css";
 
 interface ModalProps {
   isOpen: boolean;
@@ -26,26 +27,16 @@ export default function Modal({
   }, [isOpen]);
 
   // showModal() gives the focus trap, Escape handling, focus restore, and
-  // inert background natively; it does not lock body scroll, so keep that.
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
-
+  // inert background natively; scroll lock lives in Modal.module.css.
   return (
     <dialog
       ref={dialogRef}
       onClose={onClose}
+      closedby="any"
       onClick={(e) => {
         if (e.target === dialogRef.current) onClose();
       }}
-      className={`m-auto p-0 bg-transparent border-none max-w-none z-50 [&::backdrop]:bg-neutral-950/85 ${className}`}
+      className={`${styles.dialog} m-auto p-0 bg-transparent border-none max-w-none z-50 ${className}`}
     >
       <button
         onClick={onClose}

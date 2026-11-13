@@ -10,7 +10,7 @@ import ArsenalCannonIcon from "./ArsenalCannonIcon";
 // render identical to the server's (null, an empty slot) without a hydration
 // mismatch. The roll is cached per page load, so client-side navigation does
 // not reshuffle the footer icon.
-const color = "text-neutral-900 dark:text-neutral-50";
+const color = "text-icon";
 
 let roll: boolean | null = null;
 const getRoll = () => (roll ??= Math.random() < 0.5);

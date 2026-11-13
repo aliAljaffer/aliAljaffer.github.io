@@ -18,23 +18,23 @@ export default function CaseStudyCard({
     <Link
       href={`/case-study/${item.caseStudyId}`}
       aria-label={`${item.name} - ${cta}`}
-      className="group flex items-start justify-between gap-3 border border-terminal-border px-3 py-2 transition active:scale-[0.99] hover:border-terminal-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+      className="group flex items-start justify-between gap-3 border border-terminal-border px-3 py-2 motion-safe:transition motion-safe:active:scale-[0.99] hover:border-terminal-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
     >
       <div className="flex items-center gap-3 min-w-0">
         <div className="min-w-0">
           {showType && (
-            <p className="text-xs font-bold uppercase tracking-wide text-neutral-600 dark:text-neutral-400">
+            <p className="text-xs font-bold uppercase tracking-wide text-muted">
               [{item.type}]
             </p>
           )}
           <p className="text-sm font-bold leading-snug">{item.name}</p>
-          <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-0.5 leading-snug">
+          <p className="text-pretty text-xs text-muted mt-0.5 leading-snug">
             {item.description}
           </p>
         </div>
       </div>
       <span
-        className="md:hidden shrink-0 mt-0.5 text-sm font-bold transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1"
+        className="md:hidden shrink-0 mt-0.5 text-sm font-bold motion-safe:transition-transform motion-safe:group-hover:translate-x-1 motion-safe:group-focus-visible:translate-x-1"
         aria-hidden="true"
       >
         →
@@ -46,7 +46,7 @@ export default function CaseStudyCard({
         [
         <span className="inline-flex items-center gap-1">
           read
-          <span className="transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1">
+          <span className="motion-safe:transition-transform motion-safe:group-hover:translate-x-1 motion-safe:group-focus-visible:translate-x-1">
             →
           </span>
         </span>

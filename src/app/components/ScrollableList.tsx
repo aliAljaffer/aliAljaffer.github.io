@@ -58,12 +58,13 @@ export default function ScrollableList({
     };
 
     check();
-    el.addEventListener("scroll", check, { passive: true });
+    const ac = new AbortController();
+    el.addEventListener("scroll", check, { passive: true, signal: ac.signal });
     const ro = new ResizeObserver(check);
     ro.observe(el);
 
     return () => {
-      el.removeEventListener("scroll", check);
+      ac.abort();
       ro.disconnect();
     };
   }, [isHorizontal, fitToContent, gutter]);
@@ -100,8 +101,8 @@ export default function ScrollableList({
             aria-label={isHorizontal ? "Scroll left" : "Scroll up"}
             className={
               isHorizontal
-                ? "absolute left-1 top-1/2 -translate-y-1/2 text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-neutral-50 z-10"
-                : "absolute top-0.5 left-1/2 -translate-x-1/2 leading-none text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-neutral-50 z-10"
+                ? "absolute left-1 top-1/2 -translate-y-1/2 text-body hover:text-fg z-10"
+                : "absolute top-0.5 left-1/2 -translate-x-1/2 leading-none text-body hover:text-fg z-10"
             }
           >
             <FontAwesomeIcon
@@ -113,13 +114,13 @@ export default function ScrollableList({
             aria-hidden="true"
             className={
               isHorizontal
-                ? "absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-current to-transparent text-neutral-700 dark:text-neutral-300 pointer-events-none z-10"
-                : "absolute top-4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent text-neutral-700 dark:text-neutral-300 pointer-events-none z-10"
+                ? "absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-current to-transparent text-body pointer-events-none z-10"
+                : "absolute top-4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent text-body pointer-events-none z-10"
             }
           />
         </>
       )}
-      <div ref={ref} className={className} style={{ maskImage: fade, WebkitMaskImage: fade }}>
+      <div ref={ref} className={className} style={{ maskImage: fade }}>
         {children}
       </div>
       {hasMore && (
@@ -128,8 +129,8 @@ export default function ScrollableList({
             aria-hidden="true"
             className={
               isHorizontal
-                ? "absolute right-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-current to-transparent text-neutral-700 dark:text-neutral-300 pointer-events-none"
-                : "absolute bottom-4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent text-neutral-700 dark:text-neutral-300 pointer-events-none"
+                ? "absolute right-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-current to-transparent text-body pointer-events-none"
+                : "absolute bottom-4 left-0 right-0 h-px bg-gradient-to-r from-transparent via-current to-transparent text-body pointer-events-none"
             }
           />
           <button
@@ -137,8 +138,8 @@ export default function ScrollableList({
             aria-label={isHorizontal ? "Scroll right" : "Scroll for more"}
             className={
               isHorizontal
-                ? "absolute right-1 top-1/2 -translate-y-1/2 text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-neutral-50"
-                : "absolute bottom-0.5 left-1/2 -translate-x-1/2 leading-none text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-neutral-50"
+                ? "absolute right-1 top-1/2 -translate-y-1/2 text-body hover:text-fg"
+                : "absolute bottom-0.5 left-1/2 -translate-x-1/2 leading-none text-body hover:text-fg"
             }
           >
             <FontAwesomeIcon
