@@ -1,7 +1,15 @@
 import Link from "next/link";
+import { ViewTransition } from "react";
 import type { CaseStudy } from "@/app/types";
 import { tagToSlug } from "@/data/case-study-tags";
 import { SITE_URL } from "@/lib/site";
+
+const dateFormat = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+});
 
 export default function CaseStudyHeader({
   caseStudy,
@@ -10,11 +18,7 @@ export default function CaseStudyHeader({
   caseStudy: CaseStudy;
   readingMinutes: number;
 }) {
-  const formattedDate = new Date(caseStudy.date).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
+  const formattedDate = dateFormat.format(new Date(caseStudy.date));
 
   const postUrl = `${SITE_URL}/case-study/${caseStudy.caseStudyId}/`;
   const shareText = `"${caseStudy.name}" - ${caseStudy.description} (${readingMinutes} min read)`;
@@ -23,11 +27,13 @@ export default function CaseStudyHeader({
 
   return (
     <header className="pb-6">
-      <h1 className="leading-tight text-terminal-accent text-[2rem] md:text-[length:var(--brand-h1-size)]">
+      <ViewTransition name={`title-${caseStudy.caseStudyId}`} share="morph">
+      <h1 className="text-balance leading-tight text-terminal-accent text-[2rem] md:text-[length:var(--brand-h1-size)]">
         {caseStudy.name}
       </h1>
+      </ViewTransition>
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 mt-3">
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-neutral-600 dark:text-neutral-400">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted">
           <time dateTime={caseStudy.date}>{formattedDate}</time>
           <span aria-hidden="true">·</span>
           <span>{readingMinutes} min read</span>
@@ -39,7 +45,7 @@ export default function CaseStudyHeader({
                   <Link
                     key={tag}
                     href={`/tags/${tagToSlug(tag)}/`}
-                    className="brand-tag hover:underline hover:text-neutral-950 dark:hover:text-neutral-50"
+                    className="brand-tag hover:underline hover:text-fg"
                   >
                     #{tagToSlug(tag)}
                   </Link>
@@ -48,14 +54,14 @@ export default function CaseStudyHeader({
             </>
           )}
         </div>
-        <div className="flex items-center gap-3 text-xs text-neutral-600 dark:text-neutral-400">
+        <div className="flex items-center gap-3 text-xs text-muted">
           <span>share</span>
           <a
             href={xShareUrl}
             target="_blank"
             rel="noreferrer"
             aria-label="Share on X"
-            className="hover:text-neutral-950 dark:hover:text-neutral-50"
+            className="hover:text-fg"
           >
             x
           </a>
@@ -64,7 +70,7 @@ export default function CaseStudyHeader({
             target="_blank"
             rel="noreferrer"
             aria-label="Share on LinkedIn"
-            className="hover:text-neutral-950 dark:hover:text-neutral-50"
+            className="hover:text-fg"
           >
             in
           </a>

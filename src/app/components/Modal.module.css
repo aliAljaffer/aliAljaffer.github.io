@@ -1,0 +1,37 @@
+.dialog {
+  opacity: 0;
+  transition:
+    opacity 0.2s ease-out,
+    overlay 0.2s allow-discrete,
+    display 0.2s allow-discrete;
+}
+.dialog[open] {
+  opacity: 1;
+}
+.dialog::backdrop {
+  background-color: rgb(10 10 10 / 0.85);
+  opacity: 0;
+  transition:
+    opacity 0.2s ease-out,
+    overlay 0.2s allow-discrete,
+    display 0.2s allow-discrete;
+}
+.dialog[open]::backdrop {
+  opacity: 1;
+}
+@starting-style {
+  .dialog[open],
+  .dialog[open]::backdrop {
+    opacity: 0;
+  }
+}
+/* Lock page scroll while this modal is open (replaces a JS body-overflow effect). */
+:global(html):has(.dialog[open]) {
+  overflow: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dialog,
+  .dialog::backdrop {
+    transition: none;
+  }
+}

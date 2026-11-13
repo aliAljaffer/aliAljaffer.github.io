@@ -1,4 +1,3 @@
-"use client";
 import Layout from "@/app/components/Layout";
 import BackLink from "@/app/components/BackLink";
 import TerminalImage from "@/app/components/TerminalImage";
@@ -8,12 +7,9 @@ import CaseStudyHeader from "@/app/components/CaseStudyHeader";
 import RelatedPosts from "@/app/components/RelatedPosts";
 import GiscusComments from "@/app/components/GiscusComments";
 import Footer from "@/app/components/Footer";
-import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import NotFound from "@/app/not-found";
 import { CaseStudy } from "@/app/types";
-import { headingLabel, headingSlug, headingSource } from "@/lib/heading";
-import { estimateReadingMinutes } from "@/lib/reading-time";
 import ArticleBody from "./ArticleBody";
 
 // KaTeX and its stylesheet are ~290KB, so the math renderer loads only for the
@@ -21,50 +17,21 @@ import ArticleBody from "./ArticleBody";
 // to carry the heading ids the table of contents links to.
 const ArticleBodyMath = dynamic(() => import("./ArticleBodyMath"));
 
-function extractHeadings(markdown: string): { text: string; slug: string }[] {
-  const headings: { text: string; slug: string }[] = [];
-  let inFence = false;
-  for (const line of markdown.split("\n")) {
-    if (/^\s*```/.test(line)) {
-      inFence = !inFence;
-      continue;
-    }
-    if (inFence) continue;
-    const m = line.match(/^##\s+(.+)$/);
-    if (m) {
-      const raw = headingSource(m[0]);
-      if (raw)
-        headings.push({ text: headingLabel(raw), slug: headingSlug(raw) });
-    }
-  }
-  return headings;
-}
 interface CaseStudyProps {
   caseStudy: CaseStudy & { content: string };
   relatedPosts?: CaseStudy[];
   hasMath?: boolean;
+  headings: { text: string; slug: string }[];
+  readingMinutes: number;
 }
 
 export default function CaseStudyClient({
   caseStudy,
   relatedPosts = [],
   hasMath = false,
+  headings,
+  readingMinutes,
 }: CaseStudyProps) {
-  const hasImages = caseStudy?.images?.some(
-    (project_image) => project_image.url.length > 1,
-  );
-
-  const headings = useMemo(() => {
-    const h = extractHeadings(caseStudy?.content ?? "");
-    if (hasImages) h.push({ text: "Screenshots", slug: "screenshots" });
-    return h;
-  }, [caseStudy?.content, hasImages]);
-
-  const readingMinutes = useMemo(
-    () => estimateReadingMinutes(caseStudy?.content ?? ""),
-    [caseStudy?.content],
-  );
-
   if (!caseStudy) return NotFound({ message: "Case Study not found" });
   return (
     <Layout>

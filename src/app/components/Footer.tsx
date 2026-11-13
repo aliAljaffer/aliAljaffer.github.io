@@ -4,10 +4,10 @@ import Link from "next/link";
 // column (not the full viewport) so it lines up with the page above it.
 export default function Footer() {
   const linkClass =
-    "hover:text-neutral-950 dark:hover:text-neutral-50 hover:underline underline-offset-2";
+    "hover:text-fg hover:underline underline-offset-2";
 
   return (
-    <footer className="shrink-0 w-full px-6 pb-4 text-xs text-neutral-600 dark:text-neutral-400">
+    <footer className="shrink-0 w-full px-6 pb-4 text-xs text-muted">
       <div className="max-w-4xl mx-auto pt-3 border-t border-terminal-accent flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <span>© {new Date().getFullYear()} Ali Aljaffer</span>
         <span className="flex items-center gap-4">

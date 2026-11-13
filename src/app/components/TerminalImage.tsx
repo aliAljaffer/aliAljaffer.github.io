@@ -71,7 +71,7 @@ export default function TerminalImage({
         <button
           type="button"
           onClick={() => setIsModalOpen(true)}
-          className={`max-w-full border border-terminal-accent hover:opacity-90 transition-opacity p-0 ${status === "loading" ? "img-stripes block w-full" : "inline-block bg-transparent"}`}
+          className={`max-w-full border border-terminal-accent hover:opacity-90 motion-safe:transition-opacity p-0 ${status === "loading" ? "img-stripes block w-full" : "inline-block bg-transparent"}`}
           aria-label={imageAlt ? `Enlarge image: ${imageAlt}` : "Enlarge image"}
         >
           <Image

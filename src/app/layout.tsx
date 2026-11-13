@@ -6,6 +6,7 @@ import brand from "@/brand/brand.json";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
+import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE_URL } from "@/lib/site";
 import { contactData } from "@/data/profile";
@@ -106,6 +107,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link rel="preconnect" href="https://umami.alialjaffer.com" />
+        <link rel="preconnect" href="https://assets.alialjaffer.com" />
+        <link rel="dns-prefetch" href="https://giscus.app" />
         {/* Prevent flash of wrong theme before React hydrates */}
         <script
           dangerouslySetInnerHTML={{
@@ -117,10 +121,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-neutral-50 dark:bg-neutral-900">
+      <body className="bg-page">
         {children}
-        <script
-          defer
+        <Script
+          strategy="afterInteractive"
           src="https://umami.alialjaffer.com/assets/web.js"
           data-host-url="https://umami.alialjaffer.com"
           data-website-id="ea36b581-4b7d-4c81-9691-3182bfd8dfc8"

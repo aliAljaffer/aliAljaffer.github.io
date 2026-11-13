@@ -4,6 +4,13 @@ import { estimateReadingMinutes } from "@/lib/reading-time";
 import { brandCard, ogSize } from "@/lib/og";
 import { tagToSlug } from "@/data/case-study-tags";
 
+const dateFormat = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
+});
+
 export const alt = "Case study preview";
 export const size = ogSize;
 export const contentType = "image/png";
@@ -22,11 +29,7 @@ export default async function Image({
   const content = (await getMarkdownContent(id)) ?? "";
   const readingMinutes = estimateReadingMinutes(content);
   const formattedDate = caseStudy
-    ? new Date(caseStudy.date).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
+    ? dateFormat.format(new Date(caseStudy.date))
     : "";
   const tags = caseStudy?.tags ?? [];
   // Mirrors CaseStudyHeader.tsx's on-page meta line: date - reading time - #tag1 #tag2

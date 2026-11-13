@@ -43,8 +43,20 @@ export default function ThemeToggle({
 
   const toggle = () => {
     const next = !isDark;
-    document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
+    const apply = () => document.documentElement.classList.toggle("dark", next);
+    if (
+      typeof document.startViewTransition === "function" &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      document.startViewTransition(apply);
+    } else {
+      apply();
+    }
+    try {
+      localStorage.setItem("theme", next ? "dark" : "light");
+    } catch {
+      // storage unavailable (private mode / blocked); theme still applies this session
+    }
   };
 
   return (

@@ -13,6 +13,26 @@
   --color-terminal-comment: var(--brand-ink-soft);
   --color-terminal-border: var(--brand-rule);
   --color-terminal-highlight: var(--brand-accent-ink);
+  --color-terminal-red: light-dark(#b3261e, #ee8a82);
+  --color-fg: light-dark(var(--color-neutral-950), var(--color-neutral-50));
+  --color-fg-inverse: light-dark(var(--color-neutral-50), var(--color-neutral-950));
+  --color-body: light-dark(var(--color-neutral-700), var(--color-neutral-300));
+  --color-muted: light-dark(var(--color-neutral-600), var(--color-neutral-400));
+  --color-muted-soft: light-dark(var(--color-neutral-500), var(--color-neutral-400));
+  --color-subtle: light-dark(var(--color-neutral-400), var(--color-neutral-600));
+  --color-page: light-dark(var(--color-neutral-50), var(--color-neutral-900));
+  --color-icon: light-dark(var(--color-neutral-900), var(--color-neutral-50));
+  --color-dot-1: light-dark(var(--color-neutral-900), var(--color-neutral-200));
+  --color-dot-2: light-dark(var(--color-neutral-700), var(--color-neutral-400));
+  --color-dot-3: light-dark(var(--color-neutral-500), var(--color-neutral-600));
+}
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
 }
 
 html {
@@ -20,27 +40,29 @@ html {
 }
 
 /* Scale the whole UI up on large monitors so rem-based text, icons,
-   and spacing don't look lost. Everything sizes off the root font. */
-@media (min-width: 1920px) {
-  html {
-    font-size: 17px;
-  }
-}
-
-@media (min-width: 2560px) {
-  html {
-    font-size: 19px;
-  }
+   and spacing don't look lost. Fluid ramp: 17px at 1920px wide, 19px at
+   2560px, never below the user's base size. */
+html {
+  font-size: clamp(1rem, 0.6875rem + 0.3125vw, 1.1875rem);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 
   .bounce-dot,
   .cursor-blink {
     animation: none;
+  }
+
+  .plate-layer {
+    display: none;
   }
 }
 
@@ -61,6 +83,7 @@ h1 {
   font-variation-settings: var(--brand-display-settings);
   font-weight: var(--brand-heading-weight);
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .img-stripes,
@@ -91,9 +114,9 @@ body {
   margin: 0;
   padding: 0;
   background-image:
-    radial-gradient(60% 50% at 8% 0%, color-mix(in srgb, var(--brand-wash-a) var(--brand-wash-a-strength), transparent), transparent 70%),
-    radial-gradient(50% 45% at 100% 30%, color-mix(in srgb, var(--brand-wash-b) var(--brand-wash-b-strength), transparent), transparent 70%),
-    radial-gradient(60% 50% at 30% 100%, color-mix(in srgb, var(--brand-wash-c) var(--brand-wash-c-strength), transparent), transparent 70%);
+    radial-gradient(60% 50% at 8% 0%, color-mix(in oklch, var(--brand-wash-a) var(--brand-wash-a-strength), transparent), transparent 70%),
+    radial-gradient(50% 45% at 100% 30%, color-mix(in oklch, var(--brand-wash-b) var(--brand-wash-b-strength), transparent), transparent 70%),
+    radial-gradient(60% 50% at 30% 100%, color-mix(in oklch, var(--brand-wash-c) var(--brand-wash-c-strength), transparent), transparent 70%);
   background-attachment: fixed;
 }
 
@@ -129,6 +152,7 @@ body::before {
   font-size: var(--brand-h2-size);
   letter-spacing: -0.01em;
   line-height: 1.2;
+  text-wrap: balance;
 }
 
 :is(.brand-label, .brand-section-title, .masthead-name, h1, .markdown-content h2) :not(code, kbd, samp) {
@@ -158,57 +182,256 @@ body::before {
   outline: 2px solid currentColor;
   outline-offset: 3px;
 }
+
 .markdown-content {
   font-size: var(--brand-body-size);
   line-height: 1.75;
   color: var(--color-terminal-text);
-}
 
-.markdown-content h1 {
-  @apply mt-8 mb-4;
-  font-size: var(--brand-h1-size);
-  line-height: 1.2;
-  color: var(--color-terminal-accent);
-}
+  h1 {
+    @apply mt-8 mb-4;
+    font-size: var(--brand-h1-size);
+    line-height: 1.2;
+    color: var(--color-terminal-accent);
 
-.markdown-content h1:first-child {
-  @apply mt-0;
-}
+    &:first-child {
+      @apply mt-0;
+    }
+  }
 
-.markdown-content h2 {
-  @apply mt-10 mb-4 flex items-center gap-3;
-  color: var(--color-terminal-accent);
-  counter-increment: md-h2;
-  scroll-margin-top: 5.5rem;
-}
+  h2 {
+    @apply mt-10 mb-4 flex items-center gap-3;
+    color: var(--color-terminal-accent);
+    counter-increment: md-h2;
+    scroll-margin-top: 5.5rem;
 
-/* Numbered hairline sections: "01 - Overview ----------" */
-.markdown-content h2::before {
-  content: counter(md-h2, decimal-leading-zero);
-  @apply text-neutral-600 dark:text-neutral-400;
-}
+    /* Numbered hairline sections: "01 - Overview ----------" */
+    &::before {
+      content: counter(md-h2, decimal-leading-zero);
+      @apply text-neutral-600 dark:text-neutral-400;
+    }
 
-.markdown-content h2::after {
-  content: "";
-  flex: 1;
-}
+    &::after {
+      content: "";
+      flex: 1;
+    }
 
-.markdown-content h2:first-child {
-  @apply mt-0;
-}
+    &:first-child {
+      @apply mt-0;
+    }
+  }
 
-.markdown-content h3 {
-  @apply mt-6 mb-2;
-  font-family: var(--font-display), Georgia, serif;
-  font-variation-settings: var(--brand-display-settings);
-  font-weight: var(--brand-heading-weight);
-  font-size: var(--brand-h3-size);
-  color: var(--color-terminal-accent);
-}
+  h3 {
+    @apply mt-6 mb-2;
+    font-family: var(--font-display), Georgia, serif;
+    font-variation-settings: var(--brand-display-settings);
+    font-weight: var(--brand-heading-weight);
+    font-size: var(--brand-h3-size);
+    color: var(--color-terminal-accent);
+    text-wrap: balance;
+  }
 
-.markdown-content h4 {
-  @apply text-base sm:text-lg font-bold mt-4 mb-2;
-  color: var(--color-terminal-strong);
+  h4 {
+    @apply text-base sm:text-lg font-bold mt-4 mb-2;
+    color: var(--color-terminal-strong);
+  }
+
+  figure {
+    counter-increment: md-fig;
+
+    img,
+    .img-placeholder {
+      border: 1px solid var(--brand-rule);
+      border-radius: var(--brand-radius-lg);
+      box-shadow: var(--brand-shadow-lg);
+    }
+  }
+
+  figcaption {
+    font-style: italic;
+    font-size: 0.875rem;
+
+    &::before {
+      content: "fig. " counter(md-fig, decimal-leading-zero);
+      @apply font-bold mr-2;
+      font-style: normal;
+      font-size: 0.75rem;
+      font-family: var(--font-mono), monospace;
+      color: var(--color-terminal-accent);
+    }
+  }
+
+  p {
+    @apply mb-4;
+    color: var(--color-terminal-text);
+    text-wrap: pretty;
+  }
+
+  span {
+    @apply mb-4;
+    color: var(--color-terminal-text);
+  }
+
+  /* KaTeX builds formulas from nested spans, which would otherwise pick up the
+     generic span margin above. Inside a flex heading that margin shifts the
+     formula off centre, since flex aligns the margin box. */
+  span.katex,
+  .katex span {
+    margin-bottom: 0;
+    color: inherit;
+  }
+
+  ul,
+  ol {
+    @apply mb-4 mt-2 pl-6;
+  }
+
+  li {
+    @apply mb-1;
+    color: var(--color-terminal-text);
+    text-wrap: pretty;
+
+    ul li {
+      @apply m-0;
+      color: var(--color-terminal-text);
+    }
+  }
+
+  ul {
+    @apply list-none pl-0;
+
+    > li {
+      @apply relative pl-5;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0.72em;
+        left: 4px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--brand-panel-edge);
+      }
+    }
+  }
+
+  ol li {
+    @apply list-decimal;
+  }
+
+  /* Inline code */
+  code {
+    padding: 0.1em 0.3em;
+    font-size: max(0.75rem, 0.85em);
+    font-family: var(--font-mono), monospace;
+    background-color: var(--brand-code-inline-bg);
+    color: var(--brand-code-inline-fg);
+    border-radius: calc(var(--brand-radius) / 2);
+  }
+
+  /* Code block */
+  pre {
+    @apply overflow-x-auto my-6 text-sm p-4;
+    position: relative;
+    background-color: var(--brand-syntax-bg);
+    color: var(--brand-syntax-text);
+    border: 1px solid var(--brand-rule);
+    border-radius: var(--brand-radius);
+    box-shadow: var(--brand-shadow);
+
+    /* Language label */
+    &[data-language] {
+      padding-top: 2.25rem;
+    }
+
+    &[data-language]::before {
+      content: attr(data-language);
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--color-terminal-comment);
+    }
+
+    code {
+      @apply p-0;
+      background-color: transparent;
+      color: inherit;
+      font-size: inherit;
+      border-radius: 0;
+    }
+
+    /* Reset all spans and code-line elements inside code blocks */
+    .code-line,
+    span {
+      background-color: transparent;
+    }
+  }
+
+  /* Ensure dark-mode inline-code background never bleeds into code blocks */
+  .dark & pre code {
+    background-color: transparent;
+  }
+
+  a {
+    @apply underline;
+    color: var(--color-terminal-link);
+
+    &:hover {
+      @apply no-underline;
+    }
+  }
+
+  strong {
+    @apply font-bold;
+    color: var(--color-terminal-strong);
+  }
+
+  em {
+    @apply italic;
+    color: var(--color-terminal-accent);
+  }
+
+  blockquote {
+    @apply my-5 px-4 py-3;
+    border-left: 4px solid var(--brand-panel-edge);
+    border-radius: var(--brand-radius);
+    background: var(--brand-panel-bg);
+    box-shadow: var(--brand-shadow);
+    color: var(--color-terminal-text);
+  }
+
+  hr {
+    @apply border-none border-t my-8;
+    border-color: var(--color-terminal-border);
+  }
+
+  div {
+    @apply mb-3;
+  }
+
+  table {
+    @apply w-full border-collapse my-4;
+  }
+
+  th,
+  td {
+    @apply border p-2 text-left;
+    border-color: var(--color-terminal-border);
+  }
+
+  th {
+    @apply font-bold;
+    background-color: var(--color-terminal-border);
+    color: var(--color-terminal-accent);
+  }
+
+  td {
+    color: var(--color-terminal-text);
+  }
 }
 
 /* Numbered figures: "fig. 01" prefixes in captions. The counters live on
@@ -218,285 +441,90 @@ body::before {
   counter-reset: md-h2 md-fig;
 }
 
-.markdown-content figure {
-  counter-increment: md-fig;
-}
-
-.markdown-content figcaption {
-  font-style: italic;
-  font-size: 0.875rem;
-}
-
-.markdown-content figcaption::before {
-  content: "fig. " counter(md-fig, decimal-leading-zero);
-  @apply font-bold mr-2;
-  font-style: normal;
-  font-size: 0.75rem;
-  font-family: var(--font-mono), monospace;
-  color: var(--color-terminal-accent);
-}
-
-.markdown-content figure img,
-.markdown-content figure .img-placeholder {
-  border: 1px solid var(--brand-rule);
-  border-radius: var(--brand-radius-lg);
-  box-shadow: var(--brand-shadow-lg);
-}
-
-.markdown-content p {
-  @apply mb-4;
-  color: var(--color-terminal-text);
-}
-
-.markdown-content span {
-  @apply mb-4;
-  color: var(--color-terminal-text);
-}
-
-/* KaTeX builds formulas from nested spans, which would otherwise pick up the
-   generic span margin above. Inside a flex heading that margin shifts the
-   formula off centre, since flex aligns the margin box. */
-.markdown-content span.katex,
-.markdown-content .katex span {
-  margin-bottom: 0;
-  color: inherit;
-}
-
-.markdown-content ul,
-.markdown-content ol {
-  @apply mb-4 mt-2 pl-6;
-}
-
-.markdown-content li {
-  @apply mb-1;
-  color: var(--color-terminal-text);
-}
-
-.markdown-content li ul li {
-  @apply m-0;
-  color: var(--color-terminal-text);
-}
-
-.markdown-content ul {
-  @apply list-none pl-0;
-}
-
-.markdown-content ul > li {
-  @apply relative pl-5;
-}
-
-.markdown-content ul > li::before {
-  content: "";
-  position: absolute;
-  top: 0.72em;
-  left: 4px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--brand-panel-edge);
-}
-
-.markdown-content ol li {
-  @apply list-decimal;
-}
-
-/* ── Inline code ─────────────────────────────────────────── */
-.markdown-content code {
-  padding: 0.1em 0.3em;
-  font-size: max(0.75rem, 0.85em);
-  font-family: var(--font-mono), monospace;
-  background-color: var(--brand-code-inline-bg);
-  color: var(--brand-code-inline-fg);
-  border-radius: calc(var(--brand-radius) / 2);
-}
-
-/* ── Code block ──────────────────────────────────────────── */
-.markdown-content pre {
-  @apply overflow-x-auto my-6 text-sm p-4;
-  position: relative;
-  background-color: var(--brand-syntax-bg);
-  color: var(--brand-syntax-text);
-  border: 1px solid var(--brand-rule);
-  border-radius: var(--brand-radius);
-  box-shadow: var(--brand-shadow);
-}
-
-/* Language label */
-.markdown-content pre[data-language] {
-  padding-top: 2.25rem;
-}
-
-.markdown-content pre[data-language]::before {
-  content: attr(data-language);
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.2rem 0.6rem;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: var(--color-terminal-comment);
-}
-
-.markdown-content pre code {
-  @apply p-0;
-  background-color: transparent;
-  color: inherit;
-  font-size: inherit;
-  border-radius: 0;
-}
-
-/* Ensure dark-mode inline-code background never bleeds into code blocks */
-.dark .markdown-content pre code {
-  background-color: transparent;
-}
-
-/* Reset all spans and code-line elements inside code blocks */
-.markdown-content pre .code-line,
-.markdown-content pre span {
-  background-color: transparent;
-}
-
-/* ── Syntax highlighting — GitHub Light ──────────────────── */
-.markdown-content pre code .token.comment,
-.markdown-content pre code .token.prolog,
-.markdown-content pre code .token.doctype,
-.markdown-content pre code .token.cdata {
-  color: var(--brand-syntax-comment);
-  font-style: italic;
-}
-
-.markdown-content pre code .token.punctuation {
-  color: var(--brand-syntax-punctuation);
-  opacity: 1;
-}
-
-.markdown-content pre code .token.keyword,
-.markdown-content pre code .token.atrule {
-  color: var(--brand-syntax-keyword);
-  font-weight: 600;
-}
-
-.markdown-content pre code .token.attr-value,
-.markdown-content pre code .token.string,
-.markdown-content pre code .token.char,
-.markdown-content pre code .token.builtin,
-.markdown-content pre code .token.inserted {
-  color: var(--brand-syntax-string);
-}
-
-.markdown-content pre code .token.function,
-.markdown-content pre code .token.class-name {
-  color: var(--brand-syntax-function);
-}
-
-.markdown-content pre code .token.number,
-.markdown-content pre code .token.boolean,
-.markdown-content pre code .token.constant {
-  color: var(--brand-syntax-number);
-}
-
-.markdown-content pre code .token.operator,
-.markdown-content pre code .token.entity,
-.markdown-content pre code .token.url {
-  color: var(--brand-syntax-keyword);
-}
-
-.markdown-content pre code .token.property,
-.markdown-content pre code .token.tag,
-.markdown-content pre code .token.selector,
-.markdown-content pre code .token.attr-name,
-.markdown-content pre code .token.symbol {
-  color: var(--brand-syntax-type);
-}
-
-.markdown-content pre code .token.regex,
-.markdown-content pre code .token.important,
-.markdown-content pre code .token.variable {
-  color: var(--brand-syntax-number);
-}
-
-.markdown-content pre code .token.deleted {
-  color: var(--brand-syntax-keyword);
-}
-
-.markdown-content pre code .token.important,
-.markdown-content pre code .token.bold {
-  font-weight: bold;
-}
-
-.markdown-content pre code .token.italic {
-  font-style: italic;
-}
-
-/* ── Syntax highlighting — GitHub Dark ───────────────────── */
-
-
-.markdown-content a {
-  @apply underline;
-  color: var(--color-terminal-link);
-}
-
-.markdown-content a:hover {
-  @apply no-underline;
-}
-
-.markdown-content strong {
-  @apply font-bold;
-  color: var(--color-terminal-strong);
-}
-
-.markdown-content em {
-  @apply italic;
-  color: var(--color-terminal-accent);
-}
-
-.markdown-content blockquote {
-  @apply my-5 px-4 py-3;
-  border-left: 4px solid var(--brand-panel-edge);
-  border-radius: var(--brand-radius);
-  background: var(--brand-panel-bg);
-  box-shadow: var(--brand-shadow);
-  color: var(--color-terminal-text);
-}
-
-.markdown-content hr {
-  @apply border-none border-t my-8;
-  border-color: var(--color-terminal-border);
-}
-
 ol > li > div,
 ul > li > div,
 figure > div > div {
   @apply !mb-0;
 }
 
-.markdown-content div {
-  @apply mb-3;
-}
+/* Syntax highlighting (Prism tokens) */
+@scope (.markdown-content pre code) {
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: var(--brand-syntax-comment);
+    font-style: italic;
+  }
 
-.markdown-content table {
-  @apply w-full border-collapse my-4;
-}
+  .token.punctuation {
+    color: var(--brand-syntax-punctuation);
+    opacity: 1;
+  }
 
-.markdown-content th,
-.markdown-content td {
-  @apply border p-2 text-left;
-  border-color: var(--color-terminal-border);
-}
+  .token.keyword,
+  .token.atrule {
+    color: var(--brand-syntax-keyword);
+    font-weight: 600;
+  }
 
-.markdown-content th {
-  @apply font-bold;
-  background-color: var(--color-terminal-border);
-  color: var(--color-terminal-accent);
-}
+  .token.attr-value,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: var(--brand-syntax-string);
+  }
 
-.markdown-content td {
-  color: var(--color-terminal-text);
+  .token.function,
+  .token.class-name {
+    color: var(--brand-syntax-function);
+  }
+
+  .token.number,
+  .token.boolean,
+  .token.constant {
+    color: var(--brand-syntax-number);
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url {
+    color: var(--brand-syntax-keyword);
+  }
+
+  .token.property,
+  .token.tag,
+  .token.selector,
+  .token.attr-name,
+  .token.symbol {
+    color: var(--brand-syntax-type);
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    color: var(--brand-syntax-number);
+  }
+
+  .token.deleted {
+    color: var(--brand-syntax-keyword);
+  }
+
+  .token.important,
+  .token.bold {
+    font-weight: bold;
+  }
+
+  .token.italic {
+    font-style: italic;
+  }
 }
 
 .cursor-blink {
   animation: blink 1s step-end infinite;
 }
+
 
 .scrollbar-hidden {
   scrollbar-width: none;
@@ -505,35 +533,6 @@ figure > div > div {
 
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
-}
-
-.scrollbar-visible {
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-neutral-400) var(--color-neutral-200);
-}
-
-.scrollbar-visible::-webkit-scrollbar {
-  width: 4px;
-}
-
-.scrollbar-visible::-webkit-scrollbar-track {
-  background: var(--color-neutral-200);
-}
-
-.scrollbar-visible::-webkit-scrollbar-thumb {
-  background-color: var(--color-neutral-400);
-}
-
-.dark .scrollbar-visible {
-  scrollbar-color: var(--color-neutral-600) var(--color-neutral-800);
-}
-
-.dark .scrollbar-visible::-webkit-scrollbar-track {
-  background: var(--color-neutral-800);
-}
-
-.dark .scrollbar-visible::-webkit-scrollbar-thumb {
-  background-color: var(--color-neutral-600);
 }
 
 @keyframes blink {
@@ -570,12 +569,8 @@ figure > div > div {
 
 .plate-stage {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   --plate-edge: var(--brand-plate-edge, 8%);
-  -webkit-mask-image:
-    linear-gradient(to right, transparent, #000 var(--plate-edge), #000 calc(100% - var(--plate-edge)), transparent),
-    linear-gradient(to bottom, transparent, #000 var(--plate-edge));
-  -webkit-mask-composite: source-in;
   mask-image:
     linear-gradient(to right, transparent, #000 var(--plate-edge), #000 calc(100% - var(--plate-edge)), transparent),
     linear-gradient(to bottom, transparent, #000 var(--plate-edge));
@@ -636,10 +631,4 @@ figure > div > div {
 @keyframes plate-drift-cloud {
   0%, 100% { transform: translate3d(calc(-1 * var(--brand-plate-cloud-drift)), 0, 0); }
   50% { transform: translate3d(var(--brand-plate-cloud-drift), 0, 0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .plate-layer {
-    display: none;
-  }
 }

@@ -141,7 +141,7 @@ export default function GiscusComments() {
     >
       <h2
         id="comments-heading"
-        className="text-xs font-bold uppercase tracking-[0.2em] mb-4 text-neutral-600 dark:text-neutral-400"
+        className="text-xs font-bold uppercase tracking-[0.2em] mb-4 text-muted"
       >
         Comments
       </h2>
