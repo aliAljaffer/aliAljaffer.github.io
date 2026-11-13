@@ -67,3 +67,15 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
+
+      # The zone settings were changed to stop caching HTML (cache_level basic,
+      # browser TTL respecting origin). This purge clears anything cached under
+      # the old policy.
+      - name: Purge the edge cache
+        continue-on-error: true
+        run: |
+          curl -sS -X POST \
+            "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"files":["https://alialjaffer.com/","https://www.alialjaffer.com/"]}'
