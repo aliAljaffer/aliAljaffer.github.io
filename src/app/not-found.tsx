@@ -3,7 +3,7 @@ import ThemeToggle from "./components/ThemeToggle";
 
 export default function NotFound({ message }: { message?: string }) {
   return (
-    <div className="min-h-screen text-fg font-mono flex flex-col">
+    <div data-page-type="404" className="min-h-screen text-fg font-mono flex flex-col">
       <ThemeToggle
         className="fixed top-0 right-0 z-50 bg-fg text-fg-inverse pb-3 px-4"
         style={{
