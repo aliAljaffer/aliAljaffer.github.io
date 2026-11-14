@@ -8,6 +8,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import UmamiEvents from "./components/UmamiEvents";
 import { SITE_URL } from "@/lib/site";
 import { contactData } from "@/data/profile";
 
@@ -123,11 +124,14 @@ export default function RootLayout({
       </head>
       <body className="bg-page">
         {children}
+        <UmamiEvents />
         <Script
           strategy="afterInteractive"
           src="https://umami.alialjaffer.com/assets/web.js"
           data-host-url="https://umami.alialjaffer.com"
           data-website-id="ea36b581-4b7d-4c81-9691-3182bfd8dfc8"
+          data-performance="true"
+          data-tag="portfolio"
         />
       </body>
       <GoogleAnalytics gaId="G-CWKB4GRTEB" />
