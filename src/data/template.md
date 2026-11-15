@@ -13,7 +13,7 @@ template:
     - caption: "Image 2"
       alt-text: ""
       url: https://example.com/2.jpg
-  show: true
+  show: false
   date: "YYYY-MM-DD"
   type: "project"
   tags: ["Kubernetes"] # required; every value must be one of CASE_STUDY_TAGS in src/data/case-study-tags.ts

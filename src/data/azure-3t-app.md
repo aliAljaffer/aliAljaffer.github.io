@@ -1,8 +1,9 @@
 ---
 azure-3t-app:
-  name: Azure Three-Tier web app
+  name: Azure Three-Tier Web App with Terraform
+  short-title: Azure Three-Tier
   caseStudyId: app
-  description: Azure Three-Tier web app deployed using Terraform and containers
+  description: A three-tier Azure web app deployed with Terraform and containers, built during the DevOps bootcamp.
   repo: "https://github.com/aliAljaffer/azure-3t-app"
   images:
     - caption: "System Design - In-depth with the Azure Gateway"

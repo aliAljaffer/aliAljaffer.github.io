@@ -1,10 +1,11 @@
 ---
 grooszy:
-  name: grooszy
+  name: 'Grooszy: Self-Hosted Spending Analysis'
+  short-title: Grooszy
   caseStudyId: grooszy
   repo: https://github.com/aliAljaffer/grooszy
   url: ""
-  description: Private, self-hosted spending analysis for Alinma and Al Rajhi statements, with trends, suggestions, and an AI assistant that only sees aggregates. Go, Next.js, and Kubernetes.
+  description: Private, self-hosted spending analysis for Alinma and Al Rajhi statements, with trends, suggestions, and an AI assistant that only sees aggregates.
   images:
     - caption: The overview in dark mode. Synthetic numbers, real chart
       alt-text: ""

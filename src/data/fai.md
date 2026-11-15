@@ -1,6 +1,7 @@
 ---
 fai:
-  name: fai
+  name: 'FAI: a Task Tracker Built in Six Days'
+  short-title: FAI Task Tracker
   caseStudyId: fai
   repo: https://github.com/aliAljaffer/fai
   url: ""

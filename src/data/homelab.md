@@ -1,6 +1,6 @@
 ---
 homelab:
-  name: The Homelab, Ten Months In
+  name: 'The Homelab, Ten Months In: Talos and GitOps'
   short-title: "Homelab, Ten Months In"
   caseStudyId: homelab
   description: The k3s cluster grew up. Talos Linux, full GitOps, real disaster recovery, and three stacked firmware bugs on a 2012 MacBook.
