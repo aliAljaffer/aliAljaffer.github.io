@@ -1,6 +1,6 @@
 ---
 fai:
-  name: 'FAI: a Task Tracker Built in Six Days'
+  name: "FAI: AI-powered Task Tracking"
   short-title: FAI Task Tracker
   caseStudyId: fai
   repo: https://github.com/aliAljaffer/fai
