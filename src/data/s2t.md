@@ -1,6 +1,7 @@
 ---
 s2t:
-  name: s2t - secret2text
+  name: 's2t: Decode Kubernetes Secrets'
+  short-title: s2t
   caseStudyId: s2t
   description: A small CLI that decodes Kubernetes Secrets and ConfigMaps into readable key/value pairs
   repo: https://github.com/aliAljaffer/s2t

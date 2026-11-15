@@ -3,7 +3,7 @@ keda:
   name: Kubernetes Event-Driven Architecture (KEDA)
   short-title: "KEDA"
   caseStudyId: keda
-  description: A simple, yet powerful way to scale your app's workers on Kubernetes!
+  description: Scaling job consumers on Kubernetes with KEDA, based on the number of queued jobs.
   repo: "https://github.com/keda-project-youtube"
   url: https://example.com/
   images:

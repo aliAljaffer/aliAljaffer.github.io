@@ -1,6 +1,7 @@
 ---
 teamwork-and-collaboration:
-  name: Collaboration on GitHub
+  name: 'Collaboration on GitHub: a Team Workflow Session'
+  short-title: GitHub Collaboration
   caseStudyId: teamwork-and-collaboration
   description: A session I presented in DevOps bootcamp to help colleagues on how to efficiently collaboarate on GitHub.
   repo: "https://github.com/example"

@@ -1,6 +1,7 @@
 ---
 tuwaiq-tracker:
-  name: Tuwaiq Tracker
+  name: 'Tuwaiq Tracker: Course Registration Alerts'
+  short-title: Tuwaiq Tracker
   caseStudyId: tuwaiq-tracker
   repo: https://github.com/aliAljaffer/tuwaiq-tracker
   url: https://tuwaiqtracker.com/

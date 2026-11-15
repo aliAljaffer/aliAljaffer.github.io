@@ -13,7 +13,8 @@ import { SITE_URL } from "@/lib/site";
 import { contactData } from "@/data/profile";
 
 const title = "Ali Aljaffer - Platform Engineer";
-const description = "Cloud Engineering and DevOps Portfolio";
+const description =
+  "Portfolio of Ali Aljaffer, a platform engineer writing about Kubernetes, cloud infrastructure, and self-hosted systems.";
 
 const jsonLd = {
   "@context": "https://schema.org",

@@ -1,8 +1,9 @@
 ---
 k3s-homelab:
-  name: K3s Cluster Homelab
+  name: Building a K3s Kubernetes Homelab
+  short-title: K3s Homelab
   caseStudyId: k3s-homelab
-  description: Documenting my homelabbing journey! :)
+  description: Documenting my homelabbing journey with k3s, from one secondhand laptop to a cluster I rely on.
   repo: "https://github.com/aliAljaffer/homelab"
   url: ""
   images:

@@ -1,12 +1,11 @@
 ---
 catus-locatus:
-  name: Catus Locatus
+  name: 'Catus Locatus: a Lost Pet Recovery App'
+  short-title: Catus Locatus
   caseStudyId: catus-locatus
   repo: https://github.com/aliAljaffer/catus-locatus
   url: https://cl.alialjaffer.com/
-  description:
-    Location-based pet recovery web app using React and Leaflet maps to
-    report and view lost pets.
+  description: Location-based pet recovery web app using React and Leaflet maps to report and view lost pets.
   images:
     - caption: "Loadtesting results (some caching involved, probably)"
       alt-text: "Loadtesting results (some caching involved, probably)"

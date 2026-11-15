@@ -45,7 +45,7 @@ export default function BrandPlate() {
     <div className="shrink-0 w-full max-w-4xl mx-auto px-6" aria-hidden="true">
       <div ref={stage} className={`plate-stage w-full aspect-[2000/420] max-h-40 ${live ? "live" : ""} ${paused ? "paused" : ""}`}>
         <img src="/brand/plate-day.webp" alt="" width={2000} height={420} decoding="async" fetchPriority="high" className={`${still} dark:hidden`} />
-        <img src="/brand/plate-night.webp" alt="" width={2000} height={420} decoding="async" loading="lazy" className={`${still} hidden dark:block`} />
+        <img src="/brand/plate-night.webp" alt="" width={2000} height={420} decoding="async" className={`${still} hidden dark:block`} />
         {mode &&
           (["sky", "cloud"] as const).map((layer) => (
             <img

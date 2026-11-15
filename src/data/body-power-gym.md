@@ -1,12 +1,11 @@
 ---
 body-power-gym:
-  name: Body & Power Gym
+  name: 'Body & Power Gym: a Website for a Local Gym'
+  short-title: Body & Power Gym
   caseStudyId: body-power-gym
   repo: ""
   url: ""
-  description:
-    Volunteer-built website for a local gym using Next.js, Docker, and
-    Strapi CMS for fully managed and responsive content delivery.
+  description: Volunteer-built website for a local gym using Next.js, Docker, and Strapi CMS, with managed, responsive content.
   images:
     - caption: A summary of what leads to a scale down or up - in writing
       alt-text: A summary of what leads to a scale down or up - in writing

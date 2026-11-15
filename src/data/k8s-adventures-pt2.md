@@ -3,7 +3,7 @@ k8s-adventures-pt2:
   name: The end (?) of the Kubernetes learning journey
   short-title: "End of the K8s journey"
   caseStudyId: k8s-adventures-pt2
-  description: After achieving Kubestronaut, am I done with Kubernetes?
+  description: After passing all five Kubernetes exams to reach Kubestronaut, is the learning journey over?
   repo: ""
   url: ""
   images:
